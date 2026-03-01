@@ -24,11 +24,11 @@ const LANG_COLORS = {
 // Small apps to showcase (static list — update as new apps are created)
 const FEATURED_APPS = [
   {
-    name: 'Org Page',
-    description: 'Esta misma página de la organización, construida con HTML, CSS y JavaScript vanilla.',
-    emoji: '🏠',
-    repo: 'fedesarrollo.github.io',
-    liveUrl: 'https://fedesarrollo.github.io',
+    name: 'Taller Visión 2050',
+    description: 'Aplicación de taller cualitativo para explorar retos, misiones y oportunidades de cara al año 2050.',
+    emoji: '🎯',
+    repo: 'taller-vision-2050',
+    liveUrl: 'https://fedesarrollo.github.io/taller-vision-2050/taller-vision-2050.html',
   },
 ];
 

@@ -103,6 +103,10 @@ function repoCard(repo) {
   const stars = repo.stargazers_count;
   const forks = repo.forks_count;
   const topics = (repo.topics || []).slice(0, 4);
+  const featuredApp = FEATURED_APPS.find((a) => a.repo === repo.name);
+  const appBtn = featuredApp && featuredApp.liveUrl
+    ? `<a class="btn btn-primary" href="${escapeHtml(featuredApp.liveUrl)}" target="_blank" rel="noopener" style="margin-top:10px">🚀 Ver app</a>`
+    : '';
 
   return `
     <div class="card">
@@ -118,6 +122,7 @@ function repoCard(repo) {
         ${forks > 0 ? `<span class="card-stat">🍴 ${forks}</span>` : ''}
         <span class="card-stat" title="Última actualización">${timeAgo(repo.updated_at)}</span>
       </div>
+      ${appBtn}
     </div>`;
 }
 

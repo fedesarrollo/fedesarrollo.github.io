@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Misiones · Santander 2050</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0f2d4a;
+      --blue:    #1a5276;
+      --teal:    #1a7a6e;
+      --green:   #1e8449;
+      --gold:    #b7770d;
+      --purple:  #6c3483;
+      --red:     #922b21;
+      --gray:    #566573;
+      --light:   #f4f6f9;
+      --white:   #ffffff;
+      --border:  #dce3ea;
+      --text:    #1c2833;
+      --muted:   #7f8c8d;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--teal) 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    header h1 span { color: #5dade2; }
+    header p {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 20px 24px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    /* ── MISSION GRID ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .mission-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      user-select: none;
+    }
+    .mission-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
+    /* Category colors */
+    .mission-card[data-cat="dep"]  { border-left: 5px solid var(--gold); }
+    .mission-card[data-cat="mix"]  { border-left: 5px solid var(--purple); }
+    .mission-card[data-cat="g1"]   { border-left: 5px solid var(--blue); }
+    .mission-card[data-cat="g2"]   { border-left: 5px solid var(--green); }
+    .mission-card[data-cat="ind"]  { border-left: 5px solid var(--gray); }
+    .mission-card[data-cat="dep11"]{ border-left: 5px solid var(--red); }
+
+    /* Selected state */
+    .mission-card.selected { border-color: transparent; box-shadow: 0 0 0 3px currentColor; }
+    .mission-card[data-cat="dep"].selected  { box-shadow: 0 0 0 3px var(--gold);   background: #fef9ec; }
+    .mission-card[data-cat="mix"].selected  { box-shadow: 0 0 0 3px var(--purple); background: #f5eef8; }
+    .mission-card[data-cat="g1"].selected   { box-shadow: 0 0 0 3px var(--blue);   background: #eaf2fb; }
+    .mission-card[data-cat="g2"].selected   { box-shadow: 0 0 0 3px var(--green);  background: #eafaf1; }
+    .mission-card[data-cat="ind"].selected  { box-shadow: 0 0 0 3px var(--gray);   background: #f2f3f4; }
+    .mission-card[data-cat="dep11"].selected{ box-shadow: 0 0 0 3px var(--red);    background: #fdedec; }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .card-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--border);
+      color: var(--gray);
+      border-radius: 6px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .mission-card.selected .card-num { background: var(--navy); color: #fff; }
+
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-check {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    .mission-card.selected .card-check { background: var(--navy); border-color: var(--navy); }
+    .card-check svg { display: none; }
+    .mission-card.selected .card-check svg { display: block; }
+
+    /* ── WARNING BANNER ── */
+    .warning {
+      background: #fef3cd;
+      border: 1px solid #f0c040;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: #7d5a00;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .warning.show { display: block; }
+
+    /* ── CTA BUTTON ── */
+    .cta-wrap {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .cta-btn {
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 18px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(15,45,74,0.3);
+    }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(15,45,74,0.4); }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .selected-count {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── RESULTS ── */
+    #results {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    #results.show { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .results-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .results-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .results-header p { font-size: 0.9rem; color: var(--muted); }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .metric-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border-top: 5px solid var(--navy);
+      text-align: center;
+    }
+    .metric-card.m-pib      { border-top-color: #2471a3; }
+    .metric-card.m-growth   { border-top-color: #1a7a6e; }
+    .metric-card.m-jobs     { border-top-color: #1e8449; }
+    .metric-card.m-poverty  { border-top-color: #922b21; }
+    .metric-card.m-informal { border-top-color: #6c3483; }
+
+    .metric-icon { font-size: 2rem; margin-bottom: 8px; }
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .metric-unit {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── SELECTED MISSIONS LIST ── */
+    .selected-missions-section {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+    .selected-missions-section h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .mission-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .mission-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .tag-dep   { background: #fef9ec; color: var(--gold);   border: 1px solid #f0c040; }
+    .tag-mix   { background: #f5eef8; color: var(--purple); border: 1px solid #c39bd3; }
+    .tag-g1    { background: #eaf2fb; color: var(--blue);   border: 1px solid #7fb3d3; }
+    .tag-g2    { background: #eafaf1; color: var(--green);  border: 1px solid #7dcea0; }
+    .tag-ind   { background: #f2f3f4; color: var(--gray);   border: 1px solid #bdc3c7; }
+    .tag-dep11 { background: #fdedec; color: var(--red);    border: 1px solid #e59866; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #f8f9fa;
+      border-left: 4px solid var(--border);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── RESET BUTTON ── */
+    .reset-btn {
+      background: transparent;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin-top: 20px;
+    }
+    .reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .mission-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric-value { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Plan Estratégico · Fedesarrollo</div>
+  <h1>Calculadora de Misiones<br><span>Santander 2050</span></h1>
+  <p>Selecciona las misiones que deseas activar y descubre cómo se transformaría Santander al 2050 en términos de crecimiento, empleo y bienestar.</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Habilitador dependiente</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Habilitador mixto</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Grupo 1 condicionado</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Grupo 2 condicionado</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--gray)"></div>Misión independiente</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Misión dependiente</div>
+</div>
+
+<main>
+  <p class="section-title">Elige las misiones para Santander 2050</p>
+
+  <div class="warning" id="rule11Warning">
+    ⚠️ <strong>Condición necesaria:</strong> Las misiones del Grupo 1 (Diversificación exportadora, Infraestructura vial) y Grupo 2 (Ruralidad, Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad, Seguridad, Inversión en infraestructura o Educación).
+  </div>
+
+  <div class="mission-grid" id="missionGrid"></div>
+
+  <div class="cta-wrap">
+    <button class="cta-btn" id="calcBtn" onclick="calcular()">¿Cómo se ve el 2050? →</button>
+    <div class="selected-count" id="selCount">0 misiones seleccionadas</div>
+  </div>
+
+  <div id="results">
+    <div class="results-header">
+      <h2>Santander al 2050</h2>
+      <p id="resultsSubtitle"></p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card m-pib">
+        <div class="metric-icon">📈</div>
+        <div class="metric-label">Incremento en PIB<br>per cápita</div>
+        <div class="metric-value" id="val-pib">—</div>
+        <div class="metric-unit">USD 2025 (PPP)</div>
+      </div>
+      <div class="metric-card m-growth">
+        <div class="metric-icon">🚀</div>
+        <div class="metric-label">Aumento en tasa de<br>crecimiento promedio</div>
+        <div class="metric-value" id="val-growth">—</div>
+        <div class="metric-unit">puntos porcentuales (2026–2050)</div>
+      </div>
+      <div class="metric-card m-jobs">
+        <div class="metric-icon">👷</div>
+        <div class="metric-label">Empleos<br>adicionales</div>
+        <div class="metric-value" id="val-jobs">—</div>
+        <div class="metric-unit">personas ocupadas</div>
+      </div>
+      <div class="metric-card m-poverty">
+        <div class="metric-icon">🏠</div>
+        <div class="metric-label">Personas saliendo<br>de la pobreza</div>
+        <div class="metric-value" id="val-poverty">—</div>
+        <div class="metric-unit">reducción en pobreza monetaria</div>
+      </div>
+      <div class="metric-card m-informal">
+        <div class="metric-icon">📋</div>
+        <div class="metric-label">Reducción en tasa<br>de informalidad</div>
+        <div class="metric-value" id="val-informal">—</div>
+        <div class="metric-unit">puntos porcentuales</div>
+      </div>
+    </div>
+
+    <div class="selected-missions-section">
+      <h3>Misiones activadas</h3>
+      <div class="mission-tags" id="missionTags"></div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Metodología:</strong> Los impactos se agregan siguiendo las reglas de no doble contabilidad definidas por Fedesarrollo para el plan Santander 2050. Las misiones de los Grupos 1 y 2 (condicionadas) requieren al menos un habilitador. Al combinar las dos misiones del Grupo 1, se utiliza el escenario de infraestructura vial sin costos logísticos (2A). Al combinar las dos misiones del Grupo 2, se toma el máximo entre ambas por indicador. La Misión de Informalidad (11) aplica un techo de 48,33 pp en la reducción de informalidad.
+    </div>
+
+    <div style="text-align:center">
+      <button class="reset-btn" onclick="resetAll()">← Modificar selección</button>
+    </div>
+  </div>
+</main>
+
+<script>
+// ─────────────────────────────────────────
+// DATOS
+// ─────────────────────────────────────────
+const MISSIONS = {
+  1:  { name: 'Diversificación exportadora',      cat: 'g1',   pib: 2426.90, growth: 0.1800, jobs: 24840,  poverty: -44667,  informality: -13.554 },
+  2:  { name: 'Infraestructura vial',             cat: 'g1',   pib: 5008.20, growth: 0.3700, jobs: 43569,  poverty: -94026,  informality: -22.336 },
+  3:  { name: 'Ruralidad',                        cat: 'g2',   pib:  164.83, growth: 0.0100, jobs:  2297,  poverty:  -3021,  informality:  -1.660 },
+  4:  { name: 'Productividad agrícola',           cat: 'g2',   pib: 3160.18, growth: 0.2200, jobs: 28412,  poverty: -59738,  informality: -15.246 },
+  5:  { name: 'Aprovechamiento de residuos',      cat: 'ind',  pib: 1263.57, growth: 0.1000, jobs:  9168,  poverty: -26937,  informality:  -5.650 },
+  6:  { name: 'Saneamiento básico',               cat: 'ind',  pib:  717.86, growth: 0.0544, jobs:  3498,  poverty: -12535,  informality:  -2.155 },
+  7:  { name: 'Riesgos naturales',                cat: 'ind',  pib: 4053.11, growth: 0.3100, jobs: 43482,  poverty: -79527,  informality: -26.786 },
+  8:  { name: 'Conflicto subsuelo',               cat: 'ind',  pib: 2193.47, growth: 0.1800, jobs: 24035,  poverty: -51179,  informality: -12.992 },
+  9:  { name: 'Transición energética',            cat: 'ind',  pib: 3160.18, growth: 0.3300, jobs: 42276,  poverty: -93286,  informality: -26.047 },
+  10: { name: 'Innovación',                       cat: 'ind',  pib: 1369.67, growth: 0.1700, jobs: 20453,  poverty: -44627,  informality:  -9.840 },
+  11: { name: 'Informalidad',                     cat: 'dep11',pib: 4061.99, growth: 0.5000, jobs:  2975,  poverty:-127601,  informality: -48.329 },
+  12: { name: 'Institucionalidad',                cat: 'dep',  pib: 1155.20, growth: 0.0900, jobs:  8036,  poverty: -22757,  informality:  -4.951 },
+  13: { name: 'Seguridad',                        cat: 'dep',  pib: 2382.34, growth: 0.1700, jobs:     0,  poverty:      0,  informality:   0     },
+  14: { name: 'Salud',                            cat: 'ind',  pib:     0,   growth: 0,      jobs:     0,  poverty:      0,  informality:   0     },
+  15: { name: 'Educación',                        cat: 'mix',  pib: 3861.59, growth: 0.5800, jobs: 76892,  poverty:-147844,  informality: -57.269 },
+  16: { name: 'Inversión en infraestructura',     cat: 'dep',  pib: 4606.01, growth: 0.5600, jobs: 74583,  poverty:-143621,  informality: -45.951 },
+};
+
+// Misión 2A: infraestructura vial SIN costos logísticos (se usa cuando 1 y 2 se seleccionan juntas)
+const M2A = { pib: 3230.18, growth: 0.2400, jobs: 29127, poverty: -59582, informality: -12.336 };
+
+const INDICATORS = ['pib', 'growth', 'jobs', 'poverty', 'informality'];
+const INFORM_CEILING = 48.329; // techo de informalidad de misión 11
+
+// Categorías
+const CAT_DEP   = [12, 13, 16];
+const CAT_MIX   = [15];
+const CAT_G1    = [1, 2];
+const CAT_G2    = [3, 4];
+const CAT_IND   = [5, 6, 7, 8, 9, 10, 14];
+const CAT_DEP11 = [11];
+
+const CAT_LABELS = {
+  dep:   'Habilitador dependiente',
+  mix:   'Habilitador mixto',
+  g1:    'Grupo 1',
+  g2:    'Grupo 2',
+  ind:   'Independiente',
+  dep11: 'Misión dependiente',
+};
+const CAT_TAG_CLASS = {
+  dep: 'tag-dep', mix: 'tag-mix', g1: 'tag-g1',
+  g2: 'tag-g2',  ind: 'tag-ind', dep11: 'tag-dep11',
+};
+
+// ─────────────────────────────────────────
+// RENDERIZAR TARJETAS
+// ─────────────────────────────────────────
+const selectedMissions = new Set();
+
+function renderCards() {
+  const grid = document.getElementById('missionGrid');
+  grid.innerHTML = '';
+  const missionOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  missionOrder.forEach(id => {
+    const m = MISSIONS[id];
+    const card = document.createElement('div');
+    card.className = 'mission-card';
+    card.dataset.id = id;
+    card.dataset.cat = m.cat;
+    card.innerHTML = `
+      <div class="card-check">
+        <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+          <path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="card-header">
+        <span class="card-num">M${id}</span>
+        <span class="card-title">${m.name}</span>
+      </div>
+      <p class="card-desc">${getMissionDesc(id)}</p>
+    `;
+    card.addEventListener('click', () => toggleMission(id, card));
+    grid.appendChild(card);
+  });
+}
+
+function getMissionDesc(id) {
+  const descs = {
+    1: 'Agroalimentos, industria, energías y servicios conectarán a Santander con el mundo.',
+    2: 'Conectividad total: cualquier productor podrá mover sus bienes a costos competitivos.',
+    3: 'Todas las provincias ofrecerán oportunidades de bienestar según su atributo y potencial.',
+    4: 'Producción sostenible de alimentos de calidad; campo como despensa y motor exportador.',
+    5: 'Liderazgo en economía circular: los residuos se convierten en recurso e innovación.',
+    6: 'Ningún río recibirá aguas sin tratar; saneamiento universal para toda la población.',
+    7: 'Ningún hogar en zona de riesgo no mitigable; Estado presente antes que el desastre.',
+    8: 'Territorio planificado alrededor de ecosistemas; suelo usado según vocación.',
+    9: 'De la cuna del petróleo a líder en producción, distribución y exportación de energía limpia.',
+    10: 'Ecosistema de innovación donde los emprendedores conquisten mercados globales.',
+    11: 'Cuatro de cada cinco trabajadores con empleo formal y especializado en 2050.',
+    12: 'Instituciones que coordinan, recursos que llegan y ciudadanos que confían en el Estado.',
+    13: 'Jóvenes con oportunidades reales; ningún municipio controlado por actores ilegales.',
+    14: 'Acceso oportuno a salud sin importar el municipio; prevención hasta alta complejidad.',
+    15: 'La región que forme el talento del nororiente y les ofrezca futuro aquí mismo.',
+    16: 'Santander superará su aislamiento con una red vial robusta y transporte público ágil.',
+  };
+  return descs[id] || '';
+}
+
+function toggleMission(id, card) {
+  if (selectedMissions.has(id)) {
+    selectedMissions.delete(id);
+    card.classList.remove('selected');
+  } else {
+    selectedMissions.add(id);
+    card.classList.add('selected');
+  }
+  updateUI();
+}
+
+function updateUI() {
+  const n = selectedMissions.size;
+  document.getElementById('selCount').textContent =
+    n === 0 ? '0 misiones seleccionadas' :
+    n === 1 ? '1 misión seleccionada' :
+    `${n} misiones seleccionadas`;
+
+  document.getElementById('calcBtn').disabled = n === 0;
+
+  // Check Rule 11
+  const hasG12 = [...selectedMissions].some(m => CAT_G1.includes(m) || CAT_G2.includes(m));
+  const hasEnabler = [...selectedMissions].some(m => CAT_DEP.includes(m) || CAT_MIX.includes(m));
+  document.getElementById('rule11Warning').classList.toggle('show', hasG12 && !hasEnabler);
+
+  // Hide results when selection changes
+  document.getElementById('results').classList.remove('show');
+}
+
+// ─────────────────────────────────────────
+// LÓGICA DE CÁLCULO
+// ─────────────────────────────────────────
+
+function val(mId, ind) {
+  if (mId === '2A') return M2A[ind] || 0;
+  const v = MISSIONS[mId]?.[ind];
+  return (v === null || v === undefined) ? 0 : v;
+}
+
+/**
+ * Calcula el impacto total para un indicador dado.
+ * Implementa Reglas 1–9 según documento Fedesarrollo.
+ */
+function computeIndicator(selected, ind) {
+  const sel = new Set(selected);
+
+  const depSel   = CAT_DEP.filter(m => sel.has(m));
+  const hasMix   = sel.has(15);
+  const g1Sel    = CAT_G1.filter(m => sel.has(m));
+  const g2Sel    = CAT_G2.filter(m => sel.has(m));
+  const indSel   = CAT_IND.filter(m => sel.has(m));
+  const hasM11   = sel.has(11);
+
+  const hasEnabler = depSel.length > 0 || hasMix;
+
+  // Regla 11: G1/G2 sin habilitador → no contribuyen
+  const g1Active = g1Sel.length > 0 && hasEnabler;
+  const g2Active = g2Sel.length > 0 && hasEnabler;
+
+  // ── G1: Regla 5 ──
+  let g1Eff = 0;
+  if (g1Active) {
+    if (g1Sel.length === 2) {
+      g1Eff = val(1, ind) + val('2A', ind); // usar 2A en lugar de 2 completo
+    } else {
+      g1Eff = val(g1Sel[0], ind);
+    }
+  }
+
+  // ── G2: Regla 6 ──
+  let g2Eff = 0;
+  if (g2Active) {
+    if (g2Sel.length === 2) {
+      // tomar el de mayor magnitud de impacto por indicador
+      const v3 = val(3, ind), v4 = val(4, ind);
+      g2Eff = Math.abs(v3) >= Math.abs(v4) ? v3 : v4;
+    } else {
+      g2Eff = val(g2Sel[0], ind);
+    }
+  }
+
+  // ── Independientes: Regla 7 ──
+  const indEffs = indSel.map(m => val(m, ind));
+  const indSum  = indEffs.reduce((a, b) => a + b, 0);
+
+  // BASE = suma de misiones no habilitadoras (ajustadas por R5/R6)
+  const BASE = g1Eff + g2Eff + indSum;
+
+  let total = 0;
+
+  if (!hasEnabler) {
+    // Sin habilitadores: solo independientes (G1/G2 excluidas por Regla 11)
+    total = indSum;
+
+  } else {
+    // Construir lista de habilitadores (dep + mix si existe)
+    const enablerValues = [
+      ...depSel.map(m => val(m, ind)),
+      ...(hasMix ? [val(15, ind)] : []),
+    ];
+    const enablerSum = enablerValues.reduce((a, b) => a + b, 0);
+
+    if (BASE === 0) {
+      // Solo habilitadores sin otras misiones → Regla 3: suma directa
+      total = enablerSum;
+
+    } else if (enablerValues.length === 1) {
+      // Regla 1 (un habilitador + otras misiones)
+      const H = enablerValues[0];
+      total = H + Math.abs(H - BASE);
+
+    } else {
+      // Regla 9 (múltiples habilitadores + otras misiones)
+      // total = suma(habilitadores) + Σ |min(hab) − componente_no_hab|
+      const enablerMin = enablerValues.reduce((a, b) =>
+        Math.abs(a) <= Math.abs(b) ? a : b
+      );
+      total = enablerSum;
+
+      // Añadir |min(hab) - cada componente no habilitador|
+      const components = [];
+      if (g1Eff !== 0) components.push(g1Eff);
+      if (g2Eff !== 0) components.push(g2Eff);
+      indEffs.forEach(v => { if (v !== 0) components.push(v); });
+
+      components.forEach(c => {
+        total += Math.abs(enablerMin - c);
+      });
+    }
+  }
+
+  // ── Regla 8: Misión 11 (Informalidad) ──
+  if (hasM11) {
+    // Suma del valor absoluto de reducción de informalidad de TODAS las demás misiones seleccionadas
+    const otherMissions = selected.filter(m => m !== 11);
+    let sumAbsInfOthers = 0;
+    otherMissions.forEach(m => {
+      const infVal = MISSIONS[m]?.informality;
+      if (infVal !== null && infVal !== undefined) {
+        sumAbsInfOthers += Math.abs(infVal);
+      }
+    });
+
+    if (sumAbsInfOthers < INFORM_CEILING) {
+      // Contribución proporcional de misión 11 a este indicador
+      const scale = (INFORM_CEILING - sumAbsInfOthers) / INFORM_CEILING;
+      total += scale * val(11, ind);
+    }
+    // Si sumAbsInfOthers >= INFORM_CEILING: no se suma impacto de misión 11
+  }
+
+  return total;
+}
+
+// ─────────────────────────────────────────
+// CALCULAR Y MOSTRAR RESULTADOS
+// ─────────────────────────────────────────
+function calcular() {
+  const selected = [...selectedMissions];
+  if (selected.length === 0) return;
+
+  const results = {};
+  INDICATORS.forEach(ind => {
+    results[ind] = computeIndicator(selected, ind);
+  });
+
+  // Actualizar valores en pantalla
+  document.getElementById('val-pib').textContent =
+    '+' + fmt(results.pib, 0) + ' USD';
+  document.getElementById('val-growth').textContent =
+    '+' + results.growth.toFixed(2) + ' pp';
+  document.getElementById('val-jobs').textContent =
+    '+' + fmt(results.jobs, 0);
+  document.getElementById('val-poverty').textContent =
+    fmt(Math.abs(results.poverty), 0);
+  document.getElementById('val-informal').textContent =
+    results.informality.toFixed(1) + ' pp';
+
+  // Subtítulo
+  const n = selected.length;
+  document.getElementById('resultsSubtitle').textContent =
+    `Con ${n} misión${n !== 1 ? 'es' : ''} activada${n !== 1 ? 's' : ''}, estos serían los impactos acumulados estimados al 2050`;
+
+  // Tags de misiones seleccionadas
+  const tagsContainer = document.getElementById('missionTags');
+  tagsContainer.innerHTML = '';
+  selected.sort((a, b) => a - b).forEach(id => {
+    const m = MISSIONS[id];
+    const tag = document.createElement('span');
+    tag.className = `mission-tag ${CAT_TAG_CLASS[m.cat]}`;
+    tag.textContent = `M${id} · ${m.name}`;
+    tagsContainer.appendChild(tag);
+  });
+
+  // Mostrar resultados y hacer scroll
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.classList.add('show');
+  setTimeout(() => {
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+function resetAll() {
+  selectedMissions.clear();
+  document.querySelectorAll('.mission-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('results').classList.remove('show');
+  updateUI();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function fmt(n, dec) {
+  return Math.round(n).toLocaleString('es-CO', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+}
+
+// ─────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────
+renderCards();
+updateUI();
+</script>
+</body>
+</html>

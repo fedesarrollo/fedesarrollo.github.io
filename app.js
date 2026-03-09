@@ -30,6 +30,13 @@ const FEATURED_APPS = [
     repo: 'taller-vision-2050',
     liveUrl: 'https://fedesarrollo.github.io/taller-vision-2050/taller-vision-2050.html',
   },
+  {
+    name: 'Calculadora de Misiones · Santander 2050',
+    description: 'Calculadora interactiva de misiones para el departamento de Santander con horizonte al año 2050.',
+    emoji: '🧮',
+    repo: 'fedesarrollo.github.io',
+    liveUrl: 'https://fedesarrollo.github.io/calculadora-misiones-santander-2050/',
+  },
 ];
 
 /* ── Helpers ─────────────────────────────────────────── */

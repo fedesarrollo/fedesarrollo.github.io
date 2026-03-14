@@ -3,70 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de Misiones · Santander 2050</title>
+  <title>Calculadora de Misiones</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAMAAAAocOYLAAAAS1BMVEVHcEwPOYMPOYMPOYMPOYMPOYMPOYMUPIUPOYMPOYMPOYMPOYMOOYP///8AJHsCM4H4+ftvgKs3U5Da3uigqsWxuc/N0+GAj7QAG3hvM9qEAAAADHRSTlMAE6/bGtjT/Ets3K57hm5MAAAA2UlEQVQokY2TWRKEIAxEWUWcgNu43P+kgwoYQMrpKuXjVZokJIRECc06BapjWpBSrYRbss0obSBVQ5NgKIUsdM6m46er0f2GHWhhbdf+PK8c8tQAlLFXks+52cXz8waZ434ygUvXtSJ8nyMHUdbm3G+uCcsxGMQZ6dK793UbEOdEYWrHwYyYK3IbWzt9HUo4xHi1rGYuuAr3H0U/cB7yr3AW6q9wHfpX4SL0/5nL+H6Io/616P2VE/jPF91U5ieI1qc3uj/Or6/t3/l/3Z/X/bv298NddTzZ3x/PrCUFYe9FOwAAAABJRU5ErkJggg==">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    button, input, select, textarea { font-family: inherit; }
 
     :root {
-      --navy:    #0f2d4a;
-      --blue:    #1a5276;
-      --teal:    #1a7a6e;
-      --green:   #1e8449;
-      --gold:    #b7770d;
-      --purple:  #6c3483;
-      --red:     #922b21;
-      --gray:    #566573;
-      --light:   #f4f6f9;
-      --white:   #ffffff;
-      --border:  #dce3ea;
-      --text:    #1c2833;
-      --muted:   #7f8c8d;
+      --green-dark: #1a5c2e;
+      --green:      #2d8a4e;
+      --green-light:#4caf50;
+      --yellow:     #c9a820;
+      --yellow-dark:#a68b15;
+      --gold:       #b8960f;
+      --cond:       #3a7d44;
+      --ind:        #c0392b;
+      --light:      #f6f8f4;
+      --white:      #ffffff;
+      --border:     #d4ddc8;
+      --text:       #1c2b1e;
+      --muted:      #6b7b6e;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Source Sans 3', sans-serif;
       background: var(--light);
       color: var(--text);
       min-height: 100vh;
     }
 
-    /* ── HEADER ── */
+    /* -- HEADER -- */
     header {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--teal) 100%);
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--yellow-dark) 100%);
       color: #fff;
-      padding: 48px 24px 40px;
+      padding: 36px 24px 32px;
       text-align: center;
     }
-    header .eyebrow {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 10px;
+    header .logo {
+      height: 95px;
+      width: auto;
+      margin-bottom: 14px;
     }
     header h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 14px;
     }
-    header h1 span { color: #5dade2; }
     header p {
       font-size: 1rem;
-      opacity: 0.85;
+      opacity: 0.9;
       max-width: 640px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
-    /* ── LEGEND ── */
+    /* -- LEGEND -- */
     .legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 14px;
       justify-content: center;
       padding: 20px 24px 0;
       max-width: 1200px;
@@ -76,28 +74,33 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--gray);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
     }
     .legend-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
       flex-shrink: 0;
     }
 
-    /* ── MAIN ── */
+    /* -- MAIN -- */
     main { max-width: 1200px; margin: 0 auto; padding: 32px 20px 80px; }
 
     .section-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
       margin-bottom: 20px;
     }
 
-    /* ── MISSION GRID ── */
+    /* -- MISSION GRID -- */
     .mission-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -117,47 +120,22 @@
     }
     .mission-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
 
-    /* Category colors */
-    .mission-card[data-cat="dep"]  { border-left: 5px solid var(--gold); }
-    .mission-card[data-cat="mix"]  { border-left: 5px solid var(--purple); }
-    .mission-card[data-cat="g1"]   { border-left: 5px solid var(--blue); }
-    .mission-card[data-cat="g2"]   { border-left: 5px solid var(--green); }
-    .mission-card[data-cat="ind"]  { border-left: 5px solid var(--gray); }
-    .mission-card[data-cat="dep11"]{ border-left: 5px solid var(--red); }
+    /* 3 visual categories */
+    .mission-card[data-vis="hab"]  { border-left: 5px solid var(--gold); }
+    .mission-card[data-vis="cond"] { border-left: 5px solid var(--cond); }
+    .mission-card[data-vis="ind"]  { border-left: 5px solid var(--ind); }
 
-    /* Selected state */
-    .mission-card.selected { border-color: transparent; box-shadow: 0 0 0 3px currentColor; }
-    .mission-card[data-cat="dep"].selected  { box-shadow: 0 0 0 3px var(--gold);   background: #fef9ec; }
-    .mission-card[data-cat="mix"].selected  { box-shadow: 0 0 0 3px var(--purple); background: #f5eef8; }
-    .mission-card[data-cat="g1"].selected   { box-shadow: 0 0 0 3px var(--blue);   background: #eaf2fb; }
-    .mission-card[data-cat="g2"].selected   { box-shadow: 0 0 0 3px var(--green);  background: #eafaf1; }
-    .mission-card[data-cat="ind"].selected  { box-shadow: 0 0 0 3px var(--gray);   background: #f2f3f4; }
-    .mission-card[data-cat="dep11"].selected{ box-shadow: 0 0 0 3px var(--red);    background: #fdedec; }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .card-num {
-      font-size: 0.72rem;
-      font-weight: 700;
-      background: var(--border);
-      color: var(--gray);
-      border-radius: 6px;
-      padding: 3px 8px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background 0.2s;
-    }
-    .mission-card.selected .card-num { background: var(--navy); color: #fff; }
+    .mission-card[data-vis="hab"].selected  { box-shadow: 0 0 0 3px var(--gold); background: #fef9ec; border-color: transparent; }
+    .mission-card[data-vis="cond"].selected { box-shadow: 0 0 0 3px var(--cond); background: #e8f5e9; border-color: transparent; }
+    .mission-card[data-vis="ind"].selected  { box-shadow: 0 0 0 3px var(--ind);  background: #fdecea; border-color: transparent; }
 
     .card-title {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--green-dark);
       line-height: 1.3;
+      margin-bottom: 6px;
+      padding-right: 30px;
     }
     .card-desc {
       font-size: 0.78rem;
@@ -182,11 +160,11 @@
       transition: all 0.2s;
       background: #fff;
     }
-    .mission-card.selected .card-check { background: var(--navy); border-color: var(--navy); }
+    .mission-card.selected .card-check { background: var(--green-dark); border-color: var(--green-dark); }
     .card-check svg { display: none; }
     .mission-card.selected .card-check svg { display: block; }
 
-    /* ── WARNING BANNER ── */
+    /* -- WARNING BANNER -- */
     .warning {
       background: #fef3cd;
       border: 1px solid #f0c040;
@@ -199,53 +177,34 @@
     }
     .warning.show { display: block; }
 
-    /* ── CTA BUTTON ── */
-    .cta-wrap {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    /* -- CTA BUTTON -- */
+    .cta-wrap { text-align: center; margin-bottom: 40px; }
     .cta-btn {
-      background: linear-gradient(135deg, var(--navy), var(--teal));
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
       color: #fff;
       border: none;
       border-radius: 50px;
       padding: 18px 48px;
+      font-family: inherit;
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
       letter-spacing: 0.02em;
       transition: all 0.25s;
-      box-shadow: 0 6px 24px rgba(15,45,74,0.3);
+      box-shadow: 0 6px 24px rgba(26,92,46,0.3);
     }
-    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(15,45,74,0.4); }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(26,92,46,0.4); }
     .cta-btn:active { transform: translateY(0); }
     .cta-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .selected-count { margin-top: 12px; font-size: 0.85rem; color: var(--muted); }
 
-    .selected-count {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* ── RESULTS ── */
-    #results {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
+    /* -- RESULTS -- */
+    #results { display: none; animation: fadeIn 0.4s ease; }
     #results.show { display: block; }
-
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .results-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-    .results-header h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
+    .results-header { text-align: center; margin-bottom: 28px; }
+    .results-header h2 { font-size: 1.6rem; font-weight: 800; color: var(--green-dark); margin-bottom: 6px; }
     .results-header p { font-size: 0.9rem; color: var(--muted); }
 
     .metrics-grid {
@@ -260,14 +219,15 @@
       border-radius: 14px;
       padding: 24px 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      border-top: 5px solid var(--navy);
+      border-top: 5px solid var(--green-dark);
       text-align: center;
     }
-    .metric-card.m-pib      { border-top-color: #2471a3; }
-    .metric-card.m-growth   { border-top-color: #1a7a6e; }
-    .metric-card.m-jobs     { border-top-color: #1e8449; }
-    .metric-card.m-poverty  { border-top-color: #922b21; }
-    .metric-card.m-informal { border-top-color: #6c3483; }
+    .metric-card.m-pib       { border-top-color: #2d8a4e; }
+    .metric-card.m-growth    { border-top-color: #1a7a3e; }
+    .metric-card.m-jobs      { border-top-color: #4caf50; }
+    .metric-card.m-poverty   { border-top-color: #922b21; }
+    .metric-card.m-povmulti  { border-top-color: #a04000; }
+    .metric-card.m-inform    { border-top-color: #6c3483; }
 
     .metric-icon { font-size: 2rem; margin-bottom: 8px; }
     .metric-label {
@@ -282,17 +242,13 @@
     .metric-value {
       font-size: 2rem;
       font-weight: 800;
-      color: var(--navy);
+      color: var(--green-dark);
       line-height: 1;
       margin-bottom: 4px;
     }
-    .metric-unit {
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .metric-unit { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
 
-    /* ── SELECTED MISSIONS LIST ── */
+    /* -- SELECTED MISSIONS LIST -- */
     .selected-missions-section {
       background: var(--white);
       border-radius: 14px;
@@ -303,16 +259,12 @@
     .selected-missions-section h3 {
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--green-dark);
       margin-bottom: 16px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-    .mission-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .mission-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .mission-tag {
       display: inline-flex;
       align-items: center;
@@ -322,16 +274,13 @@
       font-size: 0.8rem;
       font-weight: 600;
     }
-    .tag-dep   { background: #fef9ec; color: var(--gold);   border: 1px solid #f0c040; }
-    .tag-mix   { background: #f5eef8; color: var(--purple); border: 1px solid #c39bd3; }
-    .tag-g1    { background: #eaf2fb; color: var(--blue);   border: 1px solid #7fb3d3; }
-    .tag-g2    { background: #eafaf1; color: var(--green);  border: 1px solid #7dcea0; }
-    .tag-ind   { background: #f2f3f4; color: var(--gray);   border: 1px solid #bdc3c7; }
-    .tag-dep11 { background: #fdedec; color: var(--red);    border: 1px solid #e59866; }
+    .tag-hab  { background: #fef9ec; color: var(--gold); border: 1px solid #dbb830; }
+    .tag-cond { background: #e8f5e9; color: var(--cond); border: 1px solid #66bb6a; }
+    .tag-ind  { background: #fdecea; color: var(--ind);  border: 1px solid #e74c3c; }
 
-    /* ── DISCLAIMER ── */
+    /* -- DISCLAIMER -- */
     .disclaimer {
-      background: #f8f9fa;
+      background: #f8f9f6;
       border-left: 4px solid var(--border);
       border-radius: 0 8px 8px 0;
       padding: 14px 18px;
@@ -340,22 +289,21 @@
       line-height: 1.6;
     }
 
-    /* ── RESET BUTTON ── */
     .reset-btn {
       background: transparent;
       border: 2px solid var(--border);
       border-radius: 8px;
       padding: 10px 24px;
+      font-family: inherit;
       font-size: 0.85rem;
-      color: var(--gray);
+      color: var(--ind);
       cursor: pointer;
       font-weight: 600;
       transition: all 0.2s;
       margin-top: 20px;
     }
-    .reset-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .reset-btn:hover { border-color: var(--green-dark); color: var(--green-dark); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .mission-grid { grid-template-columns: 1fr; }
       .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -366,25 +314,23 @@
 <body>
 
 <header>
-  <div class="eyebrow">Plan Estratégico · Fedesarrollo</div>
-  <h1>Calculadora de Misiones<br><span>Santander 2050</span></h1>
+  <img class="logo" src="https://santander2050.com/_next/static/media/logo-footer.e25e99c9.svg" alt="Santander 2050">
+  <h1>Calculadora de Misiones</h1>
   <p>Selecciona las misiones que deseas activar y descubre cómo se transformaría Santander al 2050 en términos de crecimiento, empleo y bienestar.</p>
 </header>
 
 <div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Habilitador dependiente</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Habilitador mixto</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Grupo 1 condicionado</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Grupo 2 condicionado</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--gray)"></div>Misión independiente</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Misión dependiente</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Habilitador</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--cond)"></div>Misión Condicionada</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--ind)"></div>Misión Independiente</div>
 </div>
 
 <main>
-  <p class="section-title">Elige las misiones para Santander 2050</p>
+  <p class="section-title">Elige las misiones</p>
+  <p class="section-subtitle">Las misiones condicionadas requieren al menos un habilitador para generar impacto. La misión de Salud se encuentra en estimación para algunos indicadores.</p>
 
   <div class="warning" id="rule11Warning">
-    ⚠️ <strong>Condición necesaria:</strong> Las misiones del Grupo 1 (Diversificación exportadora, Infraestructura vial) y Grupo 2 (Ruralidad, Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad, Seguridad, Inversión en infraestructura o Educación).
+    <strong>Condición necesaria:</strong> Las misiones condicionadas (Diversificación exportadora, Infraestructura vial, Ruralidad y Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad, Seguridad, Inversión en infraestructura o Educación).
   </div>
 
   <div class="mission-grid" id="missionGrid"></div>
@@ -411,7 +357,7 @@
         <div class="metric-icon">🚀</div>
         <div class="metric-label">Aumento en tasa de<br>crecimiento promedio</div>
         <div class="metric-value" id="val-growth">—</div>
-        <div class="metric-unit">puntos porcentuales (2026–2050)</div>
+        <div class="metric-unit">puntos porcentuales (2026-2050)</div>
       </div>
       <div class="metric-card m-jobs">
         <div class="metric-icon">👷</div>
@@ -421,14 +367,20 @@
       </div>
       <div class="metric-card m-poverty">
         <div class="metric-icon">🏠</div>
-        <div class="metric-label">Personas saliendo<br>de la pobreza</div>
+        <div class="metric-label">Personas saliendo<br>de pobreza monetaria</div>
         <div class="metric-value" id="val-poverty">—</div>
         <div class="metric-unit">reducción en pobreza monetaria</div>
       </div>
-      <div class="metric-card m-informal">
-        <div class="metric-icon">📋</div>
+      <div class="metric-card m-povmulti">
+        <div class="metric-icon">📊</div>
+        <div class="metric-label">Personas saliendo de<br>pobreza multidimensional</div>
+        <div class="metric-value" id="val-povmulti">—</div>
+        <div class="metric-unit">reducción en pobreza multidimensional</div>
+      </div>
+      <div class="metric-card m-inform">
+        <div class="metric-icon">📉</div>
         <div class="metric-label">Reducción en tasa<br>de informalidad</div>
-        <div class="metric-value" id="val-informal">—</div>
+        <div class="metric-value" id="val-inform">—</div>
         <div class="metric-unit">puntos porcentuales</div>
       </div>
     </div>
@@ -439,7 +391,7 @@
     </div>
 
     <div class="disclaimer">
-      <strong>Metodología:</strong> Los impactos se agregan siguiendo las reglas de no doble contabilidad definidas por Fedesarrollo para el plan Santander 2050. Las misiones de los Grupos 1 y 2 (condicionadas) requieren al menos un habilitador. Al combinar las dos misiones del Grupo 1, se utiliza el escenario de infraestructura vial sin costos logísticos (2A). Al combinar las dos misiones del Grupo 2, se toma el máximo entre ambas por indicador. La Misión de Informalidad (11) aplica un techo de 48,33 pp en la reducción de informalidad.
+      <strong>Metodología:</strong> Los impactos se agregan siguiendo las reglas de no doble contabilidad definidas por Fedesarrollo para el plan Santander 2050. Las misiones condicionadas requieren al menos un habilitador. Al combinar las dos misiones del Grupo 1, se utiliza el escenario de infraestructura vial sin costos logísticos (2A). Al combinar las dos misiones del Grupo 2, se toma el máximo entre ambas por indicador. El habilitador mixto (Educación) se combina con las misiones condicionadas mediante la Regla 2B.
     </div>
 
     <div style="text-align:center">
@@ -449,80 +401,79 @@
 </main>
 
 <script>
-// ─────────────────────────────────────────
+// -----------------------------------------
 // DATOS
-// ─────────────────────────────────────────
+// IDs internos preservados (M11 eliminada)
+// -----------------------------------------
 const MISSIONS = {
-  1:  { name: 'Diversificación exportadora',      cat: 'g1',   pib: 2426.90, growth: 0.1800, jobs: 24840,  poverty: -44667,  informality: -13.554 },
-  2:  { name: 'Infraestructura vial',             cat: 'g1',   pib: 5008.20, growth: 0.3700, jobs: 43569,  poverty: -94026,  informality: -22.336 },
-  3:  { name: 'Ruralidad',                        cat: 'g2',   pib:  164.83, growth: 0.0100, jobs:  2297,  poverty:  -3021,  informality:  -1.660 },
-  4:  { name: 'Productividad agrícola',           cat: 'g2',   pib: 3160.18, growth: 0.2200, jobs: 28412,  poverty: -59738,  informality: -15.246 },
-  5:  { name: 'Aprovechamiento de residuos',      cat: 'ind',  pib: 1263.57, growth: 0.1000, jobs:  9168,  poverty: -26937,  informality:  -5.650 },
-  6:  { name: 'Saneamiento básico',               cat: 'ind',  pib:  717.86, growth: 0.0544, jobs:  3498,  poverty: -12535,  informality:  -2.155 },
-  7:  { name: 'Riesgos naturales',                cat: 'ind',  pib: 4053.11, growth: 0.3100, jobs: 43482,  poverty: -79527,  informality: -26.786 },
-  8:  { name: 'Conflicto subsuelo',               cat: 'ind',  pib: 2193.47, growth: 0.1800, jobs: 24035,  poverty: -51179,  informality: -12.992 },
-  9:  { name: 'Transición energética',            cat: 'ind',  pib: 3160.18, growth: 0.3300, jobs: 42276,  poverty: -93286,  informality: -26.047 },
-  10: { name: 'Innovación',                       cat: 'ind',  pib: 1369.67, growth: 0.1700, jobs: 20453,  poverty: -44627,  informality:  -9.840 },
-  11: { name: 'Informalidad',                     cat: 'dep11',pib: 4061.99, growth: 0.5000, jobs:  2975,  poverty:-127601,  informality: -48.329 },
-  12: { name: 'Institucionalidad',                cat: 'dep',  pib: 1155.20, growth: 0.0900, jobs:  8036,  poverty: -22757,  informality:  -4.951 },
-  13: { name: 'Seguridad',                        cat: 'dep',  pib: 2382.34, growth: 0.1700, jobs:     0,  poverty:      0,  informality:   0     },
-  14: { name: 'Salud',                            cat: 'ind',  pib:     0,   growth: 0,      jobs:     0,  poverty:      0,  informality:   0     },
-  15: { name: 'Educación',                        cat: 'mix',  pib: 3861.59, growth: 0.5800, jobs: 76892,  poverty:-147844,  informality: -57.269 },
-  16: { name: 'Inversión en infraestructura',     cat: 'dep',  pib: 4606.01, growth: 0.5600, jobs: 74583,  poverty:-143621,  informality: -45.951 },
+  // Habilitadores dependientes
+  12: { name: 'Institucionalidad',            cat: 'dep', pib: 1155.20, growth: 0.0900, jobs:  8036, poverty: -22757,  poverty_multi: -11378,  informality: -4.95 },
+  13: { name: 'Seguridad',                    cat: 'dep', pib: 2382.34, growth: 0.1700, jobs:     0, poverty:      0,  poverty_multi: -35162,  informality: 0 },
+  16: { name: 'Inversión en infraestructura', cat: 'dep', pib: 4606.01, growth: 0.5600, jobs: 74583, poverty:-143621,  poverty_multi: -71811,  informality: -45.95 },
+  // Habilitador mixto
+  15: { name: 'Educación',                    cat: 'mix', pib: 3861.59, growth: 0.5800, jobs: 76892, poverty:-147844,  poverty_multi: -73922,  informality: -57.27 },
+  // Grupo 1 condicionado
+  1:  { name: 'Diversificación exportadora',  cat: 'g1',  pib: 2426.90, growth: 0.1800, jobs: 24840, poverty: -44667,  poverty_multi: -22333,  informality: -13.55 },
+  2:  { name: 'Infraestructura vial',         cat: 'g1',  pib: 5008.20, growth: 0.3700, jobs: 43569, poverty: -94026,  poverty_multi: -47013,  informality: -22.34 },
+  // Grupo 2 condicionado
+  3:  { name: 'Ruralidad',                    cat: 'g2',  pib:  164.83, growth: 0.0100, jobs:  2297, poverty:  -3021,  poverty_multi:  -1511,  informality: -1.66 },
+  4:  { name: 'Productividad agrícola',       cat: 'g2',  pib: 3160.18, growth: 0.2200, jobs: 28412, poverty: -59738,  poverty_multi: -29869,  informality: -15.25 },
+  // Independientes
+  5:  { name: 'Aprovechamiento de residuos',  cat: 'ind', pib: 1263.57, growth: 0.1000, jobs:  9168, poverty: -26937,  poverty_multi: -13469,  informality: -5.65 },
+  6:  { name: 'Saneamiento básico',           cat: 'ind', pib:  717.86, growth: 0.0544, jobs:  3498, poverty: -12535,  poverty_multi: -17174,  informality: -2.16 },
+  7:  { name: 'Riesgos naturales',            cat: 'ind', pib: 4053.11, growth: 0.3100, jobs: 43482, poverty: -79527,  poverty_multi: -39764,  informality: -26.79 },
+  8:  { name: 'Conflicto subsuelo',           cat: 'ind', pib: 2193.47, growth: 0.1800, jobs: 24035, poverty: -51179,  poverty_multi: -25589,  informality: -12.99 },
+  9:  { name: 'Transición energética',        cat: 'ind', pib: 3160.18, growth: 0.3300, jobs: 42276, poverty: -93286,  poverty_multi: -46643,  informality: -26.05 },
+  10: { name: 'Innovación',                   cat: 'ind', pib: 1369.67, growth: 0.1700, jobs: 20453, poverty: -44627,  poverty_multi: -22313,  informality: -9.84 },
+  14: { name: 'Salud',                        cat: 'ind', pib:     0,   growth: 0,      jobs:     0, poverty:      0,  poverty_multi: -18500,  informality: 0 },
 };
 
-// Misión 2A: infraestructura vial SIN costos logísticos (se usa cuando 1 y 2 se seleccionan juntas)
-const M2A = { pib: 3230.18, growth: 0.2400, jobs: 29127, poverty: -59582, informality: -12.336 };
+// Mision 2A: infraestructura vial SIN costos logisticos (usada cuando M1 y M2 se seleccionan juntas)
+const M2A = { pib: 3230.18, growth: 0.2400, jobs: 29127, poverty: -59582, poverty_multi: -29791, informality: -12.34 };
 
-const INDICATORS = ['pib', 'growth', 'jobs', 'poverty', 'informality'];
-const INFORM_CEILING = 48.329; // techo de informalidad de misión 11
+const INDICATORS = ['pib', 'growth', 'jobs', 'poverty', 'poverty_multi', 'informality'];
 
-// Categorías
-const CAT_DEP   = [12, 13, 16];
-const CAT_MIX   = [15];
-const CAT_G1    = [1, 2];
-const CAT_G2    = [3, 4];
-const CAT_IND   = [5, 6, 7, 8, 9, 10, 14];
-const CAT_DEP11 = [11];
+// Categorias internas
+const CAT_DEP = [12, 13, 16];
+const CAT_MIX = [15];
+const CAT_G1  = [1, 2];
+const CAT_G2  = [3, 4];
+const CAT_IND = [5, 6, 7, 8, 9, 10, 14];
 
-const CAT_LABELS = {
-  dep:   'Habilitador dependiente',
-  mix:   'Habilitador mixto',
-  g1:    'Grupo 1',
-  g2:    'Grupo 2',
-  ind:   'Independiente',
-  dep11: 'Misión dependiente',
-};
-const CAT_TAG_CLASS = {
-  dep: 'tag-dep', mix: 'tag-mix', g1: 'tag-g1',
-  g2: 'tag-g2',  ind: 'tag-ind', dep11: 'tag-dep11',
-};
+// Orden visual: habilitadores, condicionadas, independientes
+const DISPLAY_ORDER = [12, 13, 15, 16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14];
 
-// ─────────────────────────────────────────
+// Mapa de categoria interna -> visual
+function visCategory(cat) {
+  if (cat === 'dep' || cat === 'mix') return 'hab';
+  if (cat === 'g1'  || cat === 'g2')  return 'cond';
+  return 'ind';
+}
+
+const VIS_TAG_CLASS = { hab: 'tag-hab', cond: 'tag-cond', ind: 'tag-ind' };
+
+// -----------------------------------------
 // RENDERIZAR TARJETAS
-// ─────────────────────────────────────────
+// -----------------------------------------
 const selectedMissions = new Set();
 
 function renderCards() {
   const grid = document.getElementById('missionGrid');
   grid.innerHTML = '';
-  const missionOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-  missionOrder.forEach(id => {
+  DISPLAY_ORDER.forEach(id => {
     const m = MISSIONS[id];
+    const vis = visCategory(m.cat);
     const card = document.createElement('div');
     card.className = 'mission-card';
     card.dataset.id = id;
-    card.dataset.cat = m.cat;
+    card.dataset.vis = vis;
     card.innerHTML = `
       <div class="card-check">
         <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
           <path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="card-header">
-        <span class="card-num">M${id}</span>
-        <span class="card-title">${m.name}</span>
-      </div>
+      <div class="card-title">${m.name}</div>
       <p class="card-desc">${getMissionDesc(id)}</p>
     `;
     card.addEventListener('click', () => toggleMission(id, card));
@@ -532,17 +483,16 @@ function renderCards() {
 
 function getMissionDesc(id) {
   const descs = {
-    1: 'Agroalimentos, industria, energías y servicios conectarán a Santander con el mundo.',
-    2: 'Conectividad total: cualquier productor podrá mover sus bienes a costos competitivos.',
-    3: 'Todas las provincias ofrecerán oportunidades de bienestar según su atributo y potencial.',
-    4: 'Producción sostenible de alimentos de calidad; campo como despensa y motor exportador.',
-    5: 'Liderazgo en economía circular: los residuos se convierten en recurso e innovación.',
-    6: 'Ningún río recibirá aguas sin tratar; saneamiento universal para toda la población.',
-    7: 'Ningún hogar en zona de riesgo no mitigable; Estado presente antes que el desastre.',
-    8: 'Territorio planificado alrededor de ecosistemas; suelo usado según vocación.',
-    9: 'De la cuna del petróleo a líder en producción, distribución y exportación de energía limpia.',
+    1:  'Agroalimentos, industria, energías y servicios conectarán a Santander con el mundo.',
+    2:  'Conectividad total: cualquier productor podrá mover sus bienes a costos competitivos.',
+    3:  'Todas las provincias ofrecerán oportunidades de bienestar según su atributo y potencial.',
+    4:  'Producción sostenible de alimentos de calidad; campo como despensa y motor exportador.',
+    5:  'Liderazgo en economía circular: los residuos se convierten en recurso e innovación.',
+    6:  'Ningún río recibirá aguas sin tratar; saneamiento universal para toda la población.',
+    7:  'Ningún hogar en zona de riesgo no mitigable; Estado presente antes que el desastre.',
+    8:  'Territorio planificado alrededor de ecosistemas; suelo usado según vocación.',
+    9:  'De la cuna del petróleo a líder en producción, distribución y exportación de energía limpia.',
     10: 'Ecosistema de innovación donde los emprendedores conquisten mercados globales.',
-    11: 'Cuatro de cada cinco trabajadores con empleo formal y especializado en 2050.',
     12: 'Instituciones que coordinan, recursos que llegan y ciudadanos que confían en el Estado.',
     13: 'Jóvenes con oportunidades reales; ningún municipio controlado por actores ilegales.',
     14: 'Acceso oportuno a salud sin importar el municipio; prevención hasta alta complejidad.',
@@ -569,21 +519,19 @@ function updateUI() {
     n === 0 ? '0 misiones seleccionadas' :
     n === 1 ? '1 misión seleccionada' :
     `${n} misiones seleccionadas`;
-
   document.getElementById('calcBtn').disabled = n === 0;
 
-  // Check Rule 11
+  // Regla 11: G1/G2 sin habilitador
   const hasG12 = [...selectedMissions].some(m => CAT_G1.includes(m) || CAT_G2.includes(m));
   const hasEnabler = [...selectedMissions].some(m => CAT_DEP.includes(m) || CAT_MIX.includes(m));
   document.getElementById('rule11Warning').classList.toggle('show', hasG12 && !hasEnabler);
 
-  // Hide results when selection changes
   document.getElementById('results').classList.remove('show');
 }
 
-// ─────────────────────────────────────────
-// LÓGICA DE CÁLCULO
-// ─────────────────────────────────────────
+// -----------------------------------------
+// LOGICA DE CALCULO
+// -----------------------------------------
 
 function val(mId, ind) {
   if (mId === '2A') return M2A[ind] || 0;
@@ -592,40 +540,53 @@ function val(mId, ind) {
 }
 
 /**
+ * Regla 2B: Habilitador mixto + misiones G1/G2
+ * Para cada componente Ci con suma G_sum:
+ *   adjusted_Ci = Ci + (1 - Ci/G_sum) * M
+ * Total = G_sum + (N_componentes - 1) * M
+ */
+function rule2B_total(g1Eff, g2Eff, M) {
+  const comps = [];
+  if (g1Eff !== 0) comps.push(g1Eff);
+  if (g2Eff !== 0) comps.push(g2Eff);
+  if (comps.length === 0) return 0;
+  const G_sum = comps.reduce((a, b) => a + b, 0);
+  // sum(adjusted) = G_sum + (N-1)*M
+  return G_sum + (comps.length - 1) * M;
+}
+
+/**
  * Calcula el impacto total para un indicador dado.
- * Implementa Reglas 1–9 según documento Fedesarrollo.
+ * Implementa Reglas 1, 2A, 2B, 3, 5, 6, 7, 9, 10, 11.
  */
 function computeIndicator(selected, ind) {
   const sel = new Set(selected);
 
-  const depSel   = CAT_DEP.filter(m => sel.has(m));
-  const hasMix   = sel.has(15);
-  const g1Sel    = CAT_G1.filter(m => sel.has(m));
-  const g2Sel    = CAT_G2.filter(m => sel.has(m));
-  const indSel   = CAT_IND.filter(m => sel.has(m));
-  const hasM11   = sel.has(11);
+  const depSel = CAT_DEP.filter(m => sel.has(m));
+  const hasMix = sel.has(15);
+  const g1Sel  = CAT_G1.filter(m => sel.has(m));
+  const g2Sel  = CAT_G2.filter(m => sel.has(m));
+  const indSel = CAT_IND.filter(m => sel.has(m));
 
-  const hasEnabler = depSel.length > 0 || hasMix;
+  const hasDep     = depSel.length > 0;
+  const hasEnabler = hasDep || hasMix;
 
-  // Regla 11: G1/G2 sin habilitador → no contribuyen
+  // Regla 11: G1/G2 requieren habilitador
   const g1Active = g1Sel.length > 0 && hasEnabler;
   const g2Active = g2Sel.length > 0 && hasEnabler;
 
-  // ── G1: Regla 5 ──
+  // -- G1: Regla 5 --
   let g1Eff = 0;
   if (g1Active) {
-    if (g1Sel.length === 2) {
-      g1Eff = val(1, ind) + val('2A', ind); // usar 2A en lugar de 2 completo
-    } else {
-      g1Eff = val(g1Sel[0], ind);
-    }
+    g1Eff = g1Sel.length === 2
+      ? val(1, ind) + val('2A', ind)   // ambas: usar 2A en vez de 2
+      : val(g1Sel[0], ind);
   }
 
-  // ── G2: Regla 6 ──
+  // -- G2: Regla 6 --
   let g2Eff = 0;
   if (g2Active) {
     if (g2Sel.length === 2) {
-      // tomar el de mayor magnitud de impacto por indicador
       const v3 = val(3, ind), v4 = val(4, ind);
       g2Eff = Math.abs(v3) >= Math.abs(v4) ? v3 : v4;
     } else {
@@ -633,82 +594,120 @@ function computeIndicator(selected, ind) {
     }
   }
 
-  // ── Independientes: Regla 7 ──
+  // -- Independientes: Regla 7 --
   const indEffs = indSel.map(m => val(m, ind));
   const indSum  = indEffs.reduce((a, b) => a + b, 0);
 
-  // BASE = suma de misiones no habilitadoras (ajustadas por R5/R6)
-  const BASE = g1Eff + g2Eff + indSum;
+  const g12Sum = g1Eff + g2Eff;
+  const BASE   = g12Sum + indSum;
+
+  // Contar componentes G1/G2 para Regla 2B
+  const g12CompCount = (g1Eff !== 0 ? 1 : 0) + (g2Eff !== 0 ? 1 : 0);
+
+  // Componentes no-habilitadoras individuales (para Regla 9)
+  const nonEnablerComps = [];
+  if (g1Eff !== 0) nonEnablerComps.push(g1Eff);
+  if (g2Eff !== 0) nonEnablerComps.push(g2Eff);
+  indEffs.forEach(v => { if (v !== 0) nonEnablerComps.push(v); });
 
   let total = 0;
 
+  // ========================================
+  // CASO A: Sin habilitadores
+  // ========================================
   if (!hasEnabler) {
-    // Sin habilitadores: solo independientes (G1/G2 excluidas por Regla 11)
-    total = indSum;
+    total = indSum; // G1/G2 excluidas (Regla 11)
 
-  } else {
-    // Construir lista de habilitadores (dep + mix si existe)
-    const enablerValues = [
-      ...depSel.map(m => val(m, ind)),
-      ...(hasMix ? [val(15, ind)] : []),
-    ];
-    const enablerSum = enablerValues.reduce((a, b) => a + b, 0);
+  // ========================================
+  // CASO B: Solo habilitador mixto (M15)
+  // ========================================
+  } else if (!hasDep && hasMix) {
+    const M = val(15, ind);
+
+    if (g12CompCount >= 2) {
+      // Regla 2B: G1/2 + M = g12Sum + M; independientes suman directo (R7)
+      total = g12Sum + M + indSum;
+
+    } else if (BASE !== 0) {
+      // G1/2 con 1 componente o solo ind: Regla 2A (= Regla 1)
+      total = M + Math.abs(M - BASE);
+
+    } else {
+      // Solo el habilitador mixto, sin otras misiones
+      total = M;
+    }
+
+  // ========================================
+  // CASO C: Solo habilitadores dependientes
+  // ========================================
+  } else if (hasDep && !hasMix) {
+    const depImpacts = depSel.map(m => val(m, ind));
+    const depSum     = depImpacts.reduce((a, b) => a + b, 0);
 
     if (BASE === 0) {
-      // Solo habilitadores sin otras misiones → Regla 3: suma directa
-      total = enablerSum;
+      // Regla 3: solo habilitadores, suma directa
+      total = depSum;
 
-    } else if (enablerValues.length === 1) {
-      // Regla 1 (un habilitador + otras misiones)
-      const H = enablerValues[0];
+    } else if (depImpacts.length === 1) {
+      // Regla 1: un habilitador + BASE
+      const H = depImpacts[0];
       total = H + Math.abs(H - BASE);
 
     } else {
-      // Regla 9 (múltiples habilitadores + otras misiones)
-      // total = suma(habilitadores) + Σ |min(hab) − componente_no_hab|
-      const enablerMin = enablerValues.reduce((a, b) =>
+      // Regla 9: multiples hab. dependientes + misiones
+      const depMin = depImpacts.reduce((a, b) =>
         Math.abs(a) <= Math.abs(b) ? a : b
       );
-      total = enablerSum;
-
-      // Añadir |min(hab) - cada componente no habilitador|
-      const components = [];
-      if (g1Eff !== 0) components.push(g1Eff);
-      if (g2Eff !== 0) components.push(g2Eff);
-      indEffs.forEach(v => { if (v !== 0) components.push(v); });
-
-      components.forEach(c => {
-        total += Math.abs(enablerMin - c);
+      total = depSum;
+      nonEnablerComps.forEach(c => {
+        total += Math.abs(depMin - c);
       });
     }
-  }
 
-  // ── Regla 8: Misión 11 (Informalidad) ──
-  if (hasM11) {
-    // Suma del valor absoluto de reducción de informalidad de TODAS las demás misiones seleccionadas
-    const otherMissions = selected.filter(m => m !== 11);
-    let sumAbsInfOthers = 0;
-    otherMissions.forEach(m => {
-      const infVal = MISSIONS[m]?.informality;
-      if (infVal !== null && infVal !== undefined) {
-        sumAbsInfOthers += Math.abs(infVal);
-      }
-    });
+  // ========================================
+  // CASO D: Hab. dependientes + Hab. mixto (Regla 10)
+  // ========================================
+  } else {
+    const depImpacts = depSel.map(m => val(m, ind));
+    const depSum     = depImpacts.reduce((a, b) => a + b, 0);
+    const M          = val(15, ind);
 
-    if (sumAbsInfOthers < INFORM_CEILING) {
-      // Contribución proporcional de misión 11 a este indicador
-      const scale = (INFORM_CEILING - sumAbsInfOthers) / INFORM_CEILING;
-      total += scale * val(11, ind);
+    // Parte dependiente: Regla 9 (o Regla 1 si solo 1 dep)
+    let depPart = 0;
+    if (BASE === 0) {
+      // Solo habilitadores sin otras misiones: suma directa (R3)
+      depPart = depSum;
+    } else if (depImpacts.length === 1) {
+      const H = depImpacts[0];
+      depPart = H + Math.abs(H - BASE);
+    } else {
+      const depMin = depImpacts.reduce((a, b) =>
+        Math.abs(a) <= Math.abs(b) ? a : b
+      );
+      depPart = depSum;
+      nonEnablerComps.forEach(c => {
+        depPart += Math.abs(depMin - c);
+      });
     }
-    // Si sumAbsInfOthers >= INFORM_CEILING: no se suma impacto de misión 11
+
+    // Parte mixta: Regla 2B (M contribuye si hay 2+ componentes G1/G2)
+    // Contribucion incremental de M = (N_comp - 1) * M
+    const mixContrib = g12CompCount >= 2 ? M : 0;
+
+    // Si no hay G1/2 ni independientes (solo habilitadores), sumar M directo
+    if (BASE === 0) {
+      total = depPart + M;
+    } else {
+      total = depPart + mixContrib;
+    }
   }
 
   return total;
 }
 
-// ─────────────────────────────────────────
+// -----------------------------------------
 // CALCULAR Y MOSTRAR RESULTADOS
-// ─────────────────────────────────────────
+// -----------------------------------------
 function calcular() {
   const selected = [...selectedMissions];
   if (selected.length === 0) return;
@@ -718,19 +717,31 @@ function calcular() {
     results[ind] = computeIndicator(selected, ind);
   });
 
-  // Actualizar valores en pantalla
-  document.getElementById('val-pib').textContent =
-    '+' + fmt(results.pib, 0) + ' USD';
-  document.getElementById('val-growth').textContent =
-    '+' + results.growth.toFixed(2) + ' pp';
-  document.getElementById('val-jobs').textContent =
-    '+' + fmt(results.jobs, 0);
-  document.getElementById('val-poverty').textContent =
-    fmt(Math.abs(results.poverty), 0);
-  document.getElementById('val-informal').textContent =
-    results.informality.toFixed(1) + ' pp';
+  // Detectar si SOLO se seleccionó Salud (M14)
+  const onlySalud = selected.length === 1 && selected[0] === 14;
+  const EST = 'En estimación';
 
-  // Subtítulo
+  // Actualizar valores con formato es-CO (punto miles, coma decimales)
+  document.getElementById('val-pib').textContent =
+    onlySalud ? EST : '+' + fmtInt(results.pib) + ' USD';
+  document.getElementById('val-growth').textContent =
+    onlySalud ? EST : '+' + fmtDec(results.growth, 2) + ' pp';
+  document.getElementById('val-jobs').textContent =
+    onlySalud ? EST : '+' + fmtInt(results.jobs);
+  document.getElementById('val-poverty').textContent =
+    onlySalud ? EST : fmtInt(Math.abs(results.poverty));
+
+  // Pobreza multidimensional
+  document.getElementById('val-povmulti').textContent =
+    fmtInt(Math.abs(results.poverty_multi));
+
+  // Informalidad: cap visual de 49,9 pp (cálculo interno sin cap)
+  const informalityRaw = Math.abs(results.informality);
+  const informalityDisplay = Math.min(informalityRaw, 49.9);
+  document.getElementById('val-inform').textContent =
+    onlySalud ? EST : fmtDec(informalityDisplay, 2) + ' pp';
+
+  // Subtitulo
   const n = selected.length;
   document.getElementById('resultsSubtitle').textContent =
     `Con ${n} misión${n !== 1 ? 'es' : ''} activada${n !== 1 ? 's' : ''}, estos serían los impactos acumulados estimados al 2050`;
@@ -738,15 +749,18 @@ function calcular() {
   // Tags de misiones seleccionadas
   const tagsContainer = document.getElementById('missionTags');
   tagsContainer.innerHTML = '';
-  selected.sort((a, b) => a - b).forEach(id => {
-    const m = MISSIONS[id];
-    const tag = document.createElement('span');
-    tag.className = `mission-tag ${CAT_TAG_CLASS[m.cat]}`;
-    tag.textContent = `M${id} · ${m.name}`;
-    tagsContainer.appendChild(tag);
-  });
+  selected
+    .sort((a, b) => DISPLAY_ORDER.indexOf(a) - DISPLAY_ORDER.indexOf(b))
+    .forEach(id => {
+      const m = MISSIONS[id];
+      const vis = visCategory(m.cat);
+      const tag = document.createElement('span');
+      tag.className = `mission-tag ${VIS_TAG_CLASS[vis]}`;
+      tag.textContent = m.name;
+      tagsContainer.appendChild(tag);
+    });
 
-  // Mostrar resultados y hacer scroll
+  // Mostrar resultados
   const resultsDiv = document.getElementById('results');
   resultsDiv.classList.add('show');
   setTimeout(() => {
@@ -762,13 +776,21 @@ function resetAll() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function fmt(n, dec) {
-  return Math.round(n).toLocaleString('es-CO', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+// -- Formato numerico: separador de miles "." y decimales "," --
+function fmtInt(n) {
+  return (Math.round(n / 100) * 100).toLocaleString('es-CO');
 }
 
-// ─────────────────────────────────────────
+function fmtDec(n, decimals) {
+  return n.toLocaleString('es-CO', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+// -----------------------------------------
 // INIT
-// ─────────────────────────────────────────
+// -----------------------------------------
 renderCards();
 updateUI();
 </script>

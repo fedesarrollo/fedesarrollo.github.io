@@ -327,15 +327,18 @@
 
 <main>
   <p class="section-title">Elige las misiones</p>
-  <p class="section-subtitle">Las misiones condicionadas requieren al menos un habilitador para generar impacto. La misión de Salud se encuentra en estimación para algunos indicadores.</p>
+  <p class="section-subtitle">Las misiones condicionadas requieren al menos un habilitador para generar impacto.</p>
 
   <div class="warning" id="rule11Warning">
-    <strong>Condición necesaria:</strong> Las misiones condicionadas (Diversificación exportadora, Infraestructura vial, Ruralidad y Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad, Seguridad, Inversión en infraestructura o Educación).
+    <strong>Condición necesaria:</strong> Las misiones condicionadas (Diversificación exportadora, Infraestructura vial y Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad o Educación).
   </div>
 
   <div class="mission-grid" id="missionGrid"></div>
 
   <div class="cta-wrap">
+    <div class="warning" id="rule11WarningBtn">
+      <strong>Condición necesaria:</strong> Las misiones condicionadas (Diversificación exportadora, Infraestructura vial y Productividad agrícola) solo generan impacto combinadas con al menos un habilitador (Institucionalidad o Educación).
+    </div>
     <button class="cta-btn" id="calcBtn" onclick="calcular()">¿Cómo se ve el 2050? →</button>
     <div class="selected-count" id="selCount">0 misiones seleccionadas</div>
   </div>
@@ -406,26 +409,21 @@
 // IDs internos preservados (M11 eliminada)
 // -----------------------------------------
 const MISSIONS = {
-  // Habilitadores dependientes
+  // Habilitador dependiente
   12: { name: 'Institucionalidad',            cat: 'dep', pib: 1155.20, growth: 0.0900, jobs:  8036, poverty: -22757,  poverty_multi: -11378,  informality: -4.95 },
-  13: { name: 'Seguridad',                    cat: 'dep', pib: 2382.34, growth: 0.1700, jobs:     0, poverty:      0,  poverty_multi: -35162,  informality: 0 },
-  16: { name: 'Inversión en infraestructura', cat: 'dep', pib: 4606.01, growth: 0.5600, jobs: 74583, poverty:-143621,  poverty_multi: -71811,  informality: -45.95 },
   // Habilitador mixto
   15: { name: 'Educación',                    cat: 'mix', pib: 3861.59, growth: 0.5800, jobs: 76892, poverty:-147844,  poverty_multi: -73922,  informality: -57.27 },
   // Grupo 1 condicionado
   1:  { name: 'Diversificación exportadora',  cat: 'g1',  pib: 2426.90, growth: 0.1800, jobs: 24840, poverty: -44667,  poverty_multi: -22333,  informality: -13.55 },
   2:  { name: 'Infraestructura vial',         cat: 'g1',  pib: 5008.20, growth: 0.3700, jobs: 43569, poverty: -94026,  poverty_multi: -47013,  informality: -22.34 },
   // Grupo 2 condicionado
-  3:  { name: 'Ruralidad',                    cat: 'g2',  pib:  164.83, growth: 0.0100, jobs:  2297, poverty:  -3021,  poverty_multi:  -1511,  informality: -1.66 },
   4:  { name: 'Productividad agrícola',       cat: 'g2',  pib: 3160.18, growth: 0.2200, jobs: 28412, poverty: -59738,  poverty_multi: -29869,  informality: -15.25 },
   // Independientes
-  5:  { name: 'Aprovechamiento de residuos',  cat: 'ind', pib: 1263.57, growth: 0.1000, jobs:  9168, poverty: -26937,  poverty_multi: -13469,  informality: -5.65 },
   6:  { name: 'Saneamiento básico',           cat: 'ind', pib:  717.86, growth: 0.0544, jobs:  3498, poverty: -12535,  poverty_multi: -17174,  informality: -2.16 },
   7:  { name: 'Riesgos naturales',            cat: 'ind', pib: 4053.11, growth: 0.3100, jobs: 43482, poverty: -79527,  poverty_multi: -39764,  informality: -26.79 },
   8:  { name: 'Conflicto subsuelo',           cat: 'ind', pib: 2193.47, growth: 0.1800, jobs: 24035, poverty: -51179,  poverty_multi: -25589,  informality: -12.99 },
   9:  { name: 'Transición energética',        cat: 'ind', pib: 3160.18, growth: 0.3300, jobs: 42276, poverty: -93286,  poverty_multi: -46643,  informality: -26.05 },
   10: { name: 'Innovación',                   cat: 'ind', pib: 1369.67, growth: 0.1700, jobs: 20453, poverty: -44627,  poverty_multi: -22313,  informality: -9.84 },
-  14: { name: 'Salud',                        cat: 'ind', pib:     0,   growth: 0,      jobs:     0, poverty:      0,  poverty_multi: -18500,  informality: 0 },
 };
 
 // Mision 2A: infraestructura vial SIN costos logisticos (usada cuando M1 y M2 se seleccionan juntas)
@@ -434,14 +432,14 @@ const M2A = { pib: 3230.18, growth: 0.2400, jobs: 29127, poverty: -59582, povert
 const INDICATORS = ['pib', 'growth', 'jobs', 'poverty', 'poverty_multi', 'informality'];
 
 // Categorias internas
-const CAT_DEP = [12, 13, 16];
+const CAT_DEP = [12];
 const CAT_MIX = [15];
 const CAT_G1  = [1, 2];
-const CAT_G2  = [3, 4];
-const CAT_IND = [5, 6, 7, 8, 9, 10, 14];
+const CAT_G2  = [4];
+const CAT_IND = [6, 7, 8, 9, 10];
 
 // Orden visual: habilitadores, condicionadas, independientes
-const DISPLAY_ORDER = [12, 13, 15, 16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14];
+const DISPLAY_ORDER = [12, 15, 1, 2, 4, 6, 7, 8, 9, 10];
 
 // Mapa de categoria interna -> visual
 function visCategory(cat) {
@@ -485,19 +483,14 @@ function getMissionDesc(id) {
   const descs = {
     1:  'Agroalimentos, industria, energías y servicios conectarán a Santander con el mundo.',
     2:  'Conectividad total: cualquier productor podrá mover sus bienes a costos competitivos.',
-    3:  'Todas las provincias ofrecerán oportunidades de bienestar según su atributo y potencial.',
     4:  'Producción sostenible de alimentos de calidad; campo como despensa y motor exportador.',
-    5:  'Liderazgo en economía circular: los residuos se convierten en recurso e innovación.',
     6:  'Ningún río recibirá aguas sin tratar; saneamiento universal para toda la población.',
     7:  'Ningún hogar en zona de riesgo no mitigable; Estado presente antes que el desastre.',
     8:  'Territorio planificado alrededor de ecosistemas; suelo usado según vocación.',
-    9:  'De la cuna del petróleo a líder en producción, distribución y exportación de energía limpia.',
+    9:  'Santander será un líder global en la gestión inteligente de recursos para la transición energética.',
     10: 'Ecosistema de innovación donde los emprendedores conquisten mercados globales.',
     12: 'Instituciones que coordinan, recursos que llegan y ciudadanos que confían en el Estado.',
-    13: 'Jóvenes con oportunidades reales; ningún municipio controlado por actores ilegales.',
-    14: 'Acceso oportuno a salud sin importar el municipio; prevención hasta alta complejidad.',
     15: 'La región que forme el talento del nororiente y les ofrezca futuro aquí mismo.',
-    16: 'Santander superará su aislamiento con una red vial robusta y transporte público ágil.',
   };
   return descs[id] || '';
 }
@@ -519,12 +512,13 @@ function updateUI() {
     n === 0 ? '0 misiones seleccionadas' :
     n === 1 ? '1 misión seleccionada' :
     `${n} misiones seleccionadas`;
-  document.getElementById('calcBtn').disabled = n === 0;
-
   // Regla 11: G1/G2 sin habilitador
   const hasG12 = [...selectedMissions].some(m => CAT_G1.includes(m) || CAT_G2.includes(m));
   const hasEnabler = [...selectedMissions].some(m => CAT_DEP.includes(m) || CAT_MIX.includes(m));
-  document.getElementById('rule11Warning').classList.toggle('show', hasG12 && !hasEnabler);
+  const showWarning = hasG12 && !hasEnabler;
+  document.getElementById('rule11Warning').classList.toggle('show', showWarning);
+  document.getElementById('rule11WarningBtn').classList.toggle('show', showWarning);
+  document.getElementById('calcBtn').disabled = n === 0 || showWarning;
 
   document.getElementById('results').classList.remove('show');
 }
@@ -717,19 +711,15 @@ function calcular() {
     results[ind] = computeIndicator(selected, ind);
   });
 
-  // Detectar si SOLO se seleccionó Salud (M14)
-  const onlySalud = selected.length === 1 && selected[0] === 14;
-  const EST = 'En estimación';
-
   // Actualizar valores con formato es-CO (punto miles, coma decimales)
   document.getElementById('val-pib').textContent =
-    onlySalud ? EST : '+' + fmtInt(results.pib) + ' USD';
+    '+' + fmtInt(results.pib) + ' USD';
   document.getElementById('val-growth').textContent =
-    onlySalud ? EST : '+' + fmtDec(results.growth, 2) + ' pp';
+    '+' + fmtDec(results.growth, 2) + ' pp';
   document.getElementById('val-jobs').textContent =
-    onlySalud ? EST : '+' + fmtInt(results.jobs);
+    '+' + fmtInt(results.jobs);
   document.getElementById('val-poverty').textContent =
-    onlySalud ? EST : fmtInt(Math.abs(results.poverty));
+    fmtInt(Math.abs(results.poverty));
 
   // Pobreza multidimensional
   document.getElementById('val-povmulti').textContent =
@@ -739,7 +729,7 @@ function calcular() {
   const informalityRaw = Math.abs(results.informality);
   const informalityDisplay = Math.min(informalityRaw, 49.9);
   document.getElementById('val-inform').textContent =
-    onlySalud ? EST : fmtDec(informalityDisplay, 2) + ' pp';
+    fmtDec(informalityDisplay, 2) + ' pp';
 
   // Subtitulo
   const n = selected.length;

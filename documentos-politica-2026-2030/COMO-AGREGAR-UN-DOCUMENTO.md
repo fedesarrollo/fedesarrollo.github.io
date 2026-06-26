@@ -121,3 +121,23 @@ documento, que las dos previews se vean y que sus enlaces descarguen los PDF cor
 - No es necesario tocar `assets/styles.css`: todas las páginas comparten esos estilos.
 - Mantén el mismo `<header>` y `<footer>` que las páginas existentes para conservar la
   navegación y la identidad visual.
+
+---
+
+## Opcional: video emergente (pop-up) en una página
+
+Los estilos del modal (`.video-modal`) ya están en `assets/styles.css`. Para mostrar un
+video de YouTube **la primera vez** que un visitante abre una página, copia el bloque del
+modal + el `<script>` que están al final de `docs/electricidad-y-gas.html` y cambia dos
+valores:
+
+- `VIDEO_ID` → el id del video (de `https://youtu.be/EL_ID` o `watch?v=EL_ID`).
+- `STORAGE_KEY` → una marca única por página (ej. `fede-video-<slug>`).
+
+El video arranca **silenciado** (los navegadores no permiten autoplay con sonido); el
+usuario puede activar el sonido o abrirlo en YouTube. Para que se muestre **siempre** (no
+solo la primera vez), elimina la parte que usa `localStorage`.
+
+Si además quieres un botón fijo hacia el video en la página (no en el pop-up), copia el
+bloque `<p class="doc-watch">…</p>` que está dentro de `.doc-detail-main` y cambia el
+`href`.

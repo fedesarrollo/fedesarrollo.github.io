@@ -46,6 +46,12 @@
             <span>Investigador Asociado de Fedesarrollo</span>
           </div>
         </div>
+        <p class="doc-watch">
+          <a class="btn btn-blue" href="https://youtu.be/jAUNqlfhNpo" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Ver el video en YouTube
+          </a>
+        </p>
       </div>
 
       <aside class="doc-previews">
@@ -107,6 +113,50 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===================== VIDEO POP-UP (primera visita) ===================== -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video del documento">
+    <div class="video-modal-box">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Cerrar">&times;</button>
+      <div class="video-modal-video">
+        <iframe id="videoModalFrame" src="" title="Video · Electricidad y gas natural"
+          allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var VIDEO_ID    = 'jAUNqlfhNpo';
+      var STORAGE_KEY = 'fede-video-electricidad-y-gas';   // marca de "ya visto" por navegador
+      var modal   = document.getElementById('videoModal');
+      var frame   = document.getElementById('videoModalFrame');
+      var closeEl = document.getElementById('videoModalClose');
+
+      function open() {
+        frame.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?autoplay=1&mute=1&rel=0';
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        modal.classList.remove('is-open');
+        frame.src = '';                       // detiene la reproducción
+        document.body.style.overflow = '';
+      }
+
+      // Mostrar solo la primera vez por visitante
+      var seen = null;
+      try { seen = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+      if (!seen) {
+        open();
+        try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      }
+
+      closeEl.addEventListener('click', close);
+      modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 
 </body>
 </html>

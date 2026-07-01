@@ -40,8 +40,9 @@ cp "ORIGEN/... Documento de Politica.pdf" pdfs/<slug>-documento-de-politica.pdf
 cp "ORIGEN/... Nota de Politica.pdf"       pdfs/<slug>-nota-de-politica.pdf
 ```
 
-> Si un tema solo tiene Nota (sin Documento), copia solo ese PDF y omite las referencias
-> al Documento en los pasos siguientes.
+> Si un tema solo tiene Nota (sin Documento), es una **Nota de política aplicada**: copia solo
+> ese PDF, omite las referencias al Documento en los pasos siguientes y agrega su tarjeta en
+> `notas-politica-aplicada.html` en vez de `documentos.html` (ver el paso 4).
 
 ### 2. Generar las imágenes de preview (primera página de cada PDF)
 
@@ -73,7 +74,8 @@ Dentro de `docs/<slug>.html` reemplaza:
 - **`.doc-previews`** — las dos `<img src>` apuntan a
   `../assets/img/previews/<slug>-documento.png` y `../assets/img/previews/<slug>-nota.png`;
   los dos `<a href>` apuntan a `../pdfs/<slug>-documento-de-politica.pdf` y
-  `../pdfs/<slug>-nota-de-politica.pdf`.
+  `../pdfs/<slug>-nota-de-politica.pdf`. Los `<a class="doc-preview">` van **sin** el atributo
+  `download`, para que al hacer clic el PDF se abra a página completa en el visor del navegador.
 - **"La idea central"** — el párrafo con la idea central de la Nota.
 - **"Tres mensajes para el próximo gobierno"** — los `<li>` de la lista numerada.
 
@@ -82,9 +84,14 @@ Dentro de `docs/<slug>.html` reemplaza:
 
 ### 4. Agregar la tarjeta en la grilla
 
-En `documentos.html`, dentro de `<div class="docs-grid"> … </div>`, añade un bloque
-(puedes copiar el de Crimen organizado) y ajusta el slug, el título, los autores y la
-descripción:
+Elige el archivo según el tipo de tema:
+
+- **Tema con Documento + Nota** → `documentos.html` (puedes copiar la tarjeta de Crimen organizado).
+- **Nota de política aplicada (solo Nota)** → `notas-politica-aplicada.html` (copia la tarjeta de
+  Paz total; la preview usa `<slug>-nota.png`).
+
+Dentro del `<div class="docs-grid"> … </div>` del archivo elegido, añade un bloque y ajusta el
+slug, el título, los autores y la descripción:
 
 ```html
 <article class="docs-grid-item">
@@ -113,8 +120,10 @@ documento, que las dos previews se vean y que sus enlaces descarguen los PDF cor
 
 ## Convenciones
 
-- **Orden en la grilla:** los documentos con los dos archivos (Documento + Nota) van primero;
-  los que solo tienen un archivo (solo Nota) van al final.
+- **Dónde va cada uno:** los temas con Documento + Nota van en `documentos.html`; las notas
+  independientes (solo Nota) van en `notas-politica-aplicada.html` ("Notas de política aplicada").
+- **Menú:** el header y el footer llevan cuatro entradas —Inicio · Documentos de política ·
+  Notas de política aplicada · Fedesarrollo ↗—; marca como `is-active` la de la página actual.
 - **Slugs** en minúsculas, sin tildes ni espacios, con guiones.
 - Las previews se generan a partir de la **primera página** del PDF; en la grilla se usa la
   del **Documento de Política**.

@@ -436,6 +436,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
   padding: 24px;
   background: rgba(10, 22, 47, .72);
   backdrop-filter: blur(3px);
+  zoom: 0.8696;   /* neutraliza el zoom: 1.15 del <html> (1/1.15) para centrar el modal en el viewport real */
 }
 .video-modal.is-open { display: flex; }
 .video-modal-box {
@@ -471,6 +472,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
   padding: 24px;
   background: rgba(10, 22, 47, .72);
   backdrop-filter: blur(3px);
+  zoom: 0.8696;   /* neutraliza el zoom: 1.15 del <html> (1/1.15) para que el overlay use el viewport real y quede centrado */
 }
 .pdf-modal.is-open { display: flex; }
 .pdf-modal-box {

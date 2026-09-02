@@ -77,7 +77,7 @@ Dentro de `docs/<slug>.html` reemplaza:
   `../pdfs/<slug>-nota-de-politica.pdf`. Los `<a class="doc-preview">` van **sin** el atributo
   `download`, para que al hacer clic el PDF se abra a página completa en el visor del navegador.
 - **"La idea central"** — el párrafo con la idea central de la Nota.
-- **"Tres mensajes para el próximo gobierno"** — los `<li>` de la lista numerada.
+- **"Tres mensajes para el nuevo gobierno"** — los `<li>` de la lista numerada.
 
 > El cuerpo de la página solo lleva **La idea central** y **Tres mensajes**. El resto del
 > contenido vive en los PDF, accesibles desde las previews.

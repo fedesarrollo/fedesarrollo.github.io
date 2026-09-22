@@ -51,7 +51,7 @@ function escapeHtml(str) {
 }
 
 function langDot(lang) {
-  const color = LANG_COLORS[lang] || '#8b949e';
+  const color = LANG_COLORS[lang] || '#7B7B7B';
   return `<span class="lang-dot" style="background:${escapeHtml(color)}"></span>`;
 }
 

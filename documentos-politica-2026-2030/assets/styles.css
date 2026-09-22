@@ -5,29 +5,34 @@
    ========================================================================= */
 
 :root {
-  /* Marca Fedesarrollo */
-  --blue:        #0F3983;
-  --blue-700:    #103a84;
-  --blue-900:    #0a2a5f;
-  --blue-soft:   #eef2f9;
-  --blue-line:   #dae1ec;
-  --amber:       #fcb348;
-  --amber-600:   #e89a2c;
-  --green:       #027948;
+  /* Marca Fedesarrollo — kit 2026 (mismos valores que fedebanner.cls) */
+  --blue:        #081BFD;   /* azul vibrante: acentos, enlaces, campos de color */
+  --blue-700:    #032F9C;
+  --blue-900:    #091C50;
+  --blue-soft:   #EDF1FE;   /* tinte del azul vibrante: hovers y fondos suaves */
+  --blue-box:    #D8E1FA;   /* «azul caja»: fondo de los destacados */
+  --blue-line:   #D0DDFE;
+  --celeste:     #86E7FF;   /* acento SOBRE fondo azul */
+  --accent:      #ED501F;   /* naranja: acento sobre blanco */
+  --accent-600:  #D2400F;
 
-  --ink:         #212121;
-  --muted:       #5b6573;
-  --line:        #e6e9ef;
-  --line-strong: #ececee;
+  --ink:         #010D2B;   /* azul oscuro: titulos y texto */
+  --ink-soft:    #3D3D3D;
+  --muted:       #7B7B7B;
+  --line:        #E6E6E6;
+  --line-strong: #A6A6A6;
   --bg:          #ffffff;
-  --bg-soft:     #f6f8fc;
+  --bg-soft:     #F6F6F6;
 
   --maxw:        1140px;
   --reading:     760px;
   --radius:      12px;
-  --shadow-sm:   0 1px 3px rgba(15, 57, 131, .06), 0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:   0 10px 30px rgba(15, 57, 131, .10);
-  --font: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --shadow-sm:   0 1px 3px rgba(8, 27, 253, .07), 0 1px 2px rgba(1, 13, 43, .05);
+  --shadow-md:   0 10px 30px rgba(8, 27, 253, .10);
+
+  --font:         "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;   /* sustituye a ES Face */
+  --font-kicker:  "Space Grotesk", var(--font);                      /* sustituye a PP Neue Machina */
 }
 
 * { box-sizing: border-box; }
@@ -46,11 +51,12 @@ body {
 }
 
 h1, h2, h3, h4 {
-  color: var(--blue);
-  font-weight: 800;
-  line-height: 1.2;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.18;
   margin: 0 0 .5em;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 a { color: var(--blue); text-decoration: none; }
@@ -69,11 +75,12 @@ img { max-width: 100%; height: auto; display: block; }
 
 .eyebrow {
   display: inline-block;
-  font-size: .78rem;
-  font-weight: 800;
+  font-family: var(--font-kicker);
+  font-size: .76rem;
+  font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--amber-600);
+  color: var(--blue);
   margin: 0 0 .6rem;
 }
 
@@ -93,8 +100,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn:hover { text-decoration: none; transform: translateY(-1px); }
 
-.btn-primary { background: var(--amber); color: #3a2400; }
-.btn-primary:hover { background: var(--amber-600); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-600); color: #fff; }
 
 .btn-blue { background: var(--blue); color: #fff; }
 .btn-blue:hover { background: var(--blue-900); color: #fff; }
@@ -121,28 +128,26 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 1rem;
   min-height: 72px;
 }
-/* Marca minimalista: botón pill con favicon + texto */
+/* Marca: logotipo y, tras una regla fina, el rotulo de la serie */
 .brand {
-  display: inline-flex; align-items: center; gap: .55rem;
-  padding: .4rem .95rem .4rem .5rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff;
-  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  display: inline-flex; align-items: center; gap: .85rem;
+  transition: opacity .15s ease;
 }
-.brand:hover { background: var(--blue-soft); border-color: var(--blue-line); text-decoration: none; box-shadow: var(--shadow-sm); }
-.brand img { height: 26px; width: 26px; object-fit: contain; border-radius: 6px; }
+.brand:hover { text-decoration: none; opacity: .72; }
+.brand img { height: 32px; width: auto; object-fit: contain; }
 
 /* Favicon suelto en la esquina (landing) */
 .brand-favicon { display: inline-flex; align-items: center; }
-.brand-favicon img { height: 52px; width: 52px; object-fit: contain; border-radius: 8px; transition: transform .15s ease; }
+.brand-favicon img { height: 32px; width: auto; object-fit: contain; transition: transform .15s ease; }
 .brand-favicon:hover img { transform: scale(1.06); }
 .brand .brand-text {
-  font-weight: 800;
-  font-size: .88rem;
+  font-weight: 700;
+  font-size: .86rem;
   color: var(--blue);
-  line-height: 1.1;
+  line-height: 1.15;
   max-width: 22ch;
+  padding-left: .85rem;
+  border-left: 1px solid var(--blue-line);
 }
 .brand .brand-text span { display:block; font-weight: 600; font-size: .68rem; color: var(--muted); letter-spacing:.02em; }
 
@@ -178,16 +183,23 @@ img { max-width: 100%; height: auto; display: block; }
   .nav-toggle:checked ~ .nav { max-height: 320px; }
 }
 
+@media (max-width: 560px) {
+  .brand .brand-text { display: none; }
+  .brand img { height: 26px; }
+}
+
 /* ------------------------------------------------------------------- Hero */
 .hero {
   background:
-    radial-gradient(1100px 380px at 92% -10%, rgba(252,179,72,.16), transparent 60%),
-    linear-gradient(100deg, var(--blue) 0%, var(--blue) 42%, #1c4796 100%);
+    radial-gradient(1100px 380px at 92% -10%, rgba(134,231,255,.22), transparent 60%),
+    linear-gradient(100deg, var(--blue) 0%, var(--blue) 42%, var(--blue-700) 100%);
   color: #fff;
   padding: clamp(3.5rem, 8vw, 6.5rem) 0;
 }
-.hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: .4em; max-width: 18ch; }
-.hero .eyebrow { color: var(--amber); }
+.hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: .4em; max-width: 21ch; }
+.hero .eyebrow { color: var(--celeste); }
+.hero .btn-primary { background: #fff; color: var(--blue); }
+.hero .btn-primary:hover { background: rgba(255,255,255,.88); color: var(--blue); }
 .hero .lead { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: rgba(255,255,255,.9); max-width: 60ch; margin: 0 0 1.8rem; }
 .hero .actions { display: flex; flex-wrap: wrap; gap: .8rem; }
 
@@ -195,7 +207,7 @@ img { max-width: 100%; height: auto; display: block; }
 .section { padding: clamp(3rem, 6vw, 5rem) 0; }
 .section-soft { background: var(--bg-soft); border-block: 1px solid var(--line); }
 .section h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
-.section .lead { font-size: 1.18rem; color: var(--muted); }
+.section .lead { font-size: 1.18rem; color: var(--ink-soft); }
 .section p { margin: 0 0 1.1rem; }
 .section-head { margin-bottom: 2rem; }
 
@@ -227,7 +239,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: space-between;
   color: #fff;
   background:
-    radial-gradient(420px 160px at 110% -20%, rgba(252,179,72,.30), transparent 60%),
+    radial-gradient(420px 160px at 110% -20%, rgba(134,231,255,.32), transparent 60%),
     linear-gradient(150deg, var(--blue) 0%, var(--blue-900) 100%);
   overflow: hidden;
 }
@@ -241,12 +253,13 @@ img { max-width: 100%; height: auto; display: block; }
   mask-image: radial-gradient(circle at 80% 10%, #000, transparent 75%);
   opacity: .8;
 }
-.doc-cover .cover-kicker { position: relative; z-index:1; font-size:.7rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color: var(--amber); }
+.doc-cover .cover-kicker { position: relative; z-index:1; font-family: var(--font-kicker); font-size:.7rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color: var(--celeste); }
 .doc-cover .cover-title { position: relative; z-index:1; color:#fff; font-size: 1.35rem; font-weight: 800; line-height: 1.18; margin: 0; }
 
 .doc-card-body { padding: 1.3rem 1.5rem; flex: 1; display:flex; flex-direction:column; }
 .doc-card-body h3 { font-size: 1.2rem; margin-bottom: .35rem; }
-.doc-card-body h3 a { color: var(--blue); }
+.doc-card-body h3 a { color: var(--ink); }
+.doc-card-body h3 a:hover { color: var(--blue); }
 .doc-authors { color: var(--muted); font-size: .9rem; font-weight: 600; margin: 0 0 .8rem; }
 .doc-desc { color: var(--ink); font-size: .98rem; margin: 0 0 1.2rem; }
 .doc-card-foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: .5rem .9rem; padding-top: 1rem; border-top: 1px solid var(--line); }
@@ -270,7 +283,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .docs-grid-preview:hover img { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .docs-grid-item h2 { font-size: 1.3rem; margin-bottom: .3rem; }
-.docs-grid-item h2 a { color: var(--blue); }
+.docs-grid-item h2 a { color: var(--ink); }
+.docs-grid-item h2 a:hover { color: var(--blue); }
 .docs-grid-item .doc-authors { margin-bottom: .55rem; }
 .docs-grid-item .doc-desc { margin-bottom: 0; }
 
@@ -313,7 +327,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 1rem 0 0;
 }
 .doc-detail-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-bottom: .35rem; }
-.doc-detail-header .subtitle { font-size: 1.2rem; color: var(--muted); font-weight: 600; margin: 0 0 1.4rem; }
+.doc-detail-header .subtitle { font-size: 1.2rem; color: var(--ink-soft); font-weight: 500; margin: 0 0 1.4rem; }
 .doc-note { color: var(--muted); font-size: .9rem; line-height: 1.5; margin: 1.1rem 0 0; max-width: 60ch; }
 .doc-watch { margin: 1.5rem 0 0; }
 
@@ -364,7 +378,7 @@ img { max-width: 100%; height: auto; display: block; }
   content: "";
   position: absolute; left: 0; top: .62em;
   width: 8px; height: 8px; border-radius: 2px;
-  background: var(--amber);
+  background: var(--accent);
 }
 .doc-body ul li strong, .doc-body ul li b { color: var(--blue-700); }
 .doc-body ol { counter-reset: msg; list-style: none; padding-left: 0; margin: 0 0 1.3rem; }
@@ -382,14 +396,14 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Callout para "La idea central" */
 .callout {
-  background: var(--blue-soft);
+  background: var(--blue-box);
   border-left: 5px solid var(--blue);
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 1.3rem 1.6rem;
   margin: 0 0 1.8rem;
 }
 .callout p:last-child { margin-bottom: 0; }
-.callout .callout-label { font-weight: 800; color: var(--blue); display:block; margin-bottom:.3rem; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+.callout .callout-label { font-family: var(--font-kicker); font-weight: 700; color: var(--blue); display:block; margin-bottom:.3rem; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; }
 
 /* Tabla de la agenda secuenciada */
 .table-wrap { overflow-x: auto; margin: 0 0 1.8rem; border: 1px solid var(--line); border-radius: var(--radius); }
@@ -418,7 +432,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
 }
 .footer-inner { display:flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: flex-start; }
 .site-footer .brand-text, .site-footer .brand-text span { color: #fff; }
-.footer-brand img { height: 100px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
+.footer-brand img { height: 52px; width: auto; margin-bottom: 1rem; }
 .footer-brand p { max-width: 38ch; font-size: .9rem; color: rgba(255,255,255,.8); margin:.4rem 0 0; }
 .footer-nav { display:flex; flex-direction: column; gap: .55rem; }
 .footer-nav a { color: rgba(255,255,255,.88); font-weight: 600; font-size: .95rem; }
@@ -434,7 +448,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
   position: fixed; inset: 0; z-index: 100;
   display: none; align-items: center; justify-content: center;
   padding: 24px;
-  background: rgba(10, 22, 47, .72);
+  background: rgba(1, 13, 43, .72);
   backdrop-filter: blur(3px);
   zoom: 0.8696;   /* neutraliza el zoom: 1.15 del <html> (1/1.15) para centrar el modal en el viewport real */
 }
@@ -470,7 +484,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
   position: fixed; inset: 0; z-index: 120;
   display: none; align-items: center; justify-content: center;
   padding: 24px;
-  background: rgba(10, 22, 47, .72);
+  background: rgba(1, 13, 43, .72);
   backdrop-filter: blur(3px);
   zoom: 0.8696;   /* neutraliza el zoom: 1.15 del <html> (1/1.15) para que el overlay use el viewport real y quede centrado */
 }
@@ -484,7 +498,7 @@ table.agenda ul li::before { top: .55em; width: 6px; height: 6px; }
   animation: video-pop .2s ease;
 }
 .pdf-modal-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem .9rem; border-bottom: 1px solid var(--line); }
-.pdf-modal-title { font-weight: 800; color: var(--blue); font-size: .95rem; }
+.pdf-modal-title { font-family: var(--font-kicker); font-weight: 700; color: var(--blue); font-size: .88rem; letter-spacing: .04em; }
 .pdf-modal-actions { display: inline-flex; align-items: center; gap: .6rem; }
 .pdf-modal-download { display: inline-flex; align-items: center; gap: .35rem; font-size: .82rem; font-weight: 700; color: var(--blue); }
 .pdf-modal-download:hover { text-decoration: underline; }

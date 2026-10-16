@@ -42,8 +42,10 @@ img { display: block; max-width: 100%; }
 /* Encabezado: solo el logo, centrado */
 .site-header {
   display: flex;
-  justify-content: center;
-  padding: 40px 16px 32px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 16px 36px;
   border-bottom: 1px solid var(--fede-azul-claro);
 }
 .logo { width: 260px; height: auto; }
@@ -51,71 +53,81 @@ img { display: block; max-width: 100%; }
 .page {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 48px 24px 72px;
+  padding: 8px 24px 72px;
 }
 
-/* Introducción y pasos */
-.intro h1 {
-  color: var(--fede-texto);
-  font-family: var(--font-titulos);
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-.intro > p {
-  margin-top: 8px;
+.site-header p {
+  margin-top: 22px;
+  max-width: 560px;
   color: var(--fede-gris-texto);
   font-size: 1.05rem;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-  list-style: none;
-  counter-reset: paso;
-}
-.steps li {
-  counter-increment: paso;
+.block-head {
   display: flex;
-  flex-direction: column;
-  background: var(--fede-gris);
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.block .block-head h2 { margin-bottom: 0; }
+.btn-tutorial {
+  border: 1px solid var(--fede-azul);
+  background: #fff;
+  color: var(--fede-azul);
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-tutorial:hover { background: var(--fede-azul); color: #fff; }
+
+/* Tutorial emergente */
+.tutorial {
+  width: min(680px, calc(100% - 32px));
+  margin: auto;
+  padding: 28px 28px 24px;
+  border: none;
   border-radius: var(--radius);
-  overflow: hidden;
-  font-size: .92rem;
   color: var(--fede-texto);
 }
-.steps img {
+.tutorial::backdrop { background: rgba(1, 13, 43, .62); }
+.tutorial h2 {
+  font-family: var(--font-titulos);
+  font-size: 1.4rem;
+  margin: 2px 0 16px;
+}
+.tutorial-count { color: var(--fede-azul); font-weight: 600; font-size: .9rem; }
+.tutorial-steps { list-style: none; }
+.tutorial-steps li { display: none; }
+.tutorial-steps li.is-active { display: block; }
+.tutorial-steps img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top left;
-  border-bottom: 1px solid var(--fede-azul-claro);
+  border: 1px solid var(--fede-azul-claro);
+  border-radius: var(--radius);
 }
-.steps span {
-  position: relative;
-  display: block;
-  padding: 14px 16px 16px 54px;
+.tutorial-steps p { margin-top: 14px; font-size: 1.02rem; color: var(--fede-gris-texto); }
+.tutorial-steps strong { color: var(--fede-texto); }
+
+.tutorial-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
 }
-.steps span::before {
-  content: counter(paso);
-  position: absolute;
-  left: 16px;
-  top: 13px;
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--fede-azul);
-  color: #fff;
-  font-weight: 700;
-  font-size: .85rem;
-}
+.tutorial-nav .btn { border: none; cursor: pointer; font-family: inherit; min-width: 120px; }
+.btn-ghost { background: var(--fede-gris); color: var(--fede-texto); }
+.btn-ghost:disabled { visibility: hidden; }
+.tutorial-dots { display: flex; gap: 8px; }
+.tutorial-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--fede-azul-claro); }
+.tutorial-dots span.is-on { background: var(--fede-azul); }
 
 /* Bloques */
 .block { margin-top: 56px; }
+.page > section.block:first-of-type { margin-top: 36px; }
 .block h2 {
   color: var(--fede-texto);
   font-family: var(--font-titulos);
@@ -212,16 +224,12 @@ a.card:hover .btn { background: var(--fede-titulo-iv); }
 .card-body p { font-size: .93rem; flex: 1; }
 .card-body .btn { margin-top: 10px; align-self: stretch; }
 
-.access {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
+.repo code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .78rem;
   color: var(--fede-gris-suave);
-  font-size: .82rem;
+  word-break: break-all;
 }
-.access svg { width: 14px; height: 14px; flex: none; margin-top: 3px; }
-.access strong { color: var(--fede-texto); font-weight: 600; }
-.access code { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; word-break: break-all; }
 
 /* Árbol de carpetas para el template de proyecto */
 .tree {
@@ -255,14 +263,14 @@ a.card:hover .btn { background: var(--fede-titulo-iv); }
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: 1fr 1fr; }
   .feature { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
   .logo { width: 200px; }
   .page { padding: 36px 16px 56px; }
-  .intro h1 { font-size: 1.7rem; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .feature-body { padding: 22px 20px; }
   .site-footer { padding: 20px 16px 32px; }
+  .tutorial { padding: 22px 18px 18px; }
+  .tutorial-nav .btn { min-width: 0; padding: 10px 14px; }
 }

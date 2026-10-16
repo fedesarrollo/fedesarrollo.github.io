@@ -22,31 +22,45 @@
 
   <header class="site-header">
     <img class="logo" src="assets/img/portal/logo-fedesarrollo.png" width="640" height="118" alt="Fedesarrollo">
+    <p>Todo lo que el equipo usa a diario, en un solo lugar.</p>
   </header>
 
   <main class="page">
 
-    <section class="intro">
-      <h1>Portal interno</h1>
-      <p>Todo lo que el equipo usa a diario, en un solo lugar. Haz clic en la tarjeta de lo que necesitas.</p>
-      <ol class="steps">
-        <li>
-          <img src="assets/img/portal/paso-1.jpg" alt="Una tarjeta del portal con su botón Abrir en GitHub" loading="lazy">
-          <span><strong>Elige</strong> una tarjeta y haz clic en su botón.</span>
+
+    <!-- Tutorial: se muestra las dos primeras visitas y no se puede cerrar hasta el último paso -->
+    <dialog class="tutorial" id="tutorial" aria-labelledby="tutorial-title">
+      <p class="tutorial-count" id="tutorial-count"></p>
+      <h2 id="tutorial-title">Cómo usar el portal</h2>
+      <ol class="tutorial-steps">
+        <li class="is-active">
+          <img src="assets/img/portal/paso-1.jpg" alt="Una tarjeta del portal con su botón Abrir en GitHub">
+          <p><strong>Elige</strong> una tarjeta y haz clic en su botón azul.</p>
         </li>
         <li>
-          <img src="assets/img/portal/paso-2.jpg" alt="Pantalla de inicio de sesión de GitHub" loading="lazy">
-          <span><strong>Inicia sesión</strong> en GitHub con tu cuenta de Fedesarrollo si te la pide.</span>
+          <img src="assets/img/portal/paso-2.jpg" alt="Pantalla de inicio de sesión de GitHub">
+          <p><strong>Inicia sesión</strong> en GitHub con tu cuenta de Fedesarrollo si te la pide.</p>
         </li>
         <li>
-          <img src="assets/img/portal/paso-3.jpg" alt="Página de un repositorio en GitHub con su README" loading="lazy">
-          <span>Baja hasta el <strong>README</strong> del repositorio: ahí están las instrucciones.</span>
+          <img src="assets/img/portal/paso-3.jpg" alt="Página de un repositorio en GitHub con su README">
+          <p>Baja hasta el <strong>README</strong> del repositorio: ahí están las instrucciones paso a paso.</p>
         </li>
       </ol>
-    </section>
+      <div class="tutorial-nav">
+        <button type="button" class="btn btn-ghost" id="tutorial-prev">Anterior</button>
+        <div class="tutorial-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button type="button" class="btn" id="tutorial-next">Siguiente</button>
+      </div>
+    </dialog>
 
     <section class="block">
-      <h2>Herramientas internas</h2>
+      <div class="block-head">
+        <h2>Herramientas internas</h2>
+        <button type="button" class="btn btn-tutorial" id="tutorial-open">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6.6"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.5 1.7c-.5.2-.8.6-.8 1.1v.5"/><circle cx="8" cy="11.6" r=".4" fill="currentColor"/></svg>
+          Ver el tutorial
+        </button>
+      </div>
       <div class="grid grid-3" id="tools-grid"></div>
     </section>
 

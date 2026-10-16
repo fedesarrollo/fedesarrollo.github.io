@@ -22,7 +22,6 @@ const HERRAMIENTAS = [
     repo: 'plantilla-documento-politica',
     image: 'assets/img/portal/plantilla.jpg',
     contain: true,
-    private: true,
   },
   {
     name: 'Gráficas con el formato estándar',
@@ -30,21 +29,17 @@ const HERRAMIENTAS = [
     repo: 'graph-template',
     image: 'assets/img/portal/graficas.jpg',
     contain: true,
-    private: false,
   },
   {
     name: 'Banner de seminarios',
     description: 'Banner de una diapositiva para anunciar los Seminarios de Investigación.',
     repo: 'banner-fedesarrollo',
     image: 'assets/img/portal/banner.jpg',
-    private: true,
   },
 ];
 
 /* ── Íconos ──────────────────────────────────────────── */
 
-const ICON_LOCK = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 7V5a4 4 0 1 1 8 0v2h.5A1.5 1.5 0 0 1 14 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5v-5A1.5 1.5 0 0 1 3.5 7H4Zm1.5 0h5V5a2.5 2.5 0 0 0-5 0v2Z"/></svg>';
-const ICON_GLOBE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.3"/><path d="M1.7 8h12.6M8 1.7c1.8 1.9 2.6 4 2.6 6.3S9.8 12.4 8 14.3C6.2 12.4 5.4 10.3 5.4 8S6.2 3.6 8 1.7Z"/></svg>';
 const ICON_GITHUB = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>';
 
 /* Ilustraciones de los dashboards: gráficas de muestra con la paleta de marca. */
@@ -94,16 +89,13 @@ function toolCard(tool) {
   const media = tool.image
     ? `<div class="card-media${tool.contain ? ' card-media--contain' : ''}"><img src="${escapeHtml(tool.image)}" alt="Vista previa: ${escapeHtml(tool.name)}" loading="lazy"></div>`
     : `<div class="card-media"><div class="tree">${tool.tree.join('\n')}</div></div>`;
-  const access = tool.private
-    ? `${ICON_LOCK}<span><strong>Privado.</strong> Necesitas tu cuenta de la organización.<code>${ORG}/${repo}</code></span>`
-    : `${ICON_GLOBE}<span><strong>Público.</strong> Lo puede abrir cualquiera.<code>${ORG}/${repo}</code></span>`;
   return `
     <a class="card" href="https://github.com/${ORG}/${repo}" target="_blank" rel="noopener">
       ${media}
       <div class="card-body">
         <h3>${escapeHtml(tool.name)}</h3>
         <p>${escapeHtml(tool.description)}</p>
-        <p class="access">${access}</p>
+        <p class="repo"><code>${ORG}/${repo}</code></p>
         <span class="btn">${ICON_GITHUB}Abrir en GitHub</span>
       </div>
     </a>`;
@@ -122,7 +114,64 @@ function dashboardCard(dash) {
     : `<div class="card">${body}</div>`;
 }
 
+/* ── Tutorial ────────────────────────────────────────────
+   Se abre solo en las dos primeras visitas de cada persona (se cuenta en el
+   navegador) y no se puede cerrar hasta llegar al último paso.            */
+
+const TUTORIAL_KEY = 'fede-portal-tutorial-visto';
+const TUTORIAL_VECES = 2;
+
+function vecesVisto() {
+  try { return parseInt(localStorage.getItem(TUTORIAL_KEY), 10) || 0; } catch { return 0; }
+}
+function marcarVisto() {
+  try { localStorage.setItem(TUTORIAL_KEY, String(vecesVisto() + 1)); } catch { /* sin almacenamiento */ }
+}
+
+function initTutorial() {
+  const dialog = document.getElementById('tutorial');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+
+  const steps = dialog.querySelectorAll('.tutorial-steps li');
+  const dots = dialog.querySelectorAll('.tutorial-dots span');
+  const prev = document.getElementById('tutorial-prev');
+  const next = document.getElementById('tutorial-next');
+  const count = document.getElementById('tutorial-count');
+  let paso = 0;
+  let terminado = false;
+
+  function mostrar(i) {
+    paso = i;
+    steps.forEach((s, j) => s.classList.toggle('is-active', j === i));
+    dots.forEach((d, j) => d.classList.toggle('is-on', j <= i));
+    count.textContent = `Paso ${i + 1} de ${steps.length}`;
+    prev.disabled = i === 0;
+    next.textContent = i === steps.length - 1 ? 'Entendido' : 'Siguiente';
+  }
+
+  function abrir() {
+    terminado = false;
+    mostrar(0);
+    dialog.showModal();
+    next.focus();
+  }
+
+  prev.addEventListener('click', () => { if (paso > 0) mostrar(paso - 1); });
+  next.addEventListener('click', () => {
+    if (paso < steps.length - 1) { mostrar(paso + 1); return; }
+    terminado = true;
+    marcarVisto();
+    dialog.close();
+  });
+  // Escape no cierra el tutorial hasta que se termina.
+  dialog.addEventListener('cancel', (e) => { if (!terminado) e.preventDefault(); });
+
+  document.getElementById('tutorial-open').addEventListener('click', abrir);
+  if (vecesVisto() < TUTORIAL_VECES) abrir();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('dashboards-grid').innerHTML = DASHBOARDS.map(dashboardCard).join('');
   document.getElementById('tools-grid').innerHTML = HERRAMIENTAS.map(toolCard).join('');
+  initTutorial();
 });

@@ -33,16 +33,18 @@ guiones. Ejemplos: `crimen-organizado`, `electricidad-y-gas`, `justicia`,
 
 ### 1. Copiar los PDF
 
-Copia el Documento de Política y la Nota de Política a `pdfs/`, renombrándolos con el slug:
+Copia el Documento de Política y su Resumen a `pdfs/`, renombrándolos con el slug (el Resumen
+conserva el sufijo `-nota-de-politica.pdf` para no romper enlaces ya compartidos):
 
 ```bash
 cp "ORIGEN/... Documento de Politica.pdf" pdfs/<slug>-documento-de-politica.pdf
-cp "ORIGEN/... Nota de Politica.pdf"       pdfs/<slug>-nota-de-politica.pdf
+cp "ORIGEN/... Resumen.pdf"               pdfs/<slug>-nota-de-politica.pdf
 ```
 
-> Si un tema solo tiene Nota (sin Documento), es una **Nota de Política Aplicada**: copia solo
+> Si un tema solo tiene Nota (sin Documento), es una **Nota de Política** (antes «Nota de Política
+> Aplicada»): copia solo
 > ese PDF, omite las referencias al Documento en los pasos siguientes y agrega su tarjeta en
-> `notas-politica-aplicada.html` en vez de `documentos.html` (ver el paso 4).
+> `notas-politica.html` en vez de `documentos.html` (ver el paso 4).
 
 ### 2. Generar las imágenes de preview (primera página de cada PDF)
 
@@ -76,7 +78,7 @@ Dentro de `docs/<slug>.html` reemplaza:
   los dos `<a href>` apuntan a `../pdfs/<slug>-documento-de-politica.pdf` y
   `../pdfs/<slug>-nota-de-politica.pdf`. Los `<a class="doc-preview">` van **sin** el atributo
   `download`, para que al hacer clic el PDF se abra a página completa en el visor del navegador.
-- **"La idea central"** — el párrafo con la idea central de la Nota.
+- **"La idea central"** — el párrafo con la idea central del Resumen.
 - **"Tres mensajes para el nuevo gobierno"** — los `<li>` de la lista numerada.
 
 > El cuerpo de la página solo lleva **La idea central** y **Tres mensajes**. El resto del
@@ -86,8 +88,8 @@ Dentro de `docs/<slug>.html` reemplaza:
 
 Elige el archivo según el tipo de tema:
 
-- **Tema con Documento + Nota** → `documentos.html` (puedes copiar la tarjeta de Crimen organizado).
-- **Nota de Política Aplicada (solo Nota)** → `notas-politica-aplicada.html` (copia la tarjeta de
+- **Tema con Documento + Resumen** → `documentos.html` (puedes copiar la tarjeta de Crimen organizado).
+- **Nota de Política (solo Nota)** → `notas-politica.html` (copia la tarjeta de
   Paz total; la preview usa `<slug>-nota.png`).
 
 Dentro del `<div class="docs-grid"> … </div>` del archivo elegido, añade un bloque y ajusta el
@@ -99,7 +101,7 @@ slug, el título, los autores y la descripción:
     <img src="assets/img/previews/<slug>-documento.png" alt="Vista previa de <Título>">
   </a>
   <h2><a href="docs/<slug>.html"><Título></a></h2>
-  <p class="doc-authors"><Autor 1> · <Autor 2></p>
+  <p class="doc-authors"><Autor 1> y <Autor 2></p>
   <p class="doc-desc"><Descripción breve (1-2 líneas)></p>
 </article>
 ```
@@ -120,10 +122,10 @@ documento, que las dos previews se vean y que sus enlaces descarguen los PDF cor
 
 ## Convenciones
 
-- **Dónde va cada uno:** los temas con Documento + Nota van en `documentos.html`; las notas
-  independientes (solo Nota) van en `notas-politica-aplicada.html` ("Notas de Política Aplicada").
-- **Menú:** el header y el footer llevan cuatro entradas —Inicio · Documentos de Política ·
-  Notas de Política Aplicada · Fedesarrollo ↗—; marca como `is-active` la de la página actual.
+- **Dónde va cada uno:** los temas con Documento + Resumen van en `documentos.html`; las notas
+  independientes (solo Nota) van en `notas-politica.html` ("Notas de Política").
+- **Menú:** el header y el footer llevan cuatro entradas (Inicio, Documentos de Política,
+  Notas de Política y Fedesarrollo ↗); marca como `is-active` la de la página actual.
 - **Slugs** en minúsculas, sin tildes ni espacios, con guiones.
 - Las previews se generan a partir de la **primera página** del PDF; en la grilla se usa la
   del **Documento de Política**.

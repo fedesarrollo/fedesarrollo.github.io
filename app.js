@@ -1,212 +1,128 @@
 const ORG = 'fedesarrollo';
-const GITHUB_API = 'https://api.github.com';
 
-// Language color map (subset)
-const LANG_COLORS = {
-  JavaScript: '#f1e05a',
-  TypeScript: '#3178c6',
-  Python: '#3572A5',
-  HTML: '#e34c26',
-  CSS: '#563d7c',
-  Vue: '#41b883',
-  Ruby: '#701516',
-  Go: '#00ADD8',
-  Java: '#b07219',
-  Shell: '#89e051',
-  PHP: '#4F5D95',
-  'C#': '#178600',
-  'C++': '#f34b7d',
-  Rust: '#dea584',
-  Kotlin: '#A97BFF',
-  Swift: '#F05138',
-};
+/* ── Contenido ───────────────────────────────────────────
+   Para agregar una herramienta o un dashboard basta con
+   añadir un objeto a la lista correspondiente.               */
 
-// Small apps to showcase (static list — update as new apps are created)
-const FEATURED_APPS = [
+// Dashboards internos. Cuando uno esté publicado, se pone su dirección en `url`.
+// `chart` elige la ilustración de la tarjeta: 'barras', 'lineas' o 'area'.
+const DASHBOARDS = [
+  { name: 'Macrofiscal', description: 'Indicadores macroeconómicos y fiscales.', chart: 'barras', url: '' },
+  { name: 'Seguridad y Justicia', description: 'Indicadores de criminalidad, seguridad y justicia.', chart: 'lineas', url: '' },
+  { name: 'Productividad y Mercado Laboral', description: 'Indicadores de productividad, empleo e informalidad.', chart: 'area', url: '' },
+];
+
+// Herramientas internas. `repo` es el nombre del repositorio dentro de la organización.
+// `image` es la vista previa (assets/img/portal/); sin imagen se puede mostrar un árbol de carpetas `tree`.
+// Solo van repositorios de la organización fedesarrollo, no de cuentas personales.
+const HERRAMIENTAS = [
   {
-    name: 'Taller Visión 2050',
-    description: 'Aplicación de taller cualitativo para explorar retos, misiones y oportunidades de cara al año 2050.',
-    emoji: '🎯',
-    repo: 'taller-vision-2050',
-    liveUrl: 'https://fedesarrollo.github.io/taller-vision-2050/taller-vision-2050.html',
+    name: 'Plantilla de documento de política',
+    description: 'Carpetas, flujo de fuentes y cifras, y la clase LaTeX para que el documento salga con el formato de la serie.',
+    repo: 'plantilla-documento-politica',
+    image: 'assets/img/portal/plantilla.jpg',
+    contain: true,
+    private: true,
   },
   {
-    name: 'Calculadora de Misiones · Santander 2050',
-    description: 'Calculadora interactiva de misiones para el departamento de Santander con horizonte al año 2050.',
-    emoji: '🧮',
-    repo: 'fedesarrollo.github.io',
-    liveUrl: 'https://fedesarrollo.github.io/calculadora-misiones-santander-2050/',
+    name: 'Gráficas con el formato estándar',
+    description: 'Colores, fuente y formato institucionales para gráficas en Python, R y Stata.',
+    repo: 'graph-template',
+    image: 'assets/img/portal/graficas.jpg',
+    contain: true,
+    private: false,
+  },
+  {
+    name: 'Banner de seminarios',
+    description: 'Banner de una diapositiva para anunciar los Seminarios de Investigación.',
+    repo: 'banner-fedesarrollo',
+    image: 'assets/img/portal/banner.jpg',
+    private: true,
   },
 ];
 
-/* ── Helpers ─────────────────────────────────────────── */
+/* ── Íconos ──────────────────────────────────────────── */
+
+const ICON_LOCK = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 7V5a4 4 0 1 1 8 0v2h.5A1.5 1.5 0 0 1 14 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5v-5A1.5 1.5 0 0 1 3.5 7H4Zm1.5 0h5V5a2.5 2.5 0 0 0-5 0v2Z"/></svg>';
+const ICON_GLOBE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.3"/><path d="M1.7 8h12.6M8 1.7c1.8 1.9 2.6 4 2.6 6.3S9.8 12.4 8 14.3C6.2 12.4 5.4 10.3 5.4 8S6.2 3.6 8 1.7Z"/></svg>';
+const ICON_GITHUB = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>';
+
+/* Ilustraciones de los dashboards: gráficas de muestra con la paleta de marca. */
+const CHARTS = {
+  barras: `
+    <svg viewBox="0 0 320 180" aria-hidden="true">
+      <rect width="320" height="180" fill="#F6F6F6"/>
+      <g fill="#081BFD">
+        <rect x="40" y="96" width="26" height="54"/><rect x="82" y="78" width="26" height="72"/>
+        <rect x="124" y="104" width="26" height="46"/><rect x="166" y="64" width="26" height="86"/>
+        <rect x="208" y="84" width="26" height="66"/>
+      </g>
+      <rect x="250" y="44" width="26" height="106" fill="#ED501F"/>
+      <path d="M30 150h260" stroke="#010D2B" stroke-width="1.5"/>
+    </svg>`,
+  lineas: `
+    <svg viewBox="0 0 320 180" aria-hidden="true">
+      <rect width="320" height="180" fill="#F6F6F6"/>
+      <path d="M30 60h260M30 100h260" stroke="#D0DDFE"/>
+      <path d="M30 120 L75 104 L120 112 L165 84 L210 92 L255 62 L290 54" fill="none" stroke="#081BFD" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M30 136 L75 132 L120 122 L165 126 L210 110 L255 114 L290 98" fill="none" stroke="#00AAB6" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M30 150h260" stroke="#010D2B" stroke-width="1.5"/>
+    </svg>`,
+  area: `
+    <svg viewBox="0 0 320 180" aria-hidden="true">
+      <rect width="320" height="180" fill="#F6F6F6"/>
+      <path d="M30 150 L30 112 L80 100 L130 106 L180 80 L230 86 L290 60 L290 150Z" fill="#D8E1FA"/>
+      <path d="M30 112 L80 100 L130 106 L180 80 L230 86 L290 60" fill="none" stroke="#081BFD" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M30 150 L30 132 L80 128 L130 130 L180 118 L230 120 L290 108 L290 150Z" fill="#F0A03C"/>
+      <path d="M30 150h260" stroke="#010D2B" stroke-width="1.5"/>
+    </svg>`,
+};
+
+/* ── Render ──────────────────────────────────────────── */
 
 function escapeHtml(str) {
   if (!str) return '';
-  return str
+  return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
 
-function langDot(lang) {
-  const color = LANG_COLORS[lang] || '#7B7B7B';
-  return `<span class="lang-dot" style="background:${escapeHtml(color)}"></span>`;
-}
-
-/* ── Fetch repos ─────────────────────────────────────── */
-
-async function fetchRepos() {
-  const container = document.getElementById('repos-grid');
-  container.innerHTML = `
-    <div class="loading" style="grid-column:1/-1">
-      <div class="spinner"></div>
-      <div>Cargando repositorios…</div>
-    </div>`;
-
-  try {
-    const res = await fetch(
-      `${GITHUB_API}/orgs/${ORG}/repos?type=public&sort=updated&per_page=100`,
-      { headers: { Accept: 'application/vnd.github.v3+json' } }
-    );
-
-    if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-
-    const repos = await res.json();
-    const visible = repos.filter((r) => !r.fork);
-
-    // Update badge count
-    document.getElementById('repos-count').textContent = visible.length;
-
-    if (visible.length === 0) {
-      container.innerHTML = `
-        <div class="empty-state" style="grid-column:1/-1">
-          <div class="empty-state-icon">📭</div>
-          <div>No hay repositorios públicos aún.</div>
-        </div>`;
-      return;
-    }
-
-    container.innerHTML = visible.map(repoCard).join('');
-  } catch (err) {
-    container.innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="empty-state-icon">⚠️</div>
-        <div>No se pudieron cargar los repositorios.<br>
-          <a href="https://github.com/${ORG}" target="_blank" rel="noopener">
-            Ver en GitHub →
-          </a>
-        </div>
-      </div>`;
-    console.error(err);
-  }
-}
-
-function repoCard(repo) {
-  const lang = escapeHtml(repo.language || '');
-  const desc = escapeHtml(repo.description || 'Sin descripción.');
-  const name = escapeHtml(repo.name);
-  const stars = repo.stargazers_count;
-  const forks = repo.forks_count;
-  const topics = (repo.topics || []).slice(0, 4);
-  const featuredApp = FEATURED_APPS.find((a) => a.repo === repo.name);
-  const appBtn = featuredApp && featuredApp.liveUrl
-    ? `<a class="btn btn-primary" href="${escapeHtml(featuredApp.liveUrl)}" target="_blank" rel="noopener" style="margin-top:10px">🚀 Ver app</a>`
-    : '';
-
+function toolCard(tool) {
+  const repo = escapeHtml(tool.repo);
+  const media = tool.image
+    ? `<div class="card-media${tool.contain ? ' card-media--contain' : ''}"><img src="${escapeHtml(tool.image)}" alt="Vista previa: ${escapeHtml(tool.name)}" loading="lazy"></div>`
+    : `<div class="card-media"><div class="tree">${tool.tree.join('\n')}</div></div>`;
+  const access = tool.private
+    ? `${ICON_LOCK}<span><strong>Privado.</strong> Necesitas tu cuenta de la organización.<code>${ORG}/${repo}</code></span>`
+    : `${ICON_GLOBE}<span><strong>Público.</strong> Lo puede abrir cualquiera.<code>${ORG}/${repo}</code></span>`;
   return `
-    <div class="card">
-      <div class="card-header">
-        <span class="card-icon">📦</span>
-        <a class="card-name" href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener">${name}</a>
+    <a class="card" href="https://github.com/${ORG}/${repo}" target="_blank" rel="noopener">
+      ${media}
+      <div class="card-body">
+        <h3>${escapeHtml(tool.name)}</h3>
+        <p>${escapeHtml(tool.description)}</p>
+        <p class="access">${access}</p>
+        <span class="btn">${ICON_GITHUB}Abrir en GitHub</span>
       </div>
-      <p class="card-description">${desc}</p>
-      ${topics.length ? `<div style="display:flex;gap:6px;flex-wrap:wrap">${topics.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-      <div class="card-footer">
-        ${lang ? `<span class="card-stat">${langDot(repo.language)}&nbsp;${lang}</span>` : ''}
-        ${stars > 0 ? `<span class="card-stat">⭐ ${stars}</span>` : ''}
-        ${forks > 0 ? `<span class="card-stat">🍴 ${forks}</span>` : ''}
-        <span class="card-stat" title="Última actualización">${timeAgo(repo.updated_at)}</span>
-      </div>
-      ${appBtn}
-    </div>`;
+    </a>`;
 }
 
-/* ── Render apps ─────────────────────────────────────── */
-
-function renderApps() {
-  const container = document.getElementById('apps-grid');
-
-  if (FEATURED_APPS.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="empty-state-icon">🚧</div>
-        <div>Próximamente...</div>
+function dashboardCard(dash) {
+  const body = `
+      <div class="card-media">${CHARTS[dash.chart] || CHARTS.barras}</div>
+      <div class="card-body">
+        <h3>${escapeHtml(dash.name)}</h3>
+        <p>${escapeHtml(dash.description)}</p>
+        ${dash.url ? '<span class="btn">Abrir dashboard</span>' : '<span class="btn btn-off">En construcción</span>'}
       </div>`;
-    return;
-  }
-
-  document.getElementById('apps-count').textContent = FEATURED_APPS.length;
-
-  container.innerHTML = FEATURED_APPS.map((app) => {
-    const repoUrl = `https://github.com/${ORG}/${escapeHtml(app.repo)}`;
-    const liveBtn = app.liveUrl
-      ? `<a class="btn btn-primary" href="${escapeHtml(app.liveUrl)}" target="_blank" rel="noopener">🚀 Ver app</a>`
-      : '';
-    const sourceBtn = `<a class="btn" href="${repoUrl}" target="_blank" rel="noopener">💻 Código</a>`;
-
-    return `
-      <div class="app-card">
-        <div class="app-card-preview">${app.emoji}</div>
-        <div class="app-card-body">
-          <div class="app-card-name">${escapeHtml(app.name)}</div>
-          <p class="app-card-desc">${escapeHtml(app.description)}</p>
-          <div class="app-card-actions">${liveBtn}${sourceBtn}</div>
-        </div>
-      </div>`;
-  }).join('');
+  return dash.url
+    ? `<a class="card" href="${escapeHtml(dash.url)}" target="_blank" rel="noopener">${body}</a>`
+    : `<div class="card">${body}</div>`;
 }
-
-/* ── Navigation tabs ─────────────────────────────────── */
-
-function initTabs() {
-  const tabs = document.querySelectorAll('.nav-tab');
-  const sections = document.querySelectorAll('.section');
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.classList.remove('active'));
-      sections.forEach((s) => s.classList.remove('active'));
-
-      tab.classList.add('active');
-      const target = document.getElementById(tab.dataset.target);
-      if (target) target.classList.add('active');
-    });
-  });
-}
-
-/* ── Time ago ────────────────────────────────────────── */
-
-function timeAgo(dateStr) {
-  const diff = Date.now() - new Date(dateStr).getTime();
-  const mins = Math.floor(diff / 60000);
-  const hours = Math.floor(mins / 60);
-  const days = Math.floor(hours / 24);
-  const months = Math.floor(days / 30);
-  const years = Math.floor(days / 365);
-
-  if (years > 0) return `hace ${years} año${years > 1 ? 's' : ''}`;
-  if (months > 0) return `hace ${months} mes${months > 1 ? 'es' : ''}`;
-  if (days > 0) return `hace ${days} día${days > 1 ? 's' : ''}`;
-  if (hours > 0) return `hace ${hours} hora${hours > 1 ? 's' : ''}`;
-  return `hace ${mins} min`;
-}
-
-/* ── Init ────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTabs();
-  fetchRepos();
-  renderApps();
+  document.getElementById('dashboards-grid').innerHTML = DASHBOARDS.map(dashboardCard).join('');
+  document.getElementById('tools-grid').innerHTML = HERRAMIENTAS.map(toolCard).join('');
 });

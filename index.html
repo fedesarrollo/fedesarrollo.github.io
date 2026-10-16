@@ -3,102 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Página de la organización fedesarrollo — repositorios y apps." />
-  <title>fedesarrollo</title>
+  <meta name="description" content="Portal interno de Fedesarrollo: herramientas, dashboards y Documentos de Política." />
+  <meta name="robots" content="noindex" />
+  <title>Portal interno | Fedesarrollo</title>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fedesarrollo">
-  <meta property="og:title" content="Fedesarrollo">
-  <meta property="og:description" content="Repositorios, experimentos y aplicaciones abiertas de Fedesarrollo.">
+  <meta property="og:title" content="Portal interno | Fedesarrollo">
   <meta property="og:url" content="https://fedesarrollo.github.io/">
-  <meta property="og:image" content="https://fedesarrollo.github.io/assets/img/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/assets/img/og-image.png">
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="documentos-politica-2026-2030/assets/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Hero -->
-  <header class="hero">
-    <img class="hero-logo" src="assets/img/logo-fedesarrollo-blanco.png" alt="Fedesarrollo" />
-    <h1>Fedesarrollo en GitHub</h1>
-    <p>Repositorios, experimentos y aplicaciones abiertas del Centro de Investigación Económica y Social.</p>
-    <div class="hero-links">
-      <a class="btn btn-primary" href="https://github.com/fedesarrollo" target="_blank" rel="noopener">
-        <!-- Octicon mark-github -->
-        <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
-            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-            -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
-            .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
-            .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
-            0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        GitHub
-      </a>
-      <a class="btn" href="#repos" onclick="document.querySelector('[data-target=repos]').click()">
-        📦 Repositorios
-      </a>
-      <a class="btn" href="#apps" onclick="document.querySelector('[data-target=apps]').click()">
-        🚀 Apps
-      </a>
-    </div>
+  <header class="site-header">
+    <img class="logo" src="assets/img/portal/logo-fedesarrollo.png" width="640" height="118" alt="Fedesarrollo">
   </header>
 
-  <!-- Nav tabs -->
-  <nav class="nav-tabs" aria-label="Secciones">
-    <button class="nav-tab active" data-target="repos">
-      📦 Repositorios <span class="badge" id="repos-count">…</span>
-    </button>
-    <button class="nav-tab" data-target="apps">
-      🚀 Apps <span class="badge" id="apps-count">…</span>
-    </button>
-  </nav>
+  <main class="page">
 
-  <!-- Main content -->
-  <main>
-
-    <!-- Repositories section -->
-    <section id="repos" class="section active">
-      <div class="section-header">
-        <h2 class="section-title">Repositorios públicos</h2>
-        <a class="btn" href="https://github.com/orgs/fedesarrollo/repositories" target="_blank" rel="noopener">
-          Ver todos en GitHub →
-        </a>
-      </div>
-      <div class="cards-grid" id="repos-grid">
-        <!-- Populated by app.js -->
-      </div>
+    <section class="intro">
+      <h1>Portal interno</h1>
+      <p>Todo lo que el equipo usa a diario, en un solo lugar. Haz clic en la tarjeta de lo que necesitas.</p>
+      <ol class="steps">
+        <li>
+          <img src="assets/img/portal/paso-1.jpg" alt="Una tarjeta del portal con su botón Abrir en GitHub" loading="lazy">
+          <span><strong>Elige</strong> una tarjeta y haz clic en su botón.</span>
+        </li>
+        <li>
+          <img src="assets/img/portal/paso-2.jpg" alt="Pantalla de inicio de sesión de GitHub" loading="lazy">
+          <span><strong>Inicia sesión</strong> en GitHub con tu cuenta de Fedesarrollo si te la pide.</span>
+        </li>
+        <li>
+          <img src="assets/img/portal/paso-3.jpg" alt="Página de un repositorio en GitHub con su README" loading="lazy">
+          <span>Baja hasta el <strong>README</strong> del repositorio: ahí están las instrucciones.</span>
+        </li>
+      </ol>
     </section>
 
-    <!-- Apps section -->
-    <section id="apps" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Apps &amp; proyectos</h2>
-        <a class="btn" href="https://github.com/fedesarrollo" target="_blank" rel="noopener">
-          Ver organización →
-        </a>
-      </div>
-      <div class="cards-grid" id="apps-grid">
-        <!-- Populated by app.js -->
-      </div>
+    <section class="block">
+      <h2>Herramientas internas</h2>
+      <div class="grid grid-3" id="tools-grid"></div>
+    </section>
+
+    <section class="block">
+      <h2>Dashboards</h2>
+      <div class="grid grid-3" id="dashboards-grid"></div>
+    </section>
+
+    <section class="block">
+      <h2>Documentos de Política</h2>
+      <a class="feature" href="documentos-politica-2026-2030/index.html">
+        <div class="feature-media">
+          <img src="assets/img/portal/documentos.jpg" alt="Portadas de tres Documentos de Política de la serie">
+        </div>
+        <div class="feature-body">
+          <h3>Documentos de Política para el gobierno 2026&#8209;2030</h3>
+          <p>Los Documentos de Política, sus Resúmenes y las Notas de Política de la serie, con los PDF para descargar.</p>
+          <span class="btn">Ir al sitio de la serie</span>
+        </div>
+      </a>
     </section>
 
   </main>
 
-  <footer>
-    <p>
-      Hecho con ❤️ por
-      <a href="https://github.com/fedesarrollo" target="_blank" rel="noopener">fedesarrollo</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/fedesarrollo/fedesarrollo.github.io" target="_blank" rel="noopener">Código fuente</a>
-    </p>
+  <footer class="site-footer">
+    <p>© 2026 Fedesarrollo. Uso interno.</p>
+    <p><a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">fedesarrollo.org.co</a></p>
   </footer>
 
   <script src="app.js"></script>

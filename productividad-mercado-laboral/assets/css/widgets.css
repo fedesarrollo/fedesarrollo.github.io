@@ -1,0 +1,314 @@
+/* ============================================================================
+   widgets.css - what Shiny's Bootstrap 3 and its widgets used to provide
+   ============================================================================
+   styles.css and labor.css are carried over from the Shiny app almost
+   untouched, because ~90% of their rules target custom classes on markup the
+   app built itself. This file supplies the small remainder that came from
+   somewhere else: Bootstrap 3's own stylesheet, and the two jQuery widgets
+   (ionRangeSlider, reactable) whose DOM the stylesheets re-skinned.
+
+   THE CLASS NAMES ARE DELIBERATELY THE SAME ONES SHINY EMITTED. `.tab-pane`,
+   `.container-fluid`, `.btn`, `.rt-td` are not leftovers -- the static site
+   reproduces that DOM shape on purpose, so the two inherited stylesheets keep
+   working verbatim and their comments stay true. Renaming them would mean
+   re-authoring 3,100 lines of CSS to say the same thing.
+
+   Sections:
+     1. Page shell (from Bootstrap 3)
+     2. Buttons    (the parts .btn in styles.css section 11 assumed)
+     3. Sliders    (replacing ionRangeSlider)
+     4. Loading    (replacing Shiny's `recalculating` class)
+   ========================================================================= */
+
+/* ==========================================
+   1. PAGE SHELL
+   ========================================== */
+/* Bootstrap's .container-fluid carried `padding: 0 15px`, which the app's own
+   `--page-pad` then had to work around. The static shell wants none of it:
+   the header and dashboards run full width, and the landing caps itself. */
+.container-fluid {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* THE `hidden` ATTRIBUTE MUST WIN OVER A CLASS'S OWN `display`. The UA rule is
+   `[hidden] { display: none }`, a type-less selector any class rule outranks,
+   so `.across-grid { display: grid }` kept every hidden section laid out: the
+   inactive sections of the minwage and firing across views still reserved
+   their full height, which put 984px and 494px of empty page under the one
+   section actually on screen. `show()` sets `el.hidden`, so this is where the
+   attribute has to be made authoritative, once, rather than per class. */
+[hidden] {
+  display: none !important;
+}
+
+/* The two routes. `.tab-pane.active[data-value="landing"]` in styles.css
+   section 6 is the full-height flex shell that keeps the landing on one
+   screen, and it needs `.active` to be meaningful -- that comment in
+   styles.css explains that without `.active` the rule would show the landing
+   on every tab. So the router toggles exactly this class, and these two rules
+   are what Bootstrap used to contribute. */
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* ==========================================
+   2. BUTTONS
+   ========================================== */
+/* styles.css section 11 styles `.btn` on the assumption that Bootstrap already
+   neutralised the native <button> look. These are the parts it was relying on.
+   Note it sets `text-transform: uppercase` -- that rule is why non-salary's
+   pills read "ALL NON-SALARY LABOR COSTS", and labor.css deliberately extends
+   the same treatment to the raw <button> pills of the other three modules. */
+button.btn {
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1.6;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--fede-azul);
+  outline-offset: 2px;
+}
+
+/* Shiny's downloadButton rendered an <a class="btn btn-default"> and the R code
+   set its colours inline at every call site. Here it is a class. */
+.btn-download {
+  background: var(--fede-navy);
+  color: var(--white);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: 700;
+  border: none;
+}
+
+.btn-download:hover {
+  background: var(--solid-blue);
+  color: var(--white);
+}
+
+/* ==========================================
+   3. SLIDERS
+   ========================================== */
+/* Replaces shinyWidgets' sliderTextInput (ionRangeSlider). Three controls used
+   it: non-salary's minimum-wage slider (single handle in Comparing countries,
+   two handles in By country) and firing's 32-stop tenure slider.
+   
+   They are native <input type="range"> now, which means the value is an INDEX
+   into a label array rather than the label itself -- the labels are not evenly
+   spaced numbers ("3-6 months", "6-12 months", "1 year", … "30 years"), which
+   is exactly why the Shiny version needed sliderTextInput rather than a plain
+   sliderInput.
+   
+   The tick labels are rendered as a sibling row, not with <datalist>: browsers
+   disagree on whether datalist ticks are drawn at all, and none of them lets
+   you style the text. */
+.rf-slider {
+  width: 100%;
+  padding-top: 2px;
+}
+
+.rf-slider-input {
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.rf-slider-input::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fede-hairline);
+}
+
+.rf-slider-input::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fede-hairline);
+}
+
+.rf-slider-input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--fede-navy);
+  border: 2px solid var(--white);
+  box-shadow: 0 1px 3px rgba(9, 28, 80, 0.35);
+}
+
+.rf-slider-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fede-navy);
+  border: 2px solid var(--white);
+  box-shadow: 0 1px 3px rgba(9, 28, 80, 0.35);
+}
+
+.rf-slider-input:focus-visible {
+  outline: 2px solid var(--fede-azul);
+  outline-offset: 4px;
+}
+
+/* The selected label, shown above the track. The Shiny widget printed it in a
+   bubble over the handle; a fixed position reads better at 32 stops, where the
+   bubble would have slid under the neighbouring tick labels. */
+.rf-slider-value {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fede-navy);
+  margin-bottom: 4px;
+}
+
+.rf-slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  font-size: 0.8125rem;      /* the scale's floor -- see CLAUDE.md */
+  color: var(--fede-gris-medio);
+}
+
+/* ==========================================
+   4. LOADING
+   ========================================== */
+/* labor.css keys its plot spinner off Shiny's `recalculating` class
+   (`.plot-spinner .shiny-bound-output.recalculating`). In the static site
+   charts render synchronously once the module's JSON has arrived, so the only
+   thing that can be pending is that first fetch. The class is applied by
+   core/store.js to the same element, so labor.css's rules are unchanged. */
+.is-loading {
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+
+/* ==========================================
+   5. TABLES
+   ========================================== */
+/* The base styling reactable used to bring. labor.css's surviving reactable
+   rules -- `.tbl-scroll-wrap` and its sticky `.rt-thead` -- are written against
+   these class names, so they are kept and work on a semantic <table>.
+   `bordered striped highlight` in the R calls become these rules. */
+.rf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;      /* the table-cell step of the type scale */
+  background: var(--white);
+}
+
+.rf-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 6px;
+  font-size: 0.9375rem;
+  color: var(--fede-gris-medio);
+}
+
+.rf-table .rt-th {
+  font-weight: 600;
+  padding: 6px;
+  line-height: 1.35;
+  background: var(--white);
+  border-bottom: 2px solid var(--fede-hairline);
+  vertical-align: bottom;
+}
+
+.rf-table .rt-td {
+  padding: 6px;
+  line-height: 1.35;
+  /* `normal`, so the prose columns of Cuadro 1 wrap instead of forcing a
+     horizontal scroll. Cells that need their newlines kept set pre-line
+     themselves -- see verticalTable's note. */
+  white-space: normal;
+  border: 1px solid var(--fede-hairline);
+  font-weight: inherit;
+  text-align: inherit;
+}
+
+.rf-table.is-striped tbody tr:nth-child(even) {
+  background: var(--fede-gris);
+}
+
+.rf-table tbody tr:hover {
+  background: var(--light-gray);
+}
+
+/* A sticky first column has to repaint its own background or the striping and
+   the hover show through it as it slides over the other cells. */
+.rf-table.is-striped tbody tr:nth-child(even) .rt-td[style*="sticky"] {
+  background: var(--fede-gris);
+}
+
+/* The Field/Value transpose used by every By-country detail block. */
+.rf-vertical .rf-vertical-field {
+  text-align: left;
+  font-weight: 600;
+  padding: 7px 10px 7px 0;
+  vertical-align: top;
+}
+
+.rf-vertical .rf-vertical-value {
+  padding: 7px 0;
+  color: #555;
+  border-bottom: var(--hairline);
+  vertical-align: top;
+}
+
+/* ==========================================
+   6. NOTICES
+   ========================================== */
+/* Replaces Shiny's showNotification(), which the download handlers used to
+   warn that a selection has no data. role="status" so it is announced without
+   stealing focus. */
+.rf-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(8px);
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 12px 18px;
+  border-radius: 4px;
+  background: var(--fede-navy);
+  color: var(--white);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(9, 28, 80, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 1200;
+}
+
+.rf-notice.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   7. A COLLAPSED CHART'S EXPLANATION
+   ========================================== */
+/* When a chart has nothing to plot, the BLOCK collapses and this carries the
+   sentence that says why -- the four countries whose non-salary costs do not
+   vary with tenure used to get it centred inside 440px of empty canvas. Same
+   treatment as a chart description, so it reads as part of the heading above
+   it rather than as a separate notice. */
+.labor-tenure-notice {
+  font-size: 0.9375rem;
+  color: #555;
+  margin: 0 0 8px;
+  max-width: 110ch;      /* the app's reading measure, as .topic-subtitle */
+}

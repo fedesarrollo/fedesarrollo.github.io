@@ -1,0 +1,1243 @@
+/* ==========================================
+   LABOR MODULE — SHARED STYLES
+   ========================================== */
+
+/* The dashboard's descriptive paragraph, under the title in .labor-header-box.
+   Its size (1rem) is the app's standard text size -- see the --type-scale note
+   in styles.css. The max-width is a READING MEASURE, not a layout cap: the page
+   itself runs edge to edge, but a paragraph that spans a 27" monitor is ~200
+   characters per line and hard to track. Charts and tables are not capped. */
+.topic-subtitle {
+  max-width: 110ch;
+}
+
+/* Numbered filter label in the left panel
+   ("1. Categories", "2. Explore by", "3. Minimum Wage", "4. Country"). */
+.labor-filter-label {
+  font-weight: bold;
+  color: var(--fede-gris-medio);
+  font-size: 1rem;
+}
+
+/* Category pill buttons in the non-salary filters panel.
+   Used by the ALL / Bonuses / Social / Occupational / Payroll buttons. */
+.labor-category-button {
+  background-color: var(--fede-caja);
+  color: var(--fede-azul-deep);
+  border: 1px solid var(--fede-azul-deep);
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-weight: 600;
+}
+
+/* Heterogeneity section title (sits above the partial table). */
+.section-title {
+  background: transparent;
+  color: var(--fede-azul-deep);
+  font-weight: 600;
+  margin: 8px 0 12px 0;
+  text-align: left;
+  font-size: 1.25rem;
+  font-family: var(--font-sans);
+}
+
+/* "Excel"-style table (raw HTML from the regulations sheet).
+   Typography, borders, and alternating rows. */
+.excel-table table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto 12px auto;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+.excel-table td, .excel-table th {
+  border: 1px solid var(--fede-hairline);
+  padding: 6px 8px;
+  vertical-align: middle;
+  font-size: 0.875rem !important;
+  font-family: var(--font-sans) !important;
+}
+.excel-table td *, .excel-table th * {
+  font-size: 0.875rem !important;
+  font-family: var(--font-sans) !important;
+  line-height: 1.25 !important;
+}
+.excel-table font {
+  font-size: 0.875rem !important;
+  font-family: var(--font-sans) !important;
+}
+.excel-table tr:nth-child(even) td {
+  background-color: var(--white);
+}
+.excel-table tr:first-child td {
+  background-color: var(--fede-caja);
+  font-weight: bold;
+  text-align: center;
+}
+.country-hidden { display: none !important; }
+
+/* Reactable wrapper with vertical scroll and sticky header. */
+.tbl-scroll-wrap {
+  width: 100%;
+  max-height: 520px;
+  overflow-y: auto;
+  border: 1px solid var(--fede-hairline);
+  border-radius: 3px;
+}
+.tbl-scroll-wrap .rt-thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--white);
+}
+.tbl-scroll-wrap .rt-tr-filters {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--white);
+}
+
+/* Reactable styling for the "All Bonuses" table.
+   Headers centered, cells left-aligned, first column centered + bold. */
+.all-bonuses-table .rt-th,
+.all-bonuses-table .rt-th .rt-resizable-header-content {
+  justify-content: center !important;
+  text-align: center !important;
+}
+.all-bonuses-table .rt-td {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+.all-bonuses-table .rt-td:first-child {
+  justify-content: center !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+
+/* FILTER PILLS ARE UPPERCASE, in all four modules.
+   `.btn { text-transform: uppercase }` in styles.css already did this for every
+   Bootstrap button, which is why non-salary's pills have always read "ALL
+   NON-SALARY LABOR COSTS" and "BY PAYER" -- they are actionButton()s and carry
+   `.btn`. minwage, firing and btax build their pills as raw tags$button (a
+   server-driven `.active` with no Shiny input binding), so they never matched
+   that rule and rendered in sentence case: same control, two casings, and the
+   difference was invisible in the R code. These four selectors cover the raw
+   pills without touching anything else.
+   It is CSS rather than rewriting the labels because several of those strings
+   are reused as plotly trace names and axis titles (MINWAGE_PCTL_LABELS,
+   MINWAGE_BELOW_GROUPS, ...), where uppercase would be wrong. */
+.pill-button,
+.labor-category-button,
+.subcomponent-btn,
+.component-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;   /* the other half of `.btn`'s treatment */
+}
+
+/* border-color too, and with !important, because Bootstrap ships
+   `.btn-default.active { border-color: #adadad }` -- two classes, so it beats
+   our single-class rule on specificity. The result was the SELECTED pill
+   wearing a grey border while every unselected one wore the brand blue. */
+.pill-button.active {
+  background-color: var(--bright-blue) !important;
+  color: white !important;
+  border-color: var(--bright-blue) !important;
+}
+
+.pill-button:hover {
+  opacity: 0.85;
+}
+
+.pill-button {
+  font-size: 0.875rem;
+  width: auto;
+  align-self: flex-start;
+  display: inline-flex;
+}
+
+.left-panel .pill-button {
+  width: auto;
+  align-self: flex-start;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* The "Explore by" pills. This block exists because their look used to be an
+   INLINE style built in R (tabs/server/non_salary/tables.R), which no
+   stylesheet could reach: they kept the pre-rebrand blue and a 20px radius
+   after every other pill had been squared and retoned. Same treatment as
+   .labor-category-button. */
+.subcomponent-btn {
+  font-size: 0.875rem;
+  background-color: var(--fede-caja);
+  color: var(--fede-azul-deep);
+  border: 1px solid var(--fede-azul-deep);
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-weight: 600;
+}
+
+.component-btn.active {
+  background-color: var(--bright-blue) !important;
+  color: white !important;
+  border-color: var(--bright-blue) !important;
+}
+
+.component-btn:hover {
+  opacity: 0.85;
+}
+
+/* The Contribution / Bonus-component pills. They had NO border rule of their
+   own, so what rendered was Bootstrap's default .btn-default grey -- the only
+   two buttons in the app still wearing it, next to pills outlined in the brand
+   blue. */
+.component-btn {
+  font-size: 0.875rem;
+  background-color: var(--fede-caja);
+  color: var(--fede-azul-deep);
+  border: 1px solid var(--fede-azul-deep);
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-weight: 600;
+}
+
+.plot-spinner .shiny-bound-output.recalculating {
+  opacity: 0.4;
+}
+
+/* ── Chart loading overlay + message ──
+   Applied to the PARENT wrapper via :has() so the ::before/::after
+   render above the plotly SVG (child pseudo-elements get hidden behind it).
+   ──────────────────────────────────────────────── */
+.plot-spinner {
+  position: relative;
+}
+
+.plot-spinner:has(.recalculating)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 999;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.plot-spinner:has(.recalculating)::after {
+  content: 'Loading chart, please wait...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fede-navy);
+  font-family: var(--font-sans);
+  background: var(--white);
+  padding: 16px 32px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(9, 28, 80, 0.15);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .plot-scroll {
+    overflow-x: auto;
+  }
+
+  .plot-scroll .html-widget {
+    min-width: 900px;
+  }
+}
+
+/* =============================================================================
+   Topic view switch: the persistent two-pill segmented control that replaced a
+   module's selection landing and its "Back to selection" bar.
+   Markup: labor_view_switch_ui() in tabs/ui/filter_drawer.R (shared topic chrome),
+   rendered by each module's output$view_selector.
+   SHARED by all three topic modules; no module has a selection landing left.
+   Deliberately NOT .pill-button: that class is shared with minwage/firing AND
+   `.pill-button.active` is an !important cyan that would beat the fill below.
+   ========================================================================== */
+/* The topic headline, above the view switch. Centred with it, so the three
+   elements of the masthead -- title, switch, description -- share one axis. */
+/* The masthead card: the topic's title and the description that holds for BOTH
+   views. Centred, and the card is capped narrower than the page so the
+   description keeps a readable measure while the charts below stay full width. */
+/* THE MASTHEAD AND THE CONTROLS CARD ARE ONE WHITE BLOCK. The 16px of page
+   background that used to sit between them cut the title and the view switch
+   off from the view they name -- the switch read as a control floating over a
+   separate card instead of the top of it. So the masthead carries the card's
+   own border on three sides, no bottom border and no bottom margin, and the
+   controls card below drops its top border and its top corners (see
+   `.topic-page > .labor-top-controls:first-child`). The shadow stays on the
+   lower card alone: the two boxes are one surface, and a shadow at the seam
+   would draw the line this rule exists to remove. */
+.topic-masthead {
+  background: var(--white);
+  border: var(--hairline);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  /* 20px under the title row, not 16 + the card's own 14: joined, the two
+     paddings stacked into ~38px of blank between the title and the sentence
+     that belongs to it -- more air than the block has anywhere else. The card
+     below contributes none (`padding-top: 0`), so this is the whole seam. */
+  padding: 18px 24px 20px;
+  margin: 0;
+  /* Full width, like every other card on the page. The description keeps its own
+     reading measure, so widening the card does not stretch the prose. */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  text-align: left;
+}
+.topic-masthead-main {
+  flex: 1 1 auto;
+  min-width: 0;   /* let the text wrap instead of forcing the card wider */
+}
+.topic-masthead .topic-subtitle {
+  margin: 0;
+  max-width: 88ch;
+}
+/* The switch inside the masthead: a rule above it separates "what this topic is"
+   from "which half you are in", and the 0 bottom margin overrides the standalone
+   spacing .labor-view-switch carries for when it floats on the page. */
+.topic-masthead-switch {
+  flex: 0 0 auto;   /* natural width: the switch must not stretch with the card */
+}
+
+/* Under 900px the two columns stack: at that width the title wraps to three
+   lines and the switch is squeezed to the right edge of a very narrow column. */
+@media (max-width: 900px) {
+  .topic-masthead {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .topic-masthead-switch .labor-view-switch {
+    margin-left: 0;
+  }
+}
+.topic-masthead-switch .labor-view-switch {
+  margin-bottom: 0;
+}
+
+/* The 8px is the gap to a description INSIDE the masthead. Since the
+   description moved into the controls card the title is usually the last
+   thing in its column, and there the 8px just adds to the seam below. */
+.topic-masthead-main > .topic-title-main:last-child {
+  margin-bottom: 0;
+}
+
+.topic-title-main {
+  text-align: left;
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--fede-texto);
+}
+
+/* The view's description, first line of the controls card. The rule under it is
+   what separates "what this view shows" from "the controls that drive it". */
+.labor-view-desc {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: var(--hairline);
+}
+
+/* CENTRED on the page. It is a flex container, so centring it takes a block
+   wrapper it does not have -- `margin-inline: auto` on a `display: flex` box
+   does the same job without one, and keeps the control hugging its two pills
+   instead of stretching across the window. */
+.labor-view-switch {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 16px;
+  gap: 4px;
+  padding: 4px;
+  background: var(--fede-caja);
+  border: var(--hairline);
+  border-radius: 4px;
+}
+
+.labor-view-switch-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  padding: 9px 22px !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--fede-navy) !important;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.labor-view-switch-btn:hover {
+  background: var(--white) !important;
+}
+
+.labor-view-switch-btn.active {
+  background: var(--solid-blue, #091C50) !important;
+  color: var(--white) !important;
+  box-shadow: 0 2px 8px rgba(9, 28, 80, 0.18) !important;
+}
+
+.labor-view-switch-btn:focus-visible {
+  outline: 3px solid var(--bright-blue, var(--bright-blue));
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .labor-view-switch {
+    display: flex;
+  }
+
+  .labor-view-switch-btn {
+    flex: 1 1 0;
+    padding: 9px 12px !important;
+    font-size: 0.9375rem;
+  }
+}
+
+.labor-tenure-toggle {
+  background: var(--white);
+  border: 1px solid var(--fede-hairline);
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.labor-tenure-toggle .checkbox {
+  margin: 0;
+}
+
+.labor-tenure-toggle label {
+  font-weight: 600;
+  color: var(--fede-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.labor-tenure-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid var(--fede-navy);
+  border-radius: 50%;
+  background: var(--white);
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-items: center;
+}
+
+.labor-tenure-toggle input[type="checkbox"]:checked {
+  background: radial-gradient(circle, var(--fede-navy) 0 4px, var(--white) 5px);
+}
+
+
+.labor-plot-controls {
+  margin-bottom: 12px;
+}
+
+.labor-below-plot-controls {
+  margin-top: 16px;
+}
+
+.labor-table-country-selector {
+  width: 100%;
+}
+
+.labor-country-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labor-country-title {
+  font-weight: 700;
+  color: var(--fede-navy);
+  font-size: 1rem;
+}
+
+/* Across view: the "Open a country →" drill-down row (output$open_country_buttons).
+   Wraps the same .labor-country-buttons flag row the within view uses, so the row
+   keeps its position when the view switches. */
+.labor-open-country {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.labor-open-country-label {
+  color: var(--fede-gris-medio);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+}
+
+.labor-country-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+/* min-height, never height: the label is a country name at the standard
+   text size and `overflow: hidden` below would clip its second line. */
+.labor-country-button {
+  flex: 1 1 0;
+  min-width: 84px;
+  max-width: 124px;
+  min-height: 92px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--fede-hairline);
+  background: var(--white);
+  color: var(--fede-navy);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.labor-country-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(3, 47, 156, 0.12);
+  border-color: var(--bright-blue);
+}
+
+.labor-country-button.active {
+  border-color: var(--bright-blue);
+  box-shadow: 0 0 0 2px rgba(8, 27, 253, 0.2);
+}
+
+/* Selected country, non-salary rows only (.labor-country-strong, set by
+   build_country_flag_buttons in tabs/server/non_salary/helpers.R).
+   The base .active above is a 1px border plus a faint ring, which is easy to lose
+   in a row of 13 flags. This fills the card instead, keeping the same shape and
+   radius. Flat by design: no drop shadow, no accent bar. `box-shadow: none` is
+   explicit so the faint cyan ring from the base .active rule does not come back.
+   The white label + aria-pressed keep the state from resting on colour alone —
+   adopt them together, or the state rests on colour only.
+   Also set by minwage_country_flag_buttons (tabs/server/minwage.R). `firing`
+   keeps the subtler base treatment: its firing_country_flag_buttons still emits
+   the base classes only. */
+.labor-country-button.labor-country-strong.active {
+  background: var(--solid-blue, #091C50);
+  border-color: var(--solid-blue, #091C50);
+  color: var(--white);
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.labor-country-button.labor-country-strong.active .labor-country-label {
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* The flag needs a light edge to separate it from the dark fill. */
+.labor-country-button.labor-country-strong.active .labor-flag {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.92);
+}
+
+.labor-flag {
+  width: 26px;
+  height: 18px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.labor-country-label {
+  display: block;
+}
+
+.labor-country-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 47, 156, 0.92);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.labor-country-button:hover .labor-country-hover {
+  opacity: 1;
+}
+
+.labor-reg-table {
+  width: 100%;
+  font-family: var(--font-sans);
+}
+
+.labor-reg-country-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: var(--fede-azul-deep);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.labor-reg-country-title-flag {
+  width: 26px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(3, 47, 156, 0.16);
+}
+
+.labor-reg-accordion {
+  border-top: var(--hairline);
+}
+
+.labor-reg-accordion-item {
+  border-bottom: var(--hairline);
+}
+
+.labor-reg-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.labor-reg-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.labor-reg-accordion-header::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid var(--fede-gris-medio);
+  border-bottom: 1.5px solid var(--fede-gris-medio);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.labor-reg-accordion-item[open] > .labor-reg-accordion-header::after {
+  transform: rotate(225deg);
+}
+
+.labor-reg-accordion-title {
+  color: var(--fede-texto);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.labor-reg-accordion-body {
+  padding: 2px 4px 18px 4px;
+  color: var(--fede-texto);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.labor-reg-accordion-body ul,
+.labor-reg-accordion-body ol {
+  margin: 4px 0 0 0;
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+
+.labor-reg-accordion-body li {
+  margin: 2px 0;
+  padding-left: 0.15rem;
+}
+
+.labor-reg-program-body {
+  padding-top: 0;
+}
+
+.labor-reg-program-fields {
+  border-top: var(--hairline);
+}
+
+.labor-reg-program-field-item {
+  border-bottom: var(--hairline);
+}
+
+.labor-reg-program-field-item:last-child {
+  border-bottom: 0;
+}
+
+.labor-reg-program-field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.labor-reg-program-field-header::-webkit-details-marker {
+  display: none;
+}
+
+.labor-reg-program-field-header::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.25px solid var(--fede-gris-medio);
+  border-bottom: 1.25px solid var(--fede-gris-medio);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 14px;
+}
+
+.labor-reg-program-field-item[open] > .labor-reg-program-field-header::after {
+  transform: rotate(225deg);
+}
+
+.labor-reg-program-field-label {
+  color: var(--fede-texto);
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.labor-reg-program-field-value {
+  padding: 0 0 14px 0;
+}
+
+.labor-reg-neutral {
+  color: var(--fede-gris-medio);
+}
+
+/* Generic loading-message box for outputs (extracted from ui.r). */
+.output-loading-msg {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 48px 20px;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  border-radius: 4px;
+}
+.output-loading-msg.is-visible {
+  display: flex !important;
+}
+.output-loading-msg .ld-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.output-loading-msg .ld-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--bright-blue);
+  animation: ldBounce 1.2s ease-in-out infinite;
+}
+.output-loading-msg .ld-dots span:nth-child(2) { animation-delay: 0.2s; }
+.output-loading-msg .ld-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ldBounce {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+.output-loading-msg .ld-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fede-navy);
+  font-family: var(--font-sans);
+}
+
+.labor-within-note {
+  margin: 12px 0 0 0;
+  font-size: 1rem;
+  color: var(--fede-gris-texto);
+  font-style: italic;
+}
+.labor-within-note a {
+  color: var(--fede-azul-deep);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.labor-within-note a:hover {
+  color: var(--bright-blue);
+}
+
+/* ==========================================
+   Collapsible filter drawer (overlay)
+   markup: tabs/ui/filter_drawer.R · toggle: www/filter-drawer.js
+   ========================================== */
+.drawer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 18px 0;
+}
+/* Filters + Downloads travel together on the left; without this wrapper the
+   toolbar's space-between would spread all three buttons across the row and
+   strand Downloads in the middle. */
+.drawer-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.filter-toggle,
+.detail-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--solid-blue, #091C50);
+  color: var(--white);
+  border: 1px solid var(--solid-blue, #091C50);
+  border-radius: 4px;
+  padding: 13px 28px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(9, 28, 80, 0.18);
+  max-width: 100%;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.filter-toggle:hover,
+.detail-toggle:hover {
+  background: var(--bright-blue, var(--bright-blue));
+  border-color: var(--bright-blue, var(--bright-blue));
+  color: var(--solid-blue, #091C50);
+  box-shadow: 0 6px 16px rgba(9, 28, 80, 0.24);
+  transform: translateY(-1px);
+}
+.filter-toggle:focus-visible,
+.detail-toggle:focus-visible {
+  outline: 3px solid var(--bright-blue, var(--bright-blue));
+  outline-offset: 2px;
+}
+.drawer-toggle-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+}
+.detail-toggle-label {
+  max-width: 440px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filter-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 28, 80, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+  z-index: 2900;
+}
+.filter-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 400px;
+  max-width: 85vw;
+  background: var(--white);
+  box-shadow: 6px 0 24px rgba(9, 28, 80, 0.18);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 3000;
+  overflow-y: auto;
+  padding: 18px 18px 32px;
+}
+.filter-drawer.open {
+  transform: translateX(0);
+}
+/* Downloads reuses .filter-drawer (same side, same motion, and it inherits the
+   Esc handler's .filter-drawer selector); it just holds less, so it is narrower. */
+.download-drawer {
+  width: 340px;
+}
+.detail-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 650px;
+  max-width: 92vw;
+  background: var(--white);
+  box-shadow: -6px 0 24px rgba(9, 28, 80, 0.18);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  z-index: 3000;
+  overflow-y: auto;
+  padding: 18px 18px 32px;
+}
+.detail-drawer.open {
+  transform: translateX(0);
+}
+.filter-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--hairline);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.filter-drawer-title {
+  font-weight: 800;
+  color: var(--fede-navy);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.filter-drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--fede-navy);
+  cursor: pointer;
+  padding: 0 4px;
+}
+.filter-drawer-close:hover {
+  color: var(--bright-blue, var(--bright-blue));
+}
+.filter-drawer-download {
+  margin-top: 18px;
+}
+
+/* "Clear filters" button at the top of the filter list. */
+.filter-clear-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--white);
+  color: var(--fede-navy);
+  border: 1px solid var(--fede-hairline);
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.filter-clear-button:hover,
+.filter-clear-button:focus {
+  background: var(--fede-caja);
+  border-color: var(--fede-navy);
+  color: var(--fede-azul-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-drawer,
+  .detail-drawer,
+  .filter-backdrop {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   On-page controls card (below the header box, ABOVE the drawer toolbar). Row 1
+   is the primary choice, row 2 is every filter that refines it — neither
+   non-salary nor minwage has a filter drawer.
+   markup: labor_controls_card_ui / labor_filter_bar_ui in tabs/ui/non_salary.R;
+   minwage_across_ui's top_controls_ui in tabs/ui/minwage.R (row 1 = the section
+   pills, row 2 = the filters of the section on screen, one conditionalPanel
+   each)
+   ========================================== */
+.labor-top-controls {
+  background: var(--white);
+  border: var(--hairline);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 14px rgba(3, 47, 156, 0.05);
+}
+
+/* The top of that one block: the masthead sits directly above this card (it is
+   rendered once, above BOTH view roots, so the two are not DOM siblings and
+   this cannot be an adjacent-sibling selector). Every view builds the card --
+   `moduleLayout` makes one for the description alone when a view has no
+   controls -- so there is no view where this leaves a cut-off top edge. */
+.topic-page > .labor-top-controls:first-child {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding-top: 0;   /* the masthead owns the seam; see .topic-masthead */
+  /* Matches the masthead's 24px. With the two boxes joined, the title and the
+     description below it are the same column of text and must share a left
+     edge; at 16px against 24px the 8px step was visible down the seam. */
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.labor-category-bar .labor-filter-label {
+  display: block;
+  margin-bottom: 8px;
+}
+.labor-top-controls .labor-category-button {
+  font-size: 1rem;
+  padding: 8px 18px;
+}
+
+/* Row 2. Each cell IS the shiny-html-output node (the class is set on the
+   uiOutput itself), so :empty collapses a filter that rendered NULL instead of
+   leaving a phantom gap in the flex row. */
+.labor-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px 24px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: var(--hairline);
+}
+.labor-filter-bar > .labor-filter-cell:empty {
+  display: none;
+}
+/* A filter bar that IS the first row of the card (btax's across view, whose
+   single section means no pill row above it) must not draw the separator: a
+   top border with nothing above it reads as a stray rule across the card. */
+.labor-filter-bar.is-lead {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.labor-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.labor-filter-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.labor-filter-cell-mw {
+  flex: 0 0 300px;
+  width: 300px;
+}
+.labor-filter-cell-clear {
+  margin-left: auto;
+  align-self: flex-end;
+}
+.labor-filter-clear-wrap {
+  margin: 0;
+}
+
+/* ==========================================
+   Minimum-Wage sliders (shinyWidgets sliderTextInput / ionRangeSlider)
+   markup: output$mw_selection_ui in tabs/server/non_salary/plots.R
+   - .mw-slider-single (Across): a single point that moves; hide the cumulative
+     fill bar so it does not read as a range/progress bar.
+   - .mw-slider-range (Within): a two-handle span; keep the filled bar BETWEEN
+     the handles so the two views' MW filters look clearly different.
+   ========================================== */
+.mw-slider-single .irs-bar {
+  display: none;
+}
+.mw-slider-single .irs-line {
+  background: var(--fede-hairline);
+}
+.mw-slider-single .irs-handle > i:first-child,
+.mw-slider-single .irs-handle {
+  cursor: pointer;
+}
+
+/* ==========================================
+   Across-country dashboards: the grid a section's charts are laid out in.
+   One cell may span both columns via .across-cell-full.
+   BOTH across views are sectioned now (one question per screen, conditionalPanel
+   on `pick_section`), so a grid usually holds a single full-width cell; firing's
+   "How it grows with tenure" section is the one that still uses the two-column
+   pair. There is no longer a chart-scoped control row: `.across-cell-controls`
+   was deleted when the last filter moved into the on-page controls card.
+   markup: minwage_across_ui (tabs/ui/minwage.R), firing_across_ui (tabs/ui/firing.R)
+   ========================================== */
+.across-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 28px;
+}
+.across-cell {
+  min-width: 0;   /* let plotly shrink inside the grid track */
+}
+.across-cell-full {
+  grid-column: 1 / -1;
+}
+/* Single column below 1000px, not 820px. At 900px two columns leave ~381px per
+   cell, which is narrower than the x-axis titles themselves ("Minimum-wage rate
+   (country's own reference rate = 1)" measures 432px) -- so the title was cut on
+   the right, the legend wrapped to two rows and landed on top of it. Full-width
+   cells at that viewport fix all three at once, and a 13-row dumbbell was
+   unreadable at 381px anyway. */
+@media (max-width: 1000px) {
+  .across-grid {
+    grid-template-columns: 1fr;
+  }
+  .across-cell-full {
+    grid-column: auto;
+  }
+}
+
+/* The By-country text section of Business Taxes (the CIT row and the regimes).
+   A READING MEASURE, not a layout cap: this block is prose, and at 1600px its
+   value column runs ~150 characters per line. Same reasoning as .topic-subtitle's
+   110ch. Charts and data tables stay uncapped. */
+.btax-text-section {
+  max-width: 1200px;
+}
+
+/* -----------------------------------------------------------------------------
+   Provisional-data marker
+   -----------------------------------------------------------------------------
+   Charts whose data has not yet been sourced from the report carry an asterisk
+   next to the title and a caveat line under the description (chart_heading_ui
+   with provisional = TRUE). The marker is deliberately loud enough to be seen
+   at a glance but not so loud that it competes with the chart itself.
+-------------------------------------------------------------------------------- */
+.chart-provisional-mark {
+  color: #B0631A;
+  font-weight: 700;
+  margin-left: 2px;
+  cursor: help;
+}
+.chart-provisional-note {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  font-size: 0.875rem;
+  color: #8A5A0C;
+  background: #FBF3E6;
+  border-left: 3px solid #B0631A;
+  border-radius: 2px;
+  padding: 7px 12px;
+  margin: 0 0 10px;
+}
+.chart-provisional-note > span {
+  font-weight: 700;
+  color: #B0631A;
+}
+
+/* =============================================================================
+   minwage within flag row: per-country rate count.
+   Only 5 of minwage's 13 countries have any dispersion to show. The count tells
+   the reader that BEFORE the click. All 13 stay enabled and visible — hiding or
+   disabling the other 8 would undo the deliberate decision that put the
+   single-rate countries in the data file so "one national rate" reads differently
+   from "no data" (data/minwage/README.md), and a disabled flag says "broken",
+   not "one rate".
+   The min-height bump is scoped to the -counts panel: .labor-country-button sets
+   `overflow: hidden`, so a third line clips at the shared 92px, and raising that
+   shared value would grow every non-salary row too.
+   markup: minwage_country_flag_buttons (tabs/server/minwage.R).
+   ========================================================================== */
+.labor-country-panel-counts .labor-country-button {
+  min-height: 108px;
+}
+.labor-country-count {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  color: var(--solid-blue-60, rgba(9, 28, 80, 0.72));
+}
+.labor-country-button.labor-country-single .labor-country-count {
+  color: var(--fede-gris-medio);
+  font-style: italic;
+}
+/* Legible against the filled selected state. */
+.labor-country-button.labor-country-strong.active .labor-country-count {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* =============================================================================
+   Chart footer: the "Note:" and "Source:" lines under a plot, the counterpart of
+   .section-title above it. markup: chart_footer_ui() in tabs/ui/filter_drawer.R.
+   These used to be plotly annotations INSIDE the SVG, where they had to be sized
+   in R against a left margin the browser computes (`automargin`) -- so they were
+   clipped by up to 171px on six of the seven minwage charts, and had to dodge a
+   legend that wraps at narrow widths. As HTML they cannot clip, they wrap with
+   CSS, they are selectable, and the plot gets back the bottom margin they used to
+   reserve. Safe to leave the SVG because every chart sets displayModeBar = FALSE,
+   so there is no image export for them to be missing from.
+   0.875rem is the size they had inside the plot (plotly_fs(11) = 14px).
+   ========================================================================== */
+.chart-footer {
+  margin: 10px 0 4px;
+  max-width: 110ch;
+}
+.chart-note,
+.chart-source {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--fede-gris-texto);
+  margin: 0 0 4px;
+}
+.chart-note-label {
+  font-weight: 700;
+  margin-right: 4px;
+}
+.chart-source {
+  color: var(--fede-gris-medio);
+}
+
+/* Firing Costs: the tenure slider, in the on-page controls card.
+   An `irs` track with width:100% collapses to its content inside a flex parent,
+   so the CELL carries the width and the slider fills it.
+   The basis is on the CELL, not on the slider: the cell is an item of
+   `.labor-filter-bar` (a flex ROW, where flex-basis is a width), while the
+   slider is inside `.labor-filter-group` (a flex COLUMN, where a flex-basis
+   would size its HEIGHT). It used to sit in `.across-cell-controls` -- also a
+   row -- which is why the basis was on the slider itself. */
+.firing-tenure-cell {
+  flex: 1 1 360px;
+  min-width: 240px;
+  max-width: 560px;
+}
+.firing-tenure-slider {
+  width: 100%;
+}
+.firing-tenure-slider .irs {
+  width: 100%;
+}

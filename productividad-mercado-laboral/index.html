@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulatory Frameworks Explorer</title>
+<meta name="description" content="An inventory of critical regulatory frameworks for business in Latin America: non-salary labor costs, minimum wages, firing costs and business taxes across 11 Latin American countries.">
+<link rel="icon" type="image/png" href="assets/img/favicon-fedesarrollo.png">
+
+<!-- Inter for everything, Libre Baskerville for headings. ES Face and PP Neue
+     Machina ship under a desktop licence and cannot be served; fedebanner.cls
+     itself falls back to Libre Baskerville, so this is the kit's own
+     substitute rather than an invention. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap">
+
+<!-- styles.css and labor.css are the Shiny app's own stylesheets, carried over
+     almost unchanged: ~90% of their rules target custom classes on markup the
+     app built itself. widgets.css supplies the small remainder that used to
+     come from Bootstrap 3 and from the two jQuery widgets. Load order matters:
+     widgets.css last, so its `.tab-pane { display:none }` cannot be overridden
+     by something earlier. -->
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/labor.css">
+<link rel="stylesheet" href="assets/css/widgets.css">
+</head>
+
+<body>
+<!-- THE CLASS CHAIN IS DELIBERATE. styles.css section 6 builds the
+     full-height flex shell that keeps the landing on one screen out of
+     `body > .container-fluid > .main-content > .tabbable > .tab-content >
+     .tab-pane`, which is the DOM Shiny's fluidPage + tabsetPanel emitted.
+     Reproducing it means that stylesheet works verbatim and its comments stay
+     true; renaming would mean re-authoring 1,800 lines to say the same thing.
+     Its own comment warns: never add `overflow: hidden` in this chain, because
+     under browser zoom the page must still scroll (WCAG 1.4.4 / 1.4.12). -->
+<div class="container-fluid">
+
+  <div class="header">
+    <div class="header-content">
+
+      <!-- ONE link for the whole three-logo strip, so the banner is a single
+           tab stop with a single accessible name rather than three links that
+           all do the same thing. It is also the only way back home: the topic
+           nav has no "Home" item. The partners' own sites are linked from the
+           footer, which holds the only links that leave the application. -->
+      <a href="#/" class="header-logos header-logo-link" title="Back to home" aria-label="Back to home">
+        <img src="assets/img/WB-blanco.png" class="header-logo wb-logo" alt="World Bank Group">
+        <span class="header-logo-divider" aria-hidden="true"></span>
+        <img src="assets/img/fede-logo-blanco.png" class="header-logo fede-logo" alt="Fedesarrollo">
+        <span class="header-logo-divider" aria-hidden="true"></span>
+        <img src="assets/img/CEDE-blanco.png" class="header-logo cede-logo" alt="Universidad de los Andes - Facultad de Economia">
+      </a>
+
+      <!-- Under 1160px the four topics collapse into this button. A real
+           <button> with aria-expanded/aria-controls, so it is reachable by
+           keyboard and announced as a disclosure. Icon-only, but it still has
+           an accessible name through aria-label. -->
+      <button type="button" class="nav-toggle" id="topic-nav-toggle"
+              aria-label="Open the section menu" aria-expanded="false" aria-controls="topic-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="header-topic-nav" id="topic-nav" aria-label="Dashboard sections">
+        <a href="#/labor"   class="header-topic-link" data-topic="labor">Non-salary labor costs</a>
+        <a href="#/minwage" class="header-topic-link" data-topic="minwage">Minimum Wages</a>
+        <a href="#/firing"  class="header-topic-link" data-topic="firing">Firing Costs</a>
+        <a href="#/btax"    class="header-topic-link" data-topic="btax">Business Taxes</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="tabbable">
+      <div class="tab-content">
+
+        <!-- ================= LANDING =================
+             Image left, text and the four topic cards right. Everything is in
+             this one row so the whole landing fits one screen without
+             scrolling; the vertical rhythm and type sizes are fluid (the
+             --lp-* clamp() tokens in styles.css section 1). There is no
+             section below this one -- do not add one. -->
+        <section class="tab-pane active" data-value="landing">
+          <div class="landing-container">
+
+            <div class="landing-left-col">
+              <div class="landing-image-box"></div>
+            </div>
+
+            <div class="landing-right-col">
+              <div class="landing-header-row">
+                <div class="landing-title">
+                  <h1>Shaping the Playing Field for Economic Growth</h1>
+                </div>
+              </div>
+
+              <div class="landing-eyebrow">An inventory of critical regulatory frameworks for business in Latin America </div>
+
+              <div class="landing-desc-row">
+                <p>Policy outcomes depend on design. Small differences in how regulations are written and implemented can produce large differences in incentives, compliance costs, and unintended effects.</p>
+                <p>This inventory compares labor market, social protection, and tax regulations across 11 Latin American countries—Argentina, Bolivia, Brazil, Chile, Colombia, Ecuador, the Dominican Republic, Honduras, Mexico, Paraguay, and Peru. These frameworks shape workers' incomes and conditions, and firms' labor costs and hiring decisions, influencing how productive activity is organized.</p>
+              </div>
+
+              <!-- A compact overline, not a 32px heading. -->
+              <div class="landing-explore-label">Explore</div>
+
+              <!-- In the Shiny app each of these four carried its own
+                   hand-written onclick calling Shiny.setInputValue, duplicated
+                   from topic_nav_onclick(). Here the href IS the navigation:
+                   the router listens to hashchange, so no handler is needed at
+                   all, and a card is a real link you can middle-click or
+                   bookmark. -->
+              <div class="landing-cards-grid">
+                <div class="landing-widget-grid">
+                  <div class="widget-icon widget-icon--labor"><div class="icon-arrow-mask"></div></div>
+                  <a class="widget-card" href="#/labor"><h3>Non-salary labor costs</h3></a>
+                </div>
+                <div class="landing-widget-grid">
+                  <div class="widget-icon widget-icon--minwage"><div class="icon-arrow-mask"></div></div>
+                  <a class="widget-card" href="#/minwage"><h3>Minimum wages</h3></a>
+                </div>
+                <div class="landing-widget-grid">
+                  <div class="widget-icon widget-icon--firing"><div class="icon-arrow-mask"></div></div>
+                  <a class="widget-card" href="#/firing"><h3>Firing costs</h3></a>
+                </div>
+                <div class="landing-widget-grid">
+                  <div class="widget-icon widget-icon--btax"><div class="icon-arrow-mask"></div></div>
+                  <a class="widget-card" href="#/btax"><h3>Business taxes</h3></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <p class="footer-text">&copy; 2026 World Bank Group &mdash; with the collaboration of <a href="https://www.fedesarrollo.org.co/" target="_blank" rel="noopener noreferrer">Fedesarrollo</a> and the <a href="https://economia.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">Facultad de Econom&iacute;a, Universidad de los Andes</a>.</p>
+          </div>
+        </section>
+
+        <!-- ================= TOPIC =================
+             One container the active module renders into. In the Shiny app this
+             was uiOutput("dynamic_content"), rebuilt server-side on every topic
+             click. -->
+        <section class="tab-pane" data-value="content">
+          <div class="content-area">
+            <div id="topic-root" aria-live="polite"></div>
+          </div>
+
+          <div class="footer">
+            <p class="footer-text">&copy; 2026 World Bank Group &mdash; with the collaboration of <a href="https://www.fedesarrollo.org.co/" target="_blank" rel="noopener noreferrer">Fedesarrollo</a> and the <a href="https://economia.uniandes.edu.co/" target="_blank" rel="noopener noreferrer">Facultad de Econom&iacute;a, Universidad de los Andes</a>.</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- plotly.js-BASIC, not the full bundle. The app draws only `bar` and
+     `scatter` traces (verified across all of tabs/: 32 bar, 6 scatter, one
+     add_segments, nothing else), and basic covers those plus subplots and
+     multicategory axes at ~75 KB gzip against ~350 KB.
+
+     PINNED TO 2.25.2 BECAUSE THAT IS THE ENGINE THE R APP RENDERS WITH: it is
+     the plotly.js bundled in the installed plotly R package
+     (htmlwidgets/lib/plotlyjs/plotly-latest.min.js, which reports "plotly.js
+     v2.25.2"). The reference figures in dev/fixtures/ were captured from it,
+     so matching the version is what makes the comparison a test of this port
+     rather than a diff of two plotly releases. Upgrading is a separate change
+     with its own re-measurement. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.25.2/plotly-basic.min.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

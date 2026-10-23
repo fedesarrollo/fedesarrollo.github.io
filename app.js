@@ -9,7 +9,7 @@ const ORG = 'fedesarrollo';
 const DASHBOARDS = [
   { name: 'Macrofiscal', description: 'Indicadores macroeconómicos y fiscales.', chart: 'barras', url: '' },
   { name: 'Seguridad y Justicia', description: 'Indicadores de criminalidad, seguridad y justicia.', chart: 'lineas', url: '' },
-  { name: 'Productividad y Mercado Laboral', description: 'Indicadores de productividad, empleo e informalidad.', chart: 'area', url: '' },
+  { name: 'Productividad y Mercado Laboral', description: 'Marcos regulatorios del mercado laboral: costos no salariales, salarios mínimos, costos de despido e impuestos a las empresas.', chart: 'area', url: 'productividad-mercado-laboral/' },
 ];
 
 // Herramientas internas. `repo` es el nombre del repositorio dentro de la organización.

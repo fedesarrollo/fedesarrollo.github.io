@@ -9,32 +9,32 @@ const ORG = 'fedesarrollo';
 const DASHBOARDS = [
   { name: 'Macrofiscal', description: 'Indicadores macroeconómicos y fiscales.', chart: 'barras', url: '' },
   { name: 'Seguridad y Justicia', description: 'Indicadores de criminalidad, seguridad y justicia.', chart: 'lineas', url: '' },
-  { name: 'Productividad y Mercado Laboral', description: 'Marcos regulatorios del mercado laboral: costos no salariales, salarios mínimos, costos de despido e impuestos a las empresas.', chart: 'area', url: 'productividad-mercado-laboral/' },
+  { name: 'Productividad y Mercado Laboral', description: 'Marcos regulatorios del mercado laboral: costos no salariales, salarios mínimos, costos de despido e impuestos a las empresas.', chart: 'area', url: '../productividad-mercado-laboral/' },
 ];
 
 // Herramientas internas. `repo` es el nombre del repositorio dentro de la organización.
-// `image` es la vista previa (assets/img/portal/); sin imagen se puede mostrar un árbol de carpetas `tree`.
+// `image` es la vista previa (../assets/img/portal/); sin imagen se puede mostrar un árbol de carpetas `tree`.
 // Solo van repositorios de la organización fedesarrollo, no de cuentas personales.
 const HERRAMIENTAS = [
   {
     name: 'Plantilla de documento de política',
     description: 'Carpetas, flujo de fuentes y cifras, y la clase LaTeX para que el documento salga con el formato de la serie.',
     repo: 'plantilla-documento-politica',
-    image: 'assets/img/portal/plantilla.jpg',
+    image: '../assets/img/portal/plantilla.jpg',
     contain: true,
   },
   {
     name: 'Gráficas con el formato estándar',
     description: 'Colores, fuente y formato institucionales para gráficas en Python, R y Stata.',
     repo: 'graph-template',
-    image: 'assets/img/portal/graficas.jpg',
+    image: '../assets/img/portal/graficas.jpg',
     contain: true,
   },
   {
     name: 'Banner de seminarios',
     description: 'Banner de una diapositiva para anunciar los Seminarios de Investigación.',
     repo: 'banner-fedesarrollo',
-    image: 'assets/img/portal/banner.jpg',
+    image: '../assets/img/portal/banner.jpg',
   },
 ];
 

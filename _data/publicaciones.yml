@@ -1,0 +1,528 @@
+# Publicaciones que aparecen en el sitio, de la más reciente a la más antigua.
+# Cada una enlaza a su ficha del repositorio (hdl.handle.net/11445/<handle>).
+# Las de la serie 2026-2030 solo llevan «serie_slug»: el título, los autores y
+# la portada salen de _data/serie.yml.
+# Para agregar una publicación, copie un bloque completo arriba de la lista y
+# cambie sus datos. Ver COMO-EDITAR.md.
+#
+# tipo: Investigación | Libro | Comisión | Encuesta | Publicación periódica | Comunicado
+#       | Documento de Política | Nota de Política
+# temas: códigos de _data/temas.yml
+# fecha: AAAA-MM o AAAA-MM-DD
+
+- titulo: "Encuesta de Opinión Financiera. Resultados octubre 2026"
+  tipo: Encuesta
+  serie: EOF
+  fecha: "2026-10"
+  temas: [financiero, macroeconomia]
+  handle: 4992
+  portada: /assets/img/portadas/4992.jpg
+  resumen: "En octubre, los analistas encuestados esperan que la tasa de intervención del Banco de la República cierre el año en 12,50%. En términos de crecimiento económico, se anticipa una variación anual del PIB de 2,0% para el tercer trimestre de 2026."
+
+- titulo: "Indicadores de confianza del mercado de renta variable. Resultados octubre 2026"
+  tipo: Encuesta
+  serie: Renta variable
+  fecha: "2026-10"
+  temas: [financiero, macroeconomia]
+  handle: 4993
+  portada: /assets/img/portadas/4993.jpg
+  resumen: "En octubre, el Índice de Confianza del Mercado Accionario se ubicó en 91,3%, el Índice de Resiliencia en 55,6%, el Índice de Inmunidad en 78,9% y el Índice de Valoración en 64,3%. Los analistas esperan que el MSCI COLCAP se ubique en 2.560 a finales del mes."
+
+- titulo: "Prospectiva Económica, Octubre 2026"
+  tipo: Publicación periódica
+  serie: Prospectiva Económica
+  fecha: "2026-10"
+  temas: [macroeconomia, comercio-exterior]
+  handle: 4989
+  portada: /assets/img/portadas/4989.jpg
+  resumen: "Las proyecciones contenidas en la presente edición de Prospectiva Económica presentan, en general, ligeros cambios con respecto a las del informe anterior."
+
+- titulo: "Indicadores de confianza del mercado de renta variable. Resultados septiembre 2026"
+  tipo: Encuesta
+  serie: Renta variable
+  fecha: "2026-09"
+  temas: [financiero, macroeconomia]
+  handle: 4986
+  portada: /assets/img/portadas/4986.jpg
+  resumen: "En septiembre, el Índice de Confianza del Mercado Accionario se ubicó en 90,9%, el Índice de Resiliencia en 46,7%, el Índice de Inmunidad en 66,7% y el Índice de Valoración en 72,2%. Los analistas esperan que el MSCI COLCAP se ubique en 2.560 a finales del mes."
+
+- titulo: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC). Resultados Septiembre 2026"
+  tipo: Encuesta
+  serie: IPEC
+  fecha: "2026-09"
+  temas: [macroeconomia]
+  handle: 4991
+  portada: /assets/img/portadas/4991.jpg
+  resumen: "En Septiembre de 2026, el IPEC se situó en 237, lo que equivale a un aumento de 43 puntos frente a agosto de 2026 (194) y a un aumento de 5 puntos frente al registro de Septiembre de 2025 (232)."
+
+- titulo: "Encuesta de Opinión del Consumidor. Resultados septiembre de 2026"
+  tipo: Encuesta
+  serie: EOC
+  fecha: "2026-09"
+  temas: [macroeconomia]
+  handle: 4990
+  portada: /assets/img/portadas/4990.jpg
+  resumen: "En septiembre de 2026, el Índice de Confianza del Consumidor (ICC) alcanzó un balance de 15,7%, aumentando en 0,2 puntos porcentuales frente al mes de agosto de 2026 (15,5%)."
+
+- titulo: "Encuesta de Opinión del Consumidor. Resultados agosto de 2026"
+  tipo: Encuesta
+  serie: EOC
+  fecha: "2026-09"
+  temas: [macroeconomia]
+  handle: 4984
+  portada: /assets/img/portadas/4984.jpg
+  resumen: "En agosto de 2026, el Índice de Confianza del Consumidor (ICC) alcanzó un balance de 15,5%, disminuyendo en 5,2 puntos porcentuales frente al mes de julio de 2026 (20,7%)."
+
+- titulo: "Encuesta de Opinión Financiera. Resultados septiembre 2026"
+  tipo: Encuesta
+  serie: EOF
+  fecha: "2026-09"
+  temas: [financiero, macroeconomia]
+  handle: 4985
+  portada: /assets/img/portadas/4985.jpg
+  resumen: "En septiembre, los analistas encuestados esperan que la tasa de intervención del Banco de la República cierre el año en 12,25%. En términos de crecimiento económico, se anticipa una variación anual del PIB de 2,1% para el tercer trimestre de 2026."
+
+- titulo: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC). Resultados Agosto 2026"
+  tipo: Encuesta
+  serie: IPEC
+  fecha: "2026-09"
+  temas: [macroeconomia]
+  handle: 4983
+  portada: /assets/img/portadas/4983.jpg
+  resumen: "En agosto de 2026, el IPEC se situó en 194, lo que equivale a una reducción de 42 puntos frente a julio de 2026 (236) y a una reducción 77 puntos frente al registro de agosto de 2025 (271)."
+
+- titulo: "Bitácora Semanal. Agosto 31 de 2026. Semana 35"
+  tipo: Publicación periódica
+  serie: Bitácora Semanal
+  fecha: "2026-08-31"
+  temas: [macroeconomia]
+  handle: 4982
+  portada: /assets/img/portadas/4982.jpg
+  resumen: "En esta edición de la Bitácora Semanal se encuentran actualizados: Los resultados de importaciones y balanza comercial de junio de 2026. La Encuesta de Opinión Empresarial de julio de 2026. Variables financieras. Tasas de interés y Precios de los commodities."
+
+- titulo: "Bitácora Semanal. Agosto 24 de 2026. Semana 34"
+  tipo: Publicación periódica
+  serie: Bitácora Semanal
+  fecha: "2026-08-24"
+  temas: [macroeconomia]
+  handle: 4979
+  portada: /assets/img/portadas/4979.jpg
+  resumen: "Buenos días a todos, en esta edición de la Bitácora Semanal se encuentra actualizados: Resultados del Producto Interno Bruto del segundo trimestre de 2026. Variables financieras. Tasas de interés y Precios de los commodities."
+
+- titulo: "Resultados del PIB para el segundo trimestre de 2026"
+  tipo: Comunicado
+  fecha: "2026-08-24"
+  temas: [macroeconomia]
+  handle: 4980
+  portada: /assets/img/portadas/4980.jpg
+  resumen: "El PIB de Colombia creció 3,4% en el segundo trimestre de 2026 frente al mismo periodo de 2025, acelerándose respecto al trimestre anterior y alcanzando su mayor crecimiento desde el tercer trimestre de 2025."
+
+- titulo: "Bitácora Semanal. Agosto 18 de 2026. Semana 33"
+  tipo: Publicación periódica
+  serie: Bitácora Semanal
+  fecha: "2026-08-18"
+  temas: [macroeconomia]
+  handle: 4976
+  portada: /assets/img/portadas/4976.jpg
+  resumen: "En esta edición de la Bitácora Semanal se encuentran actualizados: El Informe de Política Monetaria del Banco de la República de julio de 2026. Los resultados del Índice de Incertidumbre de la Política Económica en Colombia (IPEC) de julio de 2026. Variables financieras."
+
+- titulo: "Bitácora Semanal. Agosto 10 de 2026. Semana 32"
+  tipo: Publicación periódica
+  serie: Bitácora Semanal
+  fecha: "2026-08-10"
+  temas: [macroeconomia]
+  handle: 4974
+  portada: /assets/img/portadas/4974.jpg
+  resumen: "En esta edición de la Bitácora Semanal se encuentran actualizados: Decisión de tasa de interés del Banco de la República - julio 2026. World Economic Outlook del FMI - Julio 2026. Variables financieras, Tasas de interés y Precios de los Commodities."
+
+- titulo: "Bitácora Semanal. Agosto 03 de 2026. Semana 31"
+  tipo: Publicación periódica
+  serie: Bitácora Semanal
+  fecha: "2026-08-03"
+  temas: [macroeconomia]
+  handle: 4972
+  portada: /assets/img/portadas/4972.jpg
+  resumen: "En esta edición de Bitácora Semanal se encuentran actualizados: Resultados de importaciones y balanza de pagos de mayo de 2026. Decisión de tasas de interés de la Reserva Federal de julio de 2026. Decisión de tasas de interés del Banco Central Europeo de julio de 2026. Variables Financieras."
+
+- titulo: "Encuesta de Opinión Empresarial. Resultados agosto de 2026"
+  tipo: Encuesta
+  serie: EOE
+  fecha: "2026-08"
+  temas: [macroeconomia]
+  handle: 4988
+  portada: /assets/img/portadas/4988.jpg
+  resumen: "En agosto de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 23,3%, lo que representó una disminución de 4,2 puntos porcentuales (pps) respecto al mes previo (ICCO julio 2026: 27,5%)."
+
+- serie_slug: reto-fiscal-de-colombia
+  tipo: Documento de Política
+  fecha: "2026-08"
+  temas: [macroeconomia]
+
+- titulo: "Encuesta de Opinión Empresarial. Resultados julio de 2026"
+  tipo: Encuesta
+  serie: EOE
+  fecha: "2026-07"
+  temas: [macroeconomia]
+  handle: 4981
+  portada: /assets/img/portadas/4981.jpg
+  resumen: "En julio de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 27,5%, lo que representó una disminución de 1,1 puntos porcentuales (pps) respecto al mes previo (ICCO junio 2026: 28,6%)."
+
+- serie_slug: crecimiento-o-equidad
+  tipo: Nota de Política
+  fecha: "2026-07"
+  temas: [desarrollo-productivo, mercado-laboral]
+
+- serie_slug: paz-total
+  tipo: Nota de Política
+  fecha: "2026-07"
+  temas: [instituciones-justicia]
+
+- serie_slug: crimen-organizado
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [instituciones-justicia]
+
+- serie_slug: justicia
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [instituciones-justicia]
+
+- serie_slug: lucha-contra-la-corrupcion
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [instituciones-justicia]
+
+- serie_slug: electricidad-y-gas
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [mineria-energia]
+
+- serie_slug: educacion-pertinente
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [educacion, mercado-laboral]
+
+- serie_slug: licenciamiento-ambiental
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [medio-ambiente, infraestructura]
+
+- serie_slug: salud
+  tipo: Documento de Política
+  fecha: "2026-07"
+  temas: [salud]
+
+- titulo: "Encuesta de Opinión Empresarial. Resultados junio de 2026"
+  tipo: Encuesta
+  serie: EOE
+  fecha: "2026-06"
+  temas: [macroeconomia]
+  handle: 4971
+  portada: /assets/img/portadas/4971.jpg
+  resumen: "En junio de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 28,6%, lo que representó un aumento de 8,1 puntos porcentuales (pps) respecto al mes previo (ICCO mayo 2026: 20,5%)."
+
+- titulo: "Oportunidades productivas y de inversión en Colombia en el contexto de la relocalización de cadenas globales de valor"
+  tipo: Investigación
+  fecha: "2026-05"
+  autores: "Rafael Puyana, David Gelvez, Clara P. Martín y otros"
+  temas: [desarrollo-productivo, infraestructura, macroeconomia, mercado-laboral]
+  handle: 4944
+  portada: /assets/img/portadas/4944.jpg
+  resumen: "La reconfiguración del comercio internacional, el contexto geopolítico y los procesos acelerados de relocalización de cadenas globales de valor abren oportunidades concretas para economías emergentes con condiciones competitivas."
+
+- titulo: "Encuesta de Opinión Empresarial. Resultados mayo de 2026"
+  tipo: Encuesta
+  serie: EOE
+  fecha: "2026-05"
+  temas: [macroeconomia]
+  handle: 4959
+  portada: /assets/img/portadas/4959.jpg
+  resumen: "En mayo de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 20,5%, lo que representó una disminución de 1,3 puntos porcentuales (pps) respecto al mes previo (ICCO abril 2026: 21,8%)."
+
+- titulo: "Encuesta de Opinión Empresarial. Resultados abril de 2026"
+  tipo: Encuesta
+  serie: EOE
+  fecha: "2026-04"
+  temas: [macroeconomia]
+  handle: 4948
+  portada: /assets/img/portadas/4948.jpg
+  resumen: "En abril de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 21,8%, lo que representó una disminución de 1,0 punto porcentual (pp) respecto al mes previo (ICCO marzo 2026: 22,8%)."
+
+- titulo: "Prospectiva Económica, Abril 2026"
+  tipo: Publicación periódica
+  serie: Prospectiva Económica
+  fecha: "2026-04"
+  temas: [macroeconomia, comercio-exterior]
+  handle: 4920
+  portada: /assets/img/portadas/4920.jpg
+  resumen: "Respecto al sector externo, en el primer trimestre de 2026 la economía mundial enfrentó un choque geopolítico asociado al escalamiento militar en Oriente Medio, lo que incrementó la aversión global al riesgo y elevó los precios del petróleo y del carbón."
+
+- titulo: "Del Gasto al Impacto: Revisión del Gasto Público en Agua y Saneamiento en Colombia"
+  tipo: Investigación
+  fecha: "2026-03-31"
+  autores: "María Pérez- Urdiales, Laura Giles Álvarez, Adriana Castillo y otros"
+  temas: [infraestructura]
+  handle: 4958
+  portada: /assets/img/portadas/4958.jpg
+  resumen: "Lograr el acceso universal y seguro al agua y al saneamiento para 2030 sigue siendo un reto importante en América Latina y el Caribe."
+
+- titulo: "Tendencia Económica No. 266"
+  tipo: Publicación periódica
+  serie: Tendencia Económica
+  fecha: "2026-02"
+  temas: [macroeconomia, salud]
+  handle: 4907
+  portada: /assets/img/portadas/4907.jpg
+  resumen: "Editorial: Entre 2000 y 2025, el presupuesto del sector salud creció a una tasa real anual promedio de 6,5%, superior al 4,0% del presupuesto total, lo que elevó su participación de 6,1% a 12,8% del PGN y de 1,9% a 3,8% del PIB, consolidándolo como el tercer sector de mayor tamaño."
+
+- titulo: "Tendencia Económica No. 265"
+  tipo: Publicación periódica
+  serie: Tendencia Económica
+  fecha: "2026-01"
+  temas: [macroeconomia, mercado-laboral]
+  handle: 4892
+  portada: /assets/img/portadas/4892.jpg
+  resumen: "Editorial: El 22 de diciembre, el Gobierno nacional publicó el Decreto 1390 de 2025, mediante el cual declaró la emergencia económica en todo el territorio nacional."
+
+- titulo: "Políticas para la inclusión social y productiva"
+  tipo: Investigación
+  fecha: "2025-12"
+  autores: "Luis F. Mejía, Cristina Fernández y Sara Ramírez"
+  temas: [macroeconomia]
+  handle: 4855
+  portada: /assets/img/portadas/4855.jpg
+  resumen: "El principal desafío de la política social en los próximos años consistirá en continuar reduciendo la pobreza con recursos fiscales limitados y en presencia de retos estructurales en la inclusión productiva."
+
+- titulo: "Una estrategia de ajuste fiscal"
+  tipo: Investigación
+  fecha: "2025-12"
+  autores: "Luis F. Mejía"
+  temas: [macroeconomia]
+  handle: 4853
+  portada: /assets/img/portadas/4853.jpg
+  resumen: "Colombia enfrenta una crisis fiscal sin precedentes que ha reducido el margen de maniobra de la política económica y ha puesto en riesgo la sostenibilidad de las finanzas públicas. Entre 2020 y 2025, el déficit fiscal promediaría 6,4% del PIB, cerca del doble del registrado entre 2000 y 2019."
+
+- titulo: "¿Qué explica la caída de la inversión en Colombia?"
+  tipo: Investigación
+  fecha: "2025-12"
+  autores: "Luis F. Mejía y María A. Arbeláez"
+  temas: [desarrollo-productivo, infraestructura, macroeconomia]
+  handle: 4854
+  portada: /assets/img/portadas/4854.jpg
+  resumen: "En lo corrido del siglo XXI, la economía colombiana ha registrado un crecimiento promedio de 3,6%, superior al observado en América Latina y el Caribe (2,4%)."
+
+- titulo: "Tendencia Económica No. 264"
+  tipo: Publicación periódica
+  serie: Tendencia Económica
+  fecha: "2025-12"
+  temas: [comercio-exterior, macroeconomia, mercado-laboral]
+  handle: 4875
+  portada: /assets/img/portadas/4875.jpg
+  resumen: "Editorial: Durante 2025, el mercado laboral colombiano ha mostrado un desempeño favorable, caracterizado por una reducción del desempleo en un contexto de mayor participación laboral: en octubre, la tasa de desempleo se ubicó en 8,9%, lo que representa una disminución de 1,0 punto porcentual frente…"
+
+- titulo: "Prospectiva Económica, Diciembre 2025"
+  tipo: Publicación periódica
+  serie: Prospectiva Económica
+  fecha: "2025-12"
+  temas: [comercio-exterior, macroeconomia]
+  handle: 4876
+  portada: /assets/img/portadas/4876.jpg
+  resumen: "En esta edición de Prospectiva Económica se analizan los resultados recientes de la economía colombiana en 2025 y se presentan las proyecciones de Fedesarrollo para el mediano plazo en crecimiento, inflación, sector externo y cuentas fiscales, a la luz de un entorno internacional de moderación del…"
+
+- titulo: "Serie de notas técnicas sobre el impacto del déficit de gas natural y el aumento de precios para los usuarios finales: presentación general. Nota Técnica 5."
+  tipo: Investigación
+  fecha: "2025-11-24"
+  autores: "Camilo Flórez, Granger Ángela, Natalia Artega y otros"
+  temas: [mineria-energia]
+  handle: 4885
+  portada: /assets/img/portadas/4885.jpg
+  resumen: "El gas natural ha sido, durante más de dos décadas, un pilar del bienestar social y la calidad de vida en los hogares colombianos."
+
+- titulo: "Serie de notas técnicas sobre el impacto del déficit de gas natural y el aumento de precios para los usuarios finales: presentación general. Nota Técnica 4."
+  tipo: Investigación
+  fecha: "2025-11-14"
+  autores: "Juan Benavides y Sergio Cabrales"
+  temas: [mineria-energia]
+  handle: 4845
+  portada: /assets/img/portadas/4845.jpg
+  resumen: "En este documento se resumen los resultados de las Notas previas de la serie, se proponen principios de política energética y sobre el papel del gas en Colombia, se diagnostican y categorizan los problemas que deben resolverse en la cadena del gas natural, y se formulan recomendaciones."
+
+- titulo: "Serie de notas técnicas sobre el impacto del déficit de gas natural y el aumento de precios para los usuarios finales: presentación general. Nota Técnica 3."
+  tipo: Investigación
+  fecha: "2025-08-19"
+  autores: "Sara Ramírez, Carolina Silva, Nicolás Montoya y otros"
+  temas: [mineria-energia]
+  handle: 4813
+  portada: /assets/img/portadas/4813.jpg
+  resumen: "El gas natural es indispensable para el funcionamiento eficiente de la actividad económica, especialmente en los sectores industrial y comercial, que dependen de este insumo para sus procesos productivos esenciales."
+
+- titulo: "Serie de notas técnicas sobre el impacto del déficit de gas natural y el aumento de precios para los usuarios finales: presentación general. Nota Técnica 2."
+  tipo: Investigación
+  fecha: "2025-06-12"
+  autores: "Sergio Cabrales y Juan Benavides"
+  temas: [mineria-energia]
+  handle: 4788
+  portada: /assets/img/portadas/4788.jpg
+  resumen: "Esta Nota 2 de la serie estima el costo fiscal del mayor precio del gas natural en las condiciones de escasez de oferta doméstica y las crecientes necesidades de importación."
+
+- titulo: "Serie de notas técnicas sobre el impacto del déficit de gas natural y el aumento de precios para los usuarios finales: presentación general. Nota Técnica 1."
+  tipo: Investigación
+  fecha: "2025-05-02"
+  autores: "Sergio Cabrales y Juan Benavides"
+  temas: [mineria-energia]
+  handle: 4772
+  portada: /assets/img/portadas/4772.jpg
+  resumen: "Por una combinación de políticas públicas pasadas y actuales, que han introducido costos de transacción a la exploración y a la explotación del gas natural doméstico convencional y no convencional, indecisiones sobre uso, tamaño, localización y remuneración de nuevas facilidades de importación,…"
+
+- titulo: "Medición de la Inversión de Impacto en Colombia, 2024"
+  tipo: Investigación
+  fecha: "2025-05"
+  autores: "Ximena Cadena, Sandra Zuluaga y Sandra Oviedo"
+  temas: [financiero]
+  handle: 4804
+  portada: /assets/img/portadas/4804.jpg
+  resumen: "Las inversiones de impacto son inversiones diseñadas con una clara intención de generar un impacto social y/o medioambiental positivo y medible, junto con la expectativa de retorno financiero o al menos la conservación del capital."
+
+- titulo: "Retos de Inteligencia Artificial como herramienta de innovación pública"
+  tipo: Investigación
+  fecha: "2025-04"
+  autores: "David Gelvez, Max Gómez y Javier Mondragón"
+  temas: [educacion]
+  handle: 4761
+  portada: /assets/img/portadas/4761.jpg
+  resumen: "Este documento propone una guía práctica para diseñar e implementar retos de inteligencia artificial como instrumentos de innovación pública orientados a resolver problemas estratégicos del sector público."
+
+- titulo: "Construcción de un estado del arte sobre los Beneficios de Alimentación al Trabajador (BAT) y estimación de su multiplicador macroeconómico para la economía colombiana"
+  tipo: Investigación
+  fecha: "2025-04"
+  autores: "David Forero y Alejandro Becerra"
+  temas: [macroeconomia, mercado-laboral]
+  handle: 4770
+  portada: /assets/img/portadas/4770.jpg
+  resumen: "La mayoría de los trabajadores en Colombia no recibe salarios suficientes para cubrir sus necesidades básicas, especialmente en alimentación, lo que impacta negativamente su salud y productividad."
+
+- titulo: "Hacia una agenda de cadenas globales de valor sustentables en Colombia"
+  tipo: Investigación
+  fecha: "2025-04"
+  autores: "Rafael Puyana, Clara P. Martín, Nicolás Grosman y Javier, Beverinotti"
+  temas: [comercio-exterior]
+  handle: 4759
+  portada: /assets/img/portadas/4759.jpg
+  resumen: "Este estudio analiza cuatro cadenas de valor estratégicas en Colombia - pesca, textil y confecciones, plásticos y caucho, y automotriz - para identificar oportunidades que permitan fortalecer su integración en cadenas globales de valor, al tiempo que se avanza en su descarbonización."
+
+- titulo: "Política de la tasa de usura en el mercado financiero en Colombia: implicaciones, efectos y recomendaciones"
+  tipo: Investigación
+  fecha: "2025-03"
+  autores: "Ximena Cadena, David Forero, Alejandro Becerra y Santiago Muñoz"
+  temas: [financiero]
+  handle: 4746
+  portada: /assets/img/portadas/4746.jpg
+  resumen: "La inclusión financiera es fundamental para el crecimiento económico y la reducción de la pobreza, especialmente en países en desarrollo. En Colombia, el acceso al crédito formal es clave, ya que las tasas en el mercado informal pueden ser hasta nueve veces más altas."
+
+- titulo: "La tierra para uso agropecuario en Colombia: equidad y productividad"
+  tipo: Libro
+  fecha: "2024-07"
+  autores: "Juan J. Perfetti, José Leibovich, Martha Delgado y Enrique López"
+  temas: [agropecuario]
+  handle: 4631
+  portada: /assets/img/portadas/4631.jpg
+  resumen: "Este estudio de Fedesarrollo, financiado por el Fondo Rodrigo Botero Montoya, analiza los problemas de equidad y productividad que afectan al sector agropecuario colombiano en relación con el acceso y uso de la tierra."
+
+- titulo: "Sembrando Futuro desde el Sur de Colombia: Ejes del desarrollo productivo del Huila"
+  tipo: Libro
+  fecha: "2023-12"
+  autores: "Juan G. Zapata, Astrid Martínez, Felipe Dussán y otros"
+  temas: [regional, desarrollo-productivo]
+  handle: 4534
+  portada: /assets/img/portadas/4534.jpg
+  resumen: "La Gobernación del Huila 2020-2023 y Fedesarrollo presentan el informe técnico titulado “Sembrando Futuro Desde el Sur de Colombia: Ejes del modelo productivo del Huila”."
+
+- titulo: "Desafíos de la Tributación Global: Hacia una tributación global incluyente, sostenible y equitativa para América Latina y el Caribe"
+  tipo: Libro
+  fecha: "2023-11"
+  autores: "César Pabón, Luis F. Mejía, José A. Ocampo y otros"
+  temas: [macroeconomia]
+  handle: 4493
+  portada: /assets/img/portadas/4493.jpg
+  resumen: "La iniciativa académica \"Repensando la Tributación Global: Hacia una tributación global incluyente, sostenible y equitativa\", resultado de la colaboración entre Fedesarrollo y el Ministerio de Hacienda y Crédito Público, busca abordar los principales desafíos que enfrenta el panorama fiscal en…"
+
+- titulo: "Misión Colombia Envejece"
+  tipo: Comisión
+  fecha: "2023-10"
+  autores: "Fundación Saldarriaga Concha, PROESA, DANE y otros"
+  temas: [mercado-laboral]
+  handle: 4536
+  portada: /assets/img/portadas/4536.jpg
+  resumen: "la Misión Colombia Envejece -Una Investigación Viva, no solo como una actualización de la Misión Colombia Envejece - cifras, retos y recomendaciones -que cumple 7 años-, sino también, como una oportunidad de poner formas novedosas y temas coyunturales en la agenda del país -y posiblemente de…"
+
+- titulo: "¿Qué hacer en comercio exterior?"
+  tipo: Libro
+  fecha: "2022-06-13"
+  autores: "Mauricio Reina"
+  temas: [comercio-exterior, macroeconomia]
+  handle: 4284
+  portada: /assets/img/portadas/4284.jpg
+  resumen: "Este capítulo estudia el comercio exterior en Colombia, analizando sus principales problemas, las causas de estos y las propuestas de política pública para solucionarlos."
+
+- titulo: "¿Qué hacer en políticas públicas?"
+  tipo: Libro
+  fecha: "2022-06-13"
+  autores: "Luis F. Mejía"
+  temas: [instituciones-justicia, macroeconomia]
+  handle: 4274
+  portada: /assets/img/portadas/4274.jpg
+  resumen: "Este capítulo presenta la introducción al libro, escrita por su editor y coordinador Luis Fernando Mejía."
+
+- titulo: "¿Qué hacer en sostenibilidad?"
+  tipo: Libro
+  fecha: "2022-06-13"
+  autores: "Helena García y Astrid Martínez"
+  temas: [macroeconomia, medio-ambiente]
+  handle: 4288
+  portada: /assets/img/portadas/4288.jpg
+  resumen: "Este capítulo estudia la sostenibilidad en Colombia, analizando sus principales problemas, las causas de estos y las propuestas de política pública para solucionarlos."
+
+- titulo: "Recomendaciones para combatir la corrupción en Colombia, Comisión de Expertos Anti-Corrupción"
+  tipo: Comisión
+  fecha: "2021-10"
+  autores: "Misión de Observación Electoral, Dejusticia y Transparencia por Colombia"
+  temas: [instituciones-justicia, macroeconomia]
+  handle: 4223
+  portada: /assets/img/portadas/4223.jpg
+  resumen: "\"Fedesarrollo ha priorizado en los últimos años el análisis de políticas públicas en materia de transparencia y anticorrupción como una línea estratégica de la entidad."
+
+- titulo: "Misión para la Profundización de la Cartera Hipotecaria 2020"
+  tipo: Comisión
+  fecha: "2020-10"
+  autores: "María M. Cuellar, Hernando J. Gómez R., Marc Hofstetter y otros"
+  temas: [vivienda, financiero, macroeconomia]
+  handle: 4083
+  portada: /assets/img/portadas/4083.jpg
+  resumen: "En agosto de 2019, el Ministerio de Vivienda Ciudad y Territorio convocó la Misión para la Profundización de la Cartera Hipotecaria con el objetivo de formular recomendaciones para facilitar el acceso a una solución de vivienda a los hogares colombianos a través de los distintos mecanismos de…"
+
+- titulo: "Comisión del Gasto y la Inversión Pública"
+  tipo: Comisión
+  fecha: "2018-04"
+  autores: "Comisión del Gasto y la Inversión Pública, Leonardo Villar, Natalia Salazar y otros"
+  temas: [macroeconomia]
+  handle: 3516
+  portada: /assets/img/portadas/3516.jpg
+  resumen: "De acuerdo con lo dispuesto en la Ley de Reforma Tributaria de 2016, en febrero de 2017 se creó la Comisión del Gasto y la Inversión Pública, con el propósito de revisar, entre otros, los programas de subsidios y de asistencia pública, los criterios de priorización de la inversión, las…"
+
+- titulo: "Comisión de Expertos para la Equidad y la Competitividad Tributaria"
+  tipo: Comisión
+  fecha: "2015-12"
+  autores: "Comisión de Expertos para la Equidad y la Competitividad Tributaria, Ricardo Bonilla, Rosario Córdoba y otros"
+  temas: [macroeconomia]
+  handle: 3284
+  portada: /assets/img/portadas/3284.jpg
+  resumen: "\"En Febrero 25 de 2015 el Gobierno Nacional conformó la Comisión de Expertos para la Equidad y la Competitividad Tributaria de acuerdo con lo señalado por la Ley 1739 de 2014 y el Decreto 0327 de 2015."
+
+- titulo: "Comisión de infraestructura"
+  tipo: Comisión
+  fecha: "2012-10"
+  autores: "Carlos Angulo, Juan Benavides, Martín Carrizosa y otros"
+  temas: [macroeconomia]
+  handle: 2911
+  portada: /assets/img/portadas/2911.jpg
+  resumen: "\"En lo que concierne a la infraestructura de transporte en todas sus modalidades, y cuando se le compara con otros países de similar nivel de desarrollo, Colombia presenta un rezago importante (Foro Económico Mundial, 2012)."

@@ -1,196 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentos de Política | Fedesarrollo 2026-2030</title>
-  <meta name="description" content="Listado de los documentos de política de Fedesarrollo para el gobierno 2026-2030.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Fedesarrollo">
-  <meta property="og:title" content="Documentos de Política | Fedesarrollo 2026-2030">
-  <meta property="og:description" content="Listado de los documentos de política de Fedesarrollo para el gobierno 2026-2030.">
-  <meta property="og:url" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/documentos.html">
-  <meta property="og:image" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/assets/img/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+---
+title: Documentos de Política
+description: "Documentos de Política de Fedesarrollo para el gobierno 2026-2030: diagnósticos, prioridades y hojas de ruta."
+---
+{%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
+{%- assign lista = site.data.serie | where: "tipo", "documento" -%}
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/img/logo-fedesarrollo-azul.png" alt="Fedesarrollo">
-        <span class="brand-text">Documentos de Política<span>Gobierno 2026-2030</span></span>
+<section class="fd-on-gray">
+  <div class="fd-container cabeza">
+    <p class="migas"><a href="{{ base }}index.html">Serie 2026-2030</a></p>
+    <h1>Documentos de Política</h1>
+    <p class="fd-lead">Diagnósticos, prioridades y hojas de ruta para los principales retos del nuevo gobierno. Cada tema incluye un Documento de Política completo y un Resumen breve.</p>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  <ul class="portadas portadas--3">
+    {%- for d in lista %}
+    <li>
+      <a href="{{ base }}docs/{{ d.slug }}.html">
+        <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <span class="portadas__titulo">{{ d.titulo }}</span>
+        <span class="portadas__autores">{{ d.autores_corto }}</span>
+        <span class="portadas__resumen">{{ d.resumen }}</span>
       </a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú"><span></span><span></span><span></span></label>
-      <nav class="nav">
-        <a href="index.html">Inicio</a>
-        <a href="documentos.html" class="is-active">Documentos de Política</a>
-        <a href="notas-politica.html">Notas de Política</a>
-        <a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">Fedesarrollo ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===================== PAGE HEAD ===================== -->
-  <section class="section" style="padding-bottom:1.5rem;">
-    <div class="container">
-      <h1 style="font-size:clamp(2rem,4.5vw,3rem);">Documentos de Política</h1>
-      <p class="lead" style="max-width:60ch;color:var(--muted);">
-        Diagnósticos, prioridades y hojas de ruta para los principales retos del nuevo gobierno.
-        Cada tema incluye un Documento de Política completo y un Resumen breve.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===================== GRID ===================== -->
-  <section class="section" style="padding-top:1rem;">
-    <div class="container">
-      <div class="docs-grid">
-
-        <!-- Crimen organizado en Colombia -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/crimen-organizado.html" aria-label="Ver Crimen organizado en Colombia">
-            <img src="assets/img/previews/crimen-organizado-documento.png" alt="Vista previa del documento Crimen organizado en Colombia">
-          </a>
-          <h2><a href="docs/crimen-organizado.html">Crimen organizado en Colombia</a></h2>
-          <p class="doc-authors">Marcela Meléndez y Juan F. Vargas</p>
-          <p class="doc-desc">
-            Diagnóstico, prioridades y hoja de ruta para reducir la capacidad del crimen organizado
-            de ejercer violencia, gobernar territorios, extorsionar, reclutar, corromper y lavar
-            rentas ilícitas.
-          </p>
-        </article>
-
-        <!-- Justicia centrada en la gente -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/justicia.html" aria-label="Ver Justicia centrada en la gente">
-            <img src="assets/img/previews/justicia-documento.png" alt="Vista previa del documento Justicia centrada en la gente">
-          </a>
-          <h2><a href="docs/justicia.html">Justicia centrada en la gente</a></h2>
-          <p class="doc-authors">Gabriel Cifuentes</p>
-          <p class="doc-desc">
-            Reorientar el sistema de justicia hacia la demanda —las necesidades jurídicas que hoy
-            quedan sin tramitar— y fortalecer la justicia local, comunitaria e itinerante.
-          </p>
-        </article>
-
-        <!-- Lucha contra la corrupción en Colombia -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/lucha-contra-la-corrupcion.html" aria-label="Ver Lucha contra la corrupción en Colombia">
-            <img src="assets/img/previews/lucha-contra-la-corrupcion-documento.png" alt="Vista previa del documento Lucha contra la corrupción en Colombia">
-          </a>
-          <h2><a href="docs/lucha-contra-la-corrupcion.html">Lucha contra la corrupción en Colombia</a></h2>
-          <p class="doc-authors">Camilo A. Enciso V.</p>
-          <p class="doc-desc">
-            El reto no es expedir más leyes, sino transformar los incentivos que sostienen la corrupción
-            y degradar la capacidad de captura de las redes corruptas.
-          </p>
-        </article>
-
-        <!-- Electricidad y gas natural -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/electricidad-y-gas.html" aria-label="Ver Electricidad y gas natural">
-            <img src="assets/img/previews/electricidad-y-gas-documento.png" alt="Vista previa del documento Electricidad y gas natural">
-          </a>
-          <h2><a href="docs/electricidad-y-gas.html">Electricidad y gas natural</a></h2>
-          <p class="doc-authors">Juan Benavides</p>
-          <p class="doc-desc">
-            Colombia enfrenta el riesgo simultáneo de desabastecimiento de electricidad y gas; un choque
-            en 2026 y una reforma hasta 2030 pueden evitar el colapso y reactivar la inversión.
-          </p>
-        </article>
-
-        <!-- Educación pertinente -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/educacion-pertinente.html" aria-label="Ver Educación pertinente">
-            <img src="assets/img/previews/educacion-pertinente-documento.png" alt="Vista previa del documento Educación pertinente">
-          </a>
-          <h2><a href="docs/educacion-pertinente.html">Educación pertinente</a></h2>
-          <p class="doc-authors">Ximena Cadena, David Gelvez y Claudia Quintero</p>
-          <p class="doc-desc">
-            El sistema educativo interrumpe las trayectorias de demasiados jóvenes y no conecta con el
-            empleo a quienes terminan. Cerrar esa doble brecha es un reto de gestión, datos y
-            articulación, no de nuevas leyes.
-          </p>
-        </article>
-
-        <!-- Licenciamiento ambiental y social -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/licenciamiento-ambiental.html" aria-label="Ver Licenciamiento ambiental y social">
-            <img src="assets/img/previews/licenciamiento-ambiental-documento.png" alt="Vista previa del documento Licenciamiento ambiental y social">
-          </a>
-          <h2><a href="docs/licenciamiento-ambiental.html">Licenciamiento ambiental y social</a></h2>
-          <p class="doc-authors">Ximena Cadena y Daniel Wiesner</p>
-          <p class="doc-desc">
-            El licenciamiento ambiental y la consulta previa frenan la infraestructura estratégica por
-            falta de reglas claras y ausencia del Estado, no por exceso de protección. La salida: que el
-            Estado retome el liderazgo.
-          </p>
-        </article>
-
-        <!-- Sistema de salud en Colombia -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/salud.html" aria-label="Ver Sistema de salud en Colombia">
-            <img src="assets/img/previews/salud-documento.png" alt="Vista previa del documento Sistema de salud en Colombia">
-          </a>
-          <h2><a href="docs/salud.html">Sistema de salud en Colombia</a></h2>
-          <p class="doc-authors">Jairo Núñez y David Bardey</p>
-          <p class="doc-desc">
-            Colombia no necesita desmontar su sistema de salud, sino corregir con urgencia su
-            financiamiento, incentivos y gobernanza: garantizar recursos suficientes, mejorar la
-            calidad y reducir las barreras de acceso.
-          </p>
-        </article>
-
-        <!-- El reto fiscal de Colombia -->
-        <article class="docs-grid-item">
-          <a class="docs-grid-preview" href="docs/reto-fiscal-de-colombia.html" aria-label="Ver El reto fiscal de Colombia">
-            <img src="assets/img/previews/reto-fiscal-de-colombia-documento.png" alt="Vista previa del documento El reto fiscal de Colombia">
-          </a>
-          <h2><a href="docs/reto-fiscal-de-colombia.html">El reto fiscal de Colombia</a></h2>
-          <p class="doc-authors">Juan Pablo Zárate y José Julián Parra</p>
-          <p class="doc-desc">
-            Colombia enfrenta el desequilibrio fiscal más severo de su historia reciente. Cerrar la
-            brecha exige un ajuste estructural de 4% a 5% del PIB que ninguna medida aislada logra por
-            sí sola.
-          </p>
-        </article>
-
-        <!-- Próximos documentos de la serie se agregan aquí como nuevas <article class="docs-grid-item"> -->
-        <!-- Las notas independientes (solo Nota) van en notas-politica.html -->
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="assets/img/logo-fedesarrollo-blanco.png" alt="Fedesarrollo">
-      </div>
-      <nav class="footer-nav">
-        <a href="index.html">Inicio</a>
-        <a href="documentos.html">Documentos de Política</a>
-        <a href="notas-politica.html">Notas de Política</a>
-        <a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">fedesarrollo.org.co ↗</a>
-      </nav>
-    </div>
-    <div class="container">
-      <div class="footer-bottom">
-        © 2026 Fedesarrollo. Documentos de Política para el gobierno 2026-2030.
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

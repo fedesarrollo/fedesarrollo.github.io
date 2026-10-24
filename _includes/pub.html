@@ -1,0 +1,33 @@
+{%- comment -%}
+  Una publicación en un listado. Parámetros: p (ítem de publicaciones.yml),
+  portada (true para mostrar la miniatura).
+{%- endcomment -%}
+{%- assign p = include.p -%}
+{%- if p.serie_slug -%}
+  {%- assign s = site.data.serie | where: "slug", p.serie_slug | first -%}
+  {%- assign _titulo = s.titulo -%}
+  {%- assign _autores = s.autores_corto -%}
+  {%- assign _resumen = s.resumen -%}
+  {%- capture _url %}{{ '/documentos-politica-2026-2030/docs/' | relative_url }}{{ s.slug }}.html{% endcapture -%}
+  {%- capture _img %}{{ '/documentos-politica-2026-2030/assets/img/previews/' | relative_url }}{{ s.archivos[0].portada }}{% endcapture -%}
+  {%- assign _serie = "Serie 2026-2030" -%}
+{%- else -%}
+  {%- assign _titulo = p.titulo -%}
+  {%- assign _autores = p.autores -%}
+  {%- assign _resumen = p.resumen -%}
+  {%- capture _url %}http://hdl.handle.net/11445/{{ p.handle }}{% endcapture -%}
+  {%- if p.portada %}{% assign _img = p.portada | relative_url %}{% else %}{% assign _img = nil %}{% endif -%}
+  {%- assign _serie = p.serie -%}
+{%- endif -%}
+<article class="pub{% if include.portada %} pub--portada{% endif %}" data-tipo="{{ p.tipo | slugify: "latin" }}" data-temas="{{ p.temas | join: ' ' }}">
+  {%- if include.portada and _img %}
+  <a class="pub__portada" href="{{ _url }}" tabindex="-1" aria-hidden="true"><img src="{{ _img }}" alt="" loading="lazy" width="162" height="210"></a>
+  {%- endif %}
+  <div class="pub__texto">
+    <p class="pub__tipo fd-label">{{ p.tipo }}{% if _serie and _serie != p.tipo %}<span>{{ _serie }}</span>{% endif %}</p>
+    <h3 class="pub__titulo"><a href="{{ _url }}">{{ _titulo }}</a></h3>
+    {%- if _autores %}<p class="pub__autores">{{ _autores }}</p>{% endif %}
+    {%- if include.resumen %}<p class="pub__resumen">{{ _resumen | truncatewords: 38 }}</p>{% endif %}
+    <p class="pub__fecha fd-small"><time datetime="{{ p.fecha }}">{% include fecha.html f=p.fecha %}</time></p>
+  </div>
+</article>

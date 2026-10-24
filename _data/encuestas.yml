@@ -1,0 +1,29 @@
+# Encuestas e índices que publica Fedesarrollo. «serie» es el valor de
+# «serie» en _data/publicaciones.yml: la página de Encuestas lista ahí los
+# últimos resultados de cada una. «listado» es el archivo completo.
+
+- serie: EOC
+  nombre: "Encuesta de Opinión del Consumidor"
+  frecuencia: Mensual
+  descripcion: "Mide la confianza de los hogares a partir de su percepción sobre la situación económica actual y sus expectativas. De ella sale el Índice de Confianza del Consumidor (ICC)."
+  listado: https://www.fedesarrollo.org.co/p/publicaciones/encuesta-opinion-del-consumidor
+- serie: EOE
+  nombre: "Encuesta de Opinión Empresarial"
+  frecuencia: Mensual
+  descripcion: "Recoge la percepción de empresarios de la industria y el comercio. De ella salen el Índice de Confianza Industrial (ICI) y el Índice de Confianza Comercial (ICCO)."
+  listado: https://www.fedesarrollo.org.co/p/publicaciones/boletin-encuesta-de-opinion-empresarial
+- serie: EOF
+  nombre: "Encuesta de Opinión Financiera"
+  frecuencia: Mensual
+  descripcion: "Reúne las expectativas de analistas del mercado financiero sobre crecimiento, inflación, tasa de interés y tasa de cambio."
+  listado: https://www.fedesarrollo.org.co/p/publicaciones/encuesta-opinion-financiera
+- serie: IPEC
+  nombre: "Índice de Incertidumbre de la Política Económica"
+  frecuencia: Mensual
+  descripcion: "Cuantifica la incertidumbre de la política económica en Colombia a partir de las noticias de los medios de comunicación."
+  listado: https://www.fedesarrollo.org.co/p/publicaciones
+- serie: Renta variable
+  nombre: "Indicadores de confianza del mercado de renta variable"
+  frecuencia: Mensual
+  descripcion: "Indicadores de confianza, resiliencia, inmunidad y valoración del mercado accionario colombiano."
+  listado: https://www.fedesarrollo.org.co/p/publicaciones

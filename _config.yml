@@ -1,0 +1,74 @@
+title: Fedesarrollo
+description: >-
+  Centro independiente de investigación económica y social. Apoyamos el desarrollo
+  de Colombia generando conocimiento y propuestas de política pública.
+lang: es_CO
+url: https://fedesarrollo.github.io
+baseurl: ""
+logo: /assets/fede/logos/FeDeLogoAzul.svg
+twitter:
+  username: fedesarrollo
+social:
+  name: Fedesarrollo
+  links:
+    - https://twitter.com/fedesarrollo
+    - https://www.linkedin.com/company/fedesarrollo
+    - https://www.youtube.com/user/FedesarrolloColombia
+    - https://www.facebook.com/Fedesarrollo-232116956825561/
+
+# Datos de contacto y enlaces que se repiten en todo el sitio
+contacto:
+  telefono: "+57 (601) 325 9777"
+  telefono_enlace: "tel:+576013259777"
+  correo: comercial@fedesarrollo.org.co
+  direccion: "Calle 78 No. 9-91, Bogotá"
+  formulario: https://forms.office.com/pages/responsepage.aspx?id=-JXTT6Mn4kOz7JQbiQhfsyYuqCDiKrRLvuAQbhclX6BURDY3WjI0T1JOSlNVWlJLNUdKS0ZPTEtHRi4u
+  boletin: https://forms.office.com/pages/responsepage.aspx?id=-JXTT6Mn4kOz7JQbiQhfsyYuqCDiKrRLvuAQbhclX6BUQTRTMEpaT0gxR1lYR05CM0U0VjBFMVZSSS4u
+redes:
+  - nombre: X
+    url: https://twitter.com/fedesarrollo
+  - nombre: LinkedIn
+    url: https://www.linkedin.com/company/fedesarrollo
+  - nombre: YouTube
+    url: https://www.youtube.com/user/FedesarrolloColombia
+  - nombre: Facebook
+    url: https://www.facebook.com/Fedesarrollo-232116956825561/
+# ES Face y PP Neue Machina son comerciales. Mientras no se confirme que la
+# licencia permite publicarlas en la web, el sitio usa Newsreader y Space Grotesk.
+# Para activarlas: copiar los .woff2 a assets/fede/assets/fonts/web/ y poner true.
+fuentes_marca: false
+
+repositorio: https://www.repository.fedesarrollo.org.co
+sitio_anterior: https://www.fedesarrollo.org.co
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/fede/og-image.jpg
+  - scope:
+      path: "documentos-politica-2026-2030"
+    values:
+      nav: serie
+      image: /documentos-politica-2026-2030/assets/img/og-image.png
+  - scope:
+      path: "documentos-politica-2026-2030/docs"
+    values:
+      layout: serie-doc
+      js:
+        - /documentos-politica-2026-2030/assets/serie.js
+
+exclude:
+  - README.md
+  - COMO-EDITAR.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - documentos-politica-2026-2030/COMO-AGREGAR-UN-DOCUMENTO.md
+  - productividad-mercado-laboral/README.md

@@ -23,3 +23,9 @@ Desktop.ini
 
 # Dependencias (por si se agregan herramientas en el futuro)
 node_modules/
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock

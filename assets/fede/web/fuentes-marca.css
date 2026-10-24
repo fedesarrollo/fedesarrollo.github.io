@@ -1,0 +1,14 @@
+/* Fuentes comerciales del manual (ES Face y PP Neue Machina).
+   Solo se cargan con fuentes_marca: true en _config.yml y los .woff2 en ../assets/fonts/web/. */
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-Thin.woff2") format("woff2"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-ThinItalic.woff2") format("woff2"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "ES Face"; src: url("../assets/fonts/web/ESFace-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "PP Neue Machina"; src: url("../assets/fonts/web/PPNeueMachina-PlainRegular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "PP Neue Machina"; src: url("../assets/fonts/web/PPNeueMachina-PlainRegularItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "PP Neue Machina"; src: url("../assets/fonts/web/PPNeueMachina-PlainBold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "PP Neue Machina"; src: url("../assets/fonts/web/PPNeueMachina-PlainBoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }

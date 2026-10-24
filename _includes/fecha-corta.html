@@ -1,0 +1,3 @@
+{%- assign _meses = "ene,feb,mar,abr,may,jun,jul,ago,sep,oct,nov,dic" | split: "," -%}
+{%- assign _p = include.f | split: "-" -%}{%- assign _m = _p[1] | plus: 0 | minus: 1 -%}
+<span class="evento-fecha"><b>{{ _p[2] | plus: 0 }}</b><span>{{ _meses[_m] }} {{ _p[0] }}</span></span>

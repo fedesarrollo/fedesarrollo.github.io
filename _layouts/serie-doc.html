@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{%- assign d = site.data.serie | where: "slug", page.slug | first -%}
+{%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
+{%- if d.tipo == "nota" -%}
+  {%- assign volver = "Notas de Política" -%}{%- assign volver_url = "notas-politica.html" -%}
+{%- else -%}
+  {%- assign volver = "Documentos de Política" -%}{%- assign volver_url = "documentos.html" -%}
+{%- endif -%}
+<div class="fd-container wrap">
+  <p class="migas"><a href="{{ base }}index.html">Serie 2026-2030</a> / <a href="{{ base }}{{ volver_url }}">{{ volver }}</a></p>
+  <div class="ficha">
+    <div>
+      <span class="fd-tag">{% if d.tipo == "nota" %}Nota de Política{% else %}Documento de Política{% endif %}</span>
+      <h1 style="margin-top:24px">{{ d.titulo }}</h1>
+      {%- if d.subtitulo %}<p class="ficha__sub">{{ d.subtitulo }}</p>{% endif %}
+      <ul class="autores">
+        {%- for a in d.autores %}
+        <li><strong>{{ a.nombre }}</strong><span>{{ a.cargo }}</span></li>
+        {%- endfor %}
+      </ul>
+      {%- if d.video %}
+      <p class="ficha__acciones"><a class="fd-btn" href="https://youtu.be/{{ d.video }}" data-video="{{ d.video }}">Ver el video</a></p>
+      {%- endif %}
+      <article class="ficha__cuerpo prosa">
+{{ content }}
+      </article>
+    </div>
+    <aside class="archivos{% if d.archivos.size == 1 %} archivos--uno{% endif %}" aria-label="Descargas">
+      {%- for f in d.archivos %}
+      <div class="archivo">
+        <button type="button" class="archivo__ver" data-pdf="{{ base }}pdfs/{{ f.pdf }}" data-title="{{ f.etiqueta }}" aria-label="Ver {{ f.etiqueta }}">
+          <img src="{{ base }}assets/img/previews/{{ f.portada }}" alt="Primera página: {{ f.etiqueta }}">
+        </button>
+        <span class="fd-label">{{ f.etiqueta }}</span>
+        <a class="archivo__bajar" href="{{ base }}pdfs/{{ f.pdf }}" download>Descargar PDF</a>
+      </div>
+      {%- endfor %}
+    </aside>
+  </div>
+</div>

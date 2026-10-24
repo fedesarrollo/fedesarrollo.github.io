@@ -1,111 +1,79 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentos de Política para el gobierno 2026-2030 | Fedesarrollo</title>
-  <meta name="description" content="Serie de documentos de política de Fedesarrollo con diagnósticos, prioridades y hojas de ruta para el gobierno 2026-2030.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Fedesarrollo">
-  <meta property="og:title" content="Documentos de Política para el gobierno 2026-2030 | Fedesarrollo">
-  <meta property="og:description" content="Serie de documentos de política de Fedesarrollo con diagnósticos, prioridades y hojas de ruta para el gobierno 2026-2030.">
-  <meta property="og:url" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/index.html">
-  <meta property="og:image" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/assets/img/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+---
+title: Documentos de Política para el gobierno 2026-2030
+description: Serie de documentos de política de Fedesarrollo con diagnósticos, prioridades y hojas de ruta para el gobierno 2026-2030.
+---
+{%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
+{%- assign docs = site.data.serie | where: "tipo", "documento" -%}
+{%- assign notas = site.data.serie | where: "tipo", "nota" -%}
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand-favicon" href="index.html" aria-label="Inicio">
-        <img src="assets/img/logo-fedesarrollo-azul.png" alt="Fedesarrollo">
+<section class="fd-on-blue">
+  <div class="fd-container cabeza cabeza--serie">
+    <div>
+    <span class="fd-tag">Serie 2026-2030</span>
+    <h1>Documentos de Política para el gobierno 2026-2030</h1>
+    <p class="fd-lead">Diagnósticos rigurosos, prioridades y hojas de ruta concretas para los principales retos de política pública que enfrentará el nuevo gobierno de Colombia.</p>
+    <div class="fd-flex" style="margin-top:32px">
+      <a class="fd-btn" href="{{ base }}documentos.html">Documentos de Política</a>
+      <a class="fd-btn fd-btn--outline" href="{{ base }}notas-politica.html">Notas de Política</a>
+    </div>
+    </div>
+    <div class="cabeza__portadas" aria-hidden="true">
+      {%- for d in docs limit: 3 %}
+      <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="">
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="fd-container wrap" id="acerca">
+  <div class="fd-grid">
+    <div class="fd-col-4">
+      <span class="fd-label fd-text-blue">La serie</span>
+      <h2 style="margin-top:16px">Evidencia para las decisiones del próximo cuatrienio</h2>
+    </div>
+    <div class="fd-col-8 prosa">
+      <p class="fd-lead" style="max-width:none">Colombia llega a 2026 con desafíos estructurales que no se resuelven en un solo período de gobierno, pero sobre los cuales sí es posible avanzar de manera decisiva con buenas decisiones.</p>
+      <p>En esta serie, Fedesarrollo reúne el trabajo de sus investigadores y de expertos afiliados para poner sobre la mesa, de cara al gobierno 2026-2030, un conjunto de documentos de política sobre los temas que definirán la agenda del país. Cada tema se publica en dos formatos complementarios: un <strong>Documento de Política</strong> con el diagnóstico completo y la evidencia que lo respalda, y un <strong>Resumen</strong> breve con la idea central, los mensajes clave y una agenda secuenciada para el cuatrienio.</p>
+      <p>Además, publicamos las <strong>Notas de Política</strong>: notas independientes y autocontenidas sobre temas puntuales de la coyuntura, que aplican la evidencia a un debate concreto.</p>
+      <p>El propósito es simple: que las decisiones de política pública de los próximos cuatro años se tomen con la mejor evidencia disponible, con metas medibles y con una mirada de Estado que trascienda el ciclo político.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fd-on-gray">
+  <div class="fd-container wrap">
+    <div class="sec-head">
+      <h2>Documentos de Política</h2>
+      <a class="fd-link-arrow" href="{{ base }}documentos.html">Ver los {{ docs.size }}</a>
+    </div>
+    <ul class="portadas">
+      {%- for d in docs %}
+      <li>
+        <a href="{{ base }}docs/{{ d.slug }}.html">
+          <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+          <span class="portadas__titulo">{{ d.titulo }}</span>
+          <span class="portadas__autores">{{ d.autores_corto }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Notas de Política</h2>
+    <a class="fd-link-arrow" href="{{ base }}notas-politica.html">Ver todas</a>
+  </div>
+  <ul class="portadas">
+    {%- for d in notas %}
+    <li>
+      <a href="{{ base }}docs/{{ d.slug }}.html">
+        <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <span class="portadas__titulo">{{ d.titulo }}</span>
+        <span class="portadas__autores">{{ d.autores_corto }}</span>
       </a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle">
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="Abrir menú"><span></span><span></span><span></span></label>
-      <nav class="nav">
-        <a href="index.html" class="is-active">Inicio</a>
-        <a href="documentos.html">Documentos de Política</a>
-        <a href="notas-politica.html">Notas de Política</a>
-        <a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">Fedesarrollo ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <div class="container">
-      <h1>Documentos de Política para el gobierno 2026-2030</h1>
-      <p class="lead">
-        Una serie de documentos técnicos de Fedesarrollo que ofrecen diagnósticos rigurosos,
-        prioridades y hojas de ruta concretas para los principales retos de política pública
-        que enfrentará el nuevo gobierno de Colombia.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#acerca">Conocer la iniciativa</a>
-        <a class="btn btn-ghost-light" href="documentos.html">Ver los documentos de política</a>
-        <a class="btn btn-ghost-light" href="notas-politica.html">Ver las notas de política</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== ACERCA DE ===================== -->
-  <section class="section" id="acerca">
-    <div class="container reading">
-      <div class="section-head">
-        <h2>Evidencia para las decisiones del próximo cuatrienio</h2>
-      </div>
-      <p class="lead">
-        Colombia llega a 2026 con desafíos estructurales que no se resuelven en un solo período de
-        gobierno, pero sobre los cuales sí es posible avanzar de manera decisiva con buenas decisiones.
-      </p>
-      <p>
-        En esta serie, Fedesarrollo reúne el trabajo de sus investigadores y de expertos afiliados
-        para poner sobre la mesa, de cara al gobierno 2026-2030, un conjunto de documentos de política
-        sobre los temas que definirán la agenda del país. Cada tema se publica en dos formatos
-        complementarios: un <strong>Documento de Política</strong> con el diagnóstico completo y la
-        evidencia que lo respalda, y un <strong>Resumen</strong> breve con la idea
-        central, los mensajes clave y una agenda secuenciada para el cuatrienio.
-      </p>
-    
-      <p>
-        Además, en este sitio estamos publicando una serie que hemos llamado <strong>Notas de Política</strong>.  
-        Se trata de notas independientes autocontenidas sobre temas puntuales de la coyuntura,  que aplican la evidencia a un debate concreto.
-      </p>
-      <p>
-        El propósito es simple: que las decisiones de política pública de los próximos cuatro años se
-        tomen con la mejor evidencia disponible, con metas medibles y con una mirada de Estado que
-        trascienda el ciclo político.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="assets/img/logo-fedesarrollo-blanco.png" alt="Fedesarrollo">
-      </div>
-      <nav class="footer-nav">
-        <a href="index.html">Inicio</a>
-        <a href="documentos.html">Documentos de Política</a>
-        <a href="notas-politica.html">Notas de Política</a>
-        <a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">fedesarrollo.org.co ↗</a>
-      </nav>
-    </div>
-    <div class="container">
-      <div class="footer-bottom">
-        © 2026 Fedesarrollo. Documentos de Política para el gobierno 2026-2030.
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

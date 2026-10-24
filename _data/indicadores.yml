@@ -1,0 +1,28 @@
+# Cifras de la banda de indicadores de la página de inicio y de Encuestas.
+# Se actualizan cada vez que sale un nuevo boletín. «valor» va tal como se
+# lee (formato colombiano: coma decimal). «handle» es la ficha del repositorio.
+
+- sigla: ICC
+  nombre: "Índice de Confianza del Consumidor"
+  valor: "15,7%"
+  periodo: "Septiembre de 2026"
+  nota: "+0,2 pps frente a agosto"
+  handle: 4990
+- sigla: ICCO
+  nombre: "Índice de Confianza Comercial"
+  valor: "23,3%"
+  periodo: "Agosto de 2026"
+  nota: "−4,2 pps frente a julio"
+  handle: 4988
+- sigla: IPEC
+  nombre: "Índice de Incertidumbre de la Política Económica"
+  valor: "237"
+  periodo: "Septiembre de 2026"
+  nota: "+43 puntos frente a agosto"
+  handle: 4991
+- sigla: EOF
+  nombre: "Tasa de intervención esperada para diciembre"
+  valor: "12,50%"
+  periodo: "Octubre de 2026"
+  nota: "Analistas de la Encuesta de Opinión Financiera"
+  handle: 4992

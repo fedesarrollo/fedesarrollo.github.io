@@ -1,0 +1,45 @@
+---
+title: Noticias y eventos
+description: Fedesarrollo en los medios, comunicados y eventos.
+nav: noticias
+---
+<section class="fd-on-gray">
+  <div class="fd-container cabeza">
+    <span class="fd-label fd-text-blue">Noticias y eventos</span>
+    <h1>Noticias y eventos</h1>
+    <p class="fd-lead">Lo que dicen los medios sobre el trabajo de Fedesarrollo y los espacios de debate que organizamos.</p>
+  </div>
+</section>
+
+<section class="fd-container wrap columnas">
+  <div>
+    <div class="sec-head"><h2>En los medios</h2></div>
+    <ul class="notas">
+      {%- for n in site.data.noticias %}
+      <li class="nota">
+        {% include fecha-corta.html f=n.fecha %}
+        <div>
+          <h3 class="nota__titulo"><a href="{{ n.enlace }}">{{ n.titulo }}</a></h3>
+          {%- if n.medio %}<p class="nota__meta">{{ n.medio }}</p>{% endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p style="margin-top:24px"><a class="fd-link-arrow" href="{{ site.sitio_anterior }}/noticias">Archivo de noticias</a></p>
+  </div>
+  <div id="eventos">
+    <div class="sec-head"><h2>Eventos</h2></div>
+    <ul class="notas">
+      {%- for e in site.data.eventos %}
+      <li class="nota">
+        {% include fecha-corta.html f=e.fecha %}
+        <div>
+          <h3 class="nota__titulo"><a href="{{ e.enlace }}">{{ e.titulo }}</a></h3>
+          {%- if e.lugar %}<p class="nota__meta">{{ e.lugar }}</p>{% endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p style="margin-top:24px"><a class="fd-link-arrow" href="{{ site.sitio_anterior }}/eventos">Archivo de eventos</a></p>
+  </div>
+</section>

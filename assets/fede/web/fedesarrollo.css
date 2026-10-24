@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Fedesarrollo — Kit web/app v1.0
+   Basado en brand/BRAND.md. Variables en ../tokens/dist/tokens.css (generado).
+   Prefijo de clases: .fd-   ·   Esquinas rectas en todo el sistema (radius 0).
+   ========================================================================== */
+
+@import url("../tokens/dist/tokens.css");
+
+/* ---------- Fuentes ---------- */
+/* ES Face y PP Neue Machina están en fuentes-marca.css (licencia por confirmar). */
+@font-face { font-family: "Inter"; src: url("../assets/fonts/web/Inter-Variable.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0;
+  font-family: var(--fd-font-text);
+  font-size: var(--fd-size-body);
+  font-weight: var(--fd-weight-body);
+  line-height: var(--fd-lh-body);
+  color: var(--fd-navy);
+  background: var(--fd-white);
+}
+img, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: var(--fd-blue); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--fd-navy); }
+:focus-visible { outline: 2px solid var(--fd-blue); outline-offset: 3px; }
+.fd-on-blue :focus-visible, .fd-on-navy :focus-visible { outline-color: var(--fd-sky); }
+::selection { background: var(--fd-mist); color: var(--fd-navy); }
+hr, .fd-rule { border: 0; border-top: var(--fd-rule) solid var(--fd-mist); margin: var(--fd-space-6) 0; }
+
+/* ---------- Tipografía ---------- */
+h1, h2, h3, .fd-display, .fd-h1, .fd-h2, .fd-h3 {
+  font-family: var(--fd-font-display);
+  font-weight: 500;
+  margin: 0 0 0.4em;
+  text-wrap: balance;
+}
+.fd-display { font-size: var(--fd-size-display); line-height: var(--fd-lh-display); letter-spacing: var(--fd-track-display); }
+h1, .fd-h1 { font-size: var(--fd-size-h1); line-height: var(--fd-lh-h1); letter-spacing: var(--fd-track-h1); }
+h2, .fd-h2 { font-size: var(--fd-size-h2); line-height: var(--fd-lh-h2); letter-spacing: var(--fd-track-h2); }
+h3, .fd-h3 { font-size: var(--fd-size-h3); line-height: var(--fd-lh-h3); }
+h4, .fd-h4 { font-family: var(--fd-font-text); font-size: var(--fd-size-h4); line-height: var(--fd-lh-h4); font-weight: 600; margin: 0 0 0.5em; }
+p { margin: 0 0 1em; max-width: 68ch; text-wrap: pretty; }
+.fd-lead { font-family: var(--fd-font-text); font-size: var(--fd-size-lead); line-height: var(--fd-lh-lead); font-weight: 500; letter-spacing: var(--fd-track-lead); max-width: 34ch; }
+.fd-small { font-size: var(--fd-size-small); line-height: var(--fd-lh-small); font-weight: 400; }
+strong, b { font-weight: 600; }
+
+/* Etiqueta / subtítulo en PP Neue Machina */
+.fd-label {
+  font-family: var(--fd-font-figures);
+  font-size: var(--fd-size-label);
+  line-height: var(--fd-lh-label);
+  letter-spacing: var(--fd-track-label);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+/* Etiqueta en caja (elemento firma del manual: «ATRIBUTOS», «PROMESA DE MARCA») */
+.fd-tag {
+  display: inline-block;
+  align-self: flex-start;
+  width: fit-content;
+  font-family: var(--fd-font-figures);
+  font-size: var(--fd-size-label);
+  letter-spacing: var(--fd-track-label);
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.6em 0.9em 0.55em;
+  background: var(--fd-blue);
+  color: var(--fd-white);
+  border-radius: 0;
+}
+.fd-on-blue .fd-tag { background: var(--fd-white); color: var(--fd-blue); }
+.fd-on-navy .fd-tag { background: var(--fd-blue); color: var(--fd-white); }
+
+/* Cifras */
+.fd-figure, .fd-num { font-family: var(--fd-font-figures); font-weight: 400; font-variant-numeric: tabular-nums; }
+.fd-figure-xl { font-family: var(--fd-font-figures); font-size: var(--fd-size-figure-xl); line-height: var(--fd-lh-figure-xl); letter-spacing: var(--fd-track-figure-xl); }
+.fd-figure-l  { font-family: var(--fd-font-figures); font-size: var(--fd-size-figure-l);  line-height: var(--fd-lh-figure-l);  letter-spacing: var(--fd-track-figure-l); }
+.fd-figure-m  { font-family: var(--fd-font-figures); font-size: var(--fd-size-figure-m);  line-height: var(--fd-lh-figure-m); }
+
+/* ---------- Superficies (combinaciones permitidas) ---------- */
+.fd-on-white { background: var(--fd-white); color: var(--fd-navy); }
+.fd-on-gray  { background: var(--fd-gray);  color: var(--fd-navy); }
+.fd-on-mist  { background: var(--fd-mist);  color: var(--fd-navy); }
+.fd-on-sky   { background: var(--fd-sky);   color: var(--fd-navy); }
+.fd-on-blue  { background: var(--fd-blue);  color: var(--fd-white); }
+.fd-on-navy  { background: var(--fd-navy);  color: var(--fd-white); }
+.fd-on-blue a, .fd-on-navy a { color: var(--fd-white); }
+.fd-on-blue a:hover, .fd-on-navy a:hover { color: var(--fd-sky); }
+.fd-text-blue { color: var(--fd-blue); }
+.fd-text-navy { color: var(--fd-navy); }
+.fd-text-sky  { color: var(--fd-sky); }   /* solo sobre azul o profundo */
+.fd-text-mist { color: var(--fd-mist); }  /* solo sobre profundo */
+.fd-on-blue .fd-rule, .fd-on-navy .fd-rule { border-top-color: rgb(255 255 255 / 0.35); }
+
+/* ---------- Layout ---------- */
+.fd-container { width: 100%; max-width: var(--fd-max-width); margin-inline: auto; padding-inline: var(--fd-margin); }
+.fd-section { padding-block: clamp(56px, 9vw, 128px); }
+.fd-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--fd-gutter); }
+.fd-col-12 { grid-column: span 12; } .fd-col-8 { grid-column: span 8; } .fd-col-7 { grid-column: span 7; }
+.fd-col-6 { grid-column: span 6; } .fd-col-5 { grid-column: span 5; } .fd-col-4 { grid-column: span 4; } .fd-col-3 { grid-column: span 3; }
+@media (max-width: 860px) { .fd-grid > [class*="fd-col-"] { grid-column: span 12; } }
+.fd-stack > * + * { margin-top: var(--fd-space-5); }
+
+/* Retícula del manual para piezas de formato fijo (posts, banners, portadas):
+   módulo = lado corto / 10 ; margen = 1 módulo ; logo = 3 módulos. */
+.fd-format {
+  --fd-w: 1080px; --fd-h: 1080px;
+  --fd-module: calc(min(var(--fd-w), var(--fd-h)) / 10);
+  position: relative; overflow: hidden;
+  width: var(--fd-w); height: var(--fd-h);
+}
+.fd-format > .fd-safe { position: absolute; inset: var(--fd-module); }
+.fd-format .fd-logo-slot { width: calc(var(--fd-module) * 3); }
+.fd-format.fd-show-grid::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgb(8 27 253 / .25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(8 27 253 / .25) 1px, transparent 1px);
+  background-size: var(--fd-module) var(--fd-module);
+}
+
+/* ---------- Logo ---------- */
+.fd-logo { display: inline-block; line-height: 0; }
+.fd-logo img, .fd-logo svg { width: 100%; height: auto; }
+.fd-logo--h { width: clamp(90px, 14vw, 190px); }       /* mínimo digital 90px */
+.fd-logo--symbol { width: 32px; }
+
+/* Cobranding: línea divisoria + separación 1X (≈ 6,8% del ancho del logo) */
+.fd-cobrand { display: inline-flex; align-items: center; gap: calc(var(--fd-cobrand-w, 180px) * 0.068); }
+.fd-cobrand > .fd-logo { width: var(--fd-cobrand-w, 180px); }
+.fd-cobrand > .fd-cobrand__rule { align-self: stretch; width: 1px; background: currentColor; opacity: .6; }
+
+/* ---------- Botones ---------- */
+.fd-btn {
+  --_bg: var(--fd-blue); --_fg: var(--fd-white); --_bd: var(--fd-blue);
+  display: inline-flex; align-items: center; gap: .6em;
+  font-family: var(--fd-font-text); font-size: 0.9375rem; font-weight: 500; line-height: 1;
+  padding: 0.95em 1.4em; border: 1px solid var(--_bd); border-radius: 0;
+  background: var(--_bg); color: var(--_fg); text-decoration: none; cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.fd-btn:hover { --_bg: var(--fd-navy); --_bd: var(--fd-navy); color: var(--fd-white); }
+.fd-btn--outline { --_bg: transparent; --_fg: var(--fd-blue); }
+.fd-btn--outline:hover { --_bg: var(--fd-blue); --_bd: var(--fd-blue); }
+.fd-on-blue .fd-btn { --_bg: var(--fd-white); --_fg: var(--fd-blue); --_bd: var(--fd-white); }
+.fd-on-blue .fd-btn:hover { --_bg: var(--fd-navy); --_bd: var(--fd-navy); color: var(--fd-white); }
+.fd-on-navy .fd-btn--outline, .fd-on-blue .fd-btn--outline { --_bg: transparent; --_fg: var(--fd-white); --_bd: var(--fd-white); }
+.fd-link-arrow { font-family: var(--fd-font-figures); font-size: var(--fd-size-label); letter-spacing: var(--fd-track-label); text-transform: uppercase; text-decoration: none; display: inline-flex; gap: .7em; align-items: center; }
+.fd-link-arrow::before { content: "→"; font-family: var(--fd-font-text); font-size: 1.4em; letter-spacing: 0; }
+
+/* ---------- Header ---------- */
+.fd-header { position: sticky; top: 0; z-index: 20; background: var(--fd-white); border-bottom: 1px solid var(--fd-mist); }
+.fd-header__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--fd-space-6); min-height: 76px; }
+.fd-nav { display: flex; gap: clamp(16px, 2.4vw, 36px); list-style: none; margin: 0; padding: 0; }
+.fd-nav a { font-family: var(--fd-font-text); font-size: .9375rem; font-weight: 400; color: var(--fd-navy); text-decoration: none; padding-block: .4em; border-bottom: 2px solid transparent; }
+.fd-nav a:hover, .fd-nav a[aria-current="page"] { color: var(--fd-blue); border-bottom-color: var(--fd-blue); }
+@media (max-width: 860px) { .fd-nav { display: none; } }
+
+/* ---------- Hero: 3 estilos de composición ---------- */
+/* 1) Formato completo: imagen o color a sangre */
+.fd-hero-full { position: relative; min-height: min(86vh, 820px); display: grid; align-items: end; color: var(--fd-white); background: var(--fd-navy); }
+.fd-hero-full > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fd-hero-full::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(3 28 74 / 0) 35%, rgb(3 28 74 / .78) 100%); }
+.fd-hero-full > .fd-container { position: relative; padding-block: clamp(48px, 8vw, 112px); }
+/* 2) Formato dividido: 2 (o 3) rectángulos, sin redondeo */
+.fd-hero-split { display: grid; grid-template-columns: 1fr 1fr; min-height: min(80vh, 760px); }
+.fd-hero-split > * { min-width: 0; }
+.fd-hero-split__media img { width: 100%; height: 100%; object-fit: cover; }
+.fd-hero-split__body { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(32px, 6vw, 96px); }
+.fd-hero-split__body > * { max-width: 100%; }
+.fd-hero-split__body .fd-rule { align-self: stretch; }
+.fd-hero-split .fd-display { font-size: clamp(2.75rem, 4.6vw, 4.75rem); }
+@media (max-width: 860px) { .fd-hero-split { grid-template-columns: 1fr; } .fd-hero-split__media { aspect-ratio: 4/3; } }
+/* 3) Formato con contenedores: bloques rectangulares sobre imagen/color */
+.fd-hero-boxed { position: relative; min-height: min(82vh, 780px); background: var(--fd-gray); }
+.fd-hero-boxed > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fd-hero-boxed > .fd-container { position: relative; display: flex; align-items: flex-end; justify-content: flex-end; min-height: inherit; padding-block: clamp(32px, 6vw, 80px); }
+.fd-box { background: var(--fd-white); color: var(--fd-navy); padding: clamp(24px, 3.2vw, 44px); max-width: 520px; border-radius: 0; }
+
+/* ---------- Tarjetas / artículos ---------- */
+.fd-card { display: flex; flex-direction: column; background: var(--fd-white); color: var(--fd-navy); text-decoration: none; border-radius: 0; }
+.fd-card__media { aspect-ratio: 3/2; overflow: hidden; background: var(--fd-gray); }
+.fd-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.fd-card:hover .fd-card__media img { transform: scale(1.03); }
+.fd-card__body { padding: var(--fd-space-5) 0; display: flex; flex-direction: column; gap: var(--fd-space-3); }
+.fd-card__title { font-family: var(--fd-font-display); font-weight: 500; font-size: 1.5rem; line-height: 1.12; margin: 0; }
+.fd-card:hover .fd-card__title { color: var(--fd-blue); }
+.fd-card__meta { color: var(--fd-chart-navy-2); }
+.fd-card--boxed .fd-card__body { padding: var(--fd-space-5); }
+
+/* ---------- Dato destacado ---------- */
+.fd-stat { display: flex; flex-direction: column; gap: var(--fd-space-2); padding: var(--fd-space-6); border-radius: 0; }
+.fd-stat__value { font-family: var(--fd-font-figures); font-size: var(--fd-size-figure-l); line-height: 1; letter-spacing: -0.01em; }
+.fd-stat__caption { font-family: var(--fd-font-figures); font-size: var(--fd-size-label); letter-spacing: var(--fd-track-label); text-transform: uppercase; }
+.fd-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.fd-stat-row > .fd-stat + .fd-stat { border-left: 1px solid rgb(3 28 74 / .15); }
+.fd-on-blue .fd-stat__value--accent, .fd-on-navy .fd-stat__value--accent { color: var(--fd-sky); }
+
+/* ---------- Cita / Destacado ---------- */
+.fd-quote { margin: 0; padding-left: var(--fd-space-6); border-left: 2px solid var(--fd-blue); }
+.fd-quote p { font-family: var(--fd-font-display); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2.25rem); line-height: 1.15; max-width: 26ch; }
+.fd-quote cite { font-style: normal; }
+
+/* ---------- Tablas de datos ---------- */
+.fd-table { width: 100%; border-collapse: collapse; font-size: .9375rem; font-weight: 400; }
+.fd-table caption { text-align: left; font-family: var(--fd-font-display); font-weight: 500; font-size: 1.25rem; padding-bottom: var(--fd-space-4); }
+.fd-table th { font-family: var(--fd-font-figures); font-weight: 400; font-size: var(--fd-size-label); letter-spacing: var(--fd-track-label); text-transform: uppercase; text-align: left; padding: .9em .75em; border-bottom: 1px solid var(--fd-navy); }
+.fd-table td { padding: .85em .75em; border-bottom: 1px solid var(--fd-mist); }
+.fd-table td.fd-num, .fd-table th.fd-num { text-align: right; }
+
+/* ---------- Formularios ---------- */
+.fd-field { display: grid; gap: var(--fd-space-2); }
+.fd-field label { font-family: var(--fd-font-figures); font-size: var(--fd-size-label); letter-spacing: var(--fd-track-label); text-transform: uppercase; }
+.fd-input { font: inherit; font-weight: 400; color: var(--fd-navy); background: var(--fd-white); border: 1px solid var(--fd-chart-navy-4); border-radius: 0; padding: .85em 1em; }
+.fd-input:focus { outline: 2px solid var(--fd-blue); outline-offset: -1px; border-color: var(--fd-blue); }
+
+/* ---------- Semitono (imágenes tratadas) ---------- */
+.fd-halftone { background: var(--fd-white); }
+.fd-halftone img { mix-blend-mode: multiply; }
+
+/* ---------- Footer ---------- */
+.fd-footer { background: var(--fd-navy); color: var(--fd-white); padding-block: clamp(48px, 7vw, 96px) var(--fd-space-6); }
+.fd-footer a { color: var(--fd-white); text-decoration: none; }
+.fd-footer a:hover { color: var(--fd-sky); }
+.fd-footer__bottom { margin-top: var(--fd-space-8); padding-top: var(--fd-space-5); border-top: 1px solid rgb(255 255 255 / .2); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--fd-space-4); }
+
+/* ---------- Utilidades ---------- */
+.fd-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.fd-mt-0 { margin-top: 0; } .fd-mb-0 { margin-bottom: 0; }
+.fd-flex { display: flex; gap: var(--fd-space-4); flex-wrap: wrap; align-items: center; }

@@ -1,0 +1,51 @@
+# Temas de investigación. El código (slug) es el que se usa en «temas» de
+# _data/publicaciones.yml y en la dirección investigaciones.html?tema=<slug>.
+# «destacado: true» lo muestra en la barra de temas del encabezado.
+
+- slug: macroeconomia
+  nombre: "Macroeconomía, política monetaria y fiscal"
+  corto: "Política fiscal"
+  destacado: true
+- slug: mercado-laboral
+  nombre: "Mercado laboral, pobreza y protección social"
+  corto: "Mercado laboral"
+  destacado: true
+- slug: instituciones-justicia
+  nombre: "Instituciones y justicia"
+  corto: "Instituciones y justicia"
+  destacado: true
+- slug: mineria-energia
+  nombre: "Minería y energía"
+  corto: "Energía"
+  destacado: true
+- slug: educacion
+  nombre: "Educación"
+  corto: "Educación"
+  destacado: true
+- slug: financiero
+  nombre: "Financiero y bancarización"
+  corto: "Sector financiero"
+- slug: comercio-exterior
+  nombre: "Comercio exterior y economía internacional"
+  corto: "Comercio exterior"
+- slug: desarrollo-productivo
+  nombre: "Desarrollo productivo"
+  corto: "Desarrollo productivo"
+- slug: infraestructura
+  nombre: "Infraestructura, transporte, comunicaciones y servicios públicos"
+  corto: "Infraestructura"
+- slug: vivienda
+  nombre: "Construcción, vivienda y desarrollo urbano"
+  corto: "Vivienda"
+- slug: salud
+  nombre: "Salud"
+  corto: "Salud"
+- slug: agropecuario
+  nombre: "Sector agropecuario"
+  corto: "Agro"
+- slug: regional
+  nombre: "Descentralización y desarrollo regional"
+  corto: "Desarrollo regional"
+- slug: medio-ambiente
+  nombre: "Medio ambiente"
+  corto: "Medio ambiente"

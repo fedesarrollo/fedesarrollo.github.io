@@ -1,0 +1,157 @@
+# Equipo de Fedesarrollo, por grupos. «perfil» es el código del perfil en
+# fedesarrollo.org.co/nosotros/equipo/<perfil>. «foto» es la dirección completa
+# de la foto; el sitio la recorta solo. Si no hay foto, se muestran las iniciales.
+
+- grupo: direccion
+  nombre: "Dirección"
+  personas:
+    - nombre: "Marcela Meléndez"
+      cargo: "Directora Ejecutiva"
+      perfil: marcela-melendez
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/q_auto/f_auto/v1776446980/WhatsApp_Image_2026-04-17_at_12.29.11_PM_nlhecj.jpg"
+    - nombre: "Margarita María Rueda Pinzón"
+      cargo: "Directora Administrativa y Financiera, Secretaria General"
+      perfil: margarita-maria-rueda
+      foto: "https://res.cloudinary.com/dh4bf24wb/image/upload/q_auto/f_auto/v1781760327/plano_medio_qmz19z.jpg"
+
+- grupo: investigadores
+  nombre: "Investigadores"
+  personas:
+    - nombre: "Astrid Martínez Ortiz"
+      cargo: "Investigadora"
+      perfil: astrid-martinez-ortiz
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453352/foto-perfil-astrid-martinez_pqopiz.jpg"
+    - nombre: "Daniel Wiesner"
+      cargo: "Investigador"
+      perfil: daniel-wiesner
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1737070852/Personas/WhatsApp_Image_2025-01-16_at_12.22.07_PM_y58921.jpg"
+    - nombre: "David Gelvez"
+      cargo: "Investigador"
+      perfil: david-gelvez
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453351/foto-perfil-david-gelvez_ajsjvu.png"
+    - nombre: "David Forero"
+      cargo: "Investigador"
+      perfil: YnyBWBTrE1RKTB15ogDE
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677556708/Personas/David_Fernando_Forero_lsxwje.png"
+    - nombre: "Eduardo Lora"
+      cargo: "Investigador"
+      perfil: eduardo-lora
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1701442402/Personas/Eduardo_Lora_sggxj4.jpg"
+    - nombre: "Federico González"
+      cargo: "Investigador"
+      perfil: federico-gonzalez
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453351/foto-perfil-federico-gonzalez_e1pax3.png"
+    - nombre: "Jairo Núñez"
+      cargo: "Investigador"
+      perfil: A9hm0DGovNgtZEGx9YUk
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557000/Personas/Jairo_N%C3%BA%C3%B1ez_Mendez_bgzmz3.png"
+    - nombre: "Jairo García Guerrero"
+      cargo: "Investigador"
+      perfil: jairo-garcia-guerrero
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453350/foto-perfil-jairo-garcia_dpcvul.png"
+    - nombre: "Juan Benavides Estévez-Bretón"
+      cargo: "Investigador"
+      perfil: 9zJVQzAQ87QhGMv0SqAN
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557179/Personas/jb_s3q6mh.png"
+    - nombre: "Juan Gonzalo Zapata"
+      cargo: "Investigador"
+      perfil: HdcTWtKRry2IT4P6Tgda
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557116/Personas/jgz_t5czlm.png"
+    - nombre: "Juan José Perfetti"
+      cargo: "Investigador"
+      perfil: fVzFUbiJXkTh26eTYf6i
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557159/Personas/perfeccctiii_pmwdui.png"
+    - nombre: "Juan José Echavarría"
+      cargo: "Investigador"
+      perfil: phaIj6qg9kM7NcbwyNPM
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557126/Personas/captura_de_pantalla_2021-09-02_a_las_9.18.39_a._m_jw3wtg.png"
+    - nombre: "Juan Pablo Zárate"
+      cargo: "Investigador"
+      perfil: juan-pablo-zarate
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453352/foto-perfil-juan-pablo-zarate_ebegm4.png"
+    - nombre: "Juan Sebastián Galán"
+      cargo: "Investigador"
+      perfil: juan-sebastian-galan
+    - nombre: "María Angélica Arbeláez"
+      cargo: "Investigadora"
+      perfil: ytWLhfGu5oZGNNACfsFT
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557223/Personas/maa_jgfoct.png"
+    - nombre: "Martha Delgado"
+      cargo: "Investigadora"
+      perfil: pKE4rkiMx4QSsIAscJrX
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1683840878/Personas/Martha_Delgado_mtlzcj.png"
+    - nombre: "María del Pilar Ruiz"
+      cargo: "Investigadora"
+      perfil: maria-del-pilar-ruiz
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453351/foto-perfil-maria-pilar-ruiz_bv6rjz.jpg"
+    - nombre: "Mauricio Reina"
+      cargo: "Investigador"
+      perfil: fTsF3k1XAqU1s4WYUlt6
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1683841114/Personas/Mauricio_Reina_nb1ax7.png"
+    - nombre: "Nicolás Peña Tenjo"
+      cargo: "Investigador"
+      perfil: nicolas-pena-tenjo
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/q_auto/f_auto/v1776455669/Eventos%20-%20Fedesarrollo/Image_vctn1g.jpg"
+    - nombre: "Rafael Puyana"
+      cargo: "Investigador"
+      perfil: u4CrwruqUIWBq3XaiRho
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557829/Personas/screen_shot_2020-08-23_at_11.42.08_am_tr3gcp.png"
+    - nombre: "Sandra Oviedo"
+      cargo: "Investigadora"
+      perfil: AvLGvt7QKMLznHfe6eQ3
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677557855/Personas/so_0_zbqxsv.png"
+    - nombre: "Sandra Zuluaga"
+      cargo: "Investigadora"
+      perfil: sandra-zuluaga
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/t_Try1/v1705417374/Personas/_DSC0022_p98fjm.jpg"
+    - nombre: "Ximena Cadena"
+      cargo: "Investigadora"
+      perfil: ximena-cadena
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677556708/Personas/ximena_cardenas_lugeei.png"
+
+- grupo: analisis
+  nombre: "Equipo DAMS"
+  personas:
+    - nombre: "Elián Moreno"
+      cargo: "Analista Económico"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1791507842/WhatsApp_Image_2026-10-08_at_9.08.26_AM_h9exmu.jpg"
+    - nombre: "Enrique Sanz"
+      cargo: "Analista Económico"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/f_auto,q_auto/v1/Personas/Enrrique_wijbmu"
+    - nombre: "Juan Daniel Sarmiento"
+      cargo: "Analista Económico"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/f_auto,q_auto/v1/Personas/_DSC0019_fuecph"
+    - nombre: "Manuela Franco"
+      cargo: "Analista Económica"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1788453354/foto-perfil-manuela-franco_dxczzg.jpg"
+
+- grupo: administracion
+  nombre: "Administración"
+  personas:
+    - nombre: "Johan Sebastián Gómez"
+      cargo: "Comunicaciones y prensa"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1757541398/_DSC0107_o0cowu.jpg"
+    - nombre: "Patricia Monroy Castañeda"
+      cargo: "Asistente de Biblioteca y Publicaciones"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558305/Personas/patty_vwgtwm.png"
+    - nombre: "Claudia Bernal Granados"
+      cargo: "Secretaria"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558197/Personas/claudix_yk3swj.png"
+    - nombre: "Marcela Lesmes Góngora"
+      cargo: "Asistente Administrativa"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558253/Personas/ml_stuula.png"
+    - nombre: "Paola Alexandra Castillo"
+      cargo: "Asistente Administrativa"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558274/Personas/c1_owan2g.png"
+    - nombre: "Leidy Andrea Vaca"
+      cargo: "Recepcionista"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558178/Personas/leidyini_if6to3.png"
+    - nombre: "Doris Sánchez"
+      cargo: "Servicios Generales"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558361/Personas/dori_pwdatv.png"
+    - nombre: "Luis Ramírez"
+      cargo: "Servicios Generales"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558414/Personas/luis_jeje_i5aif7.png"
+    - nombre: "Mariela Sánchez"
+      cargo: "Servicios Generales"
+      foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558379/Personas/marieli_ikqsnh.png"

@@ -1,0 +1,19 @@
+---
+title: Página no encontrada
+permalink: /404.html
+sitemap: false
+---
+<section class="fd-container wrap error">
+  <div>
+    <p class="fd-figure-xl">404</p>
+    <h1 class="fd-h2">Esta página no existe</h1>
+    <p>Puede que la dirección haya cambiado. Busque la publicación o vuelva al inicio.</p>
+    <form class="buscar" action="{{ '/investigaciones.html' | relative_url }}" method="get" role="search" style="display:flex;max-width:420px;margin:24px 0">
+      <label class="fd-sr-only" for="q404">Buscar publicaciones</label>
+      <input class="fd-input buscar__input" id="q404" name="q" type="search" placeholder="Buscar publicaciones" style="width:100%">
+      <button class="buscar__btn" type="submit" aria-label="Buscar"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg></button>
+    </form>
+    <a class="fd-link-arrow" href="{{ '/' | relative_url }}">Ir al inicio</a>
+  </div>
+  <div class="fd-halftone"><img src="{{ '/assets/fede/photos/caballo.jpg' | relative_url }}" alt="" width="734" height="1100"></div>
+</section>

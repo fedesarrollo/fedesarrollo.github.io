@@ -1,0 +1,52 @@
+<footer class="fd-footer site-footer">
+  <div class="fd-container">
+    <div class="pie">
+      <div class="pie__marca">
+        <a class="fd-logo fd-logo--h" href="{{ '/' | relative_url }}" aria-label="Fedesarrollo, inicio">
+          <img src="{{ '/assets/fede/logos/FeDeLogoBlanco.svg' | relative_url }}" alt="Fedesarrollo" width="190" height="35" loading="lazy">
+        </a>
+        <p>Centro de investigación económica y social independiente, sin ánimo de lucro, fundado en 1970.</p>
+      </div>
+      <nav class="pie__col" aria-label="Investigación">
+        <p class="fd-label fd-text-sky">Investigación</p>
+        <ul>
+          <li><a href="{{ '/investigaciones.html' | relative_url }}">Investigaciones</a></li>
+          <li><a href="{{ '/encuestas.html' | relative_url }}">Encuestas</a></li>
+          <li><a href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}">Documentos de Política</a></li>
+          <li><a href="{{ '/temas.html' | relative_url }}">Temas</a></li>
+          <li><a href="{{ '/productividad-mercado-laboral/' | relative_url }}">Explorador de marcos regulatorios</a></li>
+          <li><a href="{{ site.repositorio }}">Repositorio institucional</a></li>
+        </ul>
+      </nav>
+      <nav class="pie__col" aria-label="Fedesarrollo">
+        <p class="fd-label fd-text-sky">Fedesarrollo</p>
+        <ul>
+          <li><a href="{{ '/nosotros.html' | relative_url }}">Nosotros</a></li>
+          <li><a href="{{ '/equipo.html' | relative_url }}">Equipo</a></li>
+          <li><a href="{{ '/noticias-eventos.html' | relative_url }}">Noticias y eventos</a></li>
+          <li><a href="{{ site.sitio_anterior }}/p/publicaciones/informes-de-gestion">Informes de gestión</a></li>
+          <li><a href="{{ site.sitio_anterior }}/rte">Régimen Tributario Especial</a></li>
+          <li><a href="{{ site.sitio_anterior }}/politicadatos">Política de tratamiento de datos</a></li>
+        </ul>
+      </nav>
+      <div class="pie__col">
+        <p class="fd-label fd-text-sky">Contacto</p>
+        <ul>
+          <li>{{ site.contacto.direccion }}</li>
+          <li><a href="{{ site.contacto.telefono_enlace }}">{{ site.contacto.telefono }}</a></li>
+          <li><a href="mailto:{{ site.contacto.correo }}">{{ site.contacto.correo }}</a></li>
+          <li><a href="{{ site.contacto.formulario }}">Escríbanos</a></li>
+        </ul>
+        <ul class="pie__redes">
+          {%- for r in site.redes %}
+          <li><a href="{{ r.url }}">{{ r.nombre }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="fd-footer__bottom fd-small">
+      <span>© {{ site.time | date: "%Y" }} Fedesarrollo</span>
+      <span>Bogotá, Colombia</span>
+    </div>
+  </div>
+</footer>

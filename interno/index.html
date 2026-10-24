@@ -1,0 +1,99 @@
+---
+layout: null
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal interno de Fedesarrollo: herramientas, dashboards y Documentos de Política." />
+  <meta name="robots" content="noindex" />
+  <title>Portal interno | Fedesarrollo</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fedesarrollo">
+  <meta property="og:title" content="Portal interno | Fedesarrollo">
+  <meta property="og:url" content="https://fedesarrollo.github.io/interno/">
+  <meta property="og:image" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/assets/img/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="../documentos-politica-2026-2030/assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <img class="logo" src="../assets/img/portal/logo-fedesarrollo.png" width="640" height="118" alt="Fedesarrollo">
+    <p>Todo lo que el equipo usa a diario, en un solo lugar.</p>
+  </header>
+
+  <main class="page">
+
+
+    <!-- Tutorial: se muestra las dos primeras visitas y no se puede cerrar hasta el último paso -->
+    <dialog class="tutorial" id="tutorial" aria-labelledby="tutorial-title">
+      <p class="tutorial-count" id="tutorial-count"></p>
+      <h2 id="tutorial-title">Cómo usar el portal</h2>
+      <ol class="tutorial-steps">
+        <li class="is-active">
+          <img src="../assets/img/portal/paso-1.jpg" alt="Una tarjeta del portal con su botón Abrir en GitHub">
+          <p><strong>Elige</strong> una tarjeta y haz clic en su botón azul.</p>
+        </li>
+        <li>
+          <img src="../assets/img/portal/paso-2.jpg" alt="Pantalla de inicio de sesión de GitHub">
+          <p><strong>Inicia sesión</strong> en GitHub con tu cuenta de Fedesarrollo si te la pide.</p>
+        </li>
+        <li>
+          <img src="../assets/img/portal/paso-3.jpg" alt="Página de un repositorio en GitHub con su README">
+          <p>Baja hasta el <strong>README</strong> del repositorio: ahí están las instrucciones paso a paso.</p>
+        </li>
+      </ol>
+      <div class="tutorial-nav">
+        <button type="button" class="btn btn-ghost" id="tutorial-prev">Anterior</button>
+        <div class="tutorial-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button type="button" class="btn" id="tutorial-next">Siguiente</button>
+      </div>
+    </dialog>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Herramientas internas</h2>
+        <button type="button" class="btn btn-tutorial" id="tutorial-open">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6.6"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.5 1.7c-.5.2-.8.6-.8 1.1v.5"/><circle cx="8" cy="11.6" r=".4" fill="currentColor"/></svg>
+          Ver el tutorial
+        </button>
+      </div>
+      <div class="grid grid-3" id="tools-grid"></div>
+    </section>
+
+    <section class="block">
+      <h2>Dashboards</h2>
+      <div class="grid grid-3" id="dashboards-grid"></div>
+    </section>
+
+    <section class="block">
+      <h2>Documentos de Política</h2>
+      <a class="feature" href="../documentos-politica-2026-2030/index.html">
+        <div class="feature-media">
+          <img src="../assets/img/portal/documentos.jpg" alt="Portadas de tres Documentos de Política de la serie">
+        </div>
+        <div class="feature-body">
+          <h3>Documentos de Política para el gobierno 2026&#8209;2030</h3>
+          <p>Los Documentos de Política, sus Resúmenes y las Notas de Política de la serie, con los PDF para descargar.</p>
+          <span class="btn">Ir al sitio de la serie</span>
+        </div>
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Fedesarrollo. Uso interno.</p>
+    <p><a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">fedesarrollo.org.co</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{%- assign x = include.x -%}
+{%- assign _ini = "" -%}
+{%- assign _partes = x.nombre | split: " " -%}
+{%- capture _ini %}{{ _partes[0] | slice: 0 }}{{ _partes[1] | slice: 0 }}{% endcapture -%}
+<li class="persona{% if include.chica %} persona--chica{% endif %}">
+  {%- if x.perfil %}<a href="{{ site.sitio_anterior }}/nosotros/equipo/{{ x.perfil }}">{% endif %}
+  <span class="persona__foto">
+    {%- if x.foto -%}
+    <img src="{{ x.foto | replace_first: '/upload/', '/upload/c_fill,g_face,w_480,h_600,q_auto,f_auto/' }}" alt="" loading="lazy" width="240" height="300">
+    {%- else -%}
+    <span class="persona__ini" aria-hidden="true">{{ _ini }}</span>
+    {%- endif -%}
+  </span>
+  <span class="persona__nombre">{{ x.nombre }}</span>
+  <span class="persona__cargo fd-small">{{ x.cargo }}</span>
+  {%- if x.perfil %}</a>{% endif %}
+</li>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.body_class }}">
+{% include header.html %}
+<main id="contenido">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+{%- for js in page.js %}
+<script src="{{ js | relative_url }}" defer></script>
+{%- endfor %}
+</body>
+</html>

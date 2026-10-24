@@ -1,0 +1,5 @@
+{%- comment -%} Fecha en español a partir de «AAAA-MM» o «AAAA-MM-DD». {%- endcomment -%}
+{%- assign _meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," -%}
+{%- assign _p = include.f | split: "-" -%}
+{%- assign _m = _p[1] | plus: 0 | minus: 1 -%}
+{%- if _p[2] -%}{{ _p[2] | plus: 0 }} de {{ _meses[_m] }} de {{ _p[0] }}{%- else -%}{{ _meses[_m] | capitalize }} de {{ _p[0] }}{%- endif -%}

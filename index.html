@@ -1,95 +1,178 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portal interno de Fedesarrollo: herramientas, dashboards y Documentos de Política." />
-  <meta name="robots" content="noindex" />
-  <title>Portal interno | Fedesarrollo</title>
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Fedesarrollo">
-  <meta property="og:title" content="Portal interno | Fedesarrollo">
-  <meta property="og:url" content="https://fedesarrollo.github.io/">
-  <meta property="og:image" content="https://fedesarrollo.github.io/documentos-politica-2026-2030/assets/img/og-image.png">
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <link rel="apple-touch-icon" href="documentos-politica-2026-2030/assets/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+---
+title: Fedesarrollo
+description: Centro de investigación económica y social independiente. Investigaciones, encuestas de opinión y propuestas de política pública para Colombia desde 1970.
+---
+{%- assign pubs = site.data.publicaciones -%}
+{%- assign investigaciones = pubs | where: "tipo", "Investigación" -%}
+{%- assign principal = investigaciones | first -%}
+{%- assign serie_docs = site.data.serie | where: "tipo", "documento" -%}
 
-  <header class="site-header">
-    <img class="logo" src="assets/img/portal/logo-fedesarrollo.png" width="640" height="118" alt="Fedesarrollo">
-    <p>Todo lo que el equipo usa a diario, en un solo lugar.</p>
-  </header>
+<section class="fd-hero-split portada">
+  <div class="fd-hero-split__media fd-halftone">
+    <img src="{{ '/assets/fede/photos/campesinos.jpg' | relative_url }}" alt="Un campesino trabaja la tierra en un cultivo abierto" width="900" height="900">
+  </div>
+  <div class="fd-hero-split__body fd-on-gray">
+    <span class="fd-tag">Documentos de Política 2026-2030</span>
+    <h1 class="fd-display" style="margin-top:28px">Evidencia para las decisiones del próximo cuatrienio</h1>
+    <hr class="fd-rule">
+    <p>Diagnósticos, prioridades y hojas de ruta para los principales retos de política pública del gobierno 2026-2030. Cada tema tiene un Documento de Política completo y un Resumen.</p>
+    <div class="fd-flex" style="margin-top:8px">
+      <a class="fd-btn" href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">Ver los documentos</a>
+      <a class="fd-btn fd-btn--outline" href="{{ '/documentos-politica-2026-2030/notas-politica.html' | relative_url }}">Notas de Política</a>
+    </div>
+  </div>
+</section>
 
-  <main class="page">
-
-
-    <!-- Tutorial: se muestra las dos primeras visitas y no se puede cerrar hasta el último paso -->
-    <dialog class="tutorial" id="tutorial" aria-labelledby="tutorial-title">
-      <p class="tutorial-count" id="tutorial-count"></p>
-      <h2 id="tutorial-title">Cómo usar el portal</h2>
-      <ol class="tutorial-steps">
-        <li class="is-active">
-          <img src="assets/img/portal/paso-1.jpg" alt="Una tarjeta del portal con su botón Abrir en GitHub">
-          <p><strong>Elige</strong> una tarjeta y haz clic en su botón azul.</p>
-        </li>
-        <li>
-          <img src="assets/img/portal/paso-2.jpg" alt="Pantalla de inicio de sesión de GitHub">
-          <p><strong>Inicia sesión</strong> en GitHub con tu cuenta de Fedesarrollo si te la pide.</p>
-        </li>
-        <li>
-          <img src="assets/img/portal/paso-3.jpg" alt="Página de un repositorio en GitHub con su README">
-          <p>Baja hasta el <strong>README</strong> del repositorio: ahí están las instrucciones paso a paso.</p>
-        </li>
-      </ol>
-      <div class="tutorial-nav">
-        <button type="button" class="btn btn-ghost" id="tutorial-prev">Anterior</button>
-        <div class="tutorial-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-        <button type="button" class="btn" id="tutorial-next">Siguiente</button>
-      </div>
-    </dialog>
-
-    <section class="block">
-      <div class="block-head">
-        <h2>Herramientas internas</h2>
-        <button type="button" class="btn btn-tutorial" id="tutorial-open">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6.6"/><path d="M6.3 6.2a1.8 1.8 0 1 1 2.5 1.7c-.5.2-.8.6-.8 1.1v.5"/><circle cx="8" cy="11.6" r=".4" fill="currentColor"/></svg>
-          Ver el tutorial
-        </button>
-      </div>
-      <div class="grid grid-3" id="tools-grid"></div>
-    </section>
-
-    <section class="block">
-      <h2>Dashboards</h2>
-      <div class="grid grid-3" id="dashboards-grid"></div>
-    </section>
-
-    <section class="block">
-      <h2>Documentos de Política</h2>
-      <a class="feature" href="documentos-politica-2026-2030/index.html">
-        <div class="feature-media">
-          <img src="assets/img/portal/documentos.jpg" alt="Portadas de tres Documentos de Política de la serie">
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Lo más reciente</h2>
+    <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}">Todas las publicaciones</a>
+  </div>
+  <div class="reciente">
+    <div>
+      <article class="destacada">
+        <div>
+          <p class="pub__tipo fd-label">{{ principal.tipo }}</p>
+          <h3><a href="http://hdl.handle.net/11445/{{ principal.handle }}">{{ principal.titulo }}</a></h3>
+          <p class="pub__autores">{{ principal.autores }}</p>
+          <p>{{ principal.resumen | truncatewords: 46 }}</p>
+          <p class="pub__fecha fd-small">{% include fecha.html f=principal.fecha %}</p>
         </div>
-        <div class="feature-body">
-          <h3>Documentos de Política para el gobierno 2026&#8209;2030</h3>
-          <p>Los Documentos de Política, sus Resúmenes y las Notas de Política de la serie, con los PDF para descargar.</p>
-          <span class="btn">Ir al sitio de la serie</span>
-        </div>
+        <a class="destacada__img" href="http://hdl.handle.net/11445/{{ principal.handle }}" tabindex="-1" aria-hidden="true">
+          <img src="{{ principal.portada | relative_url }}" alt="" width="162" height="210">
+        </a>
+      </article>
+      <div class="reciente__mas">
+        {%- assign otras = investigaciones | slice: 1, 2 -%}
+        {%- for p in otras %}
+        {% include pub.html p=p %}
+        {%- endfor %}
+      </div>
+    </div>
+    <div>
+      <p class="fd-label" style="margin:0 0 16px">Coyuntura</p>
+      <div class="pubs">
+        {%- comment %} Una sola edición por serie: la más reciente {% endcomment -%}
+        {%- assign n = 0 -%}{%- assign vistas = "|" -%}
+        {%- for p in pubs -%}
+          {%- if p.tipo == "Encuesta" or p.tipo == "Publicación periódica" or p.tipo == "Comunicado" -%}
+            {%- capture clave %}|{{ p.serie | default: p.tipo }}|{% endcapture -%}
+            {%- unless vistas contains clave or n >= 5 %}
+        {% include pub.html p=p %}
+            {%- assign n = n | plus: 1 -%}{%- assign vistas = vistas | append: clave -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fd-on-blue">
+  <div class="fd-container wrap">
+    <div class="sec-head">
+      <h2>Indicadores de coyuntura</h2>
+      <a class="fd-link-arrow" href="{{ '/encuestas.html' | relative_url }}">Encuestas</a>
+    </div>
+    <div class="indicadores">
+      {%- for i in site.data.indicadores %}
+      <a class="indicador" href="http://hdl.handle.net/11445/{{ i.handle }}">
+        <span class="indicador__sigla">{{ i.sigla }} · {{ i.periodo }}</span>
+        <span class="indicador__valor">{{ i.valor }}</span>
+        <span class="indicador__nombre">{{ i.nombre }}</span>
+        <span class="indicador__nota">{{ i.nota }}</span>
       </a>
-    </section>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
 
-  </main>
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Documentos de Política 2026-2030</h2>
+    <a class="fd-link-arrow" href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">La serie completa</a>
+  </div>
+  <ul class="portadas">
+    {%- for d in serie_docs limit: 4 %}
+    <li>
+      <a href="{{ '/documentos-politica-2026-2030/docs/' | relative_url }}{{ d.slug }}.html">
+        <img src="{{ '/documentos-politica-2026-2030/assets/img/previews/' | relative_url }}{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <span class="portadas__titulo">{{ d.titulo }}</span>
+        <span class="portadas__autores">{{ d.autores_corto }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
 
-  <footer class="site-footer">
-    <p>© 2026 Fedesarrollo. Uso interno.</p>
-    <p><a href="https://www.fedesarrollo.org.co" target="_blank" rel="noopener">fedesarrollo.org.co</a></p>
-  </footer>
+<section class="dividido fd-on-navy">
+  <div class="dividido__texto">
+    <p class="fd-label fd-text-sky">Datos abiertos</p>
+    <h2>Explorador de marcos regulatorios</h2>
+    <p>Costos laborales no salariales, salarios mínimos, costos de despido e impuestos a las empresas en 11 países de América Latina. Un inventario del Grupo Banco Mundial elaborado con Fedesarrollo y la Facultad de Economía de la Universidad de los Andes. Disponible en inglés.</p>
+    <a class="fd-btn fd-btn--outline" href="{{ '/productividad-mercado-laboral/' | relative_url }}">Abrir el explorador</a>
+  </div>
+  <div class="dividido__media fd-halftone">
+    <img class="contener" src="{{ '/assets/fede/photos/banco.jpg' | relative_url }}" alt="" loading="lazy">
+  </div>
+</section>
 
-  <script src="app.js"></script>
-</body>
-</html>
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Investigadores</h2>
+    <a class="fd-link-arrow" href="{{ '/equipo.html' | relative_url }}">Todo el equipo</a>
+  </div>
+  {%- assign inv = site.data.equipo | where: "grupo", "investigadores" | first -%}
+  {%- assign dir = site.data.equipo | where: "grupo", "direccion" | first -%}
+  <ul class="personas personas--fila">
+    {%- assign directora = dir.personas | first %}
+    {% include persona.html x=directora %}
+    {%- assign elegidos = "Eduardo Lora,Ximena Cadena,Juan José Echavarría,María Angélica Arbeláez,Juan Benavides Estévez-Bretón" | split: "," -%}
+    {%- for p in inv.personas %}{% if elegidos contains p.nombre %}
+    {% include persona.html x=p %}
+    {%- endif %}{% endfor %}
+  </ul>
+</section>
+
+<section class="fd-on-gray">
+  <div class="fd-container wrap columnas">
+    <div>
+      <div class="sec-head"><h2>En los medios</h2><a class="fd-link-arrow" href="{{ '/noticias-eventos.html' | relative_url }}">Más noticias</a></div>
+      <ul class="notas">
+        {%- for n in site.data.noticias limit: 5 %}
+        <li class="nota">
+          {% include fecha-corta.html f=n.fecha %}
+          <div>
+            <h3 class="nota__titulo"><a href="{{ n.enlace }}">{{ n.titulo }}</a></h3>
+            {%- if n.medio %}<p class="nota__meta">{{ n.medio }}</p>{% endif %}
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Eventos</h2><a class="fd-link-arrow" href="{{ '/noticias-eventos.html#eventos' | relative_url }}">Todos los eventos</a></div>
+      <ul class="notas">
+          {%- for e in site.data.eventos limit: 4 %}
+        <li class="nota">
+          {% include fecha-corta.html f=e.fecha %}
+          <div>
+            <h3 class="nota__titulo"><a href="{{ e.enlace }}">{{ e.titulo }}</a></h3>
+            {%- if e.lugar %}<p class="nota__meta">{{ e.lugar }}</p>{% endif %}
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="fd-on-blue">
+  <div class="fd-container wrap--corto boletin">
+    <div>
+      <h2>Boletín</h2>
+      <p>Reciba en su correo las publicaciones y los resultados de las encuestas de Fedesarrollo.</p>
+    </div>
+    <a class="fd-btn" href="{{ site.contacto.boletin }}">Suscribirse</a>
+  </div>
+</section>

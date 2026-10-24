@@ -1,0 +1,33 @@
+---
+title: Equipo
+description: Directivas, investigadores y equipo de Fedesarrollo.
+nav: equipo
+---
+<section class="fd-on-gray">
+  <div class="fd-container cabeza">
+    <span class="fd-label fd-text-blue">Equipo</span>
+    <h1>Quiénes hacen Fedesarrollo</h1>
+    <p class="fd-lead">Dirección, investigadores y equipo de apoyo.</p>
+  </div>
+</section>
+
+{%- for g in site.data.equipo %}
+<section class="fd-container {% if forloop.first %}wrap{% else %}wrap--corto{% endif %}" id="{{ g.grupo }}">
+  <div class="sec-head"><h2>{{ g.nombre }}</h2></div>
+  <ul class="personas{% if g.grupo == 'administracion' %} personas--lista{% endif %}">
+    {%- for p in g.personas %}
+    {% include persona.html x=p %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+
+<section class="fd-on-gray" style="margin-top:64px">
+  <div class="fd-container wrap--corto boletin">
+    <div>
+      <h2>Prensa</h2>
+      <p>Para entrevistas y solicitudes de medios, comuníquese con Johan Sebastián Gómez, de Comunicaciones y prensa, al {{ site.contacto.telefono }}.</p>
+    </div>
+    <a class="fd-btn" href="{{ site.contacto.formulario }}">Escríbanos</a>
+  </div>
+</section>

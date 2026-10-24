@@ -1,0 +1,59 @@
+---
+title: Encuestas e índices
+description: Encuesta de Opinión del Consumidor, Encuesta de Opinión Empresarial, Encuesta de Opinión Financiera e Índice de Incertidumbre de la Política Económica.
+nav: encuestas
+---
+<section class="fd-on-gray">
+  <div class="fd-container cabeza">
+    <span class="fd-label fd-text-blue">Encuestas</span>
+    <h1>Encuestas e índices</h1>
+    <p class="fd-lead">Cada mes, Fedesarrollo mide la confianza de hogares, empresarios y analistas financieros.</p>
+  </div>
+</section>
+
+<section class="fd-on-blue">
+  <div class="fd-container wrap--corto">
+    <div class="indicadores">
+      {%- for i in site.data.indicadores %}
+      <a class="indicador" href="http://hdl.handle.net/11445/{{ i.handle }}">
+        <span class="indicador__sigla">{{ i.sigla }} · {{ i.periodo }}</span>
+        <span class="indicador__valor">{{ i.valor }}</span>
+        <span class="indicador__nombre">{{ i.nombre }}</span>
+        <span class="indicador__nota">{{ i.nota }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  {%- for e in site.data.encuestas %}
+  {%- assign res = site.data.publicaciones | where: "serie", e.serie -%}
+  <article class="encuesta" id="{{ e.serie | slugify: 'latin' }}">
+    <div>
+      <span class="fd-label fd-text-blue">{{ e.frecuencia }}</span>
+      <h2>{{ e.nombre }}</h2>
+      <p>{{ e.descripcion }}</p>
+      <a class="fd-link-arrow" href="{{ e.listado }}">Resultados anteriores</a>
+    </div>
+    <div>
+      <p class="fd-label" style="margin:0 0 16px">Últimos resultados</p>
+      <div class="pubs">
+        {%- for p in res limit: 2 %}
+        {% include pub.html p=p portada=true resumen=true %}
+        {%- endfor %}
+      </div>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+
+<section class="fd-on-gray">
+  <div class="fd-container wrap--corto boletin">
+    <div>
+      <h2>Calendario de publicación</h2>
+      <p>Las fechas de publicación de las encuestas de opinión empresarial, del consumidor y financiera están en el calendario de Fedesarrollo.</p>
+    </div>
+    <a class="fd-btn" href="{{ site.sitio_anterior }}/p/publicaciones">Ver el calendario</a>
+  </div>
+</section>

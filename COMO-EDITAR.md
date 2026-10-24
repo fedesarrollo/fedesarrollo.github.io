@@ -14,6 +14,7 @@ El contenido del sitio vive en la carpeta **`_data`**, en archivos de texto con 
 | `_data/temas.yml` | Las 14 áreas de investigación | Temas y filtros |
 | `_data/encuestas.yml` | Descripción de cada encuesta | Encuestas |
 | `_data/serie.yml` | Documentos y Notas de Política 2026-2030 | Serie 2026-2030 |
+| `_data/oac.yml` y `_data/oac_red.yml` | Documentos de Organizados contra el crimen y las instituciones de la red | Seguridad y justicia, Inicio |
 
 ## Pasos generales
 

@@ -39,7 +39,7 @@ main { display: block; }
 .buscar { display: flex; align-items: stretch; }
 .buscar--menu { display: none; }
 .temas-bar .buscar { margin-left: auto; flex: none; }
-.temas-bar .buscar__input { padding: .4em .7em; width: 15rem; }
+.temas-bar .buscar__input { padding: .4em .7em; width: 11rem; }
 .temas-bar .buscar__btn { width: 34px; }
 .buscar__input { width: 13rem; padding: .55em .8em; font-size: .875rem; border-right: 0; }
 .buscar__btn { display: grid; place-items: center; width: 40px; border: 1px solid var(--fd-blue); background: var(--fd-blue); color: var(--fd-white); cursor: pointer; border-radius: 0; }
@@ -292,6 +292,23 @@ a.indicador:hover .indicador__valor { color: var(--fd-sky); }
 .video-modal-video { position: relative; aspect-ratio: 16 / 9; }
 .video-modal-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+/* ---------- Seguridad y justicia ---------- */
+.oac { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(32px, 4vw, 64px); }
+.oac__item { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: var(--fd-space-5); padding-block: var(--fd-space-6); border-bottom: 1px solid var(--fd-mist); }
+.oac__portada { display: block; align-self: start; border: 1px solid var(--fd-mist); line-height: 0; }
+.oac__portada img { width: 100%; height: auto; }
+.oac__pdf { margin: 0; color: var(--fd-chart-navy-2); }
+@media (max-width: 960px) { .oac { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .oac__item { grid-template-columns: 80px minmax(0, 1fr); } }
+.red { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: var(--fd-gutter); }
+.red li { break-inside: avoid; padding-block: .7em; border-bottom: 1px solid var(--fd-mist); }
+.red a { color: var(--fd-navy); text-decoration: none; }
+.red a:hover { color: var(--fd-blue); text-decoration: underline; }
+@media (max-width: 600px) { .red { columns: 1; } }
+.fd-quote--claro { border-left-color: var(--fd-sky); }
+.personas--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.temas-bar a.destacado { color: var(--fd-blue); font-weight: 500; }
+
 /* ---------- 404 ---------- */
 .error { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--fd-gutter); align-items: center; }
 .error .fd-figure-xl { color: var(--fd-blue); }
@@ -305,3 +322,4 @@ a.indicador:hover .indicador__valor { color: var(--fd-sky); }
 .site-header .fd-logo { flex: none; }
 .fd-on-blue a.fd-btn, .fd-on-navy a.fd-btn { color: var(--_fg); }
 .fd-on-blue a.fd-btn:hover, .fd-on-navy a.fd-btn:hover { color: var(--fd-white); }
+@media (max-width: 1240px) { .temas-bar .buscar { display: none; } }

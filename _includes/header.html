@@ -41,6 +41,7 @@
     <div class="fd-container temas-bar__in">
       <span class="fd-label">Temas</span>
       <ul>
+        <li><a class="destacado" href="{{ '/seguridad-justicia.html' | relative_url }}"{% if nav == "seguridad" %} aria-current="page"{% endif %}>Seguridad y justicia</a></li>
         {%- for t in site.data.temas %}{% if t.destacado %}
         <li><a href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}">{{ t.corto }}</a></li>
         {%- endif %}{% endfor %}

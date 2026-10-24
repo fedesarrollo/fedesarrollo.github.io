@@ -1,0 +1,173 @@
+# Organizados contra el crimen (organizedagainstcrime.org).
+# Documentos y notas de política de la red, en el orden en que se publican.
+# «pagina» es la dirección del documento en el sitio de la iniciativa; «pdf» son los
+# códigos de los archivos en español (es), inglés (en) y portugués (pt).
+
+- numero: "01"
+  tipo: documento
+  titulo: "La creciente amenaza del crimen organizado en América Latina y el Caribe"
+  autores: "Marcela Meléndez, Nicolás Peña-Tenjo, Ernesto Schargrodsky y Juan Vargas"
+  fecha: "2026-01"
+  resumen: "En este documento de política se examina la magnitud y la naturaleza del crimen organizado en América Latina y el Caribe (ALC), destacando su carácter singularmente violento."
+  portada: /assets/img/oac/01.jpg
+  pagina: 1
+  pdf:
+    es: c52075432a9b40b493907bfa7a6069fd
+    en: b9d4d21e0f434b0b9f1bd8b94b0380db
+    pt: b8acd27844ef43f29fd503614239b15c
+
+- numero: "02"
+  tipo: documento
+  titulo: "Drogas y políticas de drogas en América Latina: éxitos, fracasos y extravíos"
+  autores: "Daniel Mejía"
+  fecha: "2026-01"
+  resumen: "Este documento analiza la evolución del narcotráfico, sus vínculos con el crimen organizado y las políticas antidrogas en América Latina en las últimas décadas."
+  portada: /assets/img/oac/02.jpg
+  pagina: copy-of-new-page
+  pdf:
+    es: 28391b14593746a9b47ba68dc9925d1a
+    en: 3239679a51294aba8bf0eb94d2e308f6
+    pt: 4c8f245d428a4af9a5b23baedcf1f906
+
+- numero: "03"
+  tipo: documento
+  titulo: "¿De escuelas de crimen a centros criminales? Las cárceles y el crimen organizado en América Latina y el Caribe"
+  autores: "Ernesto Schargrodsky y Santiago Tobón"
+  fecha: "2026-01"
+  resumen: "En este documento se analiza la situación actual de las cárceles en América Latina y el Caribe. Muchas cárceles de nuestra región han dejado de ser centros de detención neutrales y, en cambio, operan como centros de reclutamiento, nodos financieros y puestos de comando para las principales organizaciones criminales de la región."
+  portada: /assets/img/oac/03.jpg
+  pagina: 3
+  pdf:
+    es: 4c673eee27d9455b9be08fc5e6834e21
+    en: 763a4aa502884c0ca95ca8b13bd359b3
+    pt: 817ee65e2cb249199e3f0146b7513e9a
+
+- numero: "04"
+  tipo: documento
+  titulo: "Gobernanza criminal en América Latina"
+  autores: "Ana Arjona y Andreas E. Feldmann"
+  fecha: "2026-01"
+  resumen: "La gobernanza criminal—entendida como la regulación del comportamiento de población a nivel local por parte de un grupo de crimen organizado— se ha convertido en uno de los desafíos más importantes que enfrentan las sociedades latinoamericanas contemporáneas."
+  portada: /assets/img/oac/04.jpg
+  pagina: 4
+  pdf:
+    es: 673dfdbfa4914277b3e4389afbab5a45
+    en: 7cdf1f3275f74a3596f732bcd04fcdec
+    pt: b215d1f0e2e54f3cbe544ea1a886ccf8
+
+- numero: "05"
+  tipo: documento
+  titulo: "El complejo vínculo entre la migración y el crimen organizado en América Latina y el Caribe"
+  autores: "Juan Vargas, María Micaela Sviatschi y Nicolás Cabra-Ruiz"
+  fecha: "2026-01"
+  resumen: "Este documento examina la relación de refuerzo mutuo entre la migración y el crimen organizado en América Latina y el Caribe. Sostenemos que la movilidad y la gobernanza criminal son parte de un sistema interdependiente en el que el crimen organizado genera desplazamientos mediante la violencia, la extorsión y el control territorial, mientras que los flujos migratorios crean nuevas rutas para que los actores criminales se expandan geográficamente, así como nuevos mercados que explotan para obtener ganancias."
+  portada: /assets/img/oac/05.jpg
+  pagina: 5
+  pdf:
+    es: fc3ce295c25b432487d8e0f2bf54d2c2
+    en: 5d164116516c40719b0e86902d27c0b9
+    pt: d6f442fea1f64a7baa731d30d65858c5
+
+- numero: "06"
+  tipo: documento
+  titulo: "El papel del sistema financiero en las organizaciones criminales, el lavado de dinero y el diseño de políticas contra el lavado de dinero: cómo lograr un equilibrio entre la persecución penal y la prevención"
+  autores: "Alejandro Werner y Roberto de Michele"
+  fecha: "2026-01"
+  resumen: "Las organizaciones criminales dependen del sistema financiero para movilizar y utilizar sus ganancias ilícitas, encubriéndolas mediante un proceso conocido como “lavado de dinero”."
+  portada: /assets/img/oac/06.jpg
+  pagina: 6new
+  pdf:
+    es: 295af25e09ca4e7f8398a24a8dfb85c7
+    en: 4fbf5c88ed16471091279f8284c8d4a7
+    pt: 191acc516b7043488cd0718a10184237
+
+- numero: "07"
+  tipo: documento
+  titulo: "Estrategias policiales contra el crimen organizado en América Latina"
+  autores: "Michael Weintraub y Joana Monteiro"
+  fecha: "2026-01"
+  resumen: "Este documento de política analiza las estrategias de seguridad policial para enfrentar el crimen organizado en América Latina. A partir de la síntesis de evidencia comparada, concluye que los operativos militarizados y la focalización en líderes criminales suelen generar beneficios de corta duración o incluso exacerbar la violencia, mientras que los enfoques selectivos y basados en inteligencia muestran mayor potencial, especialmente cuando se combinan con reformas institucionales."
+  portada: /assets/img/oac/07.jpg
+  pagina: 7
+  pdf:
+    es: eac6fbd365b84f868b0aa41191040d4f
+    en: 8151d22b593c4b0795b6f139c3988c27
+    pt: 2fad47a79cab4c039af6fda9528dcf8a
+
+- numero: "08"
+  tipo: documento
+  titulo: "Sistemas de justicia y crimen organizado en América Latina: cinco ejes de mejora"
+  autores: "Laboratorio de Justicia y Política Criminal"
+  fecha: "2026-01"
+  resumen: "Este documento plantea que la ineficacia de los sistemas de justicia de América Latina para enfrentar el crimen organizado no obedece primordialmente a la escasez de recursos, sino a una gestión poco estratégica que suele privilegiar respuestas punitivas individuales por sobre el impacto estructural."
+  portada: /assets/img/oac/08.jpg
+  pagina: 8
+  pdf:
+    es: 301a4dbad69741898ef4425e5f48d2ed
+    en: 4597d55006dc443d83e7bf94cb019156
+    pt: d7b284fa75be45408394f4f0464e42bc
+
+- numero: "09"
+  tipo: documento
+  titulo: "Educación y caminos de los jóvenes bajo el crimen organizado"
+  autores: "Martín Vanegas-Arias y Santiago Tobón"
+  fecha: "2026-06"
+  resumen: "Los homicidios de jóvenes en América Latina y el Caribe (ALC) alcanzan tasas más de 10 veces superiores a las de Europa y Asia central. La exclusión educativa durante la adolescencia sigue siendo desproporcionadamente alta en los mismos países de ALC donde el crimen organizado recluta activamente a jóvenes."
+  portada: /assets/img/oac/09.jpg
+  pagina: copy-of-8
+  pdf:
+    es: 7655bb8912c249b0a342d8f298b350af
+    en: 8486d989ac9c4b45aff5f209315437df
+    pt: 7577a15d800b4ef199fa19ceb1609e2f
+
+- numero: "10"
+  tipo: documento
+  titulo: "El arraigo del crimen organizado en las comunidades locales de América Latina"
+  autores: "Elena Butti y Albert Souza Mulli"
+  fecha: "2026-06"
+  resumen: "En este documento de política se examinan los diferentes enfoques que utilizan los grupos del crimen organizado en América Latina y el Caribe (ALC) para integrarse en las comunidades locales."
+  portada: /assets/img/oac/10.jpg
+  pagina: copy-of-9
+  pdf:
+    es: ea005831b431477d8517c24a3182971f
+    en: ea973182467445538b95c4742cc499f1
+    pt: 3e670233f45e4c8298e6b5861be9288c
+
+- numero: "11"
+  tipo: documento
+  titulo: "Disponibilidad de armas de fuego, crimen organizado y niveles de violencia en América Latina"
+  autores: "Daniel Mejía e Isabella Serrano"
+  fecha: "2026-06"
+  resumen: "La disponibilidad generalizada de armas de fuego ilegales potencia la criminalidad y la violencia en América Latina y el Caribe. Este estudio revisa la evidencia sobre el vínculo entre la proliferación de armas de fuego, el crimen organizado y los niveles de violencia en la región."
+  portada: /assets/img/oac/11.jpg
+  pagina: copy-of-9-1
+  pdf:
+    es: 39a26cfb475949afbc01af05e380ab19
+    en: a643b0d9ef814af683c0caf85e8e98ce
+    pt: d8ff7cf0de944f74a91c237936cd2c2b
+
+- numero: "12"
+  tipo: documento
+  titulo: "Crimen organizado y derechos humanos en América Latina y el Caribe"
+  autores: "Hernán Flom, Leslie MacColman y Marcelo Bergman"
+  fecha: "2026-06"
+  resumen: "En América Latina y el Caribe, el crimen organizado priva a millones de personas de libertad, seguridad, dignidad, y hasta de sus vidas. Los Estados contribuyen directa e indirectamente al incumplimiento de estos y otros derechos humanos, mediante la protección de actores delictivos, la desprotección de víctimas y testigos, la vulneración de derechos civiles, y la escasa promoción de derechos económicos y sociales."
+  portada: /assets/img/oac/12.jpg
+  pagina: copy-of-11
+  pdf:
+    es: f35079b52f9b4683b88235fc4f3d4183
+    en: 49b058e036ca47558e2ed9422a688495
+    pt: ab78634a8fcf4633bc6dc8ca27cc5e9d
+
+- numero: "1"
+  tipo: nota
+  titulo: "Estudio de caso: estrategia de reducción de delitos de alto impacto de la Ciudad de México 2018-24"
+  autores: "LAB-CO"
+  fecha: "2026-01"
+  resumen: "La Ciudad de México redujo los delitos de alto impacto con liderazgo político sostenido, coordinación entre la Policía y la Fiscalía, y programas de prevención focalizados."
+  portada: /assets/img/oac/n1.jpg
+  pagina: copy-of-1
+  pdf:
+    es: 7f3acad6f0d34d988d38e2e2204c4b97
+    en: 01d36383d2a44af4a4e080eab3e082f4
+    pt: 262c4bc04025442eb3c4fa586114512b

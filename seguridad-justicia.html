@@ -1,0 +1,158 @@
+---
+title: Seguridad y justicia
+description: Crimen organizado, justicia, corrupción y política de seguridad. Documentos de Política de Fedesarrollo y la iniciativa regional Organizados contra el crimen.
+nav: seguridad
+---
+{%- assign oac = "https://www.organizedagainstcrime.org/es/" -%}
+{%- assign oac_pdf = "https://www.organizedagainstcrime.org/es/_files/ugd/e04819_" -%}
+{%- assign serie_base = '/documentos-politica-2026-2030/' | relative_url -%}
+{%- assign oac_docs = site.data.oac | where: "tipo", "documento" -%}
+{%- assign oac_notas = site.data.oac | where: "tipo", "nota" -%}
+
+<section class="fd-on-navy">
+  <div class="fd-container cabeza cabeza--serie">
+    <div>
+      <span class="fd-tag">Área de investigación</span>
+      <h1 style="margin-top:24px">Seguridad y justicia</h1>
+      <p class="fd-lead">Crimen organizado, sistema de justicia, cárceles, corrupción y política de seguridad en Colombia y América Latina.</p>
+      <div class="fd-flex" style="margin-top:32px">
+        <a class="fd-btn" href="#oac">Organizados contra el crimen</a>
+        <a class="fd-btn fd-btn--outline" href="#fedesarrollo">Documentos de Fedesarrollo</a>
+      </div>
+    </div>
+    <div class="cabeza__portadas" aria-hidden="true">
+      {%- for d in oac_docs limit: 3 %}
+      <img src="{{ d.portada | relative_url }}" alt="">
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="fd-container wrap" id="fedesarrollo">
+  <div class="sec-head">
+    <h2>Documentos de Política 2026-2030</h2>
+    <a class="fd-link-arrow" href="{{ serie_base }}index.html">La serie completa</a>
+  </div>
+  <ul class="portadas">
+    {%- assign temas_seg = "crimen-organizado,justicia,lucha-contra-la-corrupcion,paz-total" | split: "," -%}
+    {%- for slug in temas_seg %}
+    {%- assign d = site.data.serie | where: "slug", slug | first %}
+    <li>
+      <a href="{{ serie_base }}docs/{{ d.slug }}.html">
+        <img src="{{ serie_base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <span class="portadas__tipo fd-label">{% if d.tipo == "nota" %}Nota de Política{% else %}Documento de Política{% endif %}</span>
+        <span class="portadas__titulo">{{ d.titulo }}</span>
+        <span class="portadas__autores">{{ d.autores_corto }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="fd-on-blue" id="oac">
+  <div class="fd-container wrap">
+    <div class="fd-grid">
+      <div class="fd-col-5">
+        <p class="fd-label fd-text-sky">Iniciativa regional</p>
+        <h2>Organizados contra el crimen</h2>
+        <p>La iniciativa reúne centros de pensamiento, formuladores de políticas y programas, organismos multilaterales, académicos y representantes de la sociedad civil en una colaboración de largo plazo. Su objetivo es generar conocimiento oportuno y relevante sobre la violencia criminal en la región, con especial énfasis en el crimen organizado. Fedesarrollo hace parte de la red.</p>
+        <div class="fd-flex" style="margin-top:24px">
+          <a class="fd-btn" href="{{ oac }}">organizedagainstcrime.org</a>
+          <a class="fd-btn fd-btn--outline" href="mailto:oac@fedesarrollo.org.co">oac@fedesarrollo.org.co</a>
+        </div>
+      </div>
+      <div class="fd-col-7">
+        <blockquote class="fd-quote fd-quote--claro">
+          <p>América Latina y el Caribe enfrenta los niveles de violencia más altos del mundo.</p>
+        </blockquote>
+        <p style="margin-top:24px;max-width:58ch">Si bien la violencia se manifiesta de múltiples formas, el crimen organizado, vinculado a mercados ilícitos, ha sido uno de sus principales motores en las últimas décadas; sin embargo, sigue siendo un fenómeno poco estudiado y, con frecuencia, ajeno a los grandes debates sobre el desarrollo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Documentos de política</h2>
+    <a class="fd-link-arrow" href="{{ oac }}policydocuments">En el sitio de la iniciativa</a>
+  </div>
+  <ol class="oac">
+    {%- for d in oac_docs %}
+    <li class="oac__item">
+      <a class="oac__portada" href="{{ oac_pdf }}{{ d.pdf.es }}.pdf" tabindex="-1" aria-hidden="true"><img src="{{ d.portada | relative_url }}" alt="" loading="lazy" width="401" height="520"></a>
+      <div>
+        <p class="pub__tipo fd-label">Documento de política {{ d.numero }}<span>{% include fecha.html f=d.fecha %}</span></p>
+        <h3 class="pub__titulo"><a href="{{ oac }}{{ d.pagina }}">{{ d.titulo }}</a></h3>
+        <p class="pub__autores">{{ d.autores }}</p>
+        <p class="pub__resumen">{{ d.resumen }}</p>
+        <p class="oac__pdf fd-small">PDF: <a href="{{ oac_pdf }}{{ d.pdf.es }}.pdf">Español</a> · <a href="{{ oac_pdf }}{{ d.pdf.en }}.pdf" hreflang="en">English</a> · <a href="{{ oac_pdf }}{{ d.pdf.pt }}.pdf" hreflang="pt">Português</a></p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+
+  <div class="sec-head" style="margin-top:72px">
+    <h2>Notas de política</h2>
+    <a class="fd-link-arrow" href="{{ oac }}copy-of-policy-documents">En el sitio de la iniciativa</a>
+  </div>
+  <ol class="oac">
+    {%- for d in oac_notas %}
+    <li class="oac__item">
+      <a class="oac__portada" href="{{ oac_pdf }}{{ d.pdf.es }}.pdf" tabindex="-1" aria-hidden="true"><img src="{{ d.portada | relative_url }}" alt="" loading="lazy" width="401" height="520"></a>
+      <div>
+        <p class="pub__tipo fd-label">Nota de política {{ d.numero }}<span>{% include fecha.html f=d.fecha %}</span></p>
+        <h3 class="pub__titulo"><a href="{{ oac }}{{ d.pagina }}">{{ d.titulo }}</a></h3>
+        <p class="pub__autores">{{ d.autores }}</p>
+        <p class="pub__resumen">{{ d.resumen }}</p>
+        <p class="oac__pdf fd-small">PDF: <a href="{{ oac_pdf }}{{ d.pdf.es }}.pdf">Español</a> · <a href="{{ oac_pdf }}{{ d.pdf.en }}.pdf" hreflang="en">English</a> · <a href="{{ oac_pdf }}{{ d.pdf.pt }}.pdf" hreflang="pt">Português</a></p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+
+<section class="fd-on-gray">
+  <div class="fd-container wrap">
+    <div class="fd-grid">
+      <div class="fd-col-4">
+        <span class="fd-label fd-text-blue">La red</span>
+        <h2 style="margin-top:16px">Instituciones que participan</h2>
+      </div>
+      <div class="fd-col-8">
+        <ul class="red">
+          {%- for i in site.data.oac_red %}
+          <li><a href="{{ i.url }}">{{ i.nombre }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  <div class="columnas">
+    <div>
+      <div class="sec-head">
+        <h2>Investigaciones</h2>
+        <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}?tema=instituciones-justicia">Instituciones y justicia</a>
+      </div>
+      <div class="pubs">
+        {%- assign del_tema = site.data.publicaciones | where_exp: "p", "p.temas contains 'instituciones-justicia'" | where_exp: "p", "p.serie_slug == nil" -%}
+        {%- for p in del_tema limit: 4 %}
+        {% include pub.html p=p %}
+        {%- endfor %}
+      </div>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Investigadores</h2></div>
+      {%- assign todos = "" | split: "" -%}
+      {%- for g in site.data.equipo %}{% assign todos = todos | concat: g.personas %}{% endfor -%}
+      <ul class="personas personas--dos">
+        {%- assign nombres = "Marcela Meléndez,Nicolás Peña Tenjo" | split: "," -%}
+        {%- for p in todos %}{% if nombres contains p.nombre %}
+        {% include persona.html x=p %}
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

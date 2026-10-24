@@ -105,6 +105,33 @@ description: Centro de investigación económica y social independiente. Investi
   </ul>
 </section>
 
+<section class="fd-on-gray">
+  <div class="fd-container wrap">
+    <div class="sec-head">
+      <h2>Seguridad y justicia</h2>
+      <a class="fd-link-arrow" href="{{ '/seguridad-justicia.html' | relative_url }}">El área</a>
+    </div>
+    <div class="reciente">
+      <div>
+        <p class="pub__tipo fd-label">Organizados contra el crimen</p>
+        <h3 class="fd-h2" style="max-width:20ch">Conocimiento sobre la violencia criminal en América Latina y el Caribe</h3>
+        <p>Una red de centros de pensamiento, organismos multilaterales y universidades de la región, de la que Fedesarrollo hace parte, publica documentos de política sobre cárceles, drogas, gobernanza criminal, lavado de dinero, policía y justicia.</p>
+        <a class="fd-btn" href="{{ '/seguridad-justicia.html#oac' | relative_url }}">Ver los documentos</a>
+      </div>
+      <ul class="portadas portadas--3">
+        {%- for d in site.data.oac limit: 3 %}
+        <li>
+          <a href="{{ '/seguridad-justicia.html#oac' | relative_url }}">
+            <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+            <span class="portadas__autores">Documento {{ d.numero }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="dividido fd-on-navy">
   <div class="dividido__texto">
     <p class="fd-label fd-text-sky">Datos abiertos</p>

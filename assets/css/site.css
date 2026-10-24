@@ -323,3 +323,11 @@ a.indicador:hover .indicador__valor { color: var(--fd-sky); }
 .fd-on-blue a.fd-btn, .fd-on-navy a.fd-btn { color: var(--_fg); }
 .fd-on-blue a.fd-btn:hover, .fd-on-navy a.fd-btn:hover { color: var(--fd-white); }
 @media (max-width: 1240px) { .temas-bar .buscar { display: none; } }
+
+/* Barra de temas: mismo eje que el encabezado */
+.temas-bar__in { min-height: 44px; gap: var(--fd-space-6); }
+.temas-bar .fd-label, .temas-bar a { display: block; line-height: 1; }
+.temas-bar .fd-label { font-size: .6875rem; padding-top: .1em; }
+.temas-bar a { font-size: .875rem; padding-block: .35em; }
+.temas-bar .buscar__input { height: 30px; font-size: .8125rem; }
+.temas-bar .buscar__btn { height: 30px; }

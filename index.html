@@ -140,18 +140,14 @@ description: Centro de investigación económica y social independiente. Investi
 
 <section class="fd-container wrap">
   <div class="sec-head">
-    <h2>Investigadores</h2>
+    <h2>Dirección</h2>
     <a class="fd-link-arrow" href="{{ '/equipo.html' | relative_url }}">Todo el equipo</a>
   </div>
   {%- assign dir = site.data.equipo | where: "grupo", "direccion" | first -%}
-  {%- assign directores = site.data.equipo | where: "cargo", "Director de área" -%}
-  <ul class="personas personas--fila">
+  {%- assign directores = site.data.equipo | where: "director", true -%}
+  <ul class="personas personas--fila personas--cuatro">
     {% include persona.html x=dir %}
     {%- for p in directores %}
-    {% include persona.html x=p %}
-    {%- endfor %}
-    {%- assign investigadores = site.data.equipo | where: "cargo", "Investigador" -%}
-    {%- for p in investigadores limit: 2 %}
     {% include persona.html x=p %}
     {%- endfor %}
   </ul>

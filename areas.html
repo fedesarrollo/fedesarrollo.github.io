@@ -16,7 +16,7 @@ nav: areas
   <ul class="areas">
     {%- for a in site.data.areas %}
     {%- assign gente = site.data.equipo | where: "area", a.slug -%}
-    {%- assign director = gente | where: "cargo", "Director de área" | first -%}
+    {%- assign director = gente | where: "director", true | first -%}
     {%- assign n = 0 -%}
     {%- for p in site.data.publicaciones -%}
       {%- if coyuntura contains p.tipo %}{% continue %}{% endif -%}

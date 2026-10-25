@@ -409,3 +409,5 @@ a.indicador:hover .indicador__valor { color: var(--fd-sky); }
 .personas--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--fd-space-6) var(--fd-gutter); }
 .personas--tres .persona__nombre { font-size: 1.0625rem; }
 @media (max-width: 520px) { .personas--tres { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.personas--cuatro { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 760px) { .personas--cuatro { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

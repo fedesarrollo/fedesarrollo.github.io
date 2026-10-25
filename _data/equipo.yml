@@ -2,7 +2,8 @@
 #
 # grupo: direccion | investigacion | administracion | servicios
 # area: código de _data/areas.yml. En «investigacion», sin área = investigador asociado.
-# El orden dentro de cada área sigue el cargo (director de área primero).
+# El orden dentro de cada área sigue la jerarquía: director, investigador, asistente de
+# investigación y practicante. «director: true» marca al director del área.
 # slug: dirección del perfil, equipo/<slug>.html (dirección e investigación).
 # firmas: cómo aparece el nombre en las publicaciones, para listarlas en el perfil.
 
@@ -28,7 +29,8 @@
     - "Margarita es Ingeniera de Sistemas y Administradora de Empresas de la Universidad de los Andes, con un MBA de la misma universidad y un Magíster en Administración de Negocios Globales (GMBA) de la A.B. Freeman School of Business de Tulane University. Con más de 18 años de experiencia liderando planeación estratégica, gestión financiera y dirección de proyectos en los sectores educativo, financiero y público. Entre sus logros más recientes destacan su labor como Rectora del Gimnasio Los Portales y como Decana de Ingeniería y Ciencias Exactas de la Universidad Sergio Arboleda, donde lideró procesos de acreditación de alta calidad y la transformación digital de los programas académicos. También se desempeñó como asesora en la Secretaría de Educación del Distrito y ha sido miembro de las juntas directivas de Cintel y la Corporación Colombia Digital."
 
 - nombre: "Jairo García Guerrero"
-  cargo: "Director de área"
+  cargo: "Director de Seguridad y justicia"
+  director: true
   grupo: investigacion
   area: "seguridad-y-justicia"
   slug: jairo-garcia-guerrero
@@ -37,7 +39,8 @@
   correo: jagarcia@fedesarrollo.org.co
 
 - nombre: "Juan Pablo Zárate"
-  cargo: "Director de área"
+  cargo: "Director de Macrofiscal"
+  director: true
   grupo: investigacion
   area: "macrofiscal"
   slug: juan-pablo-zarate
@@ -46,7 +49,8 @@
   correo: jzarate@fedesarrollo.org.co
 
 - nombre: "Juan Sebastián Galán"
-  cargo: "Director de área"
+  cargo: "Director de Instituciones y capital humano"
+  director: true
   grupo: investigacion
   area: "instituciones-y-capital-humano"
   slug: juan-sebastian-galan
@@ -54,7 +58,7 @@
   correo: jgalan@fedesarrollo.org.co
 
 - nombre: "Nicolás Peña Tenjo"
-  cargo: "Investigador"
+  cargo: "Investigador asociado"
   grupo: investigacion
   area: "seguridad-y-justicia"
   slug: nicolas-pena-tenjo

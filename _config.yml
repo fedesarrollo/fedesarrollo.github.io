@@ -109,7 +109,7 @@ defaults:
 exclude:
   - README.md
   - COMO-EDITAR.md
-  - organigrama.drawio
+  - mapa-del-sitio.drawio
   - scripts
   - LICENSE
   - Gemfile

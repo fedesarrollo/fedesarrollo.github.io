@@ -2,7 +2,6 @@
 layout: default
 ---
 {%- assign a = site.data.areas | where: "slug", page.area | first -%}
-{%- assign serie_base = '/documentos-politica-2026-2030/' | relative_url -%}
 {%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
 {%- assign gente = site.data.equipo | where: "area", a.slug -%}
 <section class="fd-on-navy">
@@ -24,34 +23,6 @@ layout: default
     {%- endif %}
   </div>
 </section>
-
-{%- comment %} Documentos de Política de la serie cuyo tema está en el área {% endcomment -%}
-{%- capture docs_area -%}
-  {%- for p in site.data.publicaciones -%}{%- if p.serie_slug -%}
-    {%- for t in p.temas -%}{%- if a.temas contains t -%}{{ p.serie_slug }},{%- break -%}{%- endif -%}{%- endfor -%}
-  {%- endif -%}{%- endfor -%}
-{%- endcapture -%}
-{%- assign docs_area = docs_area | split: "," -%}
-{%- if docs_area.size > 0 %}
-<section class="fd-container wrap">
-  <div class="sec-head">
-    <h2>Documentos de Política 2026-2030</h2>
-    <a class="fd-link-arrow" href="{{ serie_base }}index.html">La serie completa</a>
-  </div>
-  <ul class="portadas">
-    {%- for slug in docs_area %}{% assign d = site.data.serie | where: "slug", slug | first %}
-    <li>
-      <a href="{{ serie_base }}docs/{{ d.slug }}.html">
-        <img src="{{ serie_base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
-        <span class="portadas__tipo fd-label">{% if d.tipo == "nota" %}Nota de Política{% else %}Documento de Política{% endif %}</span>
-        <span class="portadas__titulo">{{ d.titulo }}</span>
-        <span class="portadas__autores">{{ d.autores_corto }}</span>
-      </a>
-    </li>
-    {%- endfor %}
-  </ul>
-</section>
-{%- endif %}
 
 {%- if a.slug == 'seguridad-y-justicia' %}
 <section class="fd-on-blue">
@@ -97,7 +68,7 @@ layout: default
       <div class="pubs">
         {%- assign n = 0 -%}
         {%- for p in site.data.publicaciones -%}
-          {%- if p.serie_slug or coyuntura contains p.tipo or n >= 6 %}{% continue %}{% endif -%}
+          {%- if coyuntura contains p.tipo or n >= 8 %}{% continue %}{% endif -%}
           {%- assign en_area = false -%}
           {%- for t in p.temas %}{% if a.temas contains t %}{% assign en_area = true %}{% break %}{% endif %}{% endfor -%}
           {%- if en_area %}

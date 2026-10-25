@@ -54,7 +54,7 @@ defaults:
   - scope:
       path: "documentos-politica-2026-2030"
     values:
-      nav: serie
+      nav: investigaciones
       image: /documentos-politica-2026-2030/assets/img/og-image.png
   - scope:
       path: "documentos-politica-2026-2030/docs"

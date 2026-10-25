@@ -411,3 +411,13 @@ a.indicador:hover .indicador__valor { color: var(--fd-sky); }
 @media (max-width: 520px) { .personas--tres { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .personas--cuatro { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 760px) { .personas--cuatro { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Especiales (serie 2026-2030 y Organizados contra el crimen) */
+.especiales { list-style: none; margin: 0 0 var(--fd-space-7); padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fd-gutter); }
+.especiales a { display: flex; flex-direction: column; gap: var(--fd-space-2); height: 100%; padding: var(--fd-space-5) var(--fd-space-6); background: var(--fd-navy); color: var(--fd-white); text-decoration: none; }
+.especiales .fd-label { color: var(--fd-sky); }
+.especiales__titulo { font-family: var(--fd-font-display); font-weight: 500; font-size: 1.5rem; line-height: 1.1; }
+.especiales__texto { font-size: .9375rem; }
+.especiales a:hover { background: var(--fd-blue); color: var(--fd-white); }
+@media (max-width: 760px) { .especiales { grid-template-columns: 1fr; } }
+.panel__especiales a { font-weight: 500; }

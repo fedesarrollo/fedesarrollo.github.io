@@ -30,7 +30,7 @@
     <nav class="site-nav" aria-label="Principal">
       <ul class="menu">
         <li class="menu__item menu__item--panel">
-          <a class="menu__link" href="{{ '/investigaciones.html' | relative_url }}"{% if nav == "investigaciones" %} aria-current="page"{% endif %}>Investigaciones</a>
+          <a class="menu__link" href="{{ '/investigaciones.html' | relative_url }}"{% if nav == "investigaciones" or nav == "serie" %} aria-current="page"{% endif %}>Investigaciones</a>
           <div class="panel">
             <div class="fd-container panel__in">
               <div class="panel__intro">
@@ -44,8 +44,13 @@
                   <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=investigacion">Investigaciones</a></li>
                   <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=libro">Libros</a></li>
                   <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=comision">Comisiones</a></li>
-                  <li><a href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">Documentos de Política</a></li>
-                  <li><a href="{{ '/documentos-politica-2026-2030/notas-politica.html' | relative_url }}">Notas de Política</a></li>
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=documento-de-politica">Documentos de Política</a></li>
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=nota-de-politica">Notas de Política</a></li>
+                </ul>
+                <p class="panel__titulo" style="margin-top:24px">Especiales</p>
+                <ul class="panel__especiales">
+                  <li><a href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}">Documentos de Política 2026-2030</a></li>
+                  <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}">Organizados contra el crimen</a></li>
                 </ul>
               </div>
               <div class="panel__ancho">
@@ -107,7 +112,6 @@
             </div>
           </div>
         </li>
-        <li class="menu__item"><a class="menu__link" href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}"{% if nav == "serie" %} aria-current="page"{% endif %}>Documentos de Política</a></li>
         <li class="menu__item"><a class="menu__link" href="{{ '/equipo.html' | relative_url }}"{% if nav == "equipo" %} aria-current="page"{% endif %}>Equipo</a></li>
         <li class="menu__item"><a class="menu__link" href="{{ '/noticias-eventos.html' | relative_url }}"{% if nav == "noticias" %} aria-current="page"{% endif %}>Noticias y eventos</a></li>
         <li class="menu__item"><a class="menu__link" href="{{ '/nosotros.html' | relative_url }}"{% if nav == "nosotros" %} aria-current="page"{% endif %}>Nosotros</a></li>

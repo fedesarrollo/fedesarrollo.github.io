@@ -1,0 +1,44 @@
+---
+title: Áreas de investigación
+description: Las cinco áreas de investigación de Fedesarrollo y sus equipos.
+nav: areas
+---
+{%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
+<section class="fd-on-gray">
+  <div class="fd-container cabeza">
+    <span class="fd-label fd-text-blue">Áreas</span>
+    <h1>Áreas de investigación</h1>
+    <p class="fd-lead">Fedesarrollo organiza su trabajo en cinco áreas. Cada una tiene su equipo, sus publicaciones y sus Documentos de Política.</p>
+  </div>
+</section>
+
+<section class="fd-container wrap">
+  <ul class="areas">
+    {%- for a in site.data.areas %}
+    {%- assign gente = site.data.equipo | where: "area", a.slug -%}
+    {%- assign director = gente | where: "cargo", "Director de área" | first -%}
+    {%- assign n = 0 -%}
+    {%- for p in site.data.publicaciones -%}
+      {%- if coyuntura contains p.tipo %}{% continue %}{% endif -%}
+      {%- for t in p.temas %}{% if a.temas contains t %}{% assign n = n | plus: 1 %}{% break %}{% endif %}{% endfor -%}
+    {%- endfor %}
+    <li class="area">
+      <a class="area__enlace" href="{{ '/areas/' | relative_url }}{{ a.slug }}.html">
+        <span class="area__nombre">{{ a.nombre }}</span>
+        <span class="area__desc">{{ a.descripcion }}</span>
+      </a>
+      <p class="area__meta fd-small">
+        {%- if director %}Dirige: <a href="{{ '/equipo/' | relative_url }}{{ director.slug }}.html">{{ director.nombre }}</a> · {% endif -%}
+        {{ gente.size }} {% if gente.size == 1 %}persona{% else %}personas{% endif %} · {{ n }} publicaciones
+      </p>
+    </li>
+    {%- endfor %}
+    <li class="area area--oac">
+      <a class="area__enlace" href="{{ '/organizados-contra-el-crimen/' | relative_url }}">
+        <span class="area__nombre">Organizados contra el crimen</span>
+        <span class="area__desc">Iniciativa regional sobre la violencia criminal en América Latina y el Caribe, con énfasis en el crimen organizado.</span>
+      </a>
+      <p class="area__meta fd-small">{{ site.data.oac.size }} documentos y notas de política · 15 instituciones</p>
+    </li>
+  </ul>
+</section>

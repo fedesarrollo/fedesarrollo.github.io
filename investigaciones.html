@@ -1,56 +1,22 @@
 ---
-title: Investigaciones y publicaciones
-description: Investigaciones, libros, comisiones, encuestas y publicaciones periódicas de Fedesarrollo, con filtros por tipo y tema.
+title: Investigaciones
+description: Investigaciones, libros, comisiones y Documentos de Política de Fedesarrollo, con filtros por área, tema y tipo.
 nav: investigaciones
 ---
-{%- assign pubs = site.data.publicaciones -%}
+{%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
+{%- assign pubs = "" | split: "" -%}
+{%- for p in site.data.publicaciones %}{% unless coyuntura contains p.tipo %}{% assign pubs = pubs | push: p %}{% endunless %}{% endfor -%}
 {%- assign tipos = pubs | map: "tipo" | uniq -%}
 
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
     <span class="fd-label fd-text-blue">Investigaciones</span>
-    <h1>Publicaciones</h1>
-    <p class="fd-lead">Estudios, encuestas y análisis de coyuntura de Fedesarrollo. Los documentos completos están en el repositorio institucional.</p>
+    <h1>Investigaciones</h1>
+    <p class="fd-lead">Estudios, libros, comisiones y Documentos de Política. Las encuestas y los informes periódicos están en <a href="{{ '/coyuntura.html' | relative_url }}">Coyuntura</a>.</p>
   </div>
 </section>
 
 <section class="fd-container wrap">
-  <form id="filtros" class="filtros fd-on-gray" role="search">
-    <div class="fd-field">
-      <label for="f-q">Buscar</label>
-      <input class="fd-input" id="f-q" name="q" type="search" placeholder="Título, autor o palabra clave">
-    </div>
-    <div class="fd-field">
-      <label for="f-tipo">Tipo</label>
-      <select class="fd-input" id="f-tipo" name="tipo">
-        <option value="">Todos</option>
-        {%- for t in tipos %}
-        <option value="{{ t | slugify: "latin" }}">{{ t }}</option>
-        {%- endfor %}
-      </select>
-    </div>
-    <div class="fd-field">
-      <label for="f-tema">Tema</label>
-      <select class="fd-input" id="f-tema" name="tema">
-        <option value="">Todos</option>
-        {%- for t in site.data.temas %}
-        <option value="{{ t.slug }}">{{ t.nombre }}</option>
-        {%- endfor %}
-      </select>
-    </div>
-  </form>
-
-  <div class="filtros__pie">
-    <p class="filtros__cuenta fd-label" id="filtros-cuenta" aria-live="polite">{{ pubs.size }} publicaciones</p>
-    <button type="button" class="filtros__limpiar" id="filtros-limpiar" hidden>Quitar filtros</button>
-  </div>
-
-  <div class="pubs" data-filtrable>
-    {%- for p in pubs %}
-    {% include pub.html p=p portada=true resumen=true %}
-    {%- endfor %}
-  </div>
-  <p class="filtros__vacio" id="filtros-vacio" hidden>No hay publicaciones con esos filtros. Pruebe con otro tema o busque en el <a href="{{ site.repositorio }}">repositorio institucional</a>.</p>
-
+  {% include filtros.html pubs=pubs tipos=tipos por_pagina=15 %}
   <p class="fd-small" style="margin-top:48px">Esta lista reúne las publicaciones más recientes. El archivo completo, desde 1970, está en el <a href="{{ site.repositorio }}">repositorio institucional de Fedesarrollo</a>.</p>
 </section>

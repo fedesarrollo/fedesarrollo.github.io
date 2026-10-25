@@ -1,0 +1,8 @@
+{%- assign e = include.e -%}
+<li class="nota" data-evento="{{ e.fecha }}">
+  {% include fecha-corta.html f=e.fecha %}
+  <div>
+    <h3 class="nota__titulo"><a href="{{ e.enlace }}">{{ e.titulo }}</a></h3>
+    {%- if e.lugar %}<p class="nota__meta">{{ e.lugar }}</p>{% endif %}
+  </div>
+</li>

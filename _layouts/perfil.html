@@ -1,0 +1,67 @@
+---
+layout: default
+---
+{%- assign x = site.data.equipo | where: "slug", page.slug | first -%}
+{%- assign area = site.data.areas | where: "slug", x.area | first -%}
+{%- assign serie_base = '/documentos-politica-2026-2030/' | relative_url -%}
+<div class="fd-container wrap">
+  <p class="migas"><a href="{{ '/equipo.html' | relative_url }}">Equipo</a>{% if area %} / <a href="{{ '/equipo.html' | relative_url }}#{{ area.slug }}">{{ area.nombre }}</a>{% endif %}</p>
+  <div class="perfil">
+    <div class="perfil__foto">
+      {%- if x.foto %}
+      <img src="{{ x.foto | replace_first: '/upload/', '/upload/c_fill,g_face,w_640,h_800,q_auto,f_auto/' }}" alt="{{ x.nombre }}" width="320" height="400">
+      {%- else %}
+      {%- assign _partes = x.nombre | split: " " -%}
+      <span class="persona__ini" aria-hidden="true">{{ _partes[0] | slice: 0 }}{{ _partes[1] | slice: 0 }}</span>
+      {%- endif %}
+    </div>
+    <div class="prosa">
+      <span class="fd-label fd-text-blue">{{ x.cargo }}{% if area %} · {{ area.nombre }}{% elsif x.grupo == "investigacion" %} · Investigadores asociados{% endif %}</span>
+      <h1 style="margin-top:16px">{{ x.nombre }}</h1>
+      {%- if x.bio %}
+      {%- for b in x.bio %}
+      <p{% if forloop.first %} class="perfil__intro"{% endif %}>{{ b }}</p>
+      {%- endfor %}
+      {%- endif %}
+      <ul class="perfil__datos">
+        {%- if area %}<li><span class="fd-label">Área</span><a href="{{ '/areas/' | relative_url }}{{ area.slug }}.html">{{ area.nombre }}</a></li>{% endif %}
+        {%- if x.correo %}<li><span class="fd-label">Correo</span><a href="mailto:{{ x.correo }}">{{ x.correo }}</a></li>{% endif %}
+        {%- if x.cv %}<li><span class="fd-label">Hoja de vida</span><a href="{{ x.cv }}">Ver hoja de vida</a></li>{% endif %}
+      </ul>
+    </div>
+  </div>
+
+  {%- comment %} Publicaciones en las que aparece alguna de sus firmas {% endcomment -%}
+  {%- capture lista -%}
+    {%- for p in site.data.publicaciones -%}
+      {%- if p.serie_slug -%}{%- assign s = site.data.serie | where: "slug", p.serie_slug | first -%}{%- assign autores = s.autores_corto -%}{%- else -%}{%- assign autores = p.autores -%}{%- endif -%}
+      {%- for f in x.firmas -%}{%- if autores contains f -%}{{ forloop.parentloop.index0 }},{%- break -%}{%- endif -%}{%- endfor -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign indices = lista | split: "," -%}
+  {%- capture lista_oac -%}
+    {%- for d in site.data.oac -%}{%- for f in x.firmas -%}{%- if d.autores contains f -%}{{ forloop.parentloop.index0 }},{%- break -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+  {%- endcapture -%}
+  {%- assign indices_oac = lista_oac | split: "," -%}
+  {%- if indices.size > 0 or indices_oac.size > 0 %}
+  <section style="margin-top:72px">
+    <div class="sec-head"><h2>Publicaciones</h2></div>
+    <div class="pubs">
+      {%- for i in indices %}{% assign n = i | plus: 0 %}{% assign p = site.data.publicaciones[n] %}
+      {% include pub.html p=p portada=true resumen=true %}
+      {%- endfor %}
+      {%- for i in indices_oac %}{% assign n = i | plus: 0 %}{% assign d = site.data.oac[n] %}
+      <article class="pub pub--portada">
+        <a class="pub__portada" href="{{ '/organizados-contra-el-crimen/' | relative_url }}{{ d.numero }}.html" tabindex="-1" aria-hidden="true"><img src="{{ d.portada | relative_url }}" alt="" loading="lazy" width="162" height="210"></a>
+        <div class="pub__texto">
+          <p class="pub__tipo fd-label">Organizados contra el crimen<span>Documento de política {{ d.numero }}</span></p>
+          <h3 class="pub__titulo"><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}{{ d.numero }}.html">{{ d.titulo }}</a></h3>
+          <p class="pub__autores">{{ d.autores }}</p>
+          <p class="pub__fecha fd-small">{% include fecha.html f=d.fecha %}</p>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+</div>

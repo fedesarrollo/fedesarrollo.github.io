@@ -1,0 +1,23 @@
+# Portada del inicio. Se muestran en este orden y rotan solas cada pocos
+# segundos (el visitante también puede pasarlas). Para destacar algo nuevo,
+# ponga su bloque de primero. «imagen» es una foto del sitio o una portada.
+
+- etiqueta: "Encuesta de Opinión Financiera"
+  titulo: "Los analistas esperan que la tasa de intervención cierre 2026 en 12,50%"
+  texto: "Para 2026, la expectativa de crecimiento económico es de 2,5%. Para 2027 se espera un crecimiento de 2,3%."
+  enlace: http://hdl.handle.net/11445/4992
+  boton: "Ver los resultados de octubre"
+  imagen: /assets/fede/photos/banco.jpg
+  ajuste: contener
+- etiqueta: "Documentos de Política 2026-2030"
+  titulo: "Evidencia para las decisiones del próximo cuatrienio"
+  texto: "Diagnósticos, prioridades y hojas de ruta para los principales retos de política pública del gobierno 2026-2030."
+  enlace: /documentos-politica-2026-2030/index.html
+  boton: "Ver la serie"
+  imagen: /assets/fede/photos/campesinos.jpg
+- etiqueta: "Organizados contra el crimen"
+  titulo: "Conocimiento sobre la violencia criminal en América Latina y el Caribe"
+  texto: "Doce documentos de política sobre cárceles, drogas, gobernanza criminal, lavado de dinero, policía y justicia."
+  enlace: /organizados-contra-el-crimen/
+  boton: "Ver los documentos"
+  imagen: /assets/fede/photos/casas.jpg

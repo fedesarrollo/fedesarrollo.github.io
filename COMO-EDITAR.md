@@ -6,15 +6,18 @@ El contenido del sitio vive en la carpeta **`_data`**, en archivos de texto con 
 
 | Archivo | Qué contiene | Dónde se ve |
 |---|---|---|
-| `_data/publicaciones.yml` | Investigaciones, encuestas, libros, comisiones, periódicas | Inicio, Investigaciones, Encuestas, Temas |
-| `_data/indicadores.yml` | Las cuatro cifras de la banda azul (ICC, ICCO, IPEC, EOF) | Inicio y Encuestas |
+| `_data/destacados.yml` | Los destacados que rotan en la portada del inicio | Inicio |
+| `_data/publicaciones.yml` | Investigaciones, encuestas, libros, comisiones, periódicas | Inicio, Investigaciones, Coyuntura, Áreas, perfiles |
+| `_data/indicadores.yml` | Las cuatro cifras de la banda azul (ICC, ICCO, IPEC, EOF) | Inicio y Coyuntura |
+| `_data/calendario.yml` | Fechas de publicación de las encuestas | Coyuntura |
 | `_data/noticias.yml` | Fedesarrollo en los medios | Inicio y Noticias y eventos |
 | `_data/eventos.yml` | Eventos | Inicio y Noticias y eventos |
-| `_data/equipo.yml` | Dirección, investigadores y equipo | Inicio y Equipo |
-| `_data/temas.yml` | Las 14 áreas de investigación | Temas y filtros |
-| `_data/encuestas.yml` | Descripción de cada encuesta | Encuestas |
+| `_data/equipo.yml` | Equipo: cargo, grupo, área, foto, biografía | Inicio, Equipo, Áreas y perfiles |
+| `_data/areas.yml` | Las cinco áreas y los temas de cada una | Áreas, menú y filtros |
+| `_data/temas.yml` | Los 14 temas | Menú y filtros |
+| `_data/encuestas.yml` | Descripción de cada encuesta | Coyuntura |
 | `_data/serie.yml` | Documentos y Notas de Política 2026-2030 | Serie 2026-2030 |
-| `_data/oac.yml` y `_data/oac_red.yml` | Documentos de Organizados contra el crimen y las instituciones de la red | Seguridad y justicia, Inicio |
+| `_data/oac.yml` y `_data/oac_red.yml` | Documentos de Organizados contra el crimen y las instituciones de la red | Organizados contra el crimen, Seguridad y justicia |
 
 ## Pasos generales
 
@@ -73,9 +76,21 @@ Copie un bloque arriba de la lista en `_data/noticias.yml` o en `_data/eventos.y
 
 En los eventos, `medio` se cambia por `lugar` (por ejemplo, `"JW Marriott, Bogotá"`). Ambos son opcionales.
 
+## Cambiar lo que rota en la portada
+
+Abra `_data/destacados.yml`. El primer bloque es el que se ve al entrar; los demás rotan. Para destacar algo nuevo, copie un bloque arriba y cambie `etiqueta`, `titulo`, `texto`, `enlace` y `boton`.
+
+## Agregar fechas al calendario
+
+En `_data/calendario.yml`, copie un bloque y cambie `fecha` («AAAA-MM-DD») y `publicacion`. La página muestra sola las próximas ocho fechas.
+
 ## Cambiar el equipo
 
-En `_data/equipo.yml`, cada persona tiene `nombre`, `cargo` y, si la hay, `foto` (la dirección completa de la imagen). Para retirar a alguien, borre sus líneas completas. Si una persona no tiene foto, el sitio muestra sus iniciales.
+En `_data/equipo.yml`, cada persona tiene `nombre`, `cargo`, `grupo` (`direccion`, `investigacion`, `administracion` o `servicios`) y `area` (el código del área en `_data/areas.yml`). Un investigador sin área aparece como investigador asociado. Dentro de cada área, el orden es: director, investigadores, asistentes de investigación y practicantes; respete ese orden al agregar a alguien.
+
+Para que una persona tenga perfil, agregue `slug` (su nombre en minúsculas, sin tildes, con guiones) y cree el archivo `equipo/<slug>.html` copiando otro perfil y cambiando `slug` y `title`. `bio` es una lista de párrafos; `firmas` es cómo aparece su nombre en las publicaciones, para listarlas en el perfil.
+
+Para retirar a alguien, borre sus líneas completas (y su archivo de perfil, si lo tiene). Si una persona no tiene foto, el sitio muestra sus iniciales.
 
 ## Reglas de estilo
 

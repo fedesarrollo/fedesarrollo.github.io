@@ -1,0 +1,122 @@
+---
+layout: default
+---
+{%- assign a = site.data.areas | where: "slug", page.area | first -%}
+{%- assign serie_base = '/documentos-politica-2026-2030/' | relative_url -%}
+{%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
+{%- assign gente = site.data.equipo | where: "area", a.slug -%}
+<section class="fd-on-navy">
+  <div class="fd-container cabeza{% if a.slug == 'seguridad-y-justicia' %} cabeza--serie{% endif %}">
+    <div>
+      <span class="fd-tag">Área de investigación</span>
+      <h1 style="margin-top:24px">{{ a.nombre }}</h1>
+      <p class="fd-lead">{{ a.descripcion }}</p>
+      <ul class="area__temas">
+        {%- for slug in a.temas %}{% assign t = site.data.temas | where: "slug", slug | first %}
+        <li><a href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}">{{ t.nombre }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- if a.slug == 'seguridad-y-justicia' %}
+    <div class="cabeza__portadas" aria-hidden="true">
+      {%- for d in site.data.oac limit: 3 %}<img src="{{ d.portada | relative_url }}" alt="">{% endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+{%- comment %} Documentos de Política de la serie cuyo tema está en el área {% endcomment -%}
+{%- capture docs_area -%}
+  {%- for p in site.data.publicaciones -%}{%- if p.serie_slug -%}
+    {%- for t in p.temas -%}{%- if a.temas contains t -%}{{ p.serie_slug }},{%- break -%}{%- endif -%}{%- endfor -%}
+  {%- endif -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign docs_area = docs_area | split: "," -%}
+{%- if docs_area.size > 0 %}
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Documentos de Política 2026-2030</h2>
+    <a class="fd-link-arrow" href="{{ serie_base }}index.html">La serie completa</a>
+  </div>
+  <ul class="portadas">
+    {%- for slug in docs_area %}{% assign d = site.data.serie | where: "slug", slug | first %}
+    <li>
+      <a href="{{ serie_base }}docs/{{ d.slug }}.html">
+        <img src="{{ serie_base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <span class="portadas__tipo fd-label">{% if d.tipo == "nota" %}Nota de Política{% else %}Documento de Política{% endif %}</span>
+        <span class="portadas__titulo">{{ d.titulo }}</span>
+        <span class="portadas__autores">{{ d.autores_corto }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if a.slug == 'seguridad-y-justicia' %}
+<section class="fd-on-blue">
+  <div class="fd-container wrap">
+    <div class="fd-grid">
+      <div class="fd-col-6">
+        <p class="fd-label fd-text-sky">Iniciativa regional</p>
+        <h2>Organizados contra el crimen</h2>
+        <p>Una red de centros de pensamiento, organismos multilaterales y universidades de América Latina, de la que Fedesarrollo hace parte. Ha publicado doce documentos de política y una nota sobre cárceles, drogas, gobernanza criminal, lavado de dinero, policía y justicia.</p>
+        <a class="fd-btn" href="{{ '/organizados-contra-el-crimen/' | relative_url }}">Ver la iniciativa</a>
+      </div>
+      <div class="fd-col-6">
+        <ul class="oac-mini">
+          {%- for d in site.data.oac limit: 6 %}
+          <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}{{ d.numero }}.html"><span class="fd-label">{{ d.numero }}</span>{{ d.titulo }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+{%- if a.slug == 'mercado-laboral-y-productividad' %}
+<section class="dividido fd-on-navy">
+  <div class="dividido__texto">
+    <p class="fd-label fd-text-sky">Datos abiertos</p>
+    <h2>Explorador de marcos regulatorios</h2>
+    <p>Costos laborales no salariales, salarios mínimos, costos de despido e impuestos a las empresas en 11 países de América Latina. Un inventario del Grupo Banco Mundial elaborado con Fedesarrollo y la Facultad de Economía de la Universidad de los Andes. Disponible en inglés.</p>
+    <a class="fd-btn fd-btn--outline" href="{{ '/productividad-mercado-laboral/' | relative_url }}">Abrir el explorador</a>
+  </div>
+  <div class="dividido__media fd-halftone"><img class="contener" src="{{ '/assets/fede/photos/banco.jpg' | relative_url }}" alt="" loading="lazy"></div>
+</section>
+{%- endif %}
+
+<section class="fd-container wrap">
+  <div class="columnas">
+    <div>
+      <div class="sec-head">
+        <h2>Investigaciones</h2>
+        <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}?area={{ a.slug }}">Todas</a>
+      </div>
+      <div class="pubs">
+        {%- assign n = 0 -%}
+        {%- for p in site.data.publicaciones -%}
+          {%- if p.serie_slug or coyuntura contains p.tipo or n >= 6 %}{% continue %}{% endif -%}
+          {%- assign en_area = false -%}
+          {%- for t in p.temas %}{% if a.temas contains t %}{% assign en_area = true %}{% break %}{% endif %}{% endfor -%}
+          {%- if en_area %}
+        {% include pub.html p=p portada=true %}
+            {%- assign n = n | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor %}
+        {%- if n == 0 %}<p>Las publicaciones del área están en el <a href="{{ site.repositorio }}">repositorio institucional</a>.</p>{% endif %}
+      </div>
+    </div>
+    <div>
+      <div class="sec-head"><h2>Equipo del área</h2></div>
+      {%- if gente.size > 0 %}
+      <ul class="personas personas--tres">
+        {%- for p in gente %}
+        {% include persona.html x=p %}
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+  </div>
+</section>

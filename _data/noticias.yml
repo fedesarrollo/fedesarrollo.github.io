@@ -1,5 +1,6 @@
 # Fedesarrollo en los medios y comunicados, del más reciente al más antiguo.
-# «medio» es opcional. «enlace» lleva a la nota original.
+# «medio» es opcional. «enlace» lleva a la nota original. «investigacion» es la
+# publicación de Fedesarrollo que cita la nota (opcional): título y enlace.
 
 - titulo: "Por qué el trago en Colombia es más caro que en México, Perú o Estados Unidos"
   fecha: "2026-10-23"
@@ -12,6 +13,9 @@
   fecha: "2026-10-21"
   medio: Fedesarrollo
   enlace: https://www.fedesarrollo.org.co/noticias/encuesta-de-opinion-financiera-resultados-octubre-2026
+  investigacion:
+    titulo: "Encuesta de Opinión Financiera. Resultados octubre 2026"
+    enlace: http://hdl.handle.net/11445/4992
 - titulo: "Crecimiento económico, una conversación pendiente en Colombia"
   fecha: "2026-10-21"
   medio: Caracol Radio
@@ -27,6 +31,9 @@
   fecha: "2026-10-14"
   medio: Fedesarrollo
   enlace: https://www.fedesarrollo.org.co/noticias/encuesta-de-opinion-del-consumidor-resultados-septiembre-de-2026
+  investigacion:
+    titulo: "Encuesta de Opinión del Consumidor. Resultados septiembre de 2026"
+    enlace: http://hdl.handle.net/11445/4990
 - titulo: "Confianza en la economía colombiana alcanza su nivel más alto del año"
   fecha: "2026-10-11"
   medio: El Nuevo Siglo
@@ -35,7 +42,13 @@
   fecha: "2026-10-09"
   medio: Pulzo
   enlace: https://www.pulzo.com/economia/giro-creditos-colombia-proponen-cambiar-tasa-usura-PP5326069
+  investigacion:
+    titulo: "Política de la tasa de usura en el mercado financiero en Colombia"
+    enlace: http://hdl.handle.net/11445/4746
 - titulo: "«Es buena noticia que el Fondo Monetario Internacional esté en la conversación»: Marcela Meléndez, directora de Fedesarrollo"
   fecha: "2026-10-09"
   medio: El Tiempo
   enlace: https://www.eltiempo.com/economia/sectores/es-buena-noticia-que-el-fondo-monetario-internacional-este-en-la-conversacion-marcela-melendez-directora-de-fedesarrollo-sobre-situacion-fiscal-3592401
+  investigacion:
+    titulo: "Documentos de Política para el gobierno 2026-2030"
+    enlace: /documentos-politica-2026-2030/index.html

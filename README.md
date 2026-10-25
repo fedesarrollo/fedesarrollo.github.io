@@ -4,7 +4,9 @@ Sitio de Fedesarrollo. Lo construye Jekyll en GitHub Pages en cada cambio a `mai
 
 ## Estructura
 
-- `index.html`, `investigaciones.html`, `encuestas.html`, `seguridad-justicia.html`, `temas.html`, `equipo.html`, `nosotros.html`, `noticias-eventos.html` y `404.html`: páginas del sitio.
+- `index.html`, `investigaciones.html`, `coyuntura.html`, `areas.html`, `equipo.html`, `nosotros.html`, `noticias-eventos.html` y `404.html`: páginas del sitio.
+- `areas/<slug>.html`, `equipo/<slug>.html` y `organizados-contra-el-crimen/<n>.html`: páginas generadas con los layouts `area`, `perfil` y `oac-doc` a partir de `_data`.
+- `encuestas.html`, `temas.html` y `seguridad-justicia.html`: redirecciones a las direcciones nuevas.
 - `_data/*.yml`: todo el contenido (publicaciones, indicadores, equipo, noticias, eventos, temas y la serie 2026-2030). Comunicaciones lo actualiza siguiendo [COMO-EDITAR.md](COMO-EDITAR.md).
 - `_layouts/` y `_includes/`: encabezado, pie y piezas que se repiten.
 - `assets/fede/`: copia del kit de marca (`fede-style`): tokens, `web/fedesarrollo.css`, logos y fotos en semitono. Hay dos cambios frente al kit:

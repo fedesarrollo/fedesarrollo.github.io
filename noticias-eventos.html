@@ -3,6 +3,7 @@ title: Noticias y eventos
 description: Fedesarrollo en los medios, comunicados y eventos.
 nav: noticias
 ---
+{%- assign hoy = site.time | date: "%Y-%m-%d" -%}
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
     <span class="fd-label fd-text-blue">Noticias y eventos</span>
@@ -21,6 +22,9 @@ nav: noticias
         <div>
           <h3 class="nota__titulo"><a href="{{ n.enlace }}">{{ n.titulo }}</a></h3>
           {%- if n.medio %}<p class="nota__meta">{{ n.medio }}</p>{% endif %}
+          {%- if n.investigacion %}
+          <p class="nota__inv"><a class="fd-link-arrow" href="{% if n.investigacion.enlace contains '://' %}{{ n.investigacion.enlace }}{% else %}{{ n.investigacion.enlace | relative_url }}{% endif %}">Lea la investigación</a><span>{{ n.investigacion.titulo }}</span></p>
+          {%- endif %}
         </div>
       </li>
       {%- endfor %}
@@ -28,17 +32,19 @@ nav: noticias
     <p style="margin-top:24px"><a class="fd-link-arrow" href="{{ site.sitio_anterior }}/noticias">Archivo de noticias</a></p>
   </div>
   <div id="eventos">
-    <div class="sec-head"><h2>Eventos</h2></div>
-    <ul class="notas">
-      {%- for e in site.data.eventos %}
-      <li class="nota">
-        {% include fecha-corta.html f=e.fecha %}
-        <div>
-          <h3 class="nota__titulo"><a href="{{ e.enlace }}">{{ e.titulo }}</a></h3>
-          {%- if e.lugar %}<p class="nota__meta">{{ e.lugar }}</p>{% endif %}
-        </div>
-      </li>
-      {%- endfor %}
+    <div class="sec-head"><h2>Próximos eventos</h2></div>
+    <ul class="notas" id="eventos-proximos">
+      {%- for e in site.data.eventos %}{% if e.fecha >= hoy %}
+      {% include evento.html e=e %}
+      {%- endif %}{% endfor %}
+    </ul>
+    <p id="eventos-vacio"{% for e in site.data.eventos %}{% if e.fecha >= hoy %} hidden{% break %}{% endif %}{% endfor %}>No hay eventos programados por ahora. Las invitaciones llegan a quienes están suscritos al <a href="{{ site.contacto.boletin }}">boletín</a>.</p>
+
+    <div class="sec-head" style="margin-top:56px"><h2>Eventos anteriores</h2></div>
+    <ul class="notas" id="eventos-pasados">
+      {%- for e in site.data.eventos %}{% if e.fecha < hoy %}
+      {% include evento.html e=e %}
+      {%- endif %}{% endfor %}
     </ul>
     <p style="margin-top:24px"><a class="fd-link-arrow" href="{{ site.sitio_anterior }}/eventos">Archivo de eventos</a></p>
   </div>

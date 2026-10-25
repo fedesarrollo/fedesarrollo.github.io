@@ -1,0 +1,87 @@
+# Fechas de publicación de las encuestas (tomadas del calendario de fedesarrollo.org.co).
+# La página de Coyuntura muestra solo las fechas que aún no han pasado.
+
+- fecha: "2026-07-08"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados junio 2026"
+- fecha: "2026-07-15"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados junio 2026"
+- fecha: "2026-07-22"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados julio 2026"
+- fecha: "2026-07-29"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados junio 2026"
+- fecha: "2026-08-05"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados julio 2026"
+- fecha: "2026-08-13"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados julio 2026"
+- fecha: "2026-08-20"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados agosto 2026"
+- fecha: "2026-08-26"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados julio 2026"
+- fecha: "2026-09-09"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados agosto 2026"
+- fecha: "2026-09-16"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados agosto 2026"
+- fecha: "2026-09-23"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados septiembre 2026"
+- fecha: "2026-09-30"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados agosto 2026"
+- fecha: "2026-10-07"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados septiembre 2026"
+- fecha: "2026-10-14"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados septiembre 2026"
+- fecha: "2026-10-21"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados octubre 2026"
+- fecha: "2026-10-28"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados septiembre 2026"
+- fecha: "2026-11-05"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados octubre 2026"
+- fecha: "2026-11-11"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados octubre 2026"
+- fecha: "2026-11-19"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados noviembre 2026"
+- fecha: "2026-11-25"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados octubre 2026"
+- fecha: "2026-12-09"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados noviembre 2026"
+- fecha: "2026-12-16"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados noviembre 2026"
+- fecha: "2026-12-23"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados diciembre 2026"
+- fecha: "2026-12-30"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados noviembre 2026"
+- fecha: "2027-01-06"
+  serie: IPEC
+  publicacion: "Índice de Incertidumbre de la Política Económica en Colombia (IPEC) - Resultados diciembre 2026"
+- fecha: "2027-01-13"
+  serie: EOC
+  publicacion: "Encuesta de Opinión del Consumidor - Resultados diciembre 2026"
+- fecha: "2027-01-20"
+  serie: EOF
+  publicacion: "Encuesta de Opinión Financiera - Resultados enero 2027"
+- fecha: "2027-01-23"
+  serie: EOE
+  publicacion: "Encuesta de Opinión Empresarial - Resultados diciembre 2026"

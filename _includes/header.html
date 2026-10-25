@@ -1,31 +1,116 @@
 {%- assign nav = page.nav -%}
+{%- assign rel = '/' | relative_url -%}
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <div class="util fd-on-navy">
   <div class="fd-container util__bar">
     <p class="util__promesa">Contribuimos al desarrollo del país.</p>
-    <ul class="util__links">
-      <li><a href="{{ site.repositorio }}">Repositorio</a></li>
-      <li><a href="{{ '/nosotros.html#contacto' | relative_url }}">Contacto</a></li>
-      <li><a href="{{ site.contacto.boletin }}">Suscribirse al boletín</a></li>
-    </ul>
+    <div class="util__der">
+      <ul class="util__links">
+        <li><a href="{{ site.repositorio }}">Repositorio</a></li>
+        <li><a href="{{ '/nosotros.html#contacto' | relative_url }}">Contacto</a></li>
+        <li><a href="{{ site.contacto.boletin }}">Boletín</a></li>
+      </ul>
+      <form class="buscar buscar--util" action="{{ '/investigaciones.html' | relative_url }}" method="get" role="search">
+        <label class="fd-sr-only" for="buscar-q">Buscar publicaciones</label>
+        <input class="buscar__input" id="buscar-q" name="q" type="search" placeholder="Buscar publicaciones">
+        <button class="buscar__btn" type="submit" aria-label="Buscar">
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 <header class="fd-header site-header">
   <div class="fd-container fd-header__bar">
-    <a class="fd-logo fd-logo--h" href="{{ '/' | relative_url }}" aria-label="Fedesarrollo, inicio">
+    <a class="fd-logo fd-logo--h" href="{{ rel }}" aria-label="Fedesarrollo, inicio">
       <img src="{{ '/assets/fede/logos/FeDeLogoAzul.svg' | relative_url }}" alt="Fedesarrollo" width="190" height="35">
     </a>
     <input type="checkbox" id="menu" class="menu-toggle" aria-hidden="true" tabindex="-1">
     <label for="menu" class="menu-btn"><span class="fd-sr-only">Menú</span><span aria-hidden="true"></span></label>
     <nav class="site-nav" aria-label="Principal">
-      <ul class="fd-nav">
-        <li><a href="{{ '/investigaciones.html' | relative_url }}"{% if nav == "investigaciones" %} aria-current="page"{% endif %}>Investigaciones</a></li>
-        <li><a href="{{ '/encuestas.html' | relative_url }}"{% if nav == "encuestas" %} aria-current="page"{% endif %}>Encuestas</a></li>
-        <li><a href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}"{% if nav == "serie" %} aria-current="page"{% endif %}>Documentos de Política</a></li>
-        <li><a href="{{ '/temas.html' | relative_url }}"{% if nav == "temas" %} aria-current="page"{% endif %}>Temas</a></li>
-        <li><a href="{{ '/equipo.html' | relative_url }}"{% if nav == "equipo" %} aria-current="page"{% endif %}>Equipo</a></li>
-        <li><a href="{{ '/noticias-eventos.html' | relative_url }}"{% if nav == "noticias" %} aria-current="page"{% endif %}>Noticias y eventos</a></li>
-        <li><a href="{{ '/nosotros.html' | relative_url }}"{% if nav == "nosotros" %} aria-current="page"{% endif %}>Nosotros</a></li>
+      <ul class="menu">
+        <li class="menu__item menu__item--panel">
+          <a class="menu__link" href="{{ '/investigaciones.html' | relative_url }}"{% if nav == "investigaciones" %} aria-current="page"{% endif %}>Investigaciones</a>
+          <div class="panel">
+            <div class="fd-container panel__in">
+              <div class="panel__intro">
+                <p class="fd-label">Investigaciones</p>
+                <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}">Todas las publicaciones</a>
+                <a class="fd-link-arrow" href="{{ site.repositorio }}">Repositorio institucional</a>
+              </div>
+              <div>
+                <p class="panel__titulo">Por tipo</p>
+                <ul>
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=investigacion">Investigaciones</a></li>
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=libro">Libros</a></li>
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=comision">Comisiones</a></li>
+                  <li><a href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">Documentos de Política</a></li>
+                  <li><a href="{{ '/documentos-politica-2026-2030/notas-politica.html' | relative_url }}">Notas de Política</a></li>
+                </ul>
+              </div>
+              <div class="panel__ancho">
+                <p class="panel__titulo">Por tema</p>
+                <ul class="panel__cols">
+                  {%- for t in site.data.temas %}
+                  <li><a href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}">{{ t.corto }}</a></li>
+                  {%- endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu__item menu__item--panel">
+          <a class="menu__link" href="{{ '/coyuntura.html' | relative_url }}"{% if nav == "coyuntura" %} aria-current="page"{% endif %}>Coyuntura</a>
+          <div class="panel">
+            <div class="fd-container panel__in">
+              <div class="panel__intro">
+                <p class="fd-label">Coyuntura</p>
+                <a class="fd-link-arrow" href="{{ '/coyuntura.html' | relative_url }}">Encuestas e indicadores</a>
+                <a class="fd-link-arrow" href="{{ '/coyuntura.html#calendario' | relative_url }}">Calendario de publicación</a>
+              </div>
+              <div>
+                <p class="panel__titulo">Encuestas</p>
+                <ul>
+                  {%- for e in site.data.encuestas %}
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}#{{ e.serie | slugify: 'latin' }}">{{ e.nombre }}</a></li>
+                  {%- endfor %}
+                </ul>
+              </div>
+              <div>
+                <p class="panel__titulo">Publicaciones periódicas</p>
+                <ul>
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=prospectiva-economica#listado">Prospectiva Económica</a></li>
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=tendencia-economica#listado">Tendencia Económica</a></li>
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=bitacora-semanal#listado">Bitácora Semanal</a></li>
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}?tipo=comunicado#listado">Comunicados de prensa</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu__item menu__item--panel">
+          <a class="menu__link" href="{{ '/areas.html' | relative_url }}"{% if nav == "areas" %} aria-current="page"{% endif %}>Áreas</a>
+          <div class="panel">
+            <div class="fd-container panel__in">
+              <div class="panel__intro">
+                <p class="fd-label">Áreas de investigación</p>
+                <a class="fd-link-arrow" href="{{ '/areas.html' | relative_url }}">Todas las áreas</a>
+              </div>
+              <div class="panel__ancho">
+                <ul class="panel__areas">
+                  {%- for a in site.data.areas %}
+                  <li><a href="{{ '/areas/' | relative_url }}{{ a.slug }}.html"><strong>{{ a.nombre }}</strong><span>{{ a.descripcion }}</span></a></li>
+                  {%- endfor %}
+                  <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}"><strong>Organizados contra el crimen</strong><span>Iniciativa regional sobre la violencia criminal en América Latina y el Caribe.</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu__item"><a class="menu__link" href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}"{% if nav == "serie" %} aria-current="page"{% endif %}>Documentos de Política</a></li>
+        <li class="menu__item"><a class="menu__link" href="{{ '/equipo.html' | relative_url }}"{% if nav == "equipo" %} aria-current="page"{% endif %}>Equipo</a></li>
+        <li class="menu__item"><a class="menu__link" href="{{ '/noticias-eventos.html' | relative_url }}"{% if nav == "noticias" %} aria-current="page"{% endif %}>Noticias y eventos</a></li>
+        <li class="menu__item"><a class="menu__link" href="{{ '/nosotros.html' | relative_url }}"{% if nav == "nosotros" %} aria-current="page"{% endif %}>Nosotros</a></li>
       </ul>
       <form class="buscar buscar--menu" action="{{ '/investigaciones.html' | relative_url }}" method="get" role="search">
         <label class="fd-sr-only" for="buscar-m">Buscar publicaciones</label>
@@ -36,25 +121,4 @@
       </form>
     </nav>
   </div>
-  {%- unless page.sin_temas %}
-  <div class="temas-bar">
-    <div class="fd-container temas-bar__in">
-      <span class="fd-label">Temas</span>
-      <ul>
-        <li><a class="destacado" href="{{ '/seguridad-justicia.html' | relative_url }}"{% if nav == "seguridad" %} aria-current="page"{% endif %}>Seguridad y justicia</a></li>
-        {%- for t in site.data.temas %}{% if t.destacado %}
-        <li><a href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}">{{ t.corto }}</a></li>
-        {%- endif %}{% endfor %}
-        <li><a href="{{ '/temas.html' | relative_url }}">Todos los temas</a></li>
-      </ul>
-      <form class="buscar" action="{{ '/investigaciones.html' | relative_url }}" method="get" role="search">
-        <label class="fd-sr-only" for="buscar-q">Buscar publicaciones</label>
-        <input class="fd-input buscar__input" id="buscar-q" name="q" type="search" placeholder="Buscar publicaciones">
-        <button class="buscar__btn" type="submit" aria-label="Buscar">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6"/><path d="M13 13l5 5"/></svg>
-        </button>
-      </form>
-    </div>
-  </div>
-  {%- endunless %}
 </header>

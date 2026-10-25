@@ -1,38 +1,18 @@
 ---
-title: Temas
-description: Las áreas de investigación de Fedesarrollo, de la política fiscal al mercado laboral, la energía, la educación y la salud.
-nav: temas
-sin_temas: true
+layout: null
+sitemap: false
+permalink: /temas.html
 ---
-<section class="fd-on-gray">
-  <div class="fd-container cabeza">
-    <span class="fd-label fd-text-blue">Temas</span>
-    <h1>Áreas de investigación</h1>
-    <p class="fd-lead">Catorce áreas en las que Fedesarrollo investiga y propone política pública.</p>
-  </div>
-</section>
-
-<section class="fd-container wrap">
-  <ul class="temas-grid">
-    {%- for t in site.data.temas %}
-    {%- assign del_tema = site.data.publicaciones | where_exp: "p", "p.temas contains t.slug" -%}
-    <li class="tema">
-      <h2><a href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}">{{ t.nombre }}</a></h2>
-      {%- if del_tema.size > 0 %}
-      <ul>
-        {%- for p in del_tema limit: 3 %}
-        {%- if p.serie_slug %}{% assign s = site.data.serie | where: "slug", p.serie_slug | first %}
-        <li><a href="{{ '/documentos-politica-2026-2030/docs/' | relative_url }}{{ s.slug }}.html">{{ s.titulo }}</a></li>
-        {%- else %}
-        <li><a href="http://hdl.handle.net/11445/{{ p.handle }}">{{ p.titulo }}</a></li>
-        {%- endif %}
-        {%- endfor %}
-      </ul>
-      <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}?tema={{ t.slug }}"><span class="tema__cuenta">{{ del_tema.size }}</span>&nbsp;publicaciones</a>
-      {%- else %}
-      <a class="fd-link-arrow" href="{{ site.repositorio }}">Ver en el repositorio</a>
-      {%- endif %}
-    </li>
-    {%- endfor %}
-  </ul>
-</section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Esta página cambió de dirección | Fedesarrollo</title>
+  <meta http-equiv="refresh" content="0; url={{ '/areas.html' | relative_url }}">
+  <link rel="canonical" href="{{ site.url }}/areas.html">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <p>Esta página cambió de dirección: <a href="{{ '/areas.html' | relative_url }}">Áreas de investigación</a>.</p>
+</body>
+</html>

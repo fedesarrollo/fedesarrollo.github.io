@@ -1,0 +1,63 @@
+{%- comment -%}
+  Filtros y listado paginado. Parámetros: pubs (lista), tipos (lista de tipos
+  para el selector), series (true para filtrar por serie), por_pagina.
+{%- endcomment -%}
+<form id="filtros" class="filtros fd-on-gray" role="search">
+  <div class="fd-field filtros__q">
+    <label for="f-q">Buscar</label>
+    <input class="fd-input" id="f-q" name="q" type="search" placeholder="Título, autor o palabra clave">
+  </div>
+  <div class="fd-field">
+    <label for="f-tipo">Tipo</label>
+    <select class="fd-input" id="f-tipo" name="tipo">
+      <option value="">Todos</option>
+      {%- for t in include.tipos %}
+      <option value="{{ t | slugify: "latin" }}">{{ t }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+  {%- if include.series %}
+  <div class="fd-field">
+    <label for="f-serie">Serie</label>
+    <select class="fd-input" id="f-serie" name="serie">
+      <option value="">Todas</option>
+      {%- assign series = include.pubs | map: "serie" | compact | uniq -%}
+      {%- for s in series %}
+      <option value="{{ s | slugify: "latin" }}">{{ s }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+  {%- else %}
+  <div class="fd-field">
+    <label for="f-area">Área</label>
+    <select class="fd-input" id="f-area" name="area">
+      <option value="">Todas</option>
+      {%- for a in site.data.areas %}
+      <option value="{{ a.slug }}">{{ a.nombre }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+  <div class="fd-field">
+    <label for="f-tema">Tema</label>
+    <select class="fd-input" id="f-tema" name="tema">
+      <option value="">Todos</option>
+      {%- for t in site.data.temas %}
+      <option value="{{ t.slug }}">{{ t.nombre }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+  {%- endif %}
+</form>
+
+<div class="filtros__pie">
+  <p class="filtros__cuenta fd-label" id="filtros-cuenta" aria-live="polite">{{ include.pubs.size }} publicaciones</p>
+  <button type="button" class="filtros__limpiar" id="filtros-limpiar" hidden>Quitar filtros</button>
+</div>
+
+<div class="pubs" data-filtrable data-por-pagina="{{ include.por_pagina | default: 15 }}">
+  {%- for p in include.pubs %}
+  {% include pub.html p=p portada=true resumen=true %}
+  {%- endfor %}
+</div>
+<p class="filtros__vacio" id="filtros-vacio" hidden>No hay publicaciones con esos filtros. Pruebe con otros o busque en el <a href="{{ site.repositorio }}">repositorio institucional</a>.</p>
+<nav class="paginas" id="paginas" aria-label="Páginas" hidden></nav>

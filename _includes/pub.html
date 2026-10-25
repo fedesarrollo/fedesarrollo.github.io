@@ -19,7 +19,8 @@
   {%- if p.portada %}{% assign _img = p.portada | relative_url %}{% else %}{% assign _img = nil %}{% endif -%}
   {%- assign _serie = p.serie -%}
 {%- endif -%}
-<article class="pub{% if include.portada %} pub--portada{% endif %}" data-tipo="{{ p.tipo | slugify: "latin" }}" data-temas="{{ p.temas | join: ' ' }}">
+{%- capture _areas -%}{%- for a in site.data.areas -%}{%- for t in p.temas -%}{%- if a.temas contains t %} {{ a.slug }}{% break %}{% endif -%}{%- endfor -%}{%- endfor -%}{%- endcapture -%}
+<article class="pub{% if include.portada %} pub--portada{% endif %}" data-tipo="{{ p.tipo | slugify: "latin" }}" data-serie="{{ p.serie | slugify: "latin" }}" data-temas="{{ p.temas | join: ' ' }}" data-areas="{{ _areas | strip }}">
   {%- if include.portada and _img %}
   <a class="pub__portada" href="{{ _url }}" tabindex="-1" aria-hidden="true"><img src="{{ _img }}" alt="" loading="lazy" width="162" height="210"></a>
   {%- endif %}

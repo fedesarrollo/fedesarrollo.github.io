@@ -1,0 +1,25 @@
+# Áreas de investigación. Cada área agrupa temas de _data/temas.yml: una
+# publicación aparece en un área si alguno de sus temas está en la lista.
+# Las personas se asignan a un área con «area» en _data/equipo.yml.
+# La página de cada área está en areas/<slug>.html.
+
+- slug: macrofiscal
+  nombre: "Macrofiscal"
+  descripcion: "Política fiscal y monetaria, finanzas públicas, sector financiero y comercio exterior."
+  temas: [macroeconomia, financiero, comercio-exterior]
+- slug: seguridad-y-justicia
+  nombre: "Seguridad y justicia"
+  descripcion: "Crimen organizado, sistema de justicia, cárceles, corrupción y política de seguridad en Colombia y América Latina."
+  temas: [instituciones-justicia]
+- slug: instituciones-y-capital-humano
+  nombre: "Instituciones y capital humano"
+  descripcion: "Educación, salud y desarrollo regional."
+  temas: [educacion, salud, regional]
+- slug: mercado-laboral-y-productividad
+  nombre: "Mercado laboral y productividad"
+  descripcion: "Empleo, pobreza, protección social, desarrollo productivo y sector agropecuario."
+  temas: [mercado-laboral, desarrollo-productivo, agropecuario]
+- slug: investigaciones
+  nombre: "Investigaciones"
+  descripcion: "Energía, infraestructura, vivienda y medio ambiente."
+  temas: [mineria-energia, infraestructura, vivienda, medio-ambiente]

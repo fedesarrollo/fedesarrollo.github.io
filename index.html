@@ -7,19 +7,27 @@ description: Centro de investigación económica y social independiente. Investi
 {%- assign principal = investigaciones | first -%}
 {%- assign serie_docs = site.data.serie | where: "tipo", "documento" -%}
 
-<section class="fd-hero-split portada">
-  <div class="fd-hero-split__media fd-halftone">
-    <img src="{{ '/assets/fede/photos/campesinos.jpg' | relative_url }}" alt="Un campesino trabaja la tierra en un cultivo abierto" width="900" height="900">
-  </div>
-  <div class="fd-hero-split__body fd-on-gray">
-    <span class="fd-tag">Documentos de Política 2026-2030</span>
-    <h1 class="fd-display" style="margin-top:28px">Evidencia para las decisiones del próximo cuatrienio</h1>
-    <hr class="fd-rule">
-    <p>Diagnósticos, prioridades y hojas de ruta para los principales retos de política pública del gobierno 2026-2030. Cada tema tiene un Documento de Política completo y un Resumen.</p>
-    <div class="fd-flex" style="margin-top:8px">
-      <a class="fd-btn" href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">Ver los documentos</a>
-      <a class="fd-btn fd-btn--outline" href="{{ '/documentos-politica-2026-2030/notas-politica.html' | relative_url }}">Notas de Política</a>
+<section class="portada" data-portada aria-roledescription="carrusel" aria-label="Destacados">
+  {%- for d in site.data.destacados %}
+  <div class="destacado fd-hero-split"{% unless forloop.first %} hidden{% endunless %} aria-roledescription="diapositiva" aria-label="{{ forloop.index }} de {{ forloop.length }}">
+    <div class="fd-hero-split__media fd-halftone">
+      <img{% if d.ajuste == "contener" %} class="contener"{% endif %} src="{{ d.imagen | relative_url }}" alt="" width="900" height="900"{% unless forloop.first %} loading="lazy"{% endunless %}>
     </div>
+    <div class="fd-hero-split__body fd-on-gray">
+      <span class="fd-tag">{{ d.etiqueta }}</span>
+      {% if forloop.first %}<h1{% else %}<h2{% endif %} class="fd-display" style="margin-top:28px">{{ d.titulo }}{% if forloop.first %}</h1>{% else %}</h2>{% endif %}
+      <hr class="fd-rule">
+      <p>{{ d.texto }}</p>
+      <div class="fd-flex" style="margin-top:8px">
+        <a class="fd-btn" href="{% if d.enlace contains '://' %}{{ d.enlace }}{% else %}{{ d.enlace | relative_url }}{% endif %}">{{ d.boton }}</a>
+      </div>
+    </div>
+  </div>
+  {%- endfor %}
+  <div class="portada__puntos fd-container">
+    {%- for d in site.data.destacados %}
+    <button type="button" class="portada__punto" aria-label="Ver destacado {{ forloop.index }}: {{ d.etiqueta }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"><span>{{ d.etiqueta }}</span></button>
+    {%- endfor %}
   </div>
 </section>
 
@@ -108,39 +116,25 @@ description: Centro de investigación económica y social independiente. Investi
 <section class="fd-on-gray">
   <div class="fd-container wrap">
     <div class="sec-head">
-      <h2>Seguridad y justicia</h2>
-      <a class="fd-link-arrow" href="{{ '/seguridad-justicia.html' | relative_url }}">El área</a>
+      <h2>Áreas de investigación</h2>
+      <a class="fd-link-arrow" href="{{ '/areas.html' | relative_url }}">Todas las áreas</a>
     </div>
-    <div class="reciente">
-      <div>
-        <p class="pub__tipo fd-label">Organizados contra el crimen</p>
-        <h3 class="fd-h2" style="max-width:20ch">Conocimiento sobre la violencia criminal en América Latina y el Caribe</h3>
-        <p>Una red de centros de pensamiento, organismos multilaterales y universidades de la región, de la que Fedesarrollo hace parte, publica documentos de política sobre cárceles, drogas, gobernanza criminal, lavado de dinero, policía y justicia.</p>
-        <a class="fd-btn" href="{{ '/seguridad-justicia.html#oac' | relative_url }}">Ver los documentos</a>
-      </div>
-      <ul class="portadas portadas--3">
-        {%- for d in site.data.oac limit: 3 %}
-        <li>
-          <a href="{{ '/seguridad-justicia.html#oac' | relative_url }}">
-            <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
-            <span class="portadas__autores">Documento {{ d.numero }}</span>
-          </a>
-        </li>
-        {%- endfor %}
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="dividido fd-on-navy">
-  <div class="dividido__texto">
-    <p class="fd-label fd-text-sky">Datos abiertos</p>
-    <h2>Explorador de marcos regulatorios</h2>
-    <p>Costos laborales no salariales, salarios mínimos, costos de despido e impuestos a las empresas en 11 países de América Latina. Un inventario del Grupo Banco Mundial elaborado con Fedesarrollo y la Facultad de Economía de la Universidad de los Andes. Disponible en inglés.</p>
-    <a class="fd-btn fd-btn--outline" href="{{ '/productividad-mercado-laboral/' | relative_url }}">Abrir el explorador</a>
-  </div>
-  <div class="dividido__media fd-halftone">
-    <img class="contener" src="{{ '/assets/fede/photos/banco.jpg' | relative_url }}" alt="" loading="lazy">
+    <ul class="areas areas--inicio">
+      {%- for a in site.data.areas %}
+      <li class="area">
+        <a class="area__enlace" href="{{ '/areas/' | relative_url }}{{ a.slug }}.html">
+          <span class="area__nombre">{{ a.nombre }}</span>
+          <span class="area__desc">{{ a.descripcion }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+      <li class="area area--oac">
+        <a class="area__enlace" href="{{ '/organizados-contra-el-crimen/' | relative_url }}">
+          <span class="area__nombre">Organizados contra el crimen</span>
+          <span class="area__desc">Iniciativa regional sobre la violencia criminal en América Latina y el Caribe.</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -149,15 +143,17 @@ description: Centro de investigación económica y social independiente. Investi
     <h2>Investigadores</h2>
     <a class="fd-link-arrow" href="{{ '/equipo.html' | relative_url }}">Todo el equipo</a>
   </div>
-  {%- assign inv = site.data.equipo | where: "grupo", "investigadores" | first -%}
   {%- assign dir = site.data.equipo | where: "grupo", "direccion" | first -%}
+  {%- assign directores = site.data.equipo | where: "cargo", "Director de área" -%}
   <ul class="personas personas--fila">
-    {%- assign directora = dir.personas | first %}
-    {% include persona.html x=directora %}
-    {%- assign elegidos = "Eduardo Lora,Ximena Cadena,Juan José Echavarría,María Angélica Arbeláez,Juan Benavides Estévez-Bretón" | split: "," -%}
-    {%- for p in inv.personas %}{% if elegidos contains p.nombre %}
+    {% include persona.html x=dir %}
+    {%- for p in directores %}
     {% include persona.html x=p %}
-    {%- endif %}{% endfor %}
+    {%- endfor %}
+    {%- assign investigadores = site.data.equipo | where: "cargo", "Investigador" -%}
+    {%- for p in investigadores limit: 2 %}
+    {% include persona.html x=p %}
+    {%- endfor %}
   </ul>
 </section>
 
@@ -171,7 +167,7 @@ description: Centro de investigación económica y social independiente. Investi
           {% include fecha-corta.html f=n.fecha %}
           <div>
             <h3 class="nota__titulo"><a href="{{ n.enlace }}">{{ n.titulo }}</a></h3>
-            {%- if n.medio %}<p class="nota__meta">{{ n.medio }}</p>{% endif %}
+            {%- if n.medio or n.investigacion %}<p class="nota__meta">{{ n.medio }}{% if n.medio and n.investigacion %} · {% endif %}{% if n.investigacion %}<a href="{% if n.investigacion.enlace contains '://' %}{{ n.investigacion.enlace }}{% else %}{{ n.investigacion.enlace | relative_url }}{% endif %}">Lea la investigación</a>{% endif %}</p>{% endif %}
           </div>
         </li>
         {%- endfor %}
@@ -180,26 +176,11 @@ description: Centro de investigación económica y social independiente. Investi
     <div>
       <div class="sec-head"><h2>Eventos</h2><a class="fd-link-arrow" href="{{ '/noticias-eventos.html#eventos' | relative_url }}">Todos los eventos</a></div>
       <ul class="notas">
-          {%- for e in site.data.eventos limit: 4 %}
-        <li class="nota">
-          {% include fecha-corta.html f=e.fecha %}
-          <div>
-            <h3 class="nota__titulo"><a href="{{ e.enlace }}">{{ e.titulo }}</a></h3>
-            {%- if e.lugar %}<p class="nota__meta">{{ e.lugar }}</p>{% endif %}
-          </div>
-        </li>
+        {%- for e in site.data.eventos limit: 4 %}
+        {% include evento.html e=e %}
         {%- endfor %}
       </ul>
     </div>
   </div>
 </section>
 
-<section class="fd-on-blue">
-  <div class="fd-container wrap--corto boletin">
-    <div>
-      <h2>Boletín</h2>
-      <p>Reciba en su correo las publicaciones y los resultados de las encuestas de Fedesarrollo.</p>
-    </div>
-    <a class="fd-btn" href="{{ site.contacto.boletin }}">Suscribirse</a>
-  </div>
-</section>

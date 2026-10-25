@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{%- assign d = site.data.oac | where: "numero", page.numero | where: "tipo", page.tipo | first -%}
+{%- assign pdf = "https://www.organizedagainstcrime.org/es/_files/ugd/e04819_" -%}
+<div class="fd-container wrap">
+  <p class="migas"><a href="{{ '/areas/seguridad-y-justicia.html' | relative_url }}">Seguridad y justicia</a> / <a href="{{ '/organizados-contra-el-crimen/' | relative_url }}">Organizados contra el crimen</a></p>
+  <div class="ficha">
+    <div>
+      <span class="fd-tag">{% if d.tipo == "nota" %}Nota{% else %}Documento{% endif %} de política {{ d.numero }}</span>
+      <h1 style="margin-top:24px">{{ d.titulo }}</h1>
+      <ul class="autores">
+        <li><strong>{{ d.autores }}</strong><span>{% include fecha.html f=d.fecha %}</span></li>
+      </ul>
+      <article class="ficha__cuerpo prosa">
+        {%- if d.resumen_completo %}
+        <h2>Resumen</h2>
+        <p>{{ d.resumen_completo }}</p>
+        {%- endif %}
+        {%- if d.mensajes %}
+        <h2>Mensajes principales</h2>
+        <ul>{% for m in d.mensajes %}<li>{{ m }}</li>{% endfor %}</ul>
+        <h2>Principales recomendaciones</h2>
+        <ul>{% for m in d.recomendaciones %}<li>{{ m }}</li>{% endfor %}</ul>
+        {%- endif %}
+        <p><a class="fd-link-arrow" href="https://www.organizedagainstcrime.org/es/{{ d.pagina }}">En el sitio de la iniciativa</a></p>
+      </article>
+    </div>
+    <aside class="archivos archivos--uno" aria-label="Descargas">
+      <div class="archivo">
+        <a class="archivo__ver" href="{{ pdf }}{{ d.pdf.es }}.pdf"><img src="{{ d.portada | relative_url }}" alt="Primera página del documento en español"></a>
+        <span class="fd-label">Descargar PDF</span>
+        <a class="archivo__bajar" href="{{ pdf }}{{ d.pdf.es }}.pdf">Español</a> · <a class="archivo__bajar" href="{{ pdf }}{{ d.pdf.en }}.pdf" hreflang="en">English</a> · <a class="archivo__bajar" href="{{ pdf }}{{ d.pdf.pt }}.pdf" hreflang="pt">Português</a>
+      </div>
+    </aside>
+  </div>
+</div>

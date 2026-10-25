@@ -1,33 +1,78 @@
 ---
 title: Equipo
-description: Directivas, investigadores y equipo de Fedesarrollo.
+description: Dirección, áreas de investigación, investigadores asociados y equipo administrativo de Fedesarrollo.
 nav: equipo
 ---
+{%- assign gente = site.data.equipo -%}
+{%- assign investigacion = gente | where: "grupo", "investigacion" -%}
+{%- assign asociados = investigacion | where: "area", "" -%}
+
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
     <span class="fd-label fd-text-blue">Equipo</span>
     <h1>Quiénes hacen Fedesarrollo</h1>
-    <p class="fd-lead">Dirección, investigadores y equipo de apoyo.</p>
+    <p class="fd-lead">Dirección, áreas de investigación, investigadores asociados y equipo de apoyo.</p>
+    <ul class="saltos">
+      <li><a href="#direccion">Dirección</a></li>
+      {%- for a in site.data.areas %}
+      <li><a href="#{{ a.slug }}">{{ a.nombre }}</a></li>
+      {%- endfor %}
+      <li><a href="#asociados">Investigadores asociados</a></li>
+      <li><a href="#administracion">Administración</a></li>
+    </ul>
   </div>
 </section>
 
-{%- for g in site.data.equipo %}
-<section class="fd-container {% if forloop.first %}wrap{% else %}wrap--corto{% endif %}" id="{{ g.grupo }}">
-  <div class="sec-head"><h2>{{ g.nombre }}</h2></div>
-  <ul class="personas{% if g.grupo == 'administracion' %} personas--lista{% endif %}">
-    {%- for p in g.personas %}
+<section class="fd-container wrap" id="direccion">
+  <div class="sec-head"><h2>Dirección</h2></div>
+  <ul class="personas">
+    {%- for p in gente %}{% if p.grupo == "direccion" %}
+    {% include persona.html x=p %}
+    {%- endif %}{% endfor %}
+  </ul>
+</section>
+
+{%- for a in site.data.areas %}
+{%- assign del_area = investigacion | where: "area", a.slug -%}
+{%- if del_area.size > 0 %}
+<section class="fd-container wrap--corto" id="{{ a.slug }}">
+  <div class="sec-head">
+    <h2>{{ a.nombre }}</h2>
+    <a class="fd-link-arrow" href="{{ '/areas/' | relative_url }}{{ a.slug }}.html">El área</a>
+  </div>
+  <ul class="personas">
+    {%- for p in del_area %}
     {% include persona.html x=p %}
     {%- endfor %}
   </ul>
 </section>
+{%- endif %}
 {%- endfor %}
+
+<section class="fd-container wrap--corto" id="asociados">
+  <div class="sec-head"><h2>Investigadores asociados</h2></div>
+  <ul class="personas">
+    {%- for p in asociados %}
+    {% include persona.html x=p %}
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="fd-container wrap--corto" id="administracion">
+  <div class="sec-head"><h2>Administración</h2></div>
+  <ul class="personas personas--lista">
+    {%- for p in gente %}{% if p.grupo == "administracion" or p.grupo == "servicios" %}
+    {% include persona.html x=p %}
+    {%- endif %}{% endfor %}
+  </ul>
+</section>
 
 <section class="fd-on-gray" style="margin-top:64px">
   <div class="fd-container wrap--corto boletin">
     <div>
       <h2>Prensa</h2>
-      <p>Para entrevistas y solicitudes de medios, comuníquese con Johan Sebastián Gómez, de Comunicaciones y prensa, al {{ site.contacto.telefono }}.</p>
+      <p>Para entrevistas y solicitudes de medios, comuníquese con Johan Sebastián Gómez, de Comunicaciones y prensa, en comunicaciones@fedesarrollo.org.co o al {{ site.contacto.telefono }}.</p>
     </div>
-    <a class="fd-btn" href="{{ site.contacto.formulario }}">Escríbanos</a>
+    <a class="fd-btn" href="mailto:comunicaciones@fedesarrollo.org.co">Escribir a prensa</a>
   </div>
 </section>

@@ -310,6 +310,14 @@
   slug: david-holguin
   firmas: ["David Holguín"]
 
+- nombre: "Enrique Sanz Posse"
+  cargo: "Investigador asistente"
+  grupo: investigacion
+  area: "macrofiscal"
+  slug: enrique-sanz-posse
+  firmas: ["Enrique Sanz Posse"]
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/f_auto,q_auto/v1/Personas/Enrrique_wijbmu"
+
 - nombre: "Juan Diego Heredia"
   cargo: "Investigador asistente"
   grupo: investigacion
@@ -337,14 +345,6 @@
   area: "mercado-laboral-y-productividad"
   slug: valentina-londono
   firmas: ["Valentina Londoño"]
-
-- nombre: "Enrique Sanz Posse"
-  cargo: "Analista económico"
-  grupo: investigacion
-  area: "macrofiscal"
-  slug: enrique-sanz-posse
-  firmas: ["Enrique Sanz Posse"]
-  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/f_auto,q_auto/v1/Personas/Enrrique_wijbmu"
 
 - nombre: "Elián Moreno"
   cargo: "Asistente de investigación"

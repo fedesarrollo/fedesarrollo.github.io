@@ -3,36 +3,23 @@ title: Investigaciones
 description: Investigaciones, libros, comisiones y Documentos de Política de Fedesarrollo, con filtros por área, tema y tipo.
 nav: investigaciones
 ---
-{%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
-{%- assign pubs = "" | split: "" -%}
-{%- for p in site.data.publicaciones %}{% unless coyuntura contains p.tipo %}{% assign pubs = pubs | push: p %}{% endunless %}{% endfor -%}
+{%- include catalogo.html -%}
+{%- assign pubs = investigacion -%}
 {%- assign tipos = pubs | map: "tipo" | uniq -%}
 
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
-    <span class="fd-label fd-text-blue">Investigaciones</span>
     <h1>Investigaciones</h1>
     <p class="fd-lead">Estudios, libros, comisiones y Documentos de Política. Las encuestas y los informes periódicos están en <a href="{{ '/coyuntura.html' | relative_url }}">Coyuntura</a>.</p>
   </div>
 </section>
 
 <section class="fd-container wrap">
-  <ul class="especiales">
-    <li>
-      <a href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}">
-        <span class="fd-label">Especial</span>
-        <span class="especiales__titulo">Documentos de Política 2026-2030</span>
-        <span class="especiales__texto">Diagnósticos, prioridades y hojas de ruta para el gobierno 2026-2030: {{ site.data.serie | where: "tipo", "documento" | size }} documentos y {{ site.data.serie | where: "tipo", "nota" | size }} notas.</span>
-      </a>
-    </li>
-    <li>
-      <a href="{{ '/organizados-contra-el-crimen/' | relative_url }}">
-        <span class="fd-label">Especial</span>
-        <span class="especiales__titulo">Organizados contra el crimen</span>
-        <span class="especiales__texto">Iniciativa regional sobre la violencia criminal en América Latina y el Caribe: {{ site.data.oac.size }} documentos y notas de política.</span>
-      </a>
-    </li>
+  <ul class="especiales especiales--compacto">
+    {%- for e in especiales_vigentes %}
+    {% include especial.html e=e %}
+    {%- endfor %}
   </ul>
   {% include filtros.html pubs=pubs tipos=tipos por_pagina=15 %}
-  <p class="fd-small" style="margin-top:48px">Esta lista reúne las publicaciones más recientes. El archivo completo, desde 1970, está en el <a href="{{ site.repositorio }}">repositorio institucional de Fedesarrollo</a>.</p>
+  <p class="fd-small nota-final">Esta lista reúne las publicaciones más recientes. El archivo completo, desde 1970, está en el <a href="{{ site.repositorio }}">repositorio institucional de Fedesarrollo</a>.</p>
 </section>

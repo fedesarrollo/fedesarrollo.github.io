@@ -1,0 +1,22 @@
+{%- comment -%}
+  Listas comunes del sitio. Se incluye al principio de una página o layout y deja
+  asignadas: areas, especiales, especiales_vigentes, investigacion (publicaciones
+  de investigación más los documentos de especiales marcados «en_investigaciones»,
+  de la más reciente a la más antigua) y coyuntura_pubs.
+{%- endcomment -%}
+{%- assign areas = site.areas | sort: "orden" -%}
+{%- assign especiales = site.especiales | sort: "orden" -%}
+{%- assign especiales_vigentes = especiales | where: "vigente", true -%}
+{%- assign investigacion = "" | split: "" -%}
+{%- assign coyuntura_pubs = "" | split: "" -%}
+{%- for p in site.data.publicaciones -%}
+  {%- if site.coyuntura contains p.tipo -%}{%- assign coyuntura_pubs = coyuntura_pubs | push: p -%}{%- else -%}{%- assign investigacion = investigacion | push: p -%}{%- endif -%}
+{%- endfor -%}
+{%- for e in especiales -%}
+  {%- if e.en_investigaciones -%}
+    {%- assign _slug = e.slug -%}
+    {%- assign _docs = site.documentos | where: "especial", _slug -%}
+    {%- assign investigacion = investigacion | concat: _docs -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign investigacion = investigacion | sort: "fecha" | reverse -%}

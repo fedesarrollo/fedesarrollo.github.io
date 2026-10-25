@@ -1,14 +1,32 @@
 ---
 layout: default
 ---
-{%- assign a = site.data.areas | where: "slug", page.area | first -%}
-{%- assign coyuntura = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
-{%- assign gente = site.data.equipo | where: "area", a.slug -%}
+{%- include catalogo.html -%}
+{%- assign a = page -%}
+{%- comment %} Publicaciones del área (investigación y documentos de especiales) {% endcomment -%}
+{%- assign del_area = "" | split: "" -%}
+{%- for p in investigacion -%}
+  {%- for t in p.temas -%}{%- if a.temas contains t -%}{%- assign del_area = del_area | push: p -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- endfor -%}
+{%- assign con_portada = del_area | where_exp: "p", "p.portada" -%}
+{%- assign principal = del_area | first -%}
+{%- comment %} Especiales relacionados: por su campo «areas» o por los temas de sus documentos {% endcomment -%}
+{%- assign relacionados = "" | split: "" -%}
+{%- for e in especiales_vigentes -%}
+  {%- assign _rel = false -%}
+  {%- if e.areas contains a.slug %}{% assign _rel = true %}{% endif -%}
+  {%- unless _rel -%}
+    {%- assign _docs = site.documentos | where: "especial", e.slug -%}
+    {%- for d in _docs -%}{%- for t in d.temas -%}{%- if a.temas contains t %}{% assign _rel = true %}{% break %}{% endif -%}{%- endfor -%}{%- if _rel %}{% break %}{% endif -%}{%- endfor -%}
+  {%- endunless -%}
+  {%- if _rel %}{% assign relacionados = relacionados | push: e %}{% endif -%}
+{%- endfor -%}
+
 <section class="fd-on-navy">
-  <div class="fd-container cabeza{% if a.slug == 'seguridad-y-justicia' %} cabeza--serie{% endif %}">
+  <div class="fd-container cabeza cabeza--serie">
     <div>
-      <span class="fd-tag">Área de investigación</span>
-      <h1 style="margin-top:24px">{{ a.nombre }}</h1>
+      <p class="migas"><a href="{{ '/areas.html' | relative_url }}">Áreas de investigación</a></p>
+      <h1>{{ a.nombre }}</h1>
       <p class="fd-lead">{{ a.descripcion }}</p>
       <ul class="area__temas">
         {%- for slug in a.temas %}{% assign t = site.data.temas | where: "slug", slug | first %}
@@ -16,78 +34,58 @@ layout: default
         {%- endfor %}
       </ul>
     </div>
-    {%- if a.slug == 'seguridad-y-justicia' %}
+    {%- if con_portada.size >= 3 %}
     <div class="cabeza__portadas" aria-hidden="true">
-      {%- for d in site.data.oac limit: 3 %}<img src="{{ d.portada | relative_url }}" alt="">{% endfor %}
+      {%- for p in con_portada limit: 3 %}<img src="{{ p.portada | relative_url }}" alt="">{% endfor %}
     </div>
     {%- endif %}
   </div>
 </section>
 
-{%- if a.slug == 'seguridad-y-justicia' %}
-<section class="fd-on-blue">
-  <div class="fd-container wrap">
-    <div class="fd-grid">
-      <div class="fd-col-6">
-        <p class="fd-label fd-text-sky">Iniciativa regional</p>
-        <h2>Organizados contra el crimen</h2>
-        <p>Una red de centros de pensamiento, organismos multilaterales y universidades de América Latina, de la que Fedesarrollo hace parte. Ha publicado doce documentos de política y una nota sobre cárceles, drogas, gobernanza criminal, lavado de dinero, policía y justicia.</p>
-        <a class="fd-btn" href="{{ '/organizados-contra-el-crimen/' | relative_url }}">Ver la iniciativa</a>
-      </div>
-      <div class="fd-col-6">
-        <ul class="oac-mini">
-          {%- for d in site.data.oac limit: 6 %}
-          <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}{{ d.numero }}.html"><span class="fd-label">{{ d.numero }}</span>{{ d.titulo }}</a></li>
-          {%- endfor %}
-        </ul>
+{{ content }}
+
+<section class="fd-container wrap">
+  <div class="sec-head">
+    <h2>Lo más reciente</h2>
+    <a class="ver-mas" href="{{ '/investigaciones.html' | relative_url }}?area={{ a.slug }}">Todas las publicaciones del área</a>
+  </div>
+  {%- if principal %}
+  <div class="reciente">
+    <div>
+      {% include pub.html p=principal portada=true resumen=true %}
+      <div class="reciente__mas">
+        {%- for p in del_area offset: 4 limit: 2 %}
+        {% include pub.html p=p %}
+        {%- endfor %}
       </div>
     </div>
+    <div class="pubs">
+      {%- for p in del_area offset: 1 limit: 3 %}
+      {% include pub.html p=p %}
+      {%- endfor %}
+    </div>
   </div>
+  {%- else %}
+  <p>Las publicaciones del área están en el <a href="{{ site.repositorio }}">repositorio institucional</a>.</p>
+  {%- endif %}
 </section>
-{%- endif %}
 
-{%- if a.slug == 'mercado-laboral-y-productividad' %}
-<section class="dividido fd-on-navy">
-  <div class="dividido__texto">
-    <p class="fd-label fd-text-sky">Datos abiertos</p>
-    <h2>Explorador de marcos regulatorios</h2>
-    <p>Costos laborales no salariales, salarios mínimos, costos de despido e impuestos a las empresas en 11 países de América Latina. Un inventario del Grupo Banco Mundial elaborado con Fedesarrollo y la Facultad de Economía de la Universidad de los Andes. Disponible en inglés.</p>
-    <a class="fd-btn fd-btn--outline" href="{{ '/productividad-mercado-laboral/' | relative_url }}">Abrir el explorador</a>
+{%- if relacionados.size > 0 %}
+<section class="fd-on-gray">
+  <div class="fd-container wrap--corto">
+    <div class="sec-head"><h2>Especiales</h2></div>
+    <ul class="especiales">
+      {%- for e in relacionados %}
+      {% include especial.html e=e %}
+      {%- endfor %}
+    </ul>
   </div>
-  <div class="dividido__media fd-halftone"><img class="contener" src="{{ '/assets/fede/photos/banco.jpg' | relative_url }}" alt="" loading="lazy"></div>
 </section>
 {%- endif %}
 
 <section class="fd-container wrap">
-  <div class="columnas">
-    <div>
-      <div class="sec-head">
-        <h2>Investigaciones</h2>
-        <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}?area={{ a.slug }}">Todas</a>
-      </div>
-      <div class="pubs">
-        {%- assign n = 0 -%}
-        {%- for p in site.data.publicaciones -%}
-          {%- if coyuntura contains p.tipo or n >= 8 %}{% continue %}{% endif -%}
-          {%- assign en_area = false -%}
-          {%- for t in p.temas %}{% if a.temas contains t %}{% assign en_area = true %}{% break %}{% endif %}{% endfor -%}
-          {%- if en_area %}
-        {% include pub.html p=p portada=true %}
-            {%- assign n = n | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor %}
-        {%- if n == 0 %}<p>Las publicaciones del área están en el <a href="{{ site.repositorio }}">repositorio institucional</a>.</p>{% endif %}
-      </div>
-    </div>
-    <div>
-      <div class="sec-head"><h2>Equipo del área</h2></div>
-      {%- if gente.size > 0 %}
-      <ul class="personas personas--tres">
-        {%- for p in gente %}
-        {% include persona.html x=p en_area=true %}
-        {%- endfor %}
-      </ul>
-      {%- endif %}
-    </div>
-  </div>
+  <div class="sec-head"><h2>Equipo del área</h2></div>
+  <ul class="personas">
+    {% include personas-area.html area=a.slug %}
+  </ul>
 </section>

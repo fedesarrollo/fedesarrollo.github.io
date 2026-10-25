@@ -3,23 +3,23 @@ title: Documentos de Política para el gobierno 2026-2030
 description: Serie de documentos de política de Fedesarrollo con diagnósticos, prioridades y hojas de ruta para el gobierno 2026-2030.
 ---
 {%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
-{%- assign docs = site.data.serie | where: "tipo", "documento" -%}
-{%- assign notas = site.data.serie | where: "tipo", "nota" -%}
+{%- assign serie = site.documentos | where: "especial", "serie-2026-2030" | sort: "orden" -%}
+{%- assign docs = serie | where: "clase", "documento" -%}
+{%- assign notas = serie | where: "clase", "nota" -%}
 
 <section class="fd-on-blue">
   <div class="fd-container cabeza cabeza--serie">
     <div>
-    <span class="fd-tag">Serie 2026-2030</span>
     <h1>Documentos de Política para el gobierno 2026-2030</h1>
     <p class="fd-lead">Diagnósticos rigurosos, prioridades y hojas de ruta concretas para los principales retos de política pública que enfrentará el nuevo gobierno de Colombia.</p>
-    <div class="fd-flex" style="margin-top:32px">
+    <div class="fd-flex acciones">
       <a class="fd-btn" href="{{ base }}documentos.html">Documentos de Política</a>
       <a class="fd-btn fd-btn--outline" href="{{ base }}notas-politica.html">Notas de Política</a>
     </div>
     </div>
     <div class="cabeza__portadas" aria-hidden="true">
       {%- for d in docs limit: 3 %}
-      <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="">
+      <img src="{{ d.portada | relative_url }}" alt="">
       {%- endfor %}
     </div>
   </div>
@@ -28,13 +28,12 @@ description: Serie de documentos de política de Fedesarrollo con diagnósticos,
 <section class="fd-container wrap" id="acerca">
   <div class="fd-grid">
     <div class="fd-col-4">
-      <span class="fd-label fd-text-blue">La serie</span>
-      <h2 style="margin-top:16px">Evidencia para las decisiones del próximo cuatrienio</h2>
+      <h2>Evidencia para las decisiones del próximo cuatrienio</h2>
     </div>
     <div class="fd-col-8 prosa">
-      <p class="fd-lead" style="max-width:none">Colombia llega a 2026 con desafíos estructurales que no se resuelven en un solo período de gobierno, pero sobre los cuales sí es posible avanzar de manera decisiva con buenas decisiones.</p>
+      <p class="fd-lead fd-lead--ancho">Colombia llega a 2026 con desafíos estructurales que no se resuelven en un solo período de gobierno, pero sobre los cuales sí es posible avanzar de manera decisiva con buenas decisiones.</p>
       <p>En esta serie, Fedesarrollo reúne el trabajo de sus investigadores y de expertos afiliados para poner sobre la mesa, de cara al gobierno 2026-2030, un conjunto de documentos de política sobre los temas que definirán la agenda del país. Cada tema se publica en dos formatos complementarios: un <strong>Documento de Política</strong> con el diagnóstico completo y la evidencia que lo respalda, y un <strong>Resumen</strong> breve con la idea central, los mensajes clave y una agenda secuenciada para el cuatrienio.</p>
-      <p>Además, publicamos las <strong>Notas de Política</strong>: notas independientes y autocontenidas sobre temas puntuales de la coyuntura, que aplican la evidencia a un debate concreto.</p>
+      <p>En la serie también se publican <strong>Notas de Política</strong>, notas independientes sobre temas puntuales de la coyuntura que aplican la evidencia a un debate concreto.</p>
       <p>El propósito es simple: que las decisiones de política pública de los próximos cuatro años se tomen con la mejor evidencia disponible, con metas medibles y con una mirada de Estado que trascienda el ciclo político.</p>
     </div>
   </div>
@@ -44,13 +43,13 @@ description: Serie de documentos de política de Fedesarrollo con diagnósticos,
   <div class="fd-container wrap">
     <div class="sec-head">
       <h2>Documentos de Política</h2>
-      <a class="fd-link-arrow" href="{{ base }}documentos.html">Ver los {{ docs.size }}</a>
+      <a class="ver-mas" href="{{ base }}documentos.html">Ver los {{ docs.size }}</a>
     </div>
     <ul class="portadas">
       {%- for d in docs %}
       <li>
-        <a href="{{ base }}docs/{{ d.slug }}.html">
-          <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+        <a href="{{ d.url | relative_url }}">
+          <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
           <span class="portadas__titulo">{{ d.titulo }}</span>
           <span class="portadas__autores">{{ d.autores_corto }}</span>
         </a>
@@ -63,13 +62,13 @@ description: Serie de documentos de política de Fedesarrollo con diagnósticos,
 <section class="fd-container wrap">
   <div class="sec-head">
     <h2>Notas de Política</h2>
-    <a class="fd-link-arrow" href="{{ base }}notas-politica.html">Ver todas</a>
+    <a class="ver-mas" href="{{ base }}notas-politica.html">Ver todas</a>
   </div>
   <ul class="portadas">
     {%- for d in notas %}
     <li>
-      <a href="{{ base }}docs/{{ d.slug }}.html">
-        <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+      <a href="{{ d.url | relative_url }}">
+        <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
         <span class="portadas__titulo">{{ d.titulo }}</span>
         <span class="portadas__autores">{{ d.autores_corto }}</span>
       </a>

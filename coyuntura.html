@@ -3,13 +3,11 @@ title: Coyuntura
 description: Encuestas de opinión, indicadores de confianza, calendario de publicación y publicaciones periódicas de Fedesarrollo.
 nav: coyuntura
 ---
-{%- assign coy = "Encuesta,Publicación periódica,Comunicado" | split: "," -%}
-{%- assign pubs = "" | split: "" -%}
-{%- for p in site.data.publicaciones %}{% if coy contains p.tipo %}{% assign pubs = pubs | push: p %}{% endif %}{% endfor -%}
+{%- include catalogo.html -%}
+{%- assign pubs = coyuntura_pubs -%}
 
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
-    <span class="fd-label fd-text-blue">Coyuntura</span>
     <h1>Encuestas e indicadores</h1>
     <p class="fd-lead">Cada mes, Fedesarrollo mide la confianza de hogares, empresarios y analistas financieros, y publica su lectura de la economía.</p>
     <ul class="saltos">
@@ -22,24 +20,14 @@ nav: coyuntura
 
 <section class="fd-on-blue">
   <div class="fd-container wrap--corto">
-    <div class="indicadores">
-      {%- for i in site.data.indicadores %}
-      <a class="indicador" href="http://hdl.handle.net/11445/{{ i.handle }}">
-        <span class="indicador__sigla">{{ i.sigla }} · {{ i.periodo }}</span>
-        <span class="indicador__valor">{{ i.valor }}</span>
-        <span class="indicador__nombre">{{ i.nombre }}</span>
-        <span class="indicador__nota">{{ i.nota }}</span>
-      </a>
-      {%- endfor %}
-    </div>
+    {% include indicadores.html %}
   </div>
 </section>
 
 <section class="fd-container wrap" id="calendario">
   <div class="fd-grid">
     <div class="fd-col-4">
-      <span class="fd-label fd-text-blue">Calendario</span>
-      <h2 style="margin-top:16px">Próximas publicaciones</h2>
+      <h2>Próximas publicaciones</h2>
       <p>Fechas de publicación de las encuestas de opinión empresarial, del consumidor y financiera, y del IPEC.</p>
     </div>
     <div class="fd-col-8">
@@ -61,13 +49,13 @@ nav: coyuntura
   {%- assign res = site.data.publicaciones | where: "serie", e.serie -%}
   <article class="encuesta" id="{{ e.serie | slugify: 'latin' }}">
     <div>
-      <span class="fd-label fd-text-blue">{{ e.frecuencia }}</span>
       <h2>{{ e.nombre }}</h2>
+      <p class="encuesta__frecuencia">Publicación {{ e.frecuencia | downcase }}</p>
       <p>{{ e.descripcion }}</p>
-      <a class="fd-link-arrow" href="{{ e.listado }}">Resultados anteriores</a>
+      <a class="ver-mas" href="{{ e.listado }}">Resultados anteriores</a>
     </div>
     <div>
-      <p class="fd-label" style="margin:0 0 16px">Últimos resultados</p>
+      <h3 class="h4">Últimos resultados</h3>
       <div class="pubs">
         {%- for p in res limit: 2 %}
         {% include pub.html p=p portada=true resumen=true %}
@@ -79,7 +67,7 @@ nav: coyuntura
 </section>
 
 <section class="fd-container wrap" id="listado">
-  <div class="sec-head"><h2>Todas las publicaciones de coyuntura</h2></div>
+  <h2 class="titulo-seccion">Todas las publicaciones de coyuntura</h2>
   {%- assign tipos = pubs | map: "tipo" | uniq -%}
   {% include filtros.html pubs=pubs tipos=tipos series=true por_pagina=12 %}
 </section>

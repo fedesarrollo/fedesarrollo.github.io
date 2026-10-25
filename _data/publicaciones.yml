@@ -1,12 +1,11 @@
 # Publicaciones que aparecen en el sitio, de la más reciente a la más antigua.
 # Cada una enlaza a su ficha del repositorio (hdl.handle.net/11445/<handle>).
-# Las de la serie 2026-2030 solo llevan «serie_slug»: el título, los autores y
-# la portada salen de _data/serie.yml.
+# Los documentos de los especiales (por ejemplo, la serie 2026-2030) no van aquí:
+# cada uno es un archivo en _documentos/<especial>/ y se suma solo al listado.
 # Para agregar una publicación, copie un bloque completo arriba de la lista y
 # cambie sus datos. Ver COMO-EDITAR.md.
 #
 # tipo: Investigación | Libro | Comisión | Encuesta | Publicación periódica | Comunicado
-#       | Documento de Política | Nota de Política
 # temas: códigos de _data/temas.yml
 # fecha: AAAA-MM o AAAA-MM-DD
 
@@ -153,10 +152,6 @@
   portada: /assets/img/portadas/4988.jpg
   resumen: "En agosto de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 23,3%, lo que representó una disminución de 4,2 puntos porcentuales (pps) respecto al mes previo (ICCO julio 2026: 27,5%)."
 
-- serie_slug: reto-fiscal-de-colombia
-  tipo: Documento de Política
-  fecha: "2026-08"
-  temas: [macroeconomia]
 
 - titulo: "Encuesta de Opinión Empresarial. Resultados julio de 2026"
   tipo: Encuesta
@@ -167,50 +162,14 @@
   portada: /assets/img/portadas/4981.jpg
   resumen: "En julio de 2026, el Índice de Confianza Comercial (ICCO) se ubicó en 27,5%, lo que representó una disminución de 1,1 puntos porcentuales (pps) respecto al mes previo (ICCO junio 2026: 28,6%)."
 
-- serie_slug: crecimiento-o-equidad
-  tipo: Nota de Política
-  fecha: "2026-07"
-  temas: [desarrollo-productivo, mercado-laboral]
 
-- serie_slug: paz-total
-  tipo: Nota de Política
-  fecha: "2026-07"
-  temas: [instituciones-justicia]
 
-- serie_slug: crimen-organizado
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [instituciones-justicia]
 
-- serie_slug: justicia
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [instituciones-justicia]
 
-- serie_slug: lucha-contra-la-corrupcion
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [instituciones-justicia]
 
-- serie_slug: electricidad-y-gas
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [mineria-energia]
 
-- serie_slug: educacion-pertinente
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [educacion, mercado-laboral]
 
-- serie_slug: licenciamiento-ambiental
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [medio-ambiente, infraestructura]
 
-- serie_slug: salud
-  tipo: Documento de Política
-  fecha: "2026-07"
-  temas: [salud]
 
 - titulo: "Encuesta de Opinión Empresarial. Resultados junio de 2026"
   tipo: Encuesta

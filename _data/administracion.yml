@@ -1,0 +1,51 @@
+# Personal administrativo y de servicios generales (sin perfil propio).
+# Los investigadores y la dirección están en la carpeta _equipo, un archivo por persona.
+
+- nombre: "Claudia Bernal Granados"
+  cargo: "Secretaria"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558197/Personas/claudix_yk3swj.png"
+
+- nombre: "Jeferson Parra"
+  cargo: "TI"
+  grupo: administracion
+
+- nombre: "Johan Sebastián Gómez"
+  cargo: "Comunicaciones y prensa"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1757541398/_DSC0107_o0cowu.jpg"
+
+- nombre: "Leidy Andrea Vaca"
+  cargo: "Recepcionista"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558178/Personas/leidyini_if6to3.png"
+
+- nombre: "Marcela Lesmes Góngora"
+  cargo: "Asistente Administrativa"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558253/Personas/ml_stuula.png"
+
+- nombre: "Paola Alexandra Castillo"
+  cargo: "Asistente Administrativa"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558274/Personas/c1_owan2g.png"
+
+- nombre: "Patricia Monroy Castañeda"
+  cargo: "Asistente de Biblioteca y Publicaciones"
+  grupo: administracion
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558305/Personas/patty_vwgtwm.png"
+
+- nombre: "Doris Sánchez"
+  cargo: "Servicios Generales"
+  grupo: servicios
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558361/Personas/dori_pwdatv.png"
+
+- nombre: "Luis Ramírez"
+  cargo: "Servicios Generales"
+  grupo: servicios
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558414/Personas/luis_jeje_i5aif7.png"
+
+- nombre: "Mariela Sánchez"
+  cargo: "Servicios Generales"
+  grupo: servicios
+  foto: "https://res.cloudinary.com/dleuipkoh/image/upload/v1677558379/Personas/marieli_ikqsnh.png"

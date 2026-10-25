@@ -1,36 +1,47 @@
 # Cómo actualizar el sitio
 
-Esta guía es para el equipo de Comunicaciones. No hace falta instalar nada: todo se hace desde el navegador, en github.com.
+Esta guía es para el equipo de Comunicaciones. Todo se hace desde el navegador, en github.com, sin instalar nada.
 
-El contenido del sitio vive en la carpeta **`_data`**, en archivos de texto con extensión `.yml`. Cada archivo es una lista: cada elemento empieza con un guion (`-`) y sus datos van debajo, con dos espacios de sangría.
+## Dónde está cada cosa
 
-| Archivo | Qué contiene | Dónde se ve |
+El sitio tiene dos clases de contenido.
+
+**Listas**, en la carpeta `_data`. Cada archivo `.yml` es una lista y cada elemento empieza con un guion (`-`).
+
+| Archivo | Qué contiene |
+|---|---|
+| `_data/publicaciones.yml` | Investigaciones, libros, comisiones, encuestas y periódicas. Enlazan al repositorio |
+| `_data/destacados.yml` | Los destacados que rotan en la portada del inicio |
+| `_data/indicadores.yml` | Las cuatro cifras de la banda azul (ICC, ICCO, IPEC, EOF) |
+| `_data/calendario.yml` | Fechas de publicación de las encuestas |
+| `_data/encuestas.yml` | Descripción de cada encuesta |
+| `_data/noticias.yml` y `_data/eventos.yml` | Fedesarrollo en los medios y eventos |
+| `_data/temas.yml` | Los 14 temas |
+| `_data/administracion.yml` | Personal administrativo y de servicios generales |
+| `_data/oac_red.yml` | Instituciones de la red Organizados contra el crimen |
+
+**Fichas**, una por archivo, en carpetas que empiezan con guion bajo. Cada archivo crea su propia página.
+
+| Carpeta | Qué contiene | Página que se crea |
 |---|---|---|
-| `_data/destacados.yml` | Los destacados que rotan en la portada del inicio | Inicio |
-| `_data/publicaciones.yml` | Investigaciones, encuestas, libros, comisiones, periódicas | Inicio, Investigaciones, Coyuntura, Áreas, perfiles |
-| `_data/indicadores.yml` | Las cuatro cifras de la banda azul (ICC, ICCO, IPEC, EOF) | Inicio y Coyuntura |
-| `_data/calendario.yml` | Fechas de publicación de las encuestas | Coyuntura |
-| `_data/noticias.yml` | Fedesarrollo en los medios | Inicio y Noticias y eventos |
-| `_data/eventos.yml` | Eventos | Inicio y Noticias y eventos |
-| `_data/equipo.yml` | Equipo: cargo, grupo, área, foto, biografía | Inicio, Equipo, Áreas y perfiles |
-| `_data/areas.yml` | Las cinco áreas y los temas de cada una | Áreas, menú y filtros |
-| `_data/temas.yml` | Los 14 temas | Menú y filtros |
-| `_data/encuestas.yml` | Descripción de cada encuesta | Coyuntura |
-| `_data/serie.yml` | Documentos y Notas de Política 2026-2030 | Serie 2026-2030 |
-| `_data/oac.yml` y `_data/oac_red.yml` | Documentos de Organizados contra el crimen y las instituciones de la red | Organizados contra el crimen, Seguridad y justicia |
+| `_areas` | Las áreas de investigación | `/areas/<archivo>.html` |
+| `_equipo` | Dirección e investigadores, uno por persona | `/equipo/<archivo>.html` |
+| `_especiales` | Series, iniciativas y herramientas (serie 2026-2030, Organizados contra el crimen, Explorador) | No crean página: enlazan a la suya |
+| `_documentos/<especial>` | Los documentos de cada especial, uno por archivo | La ficha del documento |
+
+Al principio de cada ficha, entre dos líneas `---`, están sus datos. Debajo va el texto (la biografía de una persona o el cuerpo de un documento).
 
 ## Pasos generales
 
 1. Entre a **github.com/fedesarrollo/fedesarrollo.github.io** con su cuenta de Fedesarrollo.
-2. Abra la carpeta `_data` y luego el archivo que va a cambiar.
-3. Haga clic en el ícono del lápiz (**Edit this file**).
-4. Haga el cambio. Respete los espacios del principio de cada línea: son parte del formato.
-5. Haga clic en **Commit changes…**, escriba en una línea qué cambió (por ejemplo, «Agregar EOC de octubre de 2026») y confirme.
-6. En uno o dos minutos el cambio aparece en https://fedesarrollo.github.io. Si no aparece, revise la pestaña **Actions** del repositorio: si la última tarea está en rojo, hay un error de formato en el archivo (casi siempre, una sangría o unas comillas que faltan).
+2. Abra el archivo que va a cambiar y haga clic en el lápiz (**Edit this file**). Para crear una ficha nueva, abra la carpeta y use **Add file → Create new file**.
+3. Haga el cambio. Respete los espacios al principio de cada línea porque son parte del formato.
+4. Haga clic en **Commit changes…**, escriba en una línea qué cambió y confirme.
+5. En uno o dos minutos el cambio aparece en https://fedesarrollo.github.io. Si no aparece, revise la pestaña **Actions**. Una tarea en rojo indica un error de formato, casi siempre una sangría o unas comillas que faltan.
 
 ## Agregar una publicación
 
-Abra `_data/publicaciones.yml`, copie un bloque parecido y péguelo **arriba de la lista**, justo debajo de los comentarios del principio. La lista va de la más reciente a la más antigua.
+Copie un bloque parecido de `_data/publicaciones.yml` y péguelo arriba de la lista, debajo de los comentarios del principio.
 
 ```yaml
 - titulo: "Encuesta de Opinión del Consumidor. Resultados octubre de 2026"
@@ -43,60 +54,63 @@ Abra `_data/publicaciones.yml`, copie un bloque parecido y péguelo **arriba de 
   resumen: "En octubre de 2026, el Índice de Confianza del Consumidor (ICC) ..."
 ```
 
-- **titulo**: entre comillas.
-- **tipo**: uno de estos: `Investigación`, `Libro`, `Comisión`, `Encuesta`, `Publicación periódica`, `Comunicado`.
-- **serie**: solo para encuestas y periódicas. Use el mismo nombre de las demás ediciones: `EOC`, `EOE`, `EOF`, `IPEC`, `Renta variable`, `Bitácora Semanal`, `Tendencia Económica` o `Prospectiva Económica`.
-- **fecha**: `"AAAA-MM"` o `"AAAA-MM-DD"`, entre comillas.
-- **autores** (opcional): como deben aparecer, entre comillas. Por ejemplo: `"Ximena Cadena y Sandra Zuluaga"`.
-- **temas**: uno o varios códigos de `_data/temas.yml`, separados por coma y entre corchetes.
-- **handle**: el número final del enlace del repositorio. Si el enlace es `http://hdl.handle.net/11445/5001`, el handle es `5001`.
-- **portada** (opcional): la imagen pequeña de la primera página (ver abajo). Si no la pone, la publicación se muestra sin imagen.
-- **resumen**: el primer párrafo del resumen del repositorio, entre comillas.
+- **tipo** es uno de estos: `Investigación`, `Libro`, `Comisión`, `Encuesta`, `Publicación periódica` o `Comunicado`. Los tres últimos van a Coyuntura y los demás a Investigaciones.
+- **serie** solo aplica a encuestas y periódicas: `EOC`, `EOE`, `EOF`, `IPEC`, `Renta variable`, `Bitácora Semanal`, `Tendencia Económica` o `Prospectiva Económica`.
+- **fecha** va entre comillas, como `"AAAA-MM"` o `"AAAA-MM-DD"`.
+- **temas** son códigos de `_data/temas.yml`. Con ellos la publicación aparece sola en el área que corresponde.
+- **handle** es el número final del enlace del repositorio (`http://hdl.handle.net/11445/5001` → `5001`).
+- **portada** es la miniatura de la primera página. Guárdela desde la ficha del repositorio con el nombre del handle (`5001.jpg`) y súbala a `assets/img/portadas` con **Add file → Upload files**.
 
-### Portada de la publicación
+## Agregar una persona al equipo
 
-1. En la ficha del repositorio, haga clic derecho sobre la miniatura del PDF y elija **Guardar imagen como…**.
-2. Renómbrela con el handle, por ejemplo `5001.jpg`.
-3. En GitHub, abra la carpeta `assets/img/portadas`, use **Add file → Upload files**, suba la imagen y confirme.
-
-## Actualizar las cifras de la banda azul
-
-Abra `_data/indicadores.yml` y cambie `valor`, `periodo`, `nota` y `handle` del indicador. Escriba los números como en español: coma decimal y el signo de porcentaje pegado (`15,7%`).
-
-## Agregar una noticia o un evento
-
-Copie un bloque arriba de la lista en `_data/noticias.yml` o en `_data/eventos.yml`:
+Cree un archivo en `_equipo` con el nombre de la persona en minúsculas, sin tildes y con guiones (`nombre-apellido.md`). Copie otro perfil como modelo:
 
 ```yaml
-- titulo: "Título de la nota"
-  fecha: "2026-10-28"
-  medio: El Tiempo
-  enlace: https://www.eltiempo.com/...
+---
+nombre: "Nombre Apellido"
+cargo: "Investigador asistente"
+grupo: "investigacion"
+area: "macrofiscal"
+rango: 5
+firmas: ["Nombre Apellido"]
+foto: "https://…"
+correo: "nombre@fedesarrollo.org.co"
+---
+
+Biografía en uno o varios párrafos.
 ```
 
-En los eventos, `medio` se cambia por `lugar` (por ejemplo, `"JW Marriott, Bogotá"`). Ambos son opcionales.
+- **area** es el nombre de archivo del área en `_areas`. Sin área, la persona aparece como investigador asociado.
+- **rango** fija el orden dentro del área: 1 dirección, 2 director de área, 3 investigador, 4 investigador asociado, 5 investigador asistente, 6 asistente de investigación, 7 practicante.
+- **director: true** marca al director del área. **cargo_area** es el cargo que se muestra dentro del área si es distinto del general.
+- **firmas** es cómo aparece el nombre en las publicaciones. Con eso el perfil las lista solo.
+
+Para retirar a alguien, borre su archivo. El personal administrativo está en `_data/administracion.yml`.
+
+## Agregar un área
+
+Cree un archivo en `_areas` con `nombre`, `orden`, `descripcion` y `temas`. El área aparece en el menú, en la página de áreas, en los filtros y en el equipo.
+
+## Agregar un especial o un documento de un especial
+
+Un especial es una serie, una iniciativa o una herramienta que no es un área. Para crear uno, agregue un archivo en `_especiales` con `nombre`, `tipo`, `orden`, `descripcion`, `enlace` y `vigente: true`. Con `areas: [codigo-del-area]` aparece en esas áreas.
+
+Los documentos de un especial van en `_documentos/<especial>`, un archivo por documento. Copie uno existente de la misma carpeta y cambie sus datos. Los documentos de la serie 2026-2030 entran solos a Investigaciones y a las áreas según sus temas. Para un especial nuevo con documentos propios, pida al equipo técnico que configure su carpeta.
 
 ## Cambiar lo que rota en la portada
 
-Abra `_data/destacados.yml`. El primer bloque es el que se ve al entrar; los demás rotan. Para destacar algo nuevo, copie un bloque arriba y cambie `etiqueta`, `titulo`, `texto`, `enlace` y `boton`.
+En `_data/destacados.yml`, el primer bloque es el que se ve al entrar y los demás rotan. Para destacar algo nuevo, copie un bloque arriba y cambie `etiqueta`, `titulo`, `texto`, `enlace` y `boton`.
 
-## Agregar fechas al calendario
+## Cifras, calendario, noticias y eventos
 
-En `_data/calendario.yml`, copie un bloque y cambie `fecha` («AAAA-MM-DD») y `publicacion`. La página muestra sola las próximas ocho fechas.
+- **Indicadores** (`_data/indicadores.yml`). Cambie `valor`, `periodo`, `nota` y `handle`. Los números van con coma decimal y el signo de porcentaje pegado (`15,7%`).
+- **Calendario** (`_data/calendario.yml`). Cada fecha lleva `fecha` («AAAA-MM-DD») y `publicacion`. La página muestra sola las próximas ocho.
+- **Noticias** (`_data/noticias.yml`). Lleva `titulo`, `fecha`, `medio` y `enlace`. Si la nota cita una investigación, agregue `investigacion` con su `titulo` y `enlace`.
+- **Eventos** (`_data/eventos.yml`). Lleva `titulo`, `fecha`, `lugar` y `enlace`. La página separa sola los próximos de los pasados.
 
-## Cambiar el equipo
+## Reglas de redacción
 
-En `_data/equipo.yml`, cada persona tiene `nombre`, `cargo`, `grupo` (`direccion`, `investigacion`, `administracion` o `servicios`) y `area` (el código del área en `_data/areas.yml`). Un investigador sin área aparece como investigador asociado. Dentro de cada área, el orden es: director, investigadores, asistentes de investigación y practicantes; respete ese orden al agregar a alguien.
-
-Para que una persona tenga perfil, agregue `slug` (su nombre en minúsculas, sin tildes, con guiones) y cree el archivo `equipo/<slug>.html` copiando otro perfil y cambiando `slug` y `title`. `bio` es una lista de párrafos; `firmas` es cómo aparece su nombre en las publicaciones, para listarlas en el perfil.
-
-Para retirar a alguien, borre sus líneas completas (y su archivo de perfil, si lo tiene). Si una persona no tiene foto, el sitio muestra sus iniciales.
-
-## Reglas de estilo
-
-- Frases cortas y afirmativas. Sin signos de exclamación.
+- Frases cortas y afirmativas, sin signos de exclamación.
+- Sin dos puntos, punto y coma ni rayas como conectores, y sin adjetivos valorativos («innovador», «crucial»).
 - Números en formato colombiano: `1.234,5` y `6,4%`.
-- Fechas en el formato de la guía. El sitio las escribe en español solo («21 de octubre de 2026»).
-- No cambie colores ni tipografías: el diseño sigue el manual de marca de Fedesarrollo.
-
-¿Dudas o algo se rompió? Escriba al equipo técnico con el enlace del cambio.
+- No cambie colores ni tipografías, porque el diseño sigue el manual de marca de Fedesarrollo.

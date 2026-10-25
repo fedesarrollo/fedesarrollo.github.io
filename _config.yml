@@ -41,6 +41,26 @@ fuentes_marca: false
 repositorio: https://www.repository.fedesarrollo.org.co
 sitio_anterior: https://www.fedesarrollo.org.co
 
+# Tipos de publicación que van en Coyuntura y no en Investigaciones
+coyuntura: ["Encuesta", "Publicación periódica", "Comunicado"]
+
+# Colecciones: cada archivo es un registro y, si tiene salida, una página propia.
+#   _areas        áreas de investigación          → /areas/<archivo>.html
+#   _equipo       dirección e investigadores      → /equipo/<archivo>.html
+#   _especiales   series, iniciativas y herramientas (sin página propia: «enlace»)
+#   _documentos   documentos de cada especial, en una subcarpeta por especial
+collections:
+  areas:
+    output: true
+    permalink: /areas/:name.html
+  equipo:
+    output: true
+    permalink: /equipo/:name.html
+  especiales:
+    output: false
+  documentos:
+    output: true
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
@@ -57,11 +77,34 @@ defaults:
       nav: investigaciones
       image: /documentos-politica-2026-2030/assets/img/og-image.png
   - scope:
-      path: "documentos-politica-2026-2030/docs"
+      path: ""
+      type: areas
     values:
+      layout: area
+      nav: areas
+  - scope:
+      path: ""
+      type: equipo
+    values:
+      layout: perfil
+      nav: equipo
+  - scope:
+      path: "_documentos/serie-2026-2030"
+    values:
+      especial: serie-2026-2030
       layout: serie-doc
+      nav: investigaciones
+      permalink: /documentos-politica-2026-2030/docs/:name.html
+      image: /documentos-politica-2026-2030/assets/img/og-image.png
       js:
         - /documentos-politica-2026-2030/assets/serie.js
+  - scope:
+      path: "_documentos/organizados-contra-el-crimen"
+    values:
+      especial: organizados-contra-el-crimen
+      layout: oac-doc
+      nav: areas
+      permalink: /organizados-contra-el-crimen/:name.html
 
 exclude:
   - README.md

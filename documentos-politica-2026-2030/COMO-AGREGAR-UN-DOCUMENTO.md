@@ -1,8 +1,8 @@
 # Cómo agregar un documento a la serie
 
 Guía para publicar un nuevo documento en **Documentos de Política para el gobierno 2026-2030**.
-El sitio se construye con Jekyll: los datos del documento van en `_data/serie.yml` (raíz del
-repositorio) y el texto en `docs/<slug>.html`. Las grillas, la cabecera de cada ficha, el visor de
+El sitio se construye con Jekyll. Cada documento es un archivo en `_documentos/serie-2026-2030/`
+(raíz del repositorio), con sus datos arriba y su texto debajo. Las grillas, la cabecera de cada ficha, el visor de
 PDF y el pie se generan solos.
 
 ---
@@ -11,11 +11,11 @@ PDF y el pie se generan solos.
 
 ```
 documentos-politica-2026-2030/
-├── index.html                 # Portada de la serie (se genera desde _data/serie.yml)
+├── index.html                 # Portada de la serie (se genera desde _documentos/serie-2026-2030/)
 ├── documentos.html            # Grilla de documentos   (se genera)
 ├── notas-politica.html        # Grilla de notas        (se genera)
 ├── docs/
-│   └── <slug>.html            # Texto de cada documento          ← se crea
+│   └── <slug>.html            # Se genera desde _documentos/serie-2026-2030/
 ├── pdfs/
 │   ├── <slug>-documento-de-politica.pdf   ← se copia
 │   └── <slug>-nota-de-politica.pdf        ← se copia
@@ -60,64 +60,16 @@ mv "assets/img/previews/<slug>-documento-de-politica.pdf.png" assets/img/preview
 mv "assets/img/previews/<slug>-nota-de-politica.pdf.png"      assets/img/previews/<slug>-nota.png
 ```
 
-### 3. Agregar el documento a `_data/serie.yml`
+### 3. Crear el documento
 
-Copia un bloque existente (por ejemplo, el de `salud`) y ajústalo. El orden de la lista es el
-orden en que aparecen en el sitio.
+Cree `_documentos/serie-2026-2030/<slug>.html` copiando `_documentos/serie-2026-2030/salud.html` y cambie:
 
-```yaml
-- slug: <slug>
-  tipo: documento            # o «nota» para una Nota de Política
-  titulo: "Título corto"
-  subtitulo: "Subtítulo del documento"
-  autores_corto: "Autor 1 y Autor 2"         # lo que se ve en las grillas
-  resumen: "Una o dos líneas para la grilla."
-  autores:
-    - nombre: "Autor 1"
-      cargo: "Cargo y afiliación"
-  archivos:
-    - etiqueta: "Documento de Política"
-      pdf: <slug>-documento-de-politica.pdf
-      portada: <slug>-documento.png
-    - etiqueta: "Resumen"
-      pdf: <slug>-nota-de-politica.pdf
-      portada: <slug>-nota.png
-  video: ID_DE_YOUTUBE       # opcional: botón y ventana la primera vez que alguien entra
-```
+- los datos de arriba: `title`, `description`, `titulo`, `clase` (`documento` o `nota`), `tipo` («Documento de Política» o «Nota de Política»), `fecha`, `temas`, `portada`, `orden`, `subtitulo`, `autores_corto`, `resumen`, `autores`, `archivos` y, si tiene, `video`;
+- el texto de abajo: La idea central y los tres mensajes.
 
-### 4. Crear el texto en `docs/<slug>.html`
+La página queda en `docs/<slug>.html`, aparece en las grillas de la serie, en Investigaciones y en las áreas que corresponden a sus temas. No hace falta tocar otros archivos.
 
-Copia `docs/salud.html` y cambia el encabezado y el cuerpo. El encabezado solo lleva tres datos:
-
-```html
----
-slug: <slug>
-title: "Título para la pestaña y los buscadores"
-description: "Una frase que resuma el documento."
----
-<h2>La idea central</h2>
-<p>…</p>
-
-<h2>Tres mensajes para el nuevo gobierno</h2>
-<ol>
-  <li><strong>Mensaje:</strong> desarrollo.</li>
-</ol>
-```
-
-El cuerpo solo lleva **La idea central** y **Tres mensajes**. El resto vive en los PDF.
-
-### 5. Que aparezca en Investigaciones y Temas
-
-En `_data/publicaciones.yml` agrega, en el lugar que le corresponda por fecha:
-
-```yaml
-- serie_slug: <slug>
-  tipo: Documento de Política      # o Nota de Política
-  fecha: "AAAA-MM"
-  temas: [codigo-de-tema]
-```
-
-### 6. Verificar en local
+### 4. Verificar en local
 
 Ver «Ver en local» en el `README.md` de la raíz y abrir
 http://localhost:4000/documentos-politica-2026-2030/. Revisa que el documento aparezca en la

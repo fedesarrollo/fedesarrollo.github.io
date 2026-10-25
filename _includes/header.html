@@ -34,9 +34,8 @@
           <div class="panel">
             <div class="fd-container panel__in">
               <div class="panel__intro">
-                <p class="fd-label">Investigaciones</p>
-                <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}">Todas las publicaciones</a>
-                <a class="fd-link-arrow" href="{{ site.repositorio }}">Repositorio institucional</a>
+                                <a class="ver-mas" href="{{ '/investigaciones.html' | relative_url }}">Todas las publicaciones</a>
+                <a class="ver-mas" href="{{ site.repositorio }}">Repositorio institucional</a>
               </div>
               <div>
                 <p class="panel__titulo">Por tipo</p>
@@ -47,10 +46,12 @@
                   <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=documento-de-politica">Documentos de Política</a></li>
                   <li><a href="{{ '/investigaciones.html' | relative_url }}?tipo=nota-de-politica">Notas de Política</a></li>
                 </ul>
-                <p class="panel__titulo" style="margin-top:24px">Especiales</p>
+                <p class="panel__titulo panel__titulo--sep">Especiales</p>
                 <ul class="panel__especiales">
-                  <li><a href="{{ '/documentos-politica-2026-2030/index.html' | relative_url }}">Documentos de Política 2026-2030</a></li>
-                  <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}">Organizados contra el crimen</a></li>
+                  {%- assign _esp = site.especiales | where: "vigente", true | sort: "orden" -%}
+                  {%- for e in _esp %}
+                  <li><a href="{{ e.enlace | relative_url }}">{{ e.nombre }}</a></li>
+                  {%- endfor %}
                 </ul>
               </div>
               <div class="panel__ancho">
@@ -69,9 +70,8 @@
           <div class="panel">
             <div class="fd-container panel__in">
               <div class="panel__intro">
-                <p class="fd-label">Coyuntura</p>
-                <a class="fd-link-arrow" href="{{ '/coyuntura.html' | relative_url }}">Encuestas e indicadores</a>
-                <a class="fd-link-arrow" href="{{ '/coyuntura.html#calendario' | relative_url }}">Calendario de publicación</a>
+                                <a class="ver-mas" href="{{ '/coyuntura.html' | relative_url }}">Encuestas e indicadores</a>
+                <a class="ver-mas" href="{{ '/coyuntura.html#calendario' | relative_url }}">Calendario de publicación</a>
               </div>
               <div>
                 <p class="panel__titulo">Encuestas</p>
@@ -84,9 +84,10 @@
               <div>
                 <p class="panel__titulo">Publicaciones periódicas</p>
                 <ul>
-                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=prospectiva-economica#listado">Prospectiva Económica</a></li>
-                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=tendencia-economica#listado">Tendencia Económica</a></li>
-                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie=bitacora-semanal#listado">Bitácora Semanal</a></li>
+                  {%- assign _periodicas = site.data.publicaciones | where: "tipo", "Publicación periódica" | map: "serie" | uniq | sort -%}
+                  {%- for s in _periodicas %}
+                  <li><a href="{{ '/coyuntura.html' | relative_url }}?serie={{ s | slugify: 'latin' }}#listado">{{ s }}</a></li>
+                  {%- endfor %}
                   <li><a href="{{ '/coyuntura.html' | relative_url }}?tipo=comunicado#listado">Comunicados de prensa</a></li>
                 </ul>
               </div>
@@ -98,15 +99,14 @@
           <div class="panel">
             <div class="fd-container panel__in">
               <div class="panel__intro">
-                <p class="fd-label">Áreas de investigación</p>
-                <a class="fd-link-arrow" href="{{ '/areas.html' | relative_url }}">Todas las áreas</a>
+                                <a class="ver-mas" href="{{ '/areas.html' | relative_url }}">Todas las áreas</a>
               </div>
               <div class="panel__ancho">
                 <ul class="panel__areas">
-                  {%- for a in site.data.areas %}
-                  <li><a href="{{ '/areas/' | relative_url }}{{ a.slug }}.html"><strong>{{ a.nombre }}</strong><span>{{ a.descripcion }}</span></a></li>
+                  {%- assign _areas = site.areas | sort: "orden" -%}
+                  {%- for a in _areas %}
+                  <li><a href="{{ a.url | relative_url }}"><strong>{{ a.nombre }}</strong><span>{{ a.descripcion }}</span></a></li>
                   {%- endfor %}
-                  <li><a href="{{ '/organizados-contra-el-crimen/' | relative_url }}"><strong>Organizados contra el crimen</strong><span>Iniciativa regional sobre la violencia criminal en América Latina y el Caribe.</span></a></li>
                 </ul>
               </div>
             </div>

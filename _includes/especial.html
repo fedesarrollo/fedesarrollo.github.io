@@ -1,0 +1,8 @@
+{%- assign e = include.e -%}
+<li>
+  <a href="{{ e.enlace | relative_url }}">
+    <span class="especiales__tipo">{{ e.tipo }}</span>
+    <span class="especiales__titulo">{{ e.nombre }}</span>
+    <span class="especiales__texto">{{ e.descripcion }}</span>
+  </a>
+</li>

@@ -1,0 +1,10 @@
+<div class="indicadores">
+  {%- for i in site.data.indicadores %}
+  <a class="indicador" href="http://hdl.handle.net/11445/{{ i.handle }}">
+    <span class="indicador__sigla">{{ i.sigla }}</span>
+    <span class="indicador__valor">{{ i.valor }}</span>
+    <span class="indicador__nombre">{{ i.nombre }}</span>
+    <span class="indicador__nota">{{ i.periodo }}. {{ i.nota }}</span>
+  </a>
+  {%- endfor %}
+</div>

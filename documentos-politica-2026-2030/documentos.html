@@ -3,7 +3,7 @@ title: Documentos de Política
 description: "Documentos de Política de Fedesarrollo para el gobierno 2026-2030: diagnósticos, prioridades y hojas de ruta."
 ---
 {%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
-{%- assign lista = site.data.serie | where: "tipo", "documento" -%}
+{%- assign lista = site.documentos | where: "especial", "serie-2026-2030" | where: "clase", "documento" | sort: "orden" -%}
 
 <section class="fd-on-gray">
   <div class="fd-container cabeza">
@@ -17,8 +17,8 @@ description: "Documentos de Política de Fedesarrollo para el gobierno 2026-2030
   <ul class="portadas portadas--3">
     {%- for d in lista %}
     <li>
-      <a href="{{ base }}docs/{{ d.slug }}.html">
-        <img src="{{ base }}assets/img/previews/{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+      <a href="{{ d.url | relative_url }}">
+        <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
         <span class="portadas__titulo">{{ d.titulo }}</span>
         <span class="portadas__autores">{{ d.autores_corto }}</span>
         <span class="portadas__resumen">{{ d.resumen }}</span>

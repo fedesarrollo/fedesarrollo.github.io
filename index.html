@@ -2,10 +2,10 @@
 title: Fedesarrollo
 description: Centro de investigación económica y social independiente. Investigaciones, encuestas de opinión y propuestas de política pública para Colombia desde 1970.
 ---
-{%- assign pubs = site.data.publicaciones -%}
-{%- assign investigaciones = pubs | where: "tipo", "Investigación" -%}
-{%- assign principal = investigaciones | first -%}
-{%- assign serie_docs = site.data.serie | where: "tipo", "documento" -%}
+{%- include catalogo.html -%}
+{%- assign principal = investigacion | first -%}
+{%- assign serie = site.documentos | where: "especial", "serie-2026-2030" | where: "clase", "documento" | sort: "orden" -%}
+{%- assign esp_serie = especiales | where: "slug", "serie-2026-2030" | first -%}
 
 <section class="portada" data-portada aria-roledescription="carrusel" aria-label="Destacados">
   {%- for d in site.data.destacados %}
@@ -15,12 +15,9 @@ description: Centro de investigación económica y social independiente. Investi
     </div>
     <div class="fd-hero-split__body fd-on-gray">
       <span class="fd-tag">{{ d.etiqueta }}</span>
-      {% if forloop.first %}<h1{% else %}<h2{% endif %} class="fd-display" style="margin-top:28px">{{ d.titulo }}{% if forloop.first %}</h1>{% else %}</h2>{% endif %}
-      <hr class="fd-rule">
-      <p>{{ d.texto }}</p>
-      <div class="fd-flex" style="margin-top:8px">
-        <a class="fd-btn" href="{% if d.enlace contains '://' %}{{ d.enlace }}{% else %}{{ d.enlace | relative_url }}{% endif %}">{{ d.boton }}</a>
-      </div>
+      {% if forloop.first %}<h1{% else %}<h2{% endif %} class="fd-display portada__titulo">{{ d.titulo }}{% if forloop.first %}</h1>{% else %}</h2>{% endif %}
+      <p class="portada__texto">{{ d.texto }}</p>
+      <a class="fd-btn" href="{% if d.enlace contains '://' %}{{ d.enlace }}{% else %}{{ d.enlace | relative_url }}{% endif %}">{{ d.boton }}</a>
     </div>
   </div>
   {%- endfor %}
@@ -32,44 +29,33 @@ description: Centro de investigación económica y social independiente. Investi
 </section>
 
 <section class="fd-container wrap">
-  <div class="sec-head">
-    <h2>Lo más reciente</h2>
-    <a class="fd-link-arrow" href="{{ '/investigaciones.html' | relative_url }}">Todas las publicaciones</a>
-  </div>
   <div class="reciente">
     <div>
-      <article class="destacada">
-        <div>
-          <p class="pub__tipo fd-label">{{ principal.tipo }}</p>
-          <h3><a href="http://hdl.handle.net/11445/{{ principal.handle }}">{{ principal.titulo }}</a></h3>
-          <p class="pub__autores">{{ principal.autores }}</p>
-          <p>{{ principal.resumen | truncatewords: 46 }}</p>
-          <p class="pub__fecha fd-small">{% include fecha.html f=principal.fecha %}</p>
-        </div>
-        <a class="destacada__img" href="http://hdl.handle.net/11445/{{ principal.handle }}" tabindex="-1" aria-hidden="true">
-          <img src="{{ principal.portada | relative_url }}" alt="" width="162" height="210">
-        </a>
-      </article>
+      <div class="sec-head">
+        <h2>Lo más reciente</h2>
+        <a class="ver-mas" href="{{ '/investigaciones.html' | relative_url }}">Todas las investigaciones</a>
+      </div>
+      {% include pub.html p=principal portada=true resumen=true %}
       <div class="reciente__mas">
-        {%- assign otras = investigaciones | slice: 1, 2 -%}
-        {%- for p in otras %}
+        {%- for p in investigacion offset: 1 limit: 2 %}
         {% include pub.html p=p %}
         {%- endfor %}
       </div>
     </div>
     <div>
-      <p class="fd-label" style="margin:0 0 16px">Coyuntura</p>
+      <div class="sec-head">
+        <h2 class="h3">Coyuntura</h2>
+        <a class="ver-mas" href="{{ '/coyuntura.html' | relative_url }}">Encuestas e indicadores</a>
+      </div>
       <div class="pubs">
         {%- comment %} Una sola edición por serie: la más reciente {% endcomment -%}
         {%- assign n = 0 -%}{%- assign vistas = "|" -%}
-        {%- for p in pubs -%}
-          {%- if p.tipo == "Encuesta" or p.tipo == "Publicación periódica" or p.tipo == "Comunicado" -%}
-            {%- capture clave %}|{{ p.serie | default: p.tipo }}|{% endcapture -%}
-            {%- unless vistas contains clave or n >= 5 %}
+        {%- for p in coyuntura_pubs -%}
+          {%- capture clave %}|{{ p.serie | default: p.tipo }}|{% endcapture -%}
+          {%- unless vistas contains clave or n >= 5 %}
         {% include pub.html p=p %}
             {%- assign n = n | plus: 1 -%}{%- assign vistas = vistas | append: clave -%}
-            {%- endunless -%}
-          {%- endif -%}
+          {%- endunless -%}
         {%- endfor %}
       </div>
     </div>
@@ -80,31 +66,22 @@ description: Centro de investigación económica y social independiente. Investi
   <div class="fd-container wrap">
     <div class="sec-head">
       <h2>Indicadores de coyuntura</h2>
-      <a class="fd-link-arrow" href="{{ '/encuestas.html' | relative_url }}">Encuestas</a>
+      <a class="ver-mas" href="{{ '/coyuntura.html' | relative_url }}">Calendario y resultados</a>
     </div>
-    <div class="indicadores">
-      {%- for i in site.data.indicadores %}
-      <a class="indicador" href="http://hdl.handle.net/11445/{{ i.handle }}">
-        <span class="indicador__sigla">{{ i.sigla }} · {{ i.periodo }}</span>
-        <span class="indicador__valor">{{ i.valor }}</span>
-        <span class="indicador__nombre">{{ i.nombre }}</span>
-        <span class="indicador__nota">{{ i.nota }}</span>
-      </a>
-      {%- endfor %}
-    </div>
+    {% include indicadores.html %}
   </div>
 </section>
 
 <section class="fd-container wrap">
   <div class="sec-head">
-    <h2>Documentos de Política 2026-2030</h2>
-    <a class="fd-link-arrow" href="{{ '/documentos-politica-2026-2030/documentos.html' | relative_url }}">La serie completa</a>
+    <h2>{{ esp_serie.nombre }}</h2>
+    <a class="ver-mas" href="{{ esp_serie.enlace | relative_url }}">La serie completa</a>
   </div>
   <ul class="portadas">
-    {%- for d in serie_docs limit: 4 %}
+    {%- for d in serie limit: 4 %}
     <li>
-      <a href="{{ '/documentos-politica-2026-2030/docs/' | relative_url }}{{ d.slug }}.html">
-        <img src="{{ '/documentos-politica-2026-2030/assets/img/previews/' | relative_url }}{{ d.archivos[0].portada }}" alt="Portada de {{ d.titulo }}" loading="lazy">
+      <a href="{{ d.url | relative_url }}">
+        <img src="{{ d.portada | relative_url }}" alt="Portada de {{ d.titulo }}" loading="lazy">
         <span class="portadas__titulo">{{ d.titulo }}</span>
         <span class="portadas__autores">{{ d.autores_corto }}</span>
       </a>
@@ -117,23 +94,15 @@ description: Centro de investigación económica y social independiente. Investi
   <div class="fd-container wrap">
     <div class="sec-head">
       <h2>Áreas de investigación</h2>
-      <a class="fd-link-arrow" href="{{ '/areas.html' | relative_url }}">Todas las áreas</a>
+      <a class="ver-mas" href="{{ '/areas.html' | relative_url }}">Áreas y especiales</a>
     </div>
-    <ul class="areas areas--inicio">
-      {%- for a in site.data.areas %}
-      <li class="area">
-        <a class="area__enlace" href="{{ '/areas/' | relative_url }}{{ a.slug }}.html">
-          <span class="area__nombre">{{ a.nombre }}</span>
-          <span class="area__desc">{{ a.descripcion }}</span>
-        </a>
+    <ul class="lista-areas">
+      {%- for a in areas %}
+      <li>
+        <h3><a href="{{ a.url | relative_url }}">{{ a.nombre }}</a></h3>
+        <p>{{ a.descripcion }}</p>
       </li>
       {%- endfor %}
-      <li class="area area--oac">
-        <a class="area__enlace" href="{{ '/organizados-contra-el-crimen/' | relative_url }}">
-          <span class="area__nombre">Organizados contra el crimen</span>
-          <span class="area__desc">Iniciativa regional sobre la violencia criminal en América Latina y el Caribe.</span>
-        </a>
-      </li>
     </ul>
   </div>
 </section>
@@ -141,14 +110,14 @@ description: Centro de investigación económica y social independiente. Investi
 <section class="fd-container wrap">
   <div class="sec-head">
     <h2>Dirección</h2>
-    <a class="fd-link-arrow" href="{{ '/equipo.html' | relative_url }}">Todo el equipo</a>
+    <a class="ver-mas" href="{{ '/equipo.html' | relative_url }}">Todo el equipo</a>
   </div>
-  {%- assign dir = site.data.equipo | where: "grupo", "direccion" | first -%}
-  {%- assign directores = site.data.equipo | where: "director", true -%}
-  <ul class="personas personas--fila personas--cuatro">
+  {%- assign dir = site.equipo | where: "grupo", "direccion" | sort: "nombre" | first -%}
+  {%- assign directores = site.equipo | where: "director", true | where: "grupo", "investigacion" -%}
+  <ul class="personas personas--cuatro">
     {% include persona.html x=dir %}
-    {%- for p in directores %}{% if p.nombre != dir.nombre %}
-    {% include persona.html x=p en_area=true %}
+    {%- for a in areas %}{% assign d = directores | where: "area", a.slug | first %}{% if d %}
+    {% include persona.html x=d en_area=true %}
     {%- endif %}{% endfor %}
   </ul>
 </section>
@@ -156,21 +125,21 @@ description: Centro de investigación económica y social independiente. Investi
 <section class="fd-on-gray">
   <div class="fd-container wrap columnas">
     <div>
-      <div class="sec-head"><h2>En los medios</h2><a class="fd-link-arrow" href="{{ '/noticias-eventos.html' | relative_url }}">Más noticias</a></div>
+      <div class="sec-head"><h2>En los medios</h2><a class="ver-mas" href="{{ '/noticias-eventos.html' | relative_url }}">Más noticias</a></div>
       <ul class="notas">
         {%- for n in site.data.noticias limit: 5 %}
         <li class="nota">
           {% include fecha-corta.html f=n.fecha %}
           <div>
             <h3 class="nota__titulo"><a href="{{ n.enlace }}">{{ n.titulo }}</a></h3>
-            {%- if n.medio or n.investigacion %}<p class="nota__meta">{{ n.medio }}{% if n.medio and n.investigacion %} · {% endif %}{% if n.investigacion %}<a href="{% if n.investigacion.enlace contains '://' %}{{ n.investigacion.enlace }}{% else %}{{ n.investigacion.enlace | relative_url }}{% endif %}">Lea la investigación</a>{% endif %}</p>{% endif %}
+            {%- if n.medio or n.investigacion %}<p class="nota__meta">{{ n.medio }}{% if n.medio and n.investigacion %}. {% endif %}{% if n.investigacion %}<a href="{% if n.investigacion.enlace contains '://' %}{{ n.investigacion.enlace }}{% else %}{{ n.investigacion.enlace | relative_url }}{% endif %}">Lea la investigación</a>{% endif %}</p>{% endif %}
           </div>
         </li>
         {%- endfor %}
       </ul>
     </div>
     <div>
-      <div class="sec-head"><h2>Eventos</h2><a class="fd-link-arrow" href="{{ '/noticias-eventos.html#eventos' | relative_url }}">Todos los eventos</a></div>
+      <div class="sec-head"><h2>Eventos</h2><a class="ver-mas" href="{{ '/noticias-eventos.html#eventos' | relative_url }}">Todos los eventos</a></div>
       <ul class="notas">
         {%- for e in site.data.eventos limit: 4 %}
         {% include evento.html e=e %}
@@ -179,4 +148,3 @@ description: Centro de investigación económica y social independiente. Investi
     </div>
   </div>
 </section>
-

@@ -6,9 +6,7 @@ nav: nosotros
 <section class="fd-on-gray">
   <div class="fd-container cabeza cabeza--foto">
     <div>
-      <span class="fd-label fd-text-blue">Nosotros</span>
       <h1>Un centro de pensamiento independiente desde 1970</h1>
-      <p class="fd-lead">Fedesarrollo es una organización no gubernamental sin ánimo de lucro que promueve el debate sobre temas de interés general.</p>
     </div>
     <div class="fd-halftone"><img src="{{ '/assets/fede/photos/casas.jpg' | relative_url }}" alt="" width="1100" height="1517"></div>
   </div>
@@ -17,10 +15,9 @@ nav: nosotros
 <section class="fd-container wrap">
   <div class="fd-grid">
     <div class="fd-col-4">
-      <span class="fd-label fd-text-blue">Quiénes somos</span>
     </div>
     <div class="fd-col-8 prosa">
-      <p class="fd-lead" style="max-width:none">Fedesarrollo es una organización no gubernamental sin ánimo de lucro que actúa como un centro de pensamiento independiente y que promueve el debate sobre temas de interés general con el propósito de contribuir al diseño, seguimiento y mejoramiento de las políticas públicas y de la gestión del Estado en Colombia.</p>
+      <p class="fd-lead fd-lead--ancho">Fedesarrollo es una organización no gubernamental sin ánimo de lucro que actúa como un centro de pensamiento independiente y que promueve el debate sobre temas de interés general con el propósito de contribuir al diseño, seguimiento y mejoramiento de las políticas públicas y de la gestión del Estado en Colombia.</p>
       <h2>Misión</h2>
       <p>Propender por el desarrollo económico y social de Colombia dentro de un modelo de economía de mercado, con una participación eficaz del Estado en la provisión de bienes públicos, en un ambiente democrático y con una política social efectiva orientada al logro de una sociedad incluyente y equitativa.</p>
       <h2>Historia</h2>
@@ -32,22 +29,13 @@ nav: nosotros
 
 <section class="fd-on-navy">
   <div class="fd-container wrap">
-    <div class="sec-head"><h2>Reconocimientos</h2></div>
-    <div class="cifras">
-      <div class="fd-stat">
-        <span class="fd-stat__value fd-stat__value--accent">1.º</span>
-        <span class="fd-stat__caption">Centro y Suramérica</span>
-        <p class="fd-small" style="margin-top:12px">Primer lugar entre 1.172 think tanks de la región en el Global Go To Think Tank Index de la Universidad de Pensilvania, ediciones 2019 y 2020.</p>
-      </div>
-      <div class="fd-stat">
-        <span class="fd-stat__value fd-stat__value--accent">17</span>
-        <span class="fd-stat__caption">Política económica nacional</span>
-        <p class="fd-small" style="margin-top:12px">Puesto en el mundo en política económica nacional, entre 8.248 think tanks, en el mismo índice.</p>
-      </div>
-      <div class="fd-stat">
-        <span class="fd-stat__value fd-stat__value--accent">Top 3</span>
-        <span class="fd-stat__caption">ONG más admiradas</span>
-        <p class="fd-small" style="margin-top:12px">Según más de 1.400 líderes de opinión encuestados por <a href="https://www.cifrasyconceptos.com/wp-content/uploads/2022/11/Panel2022-2.pdf">Cifras &amp; Conceptos</a> en 2022.</p>
+    <div class="fd-grid">
+      <div class="fd-col-4"><h2>Reconocimientos</h2></div>
+      <div class="fd-col-8">
+        <ul class="reconocimientos">
+          <li>En las ediciones 2019 y 2020 del Global Go To Think Tank Index del Instituto Lauder de la Universidad de Pensilvania, Fedesarrollo ocupó el primer lugar entre 1.172 centros de pensamiento de Centro y Suramérica. Ocupó también el puesto 17 en política económica nacional y el 60 en general entre 8.248 centros de todo el mundo.</li>
+          <li>En 2022, Fedesarrollo se ubicó entre las tres ONG más admiradas según más de 1.400 líderes de opinión encuestados por <a href="https://www.cifrasyconceptos.com/wp-content/uploads/2022/11/Panel2022-2.pdf">Cifras &amp; Conceptos</a>.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -56,8 +44,7 @@ nav: nosotros
 <section class="fd-container wrap">
   <div class="fd-grid">
     <div class="fd-col-4">
-      <span class="fd-label fd-text-blue">Dirección</span>
-      <h2 style="margin-top:16px">Directores de Fedesarrollo</h2>
+      <h2>Directores de Fedesarrollo</h2>
     </div>
     <div class="fd-col-8">
       <ul class="directores">
@@ -85,8 +72,7 @@ nav: nosotros
   <div class="fd-container wrap">
     <div class="fd-grid">
       <div class="fd-col-4">
-        <span class="fd-label fd-text-blue">Transparencia</span>
-        <h2 style="margin-top:16px">Gobierno corporativo</h2>
+        <h2>Gobierno corporativo</h2>
       </div>
       <div class="fd-col-8">
         <ul class="contacto-lista">
@@ -104,19 +90,18 @@ nav: nosotros
 <section class="fd-container wrap" id="contacto">
   <div class="fd-grid">
     <div class="fd-col-4">
-      <span class="fd-label fd-text-blue">Contacto</span>
-      <h2 style="margin-top:16px">Contáctenos</h2>
+      <h2>Contáctenos</h2>
       <p>Si desea enviarnos un mensaje, puede usar el formulario o escribirnos al correo.</p>
       <a class="fd-btn" href="{{ site.contacto.formulario }}">Escribir un mensaje</a>
     </div>
     <div class="fd-col-8">
-      <ul class="contacto-lista">
-        <li><span class="fd-label">Dirección</span>{{ site.contacto.direccion }}</li>
-        <li><span class="fd-label">Teléfono</span><a href="{{ site.contacto.telefono_enlace }}">{{ site.contacto.telefono }}</a></li>
-        <li><span class="fd-label">Correo</span><a href="mailto:{{ site.contacto.correo }}">{{ site.contacto.correo }}</a></li>
-        <li><span class="fd-label">Boletín</span><a href="{{ site.contacto.boletin }}">Suscribirse para recibir información de Fedesarrollo</a></li>
-        <li><span class="fd-label">Redes</span>{% for r in site.redes %}<a href="{{ r.url }}">{{ r.nombre }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</li>
-      </ul>
+      <dl class="perfil__datos">
+        <dt>Dirección</dt><dd>{{ site.contacto.direccion }}</dd>
+        <dt>Teléfono</dt><dd><a href="{{ site.contacto.telefono_enlace }}">{{ site.contacto.telefono }}</a></dd>
+        <dt>Correo</dt><dd><a href="mailto:{{ site.contacto.correo }}">{{ site.contacto.correo }}</a></dd>
+        <dt>Boletín</dt><dd><a href="{{ site.contacto.boletin }}">Suscribirse para recibir información de Fedesarrollo</a></dd>
+        <dt>Redes</dt><dd>{% for r in site.redes %}<a href="{{ r.url }}">{{ r.nombre }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</dd>
+      </dl>
     </div>
   </div>
 </section>

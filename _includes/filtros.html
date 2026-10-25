@@ -32,7 +32,8 @@
     <label for="f-area">Área</label>
     <select class="fd-input" id="f-area" name="area">
       <option value="">Todas</option>
-      {%- for a in site.data.areas %}
+      {%- assign _areas = site.areas | sort: "orden" -%}
+      {%- for a in _areas %}
       <option value="{{ a.slug }}">{{ a.nombre }}</option>
       {%- endfor %}
     </select>
@@ -50,7 +51,7 @@
 </form>
 
 <div class="filtros__pie">
-  <p class="filtros__cuenta fd-label" id="filtros-cuenta" aria-live="polite">{{ include.pubs.size }} publicaciones</p>
+  <p class="filtros__cuenta" id="filtros-cuenta" aria-live="polite">{{ include.pubs.size }} publicaciones</p>
   <button type="button" class="filtros__limpiar" id="filtros-limpiar" hidden>Quitar filtros</button>
 </div>
 

@@ -5,9 +5,9 @@ Sitio de Fedesarrollo. Lo construye Jekyll en GitHub Pages en cada cambio a `mai
 ## Estructura
 
 - `index.html`, `investigaciones.html`, `coyuntura.html`, `areas.html`, `equipo.html`, `nosotros.html`, `noticias-eventos.html` y `404.html`: páginas del sitio.
-- `areas/<slug>.html`, `equipo/<slug>.html` y `organizados-contra-el-crimen/<n>.html`: páginas generadas con los layouts `area`, `perfil` y `oac-doc` a partir de `_data`.
 - `encuestas.html`, `temas.html` y `seguridad-justicia.html`: redirecciones a las direcciones nuevas.
-- `_data/*.yml`: todo el contenido (publicaciones, indicadores, equipo, noticias, eventos, temas y la serie 2026-2030). Comunicaciones lo actualiza siguiendo [COMO-EDITAR.md](COMO-EDITAR.md).
+- `_data/*.yml`: listas (publicaciones, indicadores, calendario, noticias, eventos, temas, administración).
+- `_areas`, `_equipo`, `_especiales` y `_documentos/<especial>`: colecciones de Jekyll, un archivo por área, persona, especial o documento. Cada archivo genera su página. Ver [COMO-EDITAR.md](COMO-EDITAR.md).
 - `_layouts/` y `_includes/`: encabezado, pie y piezas que se repiten.
 - `assets/fede/`: copia del kit de marca (`fede-style`): tokens, `web/fedesarrollo.css`, logos y fotos en semitono. Hay dos cambios frente al kit:
   - las fuentes comerciales están en `web/fuentes-marca.css`;
@@ -15,7 +15,7 @@ Sitio de Fedesarrollo. Lo construye Jekyll en GitHub Pages en cada cambio a `mai
 - `assets/css/site.css` y `assets/js/site.js`: capa propia del sitio sobre el kit, y filtros del listado de publicaciones.
 - `assets/img/portadas/`: miniaturas de las publicaciones, descargadas del repositorio institucional.
 - `assets/img/oac/`: primera página de los documentos de Organizados contra el crimen (versión en español).
-- `documentos-politica-2026-2030/`: serie de Documentos y Notas de Política. Los datos de cada documento están en `_data/serie.yml`, y el texto en `docs/<slug>.html`. Para agregar uno, ver su `COMO-AGREGAR-UN-DOCUMENTO.md`.
+- `documentos-politica-2026-2030/`: serie de Documentos y Notas de Política. Cada documento es un archivo en `_documentos/serie-2026-2030/` (datos arriba, texto debajo) y se publica en `docs/<slug>.html`. Para agregar uno, ver su `COMO-AGREGAR-UN-DOCUMENTO.md`.
 - `productividad-mercado-laboral/`: explorador de marcos regulatorios. Es una copia generada en el repositorio `regulatory-frameworks`: no se edita aquí.
 - `interno/`: portal interno del equipo (herramientas y dashboards). No está enlazado desde el sitio, tiene `noindex` y está fuera del sitemap.
 

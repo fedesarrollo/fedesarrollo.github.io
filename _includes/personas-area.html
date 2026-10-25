@@ -1,0 +1,12 @@
+{%- comment -%}
+  Personas de un área (parámetro: area) en orden de jerarquía: dirección,
+  director de área, investigador, asociado, investigador asistente, asistente
+  de investigación, practicante. Dentro de cada nivel, por nombre.
+{%- endcomment -%}
+{%- assign _del_area = site.equipo | where: "area", include.area -%}
+{%- for r in (1..8) -%}
+  {%- assign _nivel = _del_area | where: "rango", r | sort: "nombre" -%}
+  {%- for p in _nivel %}
+  {% include persona.html x=p en_area=true %}
+  {%- endfor -%}
+{%- endfor -%}

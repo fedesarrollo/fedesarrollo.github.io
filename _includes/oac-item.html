@@ -1,12 +1,12 @@
 {%- assign d = include.d -%}
 {%- assign pdf = "https://www.organizedagainstcrime.org/es/_files/ugd/e04819_" -%}
-{%- capture ficha %}{{ '/organizados-contra-el-crimen/' | relative_url }}{% if d.tipo == "nota" %}nota-{% endif %}{{ d.numero }}.html{% endcapture -%}
+{%- assign ficha = d.url | relative_url -%}
 <li class="oac__item">
   <a class="oac__portada" href="{{ ficha }}" tabindex="-1" aria-hidden="true"><img src="{{ d.portada | relative_url }}" alt="" loading="lazy" width="401" height="520"></a>
   <div>
-    <p class="pub__tipo fd-label">{% if d.tipo == "nota" %}Nota{% else %}Documento{% endif %} de política {{ d.numero }}<span>{% include fecha.html f=d.fecha %}</span></p>
+    <p class="pub__tipo fd-label">{{ d.tipo }} {{ d.numero }}<span>{% include fecha.html f=d.fecha %}</span></p>
     <h3 class="pub__titulo"><a href="{{ ficha }}">{{ d.titulo }}</a></h3>
-    <p class="pub__autores">{{ d.autores }}</p>
+    <p class="pub__autores">{{ d.autores_corto }}</p>
     <p class="pub__resumen">{{ d.resumen }}</p>
     <p class="oac__pdf fd-small">PDF: <a href="{{ pdf }}{{ d.pdf.es }}.pdf">Español</a> · <a href="{{ pdf }}{{ d.pdf.en }}.pdf" hreflang="en">English</a> · <a href="{{ pdf }}{{ d.pdf.pt }}.pdf" hreflang="pt">Português</a></p>
   </div>

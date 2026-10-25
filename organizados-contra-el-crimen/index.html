@@ -5,17 +5,17 @@ nav: areas
 ---
 {%- assign oac = "https://www.organizedagainstcrime.org/es/" -%}
 {%- assign base = '/organizados-contra-el-crimen/' | relative_url -%}
-{%- assign docs = site.data.oac | where: "tipo", "documento" -%}
-{%- assign notas = site.data.oac | where: "tipo", "nota" -%}
+{%- assign oac_docs = site.documentos | where: "especial", "organizados-contra-el-crimen" | sort: "orden" -%}
+{%- assign docs = oac_docs | where: "clase", "documento" -%}
+{%- assign notas = oac_docs | where: "clase", "nota" -%}
 
 <section class="fd-on-navy">
   <div class="fd-container cabeza cabeza--serie">
     <div>
       <p class="migas"><a href="{{ '/areas/seguridad-y-justicia.html' | relative_url }}">Seguridad y justicia</a></p>
-      <span class="fd-tag">Iniciativa regional</span>
-      <h1 style="margin-top:24px">Organizados contra el crimen</h1>
+      <h1>Organizados contra el crimen</h1>
       <p class="fd-lead">América Latina y el Caribe enfrenta los niveles de violencia más altos del mundo.</p>
-      <div class="fd-flex" style="margin-top:32px">
+      <div class="fd-flex acciones">
         <a class="fd-btn" href="#documentos">Documentos de política</a>
         <a class="fd-btn fd-btn--outline" href="{{ oac }}">organizedagainstcrime.org</a>
       </div>
@@ -28,9 +28,9 @@ nav: areas
 
 <section class="fd-container wrap">
   <div class="fd-grid">
-    <div class="fd-col-4"><span class="fd-label fd-text-blue">La iniciativa</span></div>
+    <div class="fd-col-4"></div>
     <div class="fd-col-8 prosa">
-      <p class="fd-lead" style="max-width:none">Si bien la violencia se manifiesta de múltiples formas, el crimen organizado, vinculado a mercados ilícitos, ha sido uno de sus principales motores en las últimas décadas; sin embargo, sigue siendo un fenómeno poco estudiado y, con frecuencia, ajeno a los grandes debates sobre el desarrollo.</p>
+      <p class="fd-lead fd-lead--ancho">Si bien la violencia se manifiesta de múltiples formas, el crimen organizado, vinculado a mercados ilícitos, ha sido uno de sus principales motores en las últimas décadas; sin embargo, sigue siendo un fenómeno poco estudiado y, con frecuencia, ajeno a los grandes debates sobre el desarrollo.</p>
       <p>La iniciativa reúne centros de pensamiento, formuladores de políticas y programas, organismos multilaterales, académicos y representantes de la sociedad civil en una colaboración de largo plazo. Su objetivo es generar conocimiento oportuno y relevante sobre la violencia criminal en la región, con especial énfasis en el crimen organizado. Fedesarrollo hace parte de la red.</p>
       <p>Contacto: <a href="mailto:oac@fedesarrollo.org.co">oac@fedesarrollo.org.co</a></p>
     </div>
@@ -44,7 +44,7 @@ nav: areas
     {% include oac-item.html d=d %}
     {%- endfor %}
   </ol>
-  <div class="sec-head" style="margin-top:72px"><h2>Notas de política</h2></div>
+  <div class="sec-head sec-head--separado"><h2>Notas de política</h2></div>
   <ol class="oac">
     {%- for d in notas %}
     {% include oac-item.html d=d %}
@@ -52,12 +52,11 @@ nav: areas
   </ol>
 </section>
 
-<section class="fd-on-gray" style="margin-top:64px">
+<section class="fd-on-gray seccion-final">
   <div class="fd-container wrap">
     <div class="fd-grid">
       <div class="fd-col-4">
-        <span class="fd-label fd-text-blue">La red</span>
-        <h2 style="margin-top:16px">Instituciones que participan</h2>
+        <h2>Instituciones que participan</h2>
       </div>
       <div class="fd-col-8">
         <ul class="red">

@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-{%- assign d = site.data.serie | where: "slug", page.slug | first -%}
+{%- assign d = page -%}
 {%- assign base = '/documentos-politica-2026-2030/' | relative_url -%}
-{%- if d.tipo == "nota" -%}
+{%- if d.clase == "nota" -%}
   {%- assign volver = "Notas de Política" -%}{%- assign volver_url = "notas-politica.html" -%}
 {%- else -%}
   {%- assign volver = "Documentos de Política" -%}{%- assign volver_url = "documentos.html" -%}
@@ -12,8 +12,8 @@ layout: default
   <p class="migas"><a href="{{ base }}index.html">Serie 2026-2030</a> / <a href="{{ base }}{{ volver_url }}">{{ volver }}</a></p>
   <div class="ficha">
     <div>
-      <span class="fd-tag">{% if d.tipo == "nota" %}Nota de Política{% else %}Documento de Política{% endif %}</span>
-      <h1 style="margin-top:24px">{{ d.titulo }}</h1>
+      <p class="ficha__tipo">{{ d.tipo }}</p>
+      <h1>{{ d.titulo }}</h1>
       {%- if d.subtitulo %}<p class="ficha__sub">{{ d.subtitulo }}</p>{% endif %}
       <ul class="autores">
         {%- for a in d.autores %}
@@ -33,7 +33,7 @@ layout: default
         <button type="button" class="archivo__ver" data-pdf="{{ base }}pdfs/{{ f.pdf }}" data-title="{{ f.etiqueta }}" aria-label="Ver {{ f.etiqueta }}">
           <img src="{{ base }}assets/img/previews/{{ f.portada }}" alt="Primera página: {{ f.etiqueta }}">
         </button>
-        <span class="fd-label">{{ f.etiqueta }}</span>
+        <span class="archivo__etiqueta">{{ f.etiqueta }}</span>
         <a class="archivo__bajar" href="{{ base }}pdfs/{{ f.pdf }}" download>Descargar PDF</a>
       </div>
       {%- endfor %}

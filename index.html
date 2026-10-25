@@ -147,9 +147,9 @@ description: Centro de investigación económica y social independiente. Investi
   {%- assign directores = site.data.equipo | where: "director", true -%}
   <ul class="personas personas--fila personas--cuatro">
     {% include persona.html x=dir %}
-    {%- for p in directores %}
-    {% include persona.html x=p %}
-    {%- endfor %}
+    {%- for p in directores %}{% if p.nombre != dir.nombre %}
+    {% include persona.html x=p en_area=true %}
+    {%- endif %}{% endfor %}
   </ul>
 </section>
 

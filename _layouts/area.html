@@ -113,7 +113,7 @@ layout: default
       {%- if gente.size > 0 %}
       <ul class="personas personas--tres">
         {%- for p in gente %}
-        {% include persona.html x=p %}
+        {% include persona.html x=p en_area=true %}
         {%- endfor %}
       </ul>
       {%- endif %}

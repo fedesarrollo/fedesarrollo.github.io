@@ -33,7 +33,7 @@ nav: equipo
 </section>
 
 {%- for a in site.data.areas %}
-{%- assign del_area = investigacion | where: "area", a.slug -%}
+{%- assign del_area = gente | where: "area", a.slug -%}
 {%- if del_area.size > 0 %}
 <section class="fd-container wrap--corto" id="{{ a.slug }}">
   <div class="sec-head">
@@ -42,7 +42,7 @@ nav: equipo
   </div>
   <ul class="personas">
     {%- for p in del_area %}
-    {% include persona.html x=p %}
+    {% include persona.html x=p en_area=true %}
     {%- endfor %}
   </ul>
 </section>

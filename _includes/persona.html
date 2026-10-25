@@ -11,6 +11,6 @@
     {%- endif -%}
   </span>
   <span class="persona__nombre">{{ x.nombre }}</span>
-  <span class="persona__cargo fd-small">{{ x.cargo }}</span>
+  <span class="persona__cargo fd-small">{% if include.en_area and x.cargo_area %}{{ x.cargo_area }}{% else %}{{ x.cargo }}{% endif %}</span>
   {%- if x.slug %}</a>{% endif %}
 </li>

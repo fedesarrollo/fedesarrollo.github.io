@@ -16,7 +16,7 @@ layout: default
       {%- endif %}
     </div>
     <div class="prosa">
-      <span class="fd-label fd-text-blue">{{ x.cargo }}{% if area %} · {{ area.nombre }}{% elsif x.grupo == "investigacion" %} · Investigadores asociados{% endif %}</span>
+      <span class="fd-label fd-text-blue">{{ x.cargo }}{% if x.cargo_area %} · {{ x.cargo_area }}{% elsif area %} · {{ area.nombre }}{% elsif x.grupo == "investigacion" %} · Investigadores asociados{% endif %}</span>
       <h1 style="margin-top:16px">{{ x.nombre }}</h1>
       {%- if x.bio %}
       {%- for b in x.bio %}

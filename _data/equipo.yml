@@ -4,13 +4,16 @@
 # area: código de _data/areas.yml. En «investigacion», sin área = investigador asociado.
 # El orden dentro de cada área sigue la jerarquía: director, investigador, asistente de
 # investigación y practicante. «director: true» marca al director del área.
+# «cargo_area» es el cargo que se muestra dentro del área, si es distinto.
 # slug: dirección del perfil, equipo/<slug>.html (dirección e investigación).
 # firmas: cómo aparece el nombre en las publicaciones, para listarlas en el perfil.
 
 - nombre: "Marcela Meléndez"
   cargo: "Directora Ejecutiva"
+  cargo_area: "Directora de Mercado laboral y productividad"
   grupo: direccion
-  area: ""
+  area: "mercado-laboral-y-productividad"
+  director: true
   slug: marcela-melendez
   firmas: ["Marcela Meléndez"]
   foto: "https://res.cloudinary.com/dleuipkoh/image/upload/q_auto/f_auto/v1776446980/WhatsApp_Image_2026-04-17_at_12.29.11_PM_nlhecj.jpg"
